@@ -10,12 +10,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PlayerDao{
-        Long id;
-        @NotNull @Pattern(regexp = "^[A-Za-z]+$", message = "L'username può contenere solamente caratteri alfabetici")
-        String username;
-        @NotNull @Pattern(regexp = "^[A-Za-z0-9]+$")
-        String password;
-        @NotNull @Email(message = "Email non valida")
-        String email;
+public class PlayerDao {
+    Long id;
+    @NotNull @Pattern(regexp = "^[A-Za-z]+$", message = "L'username può contenere solamente caratteri alfabetici")
+    String username;
+    @NotNull @Pattern(regexp = "^[A-Za-z0-9]+$")
+    String password;
+    @NotNull @Email(message = "Email non valida")
+    String email;
 }

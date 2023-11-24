@@ -16,7 +16,8 @@ import java.util.Set;
 public class BeanValidator {
 
     Set<ConstraintViolation<Object>> violations;
-    public  void validate(Object object) {
+
+    public void validate(Object object) {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
 

@@ -27,21 +27,25 @@ public class PlayerController {
             return ResponseEntity.badRequest().body(e.getViolations());
         }
     }
+
     @GetMapping("/getById/{playerId}")
     public ResponseEntity<PlayerDto> getPlayerById(@PathVariable Long playerId) {
         PlayerDto playerDto = playerService.readById(playerId);
         return ResponseEntity.ok(playerDto);
     }
+
     @GetMapping("/getAll")
     public ResponseEntity<List<PlayerDto>> getPlayerById() {
         List<PlayerDto> playerDtoList = playerService.readAll();
         return ResponseEntity.ok(playerDtoList);
     }
+
     @PutMapping("/update")
     public ResponseEntity<PlayerDto> updatePlayer(@RequestBody PlayerDao playerDao) {
         PlayerDto playerDto = playerService.update(playerDao);
         return ResponseEntity.ok(playerDto);
     }
+
     @DeleteMapping("/deleteById/{playerId}")
     public ResponseEntity<Object> deletePlayerById(@PathVariable Long playerId) {
         playerService.deleteById(playerId);
