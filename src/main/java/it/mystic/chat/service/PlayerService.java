@@ -1,5 +1,6 @@
 package it.mystic.chat.service;
 
+import it.mystic.chat.exception.ValidationException;
 import it.mystic.chat.mapper.PlayerMapper;
 import it.mystic.chat.model.dao.PlayerDao;
 import it.mystic.chat.model.dto.PlayerDto;
@@ -21,9 +22,8 @@ public class PlayerService {
     @Autowired
     private BeanValidator validator;
 
-    public PlayerDto create(PlayerDao playerDao) {
-        //TODO aggiungere controlli di esistenza mail e username
-        validator.validate(playerDao);
+    public PlayerDto create(PlayerDao playerDao) throws ValidationException {
+        validate(playerDao);
         PlayerDto playerDto = playerMapper.daoToDto(playerDao);
         return playerRepo.save(playerDto);
     }
@@ -34,6 +34,7 @@ public class PlayerService {
         return playerRepo.findAll();
     }
     public PlayerDto update(PlayerDao playerDao) {
+        validate(playerDao);
         PlayerDto playerDto = playerMapper.daoToDto(playerDao);
         return playerRepo.save(playerDto);
     }
@@ -41,5 +42,21 @@ public class PlayerService {
         playerRepo.deleteById(userId);
     }
 
+    /* VALIDAZIONE*/
+    private void validate(PlayerDao playerDao){
+        validator.validate(playerDao);
+        usernameNotUsed(playerDao.getUsername());
+        emailNotUsed(playerDao.getEmail());
+    }
+    private void usernameNotUsed(String username){
+        if(playerRepo.existsByUsername(username)){
+            throw new ValidationException("username", "username già in uso");
+        }
+    }
+    private void emailNotUsed(String email){
+        if(playerRepo.existsByEmail(email)){
+            throw new ValidationException("email", "email già in uso");
+        }
+    }
 
 }
