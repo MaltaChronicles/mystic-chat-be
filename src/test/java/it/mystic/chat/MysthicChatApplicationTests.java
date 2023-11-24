@@ -1,10 +1,10 @@
-package it.mysthic.mysthicchatbe;
+package it.mystic.chat;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MysthicChatApplicationTests {
+class MysticChatApplicationTests {
 
 	@Test
 	void contextLoads() {

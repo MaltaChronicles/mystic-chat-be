@@ -1,1 +1,1 @@
-# MysthicChat-Be
+# MysticChat-Be

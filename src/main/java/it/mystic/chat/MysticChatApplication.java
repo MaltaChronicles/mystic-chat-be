@@ -1,13 +1,13 @@
-package it.mysthic.mysthicchatbe;
+package it.mystic.chat;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MysthicChatApplication {
+public class MysticChatApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MysthicChatApplication.class, args);
+		SpringApplication.run(MysticChatApplication.class, args);
 	}
 
 }
