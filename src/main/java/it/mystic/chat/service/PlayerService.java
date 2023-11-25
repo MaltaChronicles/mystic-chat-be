@@ -63,5 +63,4 @@ public class PlayerService {
             throw new ValidationException("email", "email già in uso");
         }
     }
-
 }

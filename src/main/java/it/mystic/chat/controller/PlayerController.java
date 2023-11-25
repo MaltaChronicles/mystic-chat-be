@@ -56,5 +56,4 @@ public class PlayerController {
         return ResponseEntity.ok().build();
     }
 
-
 }
