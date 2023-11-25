@@ -15,7 +15,7 @@ public class PlayerMapper {
                 playerDao.getPassword(),
                 playerDao.getEmail()
         );
-        playerDto.setId(playerDto.getId());
+        playerDto.setPlayerId(playerDao.getId());
         return playerDto;
     }
 

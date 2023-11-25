@@ -41,8 +41,8 @@ public class PlayerService {
         return playerRepo.save(playerDto);
     }
 
-    public void deleteById(Long userId) {
-        playerRepo.deleteById(userId);
+    public void deleteById(Long playerId) {
+        playerRepo.deleteById(playerId);
     }
 
     /* VALIDAZIONE*/

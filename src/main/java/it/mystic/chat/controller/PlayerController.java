@@ -41,9 +41,13 @@ public class PlayerController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<PlayerDto> updatePlayer(@RequestBody PlayerDao playerDao) {
-        PlayerDto playerDto = playerService.update(playerDao);
-        return ResponseEntity.ok(playerDto);
+    public ResponseEntity<Object> updatePlayer(@RequestBody PlayerDao playerDao) {
+        try {
+            PlayerDto playerDto = playerService.update(playerDao);
+            return ResponseEntity.ok(playerDto);
+        } catch (ValidationException e) {
+            return ResponseEntity.badRequest().body(e.getViolations());
+        }
     }
 
     @DeleteMapping("/deleteById/{playerId}")

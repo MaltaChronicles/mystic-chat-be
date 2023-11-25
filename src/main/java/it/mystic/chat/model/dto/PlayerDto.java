@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -18,7 +19,7 @@ public class PlayerDto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    Long playerId;
     @Column
     String username;
     @Column
@@ -29,13 +30,13 @@ public class PlayerDto {
     Date dataIscrizione;
     @Column
     Date ultimaAzione;
-    //TODO aggiungere ruoli [ADMIN, GUIDA, MASTER]
+    @OneToMany(mappedBy = "id.player", cascade = CascadeType.ALL)
+    private List<RoleDto> roles;
 
     public PlayerDto(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.dataIscrizione = new Date();
-        this.ultimaAzione = null;
     }
 }
