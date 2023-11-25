@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "Role")
+@Table(name = "role")
 public class RoleDto {
     @EmbeddedId
     RolePk id;
