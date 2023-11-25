@@ -13,13 +13,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "role")
-public class RoleDto {
+@Table(name = "player_role")
+public class PlayerRoleDto {
     @EmbeddedId
     RolePk id;
     Boolean isBoss;
 
-    public RoleDto(Long playerId, Role role) {
+    public PlayerRoleDto(Long playerId, Role role) {
         this.id = new RolePk(playerId, role);
         this.isBoss = false;
     }

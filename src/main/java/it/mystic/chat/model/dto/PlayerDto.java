@@ -31,7 +31,7 @@ public class PlayerDto {
     @Column
     Date ultimaAzione;
     @OneToMany(mappedBy = "id.player", cascade = CascadeType.ALL)
-    private List<RoleDto> roles;
+    private List<PlayerRoleDto> roles;
 
     public PlayerDto(String username, String password, String email) {
         this.username = username;
