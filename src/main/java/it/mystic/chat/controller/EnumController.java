@@ -1,8 +1,8 @@
 package it.mystic.chat.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-import it.mystic.chat.model.enums.*;
 import it.mystic.chat.model.enums.Class;
+import it.mystic.chat.model.enums.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +28,7 @@ public class EnumController {
 
     @GetMapping("/getOrigins")
     public ResponseEntity<List<Origin>> getOrigins() {
-            return ResponseEntity.ok(Arrays.stream(Origin.values()).toList());
+        return ResponseEntity.ok(Arrays.stream(Origin.values()).toList());
     }
 
     @GetMapping("/getThemes")

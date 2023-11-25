@@ -1,6 +1,9 @@
 package it.mystic.chat.model.dto;
 
-import it.mystic.chat.model.enums.*;
+import it.mystic.chat.model.enums.Job;
+import it.mystic.chat.model.enums.Origin;
+import it.mystic.chat.model.enums.StandardOfLiving;
+import it.mystic.chat.model.enums.Theme;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

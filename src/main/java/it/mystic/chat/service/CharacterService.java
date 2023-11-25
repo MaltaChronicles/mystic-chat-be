@@ -24,10 +24,10 @@ public class CharacterService {
     @Autowired
     private BeanValidator validator;
 
-    public CharacterDto create(CharacterDao characterDao){
+    public CharacterDto create(CharacterDao characterDao) {
         validator.validate(characterDao);
 
-        CharacterDto characterDto =  characterMapper.daoToDto(characterDao);
+        CharacterDto characterDto = characterMapper.daoToDto(characterDao);
         characterDto.setStandardOfLiving(StandardOfLiving.Nullo);
 
         characterDto.setStatus(new CharacterStatsDto(characterDto));

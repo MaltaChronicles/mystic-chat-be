@@ -36,7 +36,7 @@ public class CharacterEquipmentDto {
     @Id
     CharacterDto character;
 
-    public  CharacterEquipmentDto(CharacterDto characterDto){
+    public CharacterEquipmentDto(CharacterDto characterDto) {
         this.character = characterDto;
     }
 }
