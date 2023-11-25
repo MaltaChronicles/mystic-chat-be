@@ -35,4 +35,8 @@ public class CharacterDescriptionDto {
     @JsonIgnore
     @Id
     CharacterDto character;
+
+    public CharacterDescriptionDto(CharacterDto characterDto){
+        this.character = characterDto;
+    }
 }

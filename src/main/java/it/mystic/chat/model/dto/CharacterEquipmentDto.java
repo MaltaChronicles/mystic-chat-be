@@ -35,4 +35,8 @@ public class CharacterEquipmentDto {
     @JsonIgnore
     @Id
     CharacterDto character;
+
+    public  CharacterEquipmentDto(CharacterDto characterDto){
+        this.character = characterDto;
+    }
 }

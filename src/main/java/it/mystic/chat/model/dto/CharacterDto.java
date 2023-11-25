@@ -47,4 +47,12 @@ public class CharacterDto {
     //TODO aggiungere abilità
     //TODO aggiungere legami
     //TODO Aggiungere peculiarità
+
+    public CharacterDto(String name, String identity, Origin origin, Theme theme, Job job) {
+        this.name = name;
+        this.identity = identity;
+        this.origin = origin;
+        this.theme = theme;
+        this.job = job;
+    }
 }

@@ -5,10 +5,12 @@ import it.mystic.chat.model.enums.DiceValue;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Entity
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "character_stats")
 public class CharacterStatsDto {
@@ -79,7 +81,9 @@ public class CharacterStatsDto {
     @Id
     CharacterDto character;
 
-    public CharacterStatsDto() {
+    public CharacterStatsDto(CharacterDto characterDto) {
+        this.character = characterDto;
+
         level = 0;
 
         totalExperience = 0;
@@ -107,6 +111,8 @@ public class CharacterStatsDto {
         martialShields = false;
         martialMeleeWeapons = false;
         martialDistanceWeapons = false;
+
+        levelUp();
     }
 
     public void levelUp() {
