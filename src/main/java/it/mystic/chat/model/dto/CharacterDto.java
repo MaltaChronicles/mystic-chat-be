@@ -7,8 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
 @Data
 @NoArgsConstructor
@@ -35,8 +33,6 @@ public class CharacterDto {
 
     @OneToOne(mappedBy = "character", cascade = CascadeType.ALL)
     private CharacterEquipmentDto equipment;
-
-
 
 
     //TODO aggiungere abilità

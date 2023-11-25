@@ -1,12 +1,10 @@
 package it.mystic.chat.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import it.mystic.chat.model.enums.Color;
 import it.mystic.chat.model.enums.DiceValue;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 
 @Entity
@@ -81,7 +79,7 @@ public class CharacterStatsDto {
     @Id
     CharacterDto character;
 
-    public CharacterStatsDto(){
+    public CharacterStatsDto() {
         level = 0;
 
         totalExperience = 0;
@@ -111,7 +109,7 @@ public class CharacterStatsDto {
         martialDistanceWeapons = false;
     }
 
-    public void levelUp(){
+    public void levelUp() {
         level = level + 1;
 
         totalLife = level + (5 * obtainDiceValue(totalVigor));
@@ -122,7 +120,7 @@ public class CharacterStatsDto {
         actualMana = totalMana;
     }
 
-    private Integer obtainDiceValue(DiceValue dice){
-        return  Integer.valueOf(dice.toString().replace("d",""));
+    private Integer obtainDiceValue(DiceValue dice) {
+        return Integer.valueOf(dice.toString().replace("d", ""));
     }
 }
