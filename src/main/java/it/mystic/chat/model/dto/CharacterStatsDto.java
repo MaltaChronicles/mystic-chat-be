@@ -78,25 +78,45 @@ public class CharacterStatsDto {
 
     /* RESISTENZE */
     @Column
-    Affinity physical;
+    Affinity physicalAffinity;
     @Column
-    Affinity water;
+    Affinity waterAffinity;
     @Column
-    Affinity earth;
+    Affinity earthAffinity;
     @Column
-    Affinity fire;
+    Affinity fireAffinity;
     @Column
-    Affinity air;
+    Affinity airAffinity;
     @Column
-    Affinity electricity;
+    Affinity electricityAffinity;
     @Column
-    Affinity ice;
+    Affinity iceAffinity;
     @Column
-    Affinity light;
+    Affinity lightAffinity;
     @Column
-    Affinity dark;
+    Affinity darkAffinity;
     @Column
-    Affinity poison;
+    Affinity poisonAffinity;
+    @Column
+    Affinity actualPhysicalAffinity;
+    @Column
+    Affinity actualWaterAffinity;
+    @Column
+    Affinity actualEarthAffinity;
+    @Column
+    Affinity actualFireAffinity;
+    @Column
+    Affinity actualAirAffinity;
+    @Column
+    Affinity actualElectricityAffinity;
+    @Column
+    Affinity actualIceAffinity;
+    @Column
+    Affinity actualLightAffinity;
+    @Column
+    Affinity actualDarkAffinity;
+    @Column
+    Affinity actualPoisonAffinity;
 
     @OneToOne
     @JoinColumn(name = "character_id")
@@ -135,16 +155,26 @@ public class CharacterStatsDto {
         martialMeleeWeapons = false;
         martialDistanceWeapons = false;
 
-        physical = Affinity.Nulla;
-        water = Affinity.Nulla;
-        earth = Affinity.Nulla;
-        fire = Affinity.Nulla;
-        air = Affinity.Nulla;
-        electricity = Affinity.Nulla;
-        ice = Affinity.Nulla;
-        light = Affinity.Nulla;
-        dark = Affinity.Nulla;
-        poison = Affinity.Nulla;
+        physicalAffinity = Affinity.Nulla;
+        waterAffinity = Affinity.Nulla;
+        earthAffinity = Affinity.Nulla;
+        fireAffinity = Affinity.Nulla;
+        airAffinity = Affinity.Nulla;
+        electricityAffinity = Affinity.Nulla;
+        iceAffinity = Affinity.Nulla;
+        lightAffinity = Affinity.Nulla;
+        darkAffinity = Affinity.Nulla;
+        poisonAffinity = Affinity.Nulla;
+        actualPhysicalAffinity = Affinity.Nulla;
+        actualWaterAffinity = Affinity.Nulla;
+        actualEarthAffinity = Affinity.Nulla;
+        actualFireAffinity = Affinity.Nulla;
+        actualAirAffinity = Affinity.Nulla;
+        actualElectricityAffinity = Affinity.Nulla;
+        actualIceAffinity = Affinity.Nulla;
+        actualLightAffinity = Affinity.Nulla;
+        actualDarkAffinity = Affinity.Nulla;
+        actualPoisonAffinity = Affinity.Nulla;
 
         levelUp();
     }
@@ -153,11 +183,9 @@ public class CharacterStatsDto {
         level = level + 1;
 
         totalLife = level + (5 * obtainDiceValue(totalVigor));
-        actualLife = totalLife;
         crisis = totalLife / 2;
 
         totalMana = level + (5 * obtainDiceValue(totalWill));
-        actualMana = totalMana;
     }
 
     private Integer obtainDiceValue(DiceValue dice) {

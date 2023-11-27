@@ -15,7 +15,6 @@ public enum Race {
     Infernale,
     Celestiale,
     Goblinoide,
-    Elementale,
     Djinn,
     Golem,
     Non_Morta,
