@@ -2,7 +2,6 @@ package it.mystic.chat.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.exception.GenericException;
-import it.mystic.chat.exception.ValidationException;
 import it.mystic.chat.model.dao.PlayerDao;
 import it.mystic.chat.model.dto.PlayerDto;
 import it.mystic.chat.service.PlayerService;
@@ -39,8 +38,8 @@ public class PlayerController {
 
     @PutMapping("/update")
     public ResponseEntity<Void> updatePlayer(@RequestBody PlayerDao playerDao) {
-            playerService.update(playerDao);
-            return ResponseEntity.ok().build();
+        playerService.update(playerDao);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/deleteById/{playerId}")

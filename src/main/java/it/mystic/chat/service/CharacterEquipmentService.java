@@ -20,6 +20,7 @@ public class CharacterEquipmentService {
         characterDto.getEquipment().setRightHand(objectDto);
         characterRepo.save(characterDto);
     }
+
     public void unequipRightHand(Long characterId) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
         characterDto.getEquipment().setRightHand(null);
@@ -32,6 +33,7 @@ public class CharacterEquipmentService {
         characterDto.getEquipment().setLeftHand(objectDto);
         characterRepo.save(characterDto);
     }
+
     public void unequipLeftHand(Long characterId) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
         characterDto.getEquipment().setLeftHand(null);
@@ -44,6 +46,7 @@ public class CharacterEquipmentService {
         characterDto.getEquipment().setDress(objectDto);
         characterRepo.save(characterDto);
     }
+
     public void unequipDress(Long characterId) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
         characterDto.getEquipment().setDress(null);
@@ -56,6 +59,7 @@ public class CharacterEquipmentService {
         characterDto.getEquipment().setAccessory(objectDto);
         characterRepo.save(characterDto);
     }
+
     public void unequipAccessory(Long characterId) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
         characterDto.getEquipment().setAccessory(null);
@@ -68,6 +72,7 @@ public class CharacterEquipmentService {
         characterDto.getEquipment().setPet(objectDto);
         characterRepo.save(characterDto);
     }
+
     public void unequipPet(Long characterId) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
         characterDto.getEquipment().setPet(null);
@@ -80,6 +85,7 @@ public class CharacterEquipmentService {
         characterDto.getEquipment().setMount(objectDto);
         characterRepo.save(characterDto);
     }
+
     public void unequipMount(Long characterId) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
         characterDto.getEquipment().setMount(null);

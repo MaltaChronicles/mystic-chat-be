@@ -1,9 +1,7 @@
 package it.mystic.chat.model.dao;
 
-import it.mystic.chat.model.enums.*;
-import jakarta.persistence.Column;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
+import it.mystic.chat.model.enums.Color;
+import it.mystic.chat.model.enums.Gender;
 import lombok.Data;
 
 @Data

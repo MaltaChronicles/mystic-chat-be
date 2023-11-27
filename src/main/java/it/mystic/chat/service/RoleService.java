@@ -35,7 +35,7 @@ public class RoleService {
         roleRepo.deleteById(playerRoleDto.getId());
     }
 
-    private PlayerDto getPlayer(RoleDao roleDao){
+    private PlayerDto getPlayer(RoleDao roleDao) {
         return playerRepo.getReferenceById(roleDao.getPlayerId());
     }
 }

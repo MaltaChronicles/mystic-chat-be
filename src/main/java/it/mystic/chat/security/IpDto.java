@@ -1,6 +1,8 @@
 package it.mystic.chat.security;
 
-import jakarta.persistence.*;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +18,7 @@ public class IpDto {
 
     Boolean isBan;
 
-    public  IpDto(IpPk id){
+    public IpDto(IpPk id) {
         this.id = id;
         isBan = false;
     }

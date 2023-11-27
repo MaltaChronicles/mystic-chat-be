@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Table(name = "character_root")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class CharacterDto{
+public class CharacterDto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long characterId;

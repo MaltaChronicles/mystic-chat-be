@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class SwaggerConfiguration {
 
     @Bean
-    public GroupedOpenApi config(){
+    public GroupedOpenApi config() {
         return GroupedOpenApi.builder()
                 .group("Config")
                 .pathsToMatch("/**/config/**/")
@@ -16,7 +16,7 @@ public class SwaggerConfiguration {
     }
 
     @Bean
-    public GroupedOpenApi off(){
+    public GroupedOpenApi off() {
         return GroupedOpenApi.builder()
                 .group("OFF")
                 .pathsToMatch("/**/off/**/")
@@ -24,7 +24,7 @@ public class SwaggerConfiguration {
     }
 
     @Bean
-    public GroupedOpenApi on(){
+    public GroupedOpenApi on() {
         return GroupedOpenApi.builder()
                 .group("ON")
                 .pathsToMatch("/**/on/**/")

@@ -73,11 +73,11 @@ public class PlayerService {
     public PlayerDto addCharacter(Long playerId, Long characterId) throws GenericException {
         PlayerDto playerDto = playerRepo.getReferenceById(playerId);
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        if(Objects.nonNull(playerDto.getCharacter1()))
+        if (Objects.nonNull(playerDto.getCharacter1()))
             playerDto.setCharacter1(characterDto);
-        else if(Objects.nonNull(playerDto.getCharacter2()))
+        else if (Objects.nonNull(playerDto.getCharacter2()))
             playerDto.setCharacter2(characterDto);
-        else if(Objects.nonNull(playerDto.getCharacter3()))
+        else if (Objects.nonNull(playerDto.getCharacter3()))
             playerDto.setCharacter3(characterDto);
         else
             throw new GenericException("Non è possibile avere più di 3 personaggi!");
