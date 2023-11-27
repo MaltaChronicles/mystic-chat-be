@@ -35,7 +35,7 @@ public class SwaggerConfiguration {
     }
 
     @Bean
-    public OpenAPI openApiCustomiser() {
+    public OpenAPI openApiServers() {
         return new OpenAPI().servers(
             List.of(
                 new io.swagger.v3.oas.models.servers.Server()
