@@ -1,5 +1,6 @@
 package it.mystic.chat.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import it.mystic.chat.model.enums.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,7 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "character_root")
-public class CharacterDto {
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class CharacterDto{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long characterId;
@@ -48,7 +50,6 @@ public class CharacterDto {
 
     //TODO aggiungere abilità
     //TODO aggiungere legami
-    //TODO Aggiungere peculiarità
 
     public CharacterDto(String name, String identity, Origin origin, Theme theme, Job job) {
         this.name = name;
