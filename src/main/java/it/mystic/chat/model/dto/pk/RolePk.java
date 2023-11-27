@@ -22,11 +22,4 @@ public class RolePk implements Serializable {
     PlayerDto player;
     @Column
     Role role;
-
-    public RolePk(Long playerId, Role role) {
-        PlayerDto playerDto = new PlayerDto();
-        playerDto.setPlayerId(playerId);
-        this.player = playerDto;
-        this.role = role;
-    }
 }

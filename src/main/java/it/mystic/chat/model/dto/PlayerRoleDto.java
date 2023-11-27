@@ -18,9 +18,4 @@ public class PlayerRoleDto {
     @EmbeddedId
     RolePk id;
     Boolean isBoss;
-
-    public PlayerRoleDto(Long playerId, Role role) {
-        this.id = new RolePk(playerId, role);
-        this.isBoss = false;
-    }
 }
