@@ -1,8 +1,11 @@
 package it.mystic.chat.config;
 
+import io.swagger.v3.oas.models.OpenAPI;
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.List;
 
 @Configuration
 public class SwaggerConfiguration {
@@ -29,5 +32,19 @@ public class SwaggerConfiguration {
                 .group("ON")
                 .pathsToMatch("/**/on/**/")
                 .build();
+    }
+
+    @Bean
+    public OpenAPI openApiCustomiser() {
+        return new OpenAPI().servers(
+            List.of(
+                new io.swagger.v3.oas.models.servers.Server()
+                    .url("http://localhost:8080")
+                    .description("Server di sviluppo"),
+                new io.swagger.v3.oas.models.servers.Server()
+                        .url("")
+                        .description("Server di produzione")
+            )
+        );
     }
 }
