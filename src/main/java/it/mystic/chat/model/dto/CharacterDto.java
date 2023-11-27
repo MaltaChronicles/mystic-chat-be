@@ -1,9 +1,6 @@
 package it.mystic.chat.model.dto;
 
-import it.mystic.chat.model.enums.Job;
-import it.mystic.chat.model.enums.Origin;
-import it.mystic.chat.model.enums.StandardOfLiving;
-import it.mystic.chat.model.enums.Theme;
+import it.mystic.chat.model.enums.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,6 +33,8 @@ public class CharacterDto {
     String personalNote;
     @Column
     String rumors;
+    @Column
+    Race race;
 
     @OneToOne(mappedBy = "character", cascade = CascadeType.ALL)
     private CharacterStatsDto status;

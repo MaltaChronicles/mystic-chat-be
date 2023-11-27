@@ -75,4 +75,9 @@ public class EnumController {
     public ResponseEntity<List<Affinity>> getAffinities() {
         return ResponseEntity.ok(Arrays.stream(Affinity.values()).toList());
     }
+
+    @GetMapping("/getRaces")
+    public ResponseEntity<List<Race>> getRaces() {
+        return ResponseEntity.ok(Arrays.stream(Race.values()).toList());
+    }
 }
