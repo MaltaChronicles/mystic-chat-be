@@ -16,19 +16,19 @@ public class RoleController {
     private RoleService roleService;
 
     @PostMapping("/create")
-    public ResponseEntity<Object> createRole(@RequestBody RoleDao roleDao) {
+    public ResponseEntity<PlayerRoleDto> createRole(@RequestBody RoleDao roleDao) {
         PlayerRoleDto playerRoleDto = roleService.create(roleDao);
         return ResponseEntity.ok(playerRoleDto);
     }
 
     @PatchMapping("/changeBoss")
-    public ResponseEntity<Object> updateRole(@RequestBody RoleDao roleDao) {
-        PlayerRoleDto playerRoleDto = roleService.update(roleDao);
-        return ResponseEntity.ok(playerRoleDto);
+    public ResponseEntity<PlayerRoleDto> updateRole(@RequestBody RoleDao roleDao) {
+        roleService.update(roleDao);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/deleteById")
-    public ResponseEntity<Object> deleteRoleById(@RequestBody RoleDao roleDao) {
+    public ResponseEntity<PlayerRoleDto> deleteRoleById(@RequestBody RoleDao roleDao) {
         roleService.deleteById(roleDao);
         return ResponseEntity.ok().build();
     }

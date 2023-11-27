@@ -41,10 +41,10 @@ public class PlayerService {
         return playerRepo.findAll();
     }
 
-    public PlayerDto update(PlayerDao playerDao) {
+    public void update(PlayerDao playerDao) {
         validate(playerDao);
         PlayerDto playerDto = playerMapper.daoToDto(playerDao);
-        return playerRepo.save(playerDto);
+        playerRepo.save(playerDto);
     }
 
     public void deleteById(Long playerId) {

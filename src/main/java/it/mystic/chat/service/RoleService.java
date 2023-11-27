@@ -25,9 +25,9 @@ public class RoleService {
         return roleRepo.save(playerRoleDto);
     }
 
-    public PlayerRoleDto update(RoleDao roleDao) {
+    public void update(RoleDao roleDao) {
         PlayerRoleDto playerRoleDto = roleMapper.daoToDto(roleDao, getPlayer(roleDao));
-        return roleRepo.save(playerRoleDto);
+        roleRepo.save(playerRoleDto);
     }
 
     public void deleteById(RoleDao roleDao) {

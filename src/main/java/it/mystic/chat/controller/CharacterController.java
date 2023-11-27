@@ -51,67 +51,67 @@ public class CharacterController {
 
     @PatchMapping("/updateName/{characterId}/{name}")
     public ResponseEntity<CharacterDto> updateNameById(@PathVariable Long characterId, @PathVariable @Pattern(regexp = "^[A-Za-z]+$") String name) {
-        CharacterDto characterDto = characterService.updateNameById(characterId, name);
-        return ResponseEntity.ok(characterDto);
+        characterService.updateNameById(characterId, name);
+        return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/updateIdentity/{characterId}/{identity}")
     public ResponseEntity<CharacterDto> updateIdentityById(@PathVariable Long characterId, @PathVariable @Pattern(regexp = "^[A-Za-z]+$") String identity) {
-        CharacterDto characterDto = characterService.updateIdentityById(characterId, identity);
-        return ResponseEntity.ok(characterDto);
+        characterService.updateIdentityById(characterId, identity);
+        return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/updateOrigin/{characterId}/{origin}")
     public ResponseEntity<CharacterDto> updateOriginById(@PathVariable Long characterId, @PathVariable Origin origin) {
-        CharacterDto characterDto = characterService.updateOriginById(characterId, origin);
-        return ResponseEntity.ok(characterDto);
+        characterService.updateOriginById(characterId, origin);
+        return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/updateTheme/{characterId}/{theme}")
     public ResponseEntity<CharacterDto> updateThemeById(@PathVariable Long characterId, @PathVariable Theme theme) {
-        CharacterDto characterDto = characterService.updateThemeById(characterId, theme);
-        return ResponseEntity.ok(characterDto);
+        characterService.updateThemeById(characterId, theme);
+        return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/updateStandardOfLiving/{characterId}/{standardOfLiving}")
     public ResponseEntity<CharacterDto> updateStandardOfLivingById(@PathVariable Long characterId, @PathVariable StandardOfLiving standardOfLiving) {
-        CharacterDto characterDto = characterService.updateStandardOfLivingById(characterId, standardOfLiving);
-        return ResponseEntity.ok(characterDto);
+        characterService.updateStandardOfLivingById(characterId, standardOfLiving);
+        return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/updateJob/{characterId}/{job}")
     public ResponseEntity<CharacterDto> updateJobById(@PathVariable Long characterId, @PathVariable Job job) {
-        CharacterDto characterDto = characterService.updateJobById(characterId, job);
-        return ResponseEntity.ok(characterDto);
+        characterService.updateJobById(characterId, job);
+        return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/updateMasterNote/{characterId}")
     public ResponseEntity<CharacterDto> updateMasterNoteById(@PathVariable Long characterId, @RequestBody String masterNote) {
-        CharacterDto characterDto = characterService.updateMasterNoteById(characterId, masterNote);
-        return ResponseEntity.ok(characterDto);
+        characterService.updateMasterNoteById(characterId, masterNote);
+        return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/updatePersonalNote/{characterId}")
     public ResponseEntity<CharacterDto> updatePersonalNoteById(@PathVariable Long characterId, @RequestBody String personalNote) {
-        CharacterDto characterDto = characterService.updatePersonalNoteById(characterId, personalNote);
-        return ResponseEntity.ok(characterDto);
+        characterService.updatePersonalNoteById(characterId, personalNote);
+        return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/updateRumors/{characterId}")
     public ResponseEntity<CharacterDto> updateRumorsById(@PathVariable Long characterId, @RequestBody String rumors) {
-        CharacterDto characterDto = characterService.updateRumorsById(characterId, rumors);
-        return ResponseEntity.ok(characterDto);
+        characterService.updateRumorsById(characterId, rumors);
+        return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/updateRace/{characterId}/{race}")
     public ResponseEntity<CharacterDto> updateRaceById(@PathVariable Long characterId, @PathVariable Race race) {
-        CharacterDto characterDto = characterService.updateRaceById(characterId, race);
-        return ResponseEntity.ok(characterDto);
+        characterService.updateRaceById(characterId, race);
+        return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/updateDescription/{characterId}")
     public ResponseEntity<CharacterDto> updateDescription(@PathVariable Long characterId, @RequestBody CharacterDescriptionDao characterDescription) {
-        CharacterDto characterDto = characterService.updateDescriptionById(characterId, characterDescription);
-        return ResponseEntity.ok(characterDto);
+        characterService.updateDescriptionById(characterId, characterDescription);
+        return ResponseEntity.ok().build();
     }
 }

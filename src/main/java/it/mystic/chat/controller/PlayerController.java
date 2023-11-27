@@ -44,8 +44,8 @@ public class PlayerController {
     @PutMapping("/update")
     public ResponseEntity<Object> updatePlayer(@RequestBody PlayerDao playerDao) {
         try {
-            PlayerDto playerDto = playerService.update(playerDao);
-            return ResponseEntity.ok(playerDto);
+            playerService.update(playerDao);
+            return ResponseEntity.ok().build();
         } catch (ValidationException e) {
             return ResponseEntity.badRequest().body(e.getViolations());
         }
@@ -62,7 +62,7 @@ public class PlayerController {
         try {
             try {
                 PlayerDto playerDto = playerService.addCharacter(playerId, characterId);
-                return ResponseEntity.ok(playerDto);
+                return ResponseEntity.ok().build();
             } catch (GenericException e) {
                 return ResponseEntity.badRequest().body(e);
             }
