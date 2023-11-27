@@ -30,13 +30,13 @@ public class CharacterDto{
     @Column
     Job job;
     @Column
+    Race race;
+    @Column
     String masterNote;
     @Column
     String personalNote;
     @Column
     String rumors;
-    @Column
-    Race race;
 
     @OneToOne(mappedBy = "character", cascade = CascadeType.ALL)
     private CharacterStatsDto status;
@@ -51,11 +51,12 @@ public class CharacterDto{
     //TODO aggiungere abilità
     //TODO aggiungere legami
 
-    public CharacterDto(String name, String identity, Origin origin, Theme theme, Job job) {
+    public CharacterDto(String name, String identity, Origin origin, Theme theme, Job job, Race race) {
         this.name = name;
         this.identity = identity;
         this.origin = origin;
         this.theme = theme;
         this.job = job;
+        this.race = race;
     }
 }

@@ -2,6 +2,7 @@ package it.mystic.chat.service;
 
 import it.mystic.chat.mapper.CharacterMapper;
 import it.mystic.chat.model.dao.CharacterDao;
+import it.mystic.chat.model.dao.CharacterDescriptionDao;
 import it.mystic.chat.model.dto.CharacterDescriptionDto;
 import it.mystic.chat.model.dto.CharacterDto;
 import it.mystic.chat.model.dto.CharacterEquipmentDto;
@@ -105,6 +106,13 @@ public class CharacterService {
     public CharacterDto updateRaceById(Long characterId, Race race) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
         characterDto.setRace(race);
+        return characterRepo.save(characterDto);
+    }
+
+    public CharacterDto updateDescriptionById(Long characterId, CharacterDescriptionDao characterDescriptionDao) {
+        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
+        CharacterDescriptionDto characterDescriptionDto = characterMapper.descriptionDaoToDescriptionDto(characterDescriptionDao, characterDto);
+        characterDto.setDescription(characterDescriptionDto);
         return characterRepo.save(characterDto);
     }
 }
