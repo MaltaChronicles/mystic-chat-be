@@ -1,6 +1,7 @@
 package it.mystic.chat.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import it.mystic.chat.model.enums.Affinity;
 import it.mystic.chat.model.enums.DiceValue;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -75,6 +76,28 @@ public class CharacterStatsDto {
     @Column
     Boolean martialDistanceWeapons;
 
+    /* RESISTENZE */
+    @Column
+    Affinity physical;
+    @Column
+    Affinity water;
+    @Column
+    Affinity earth;
+    @Column
+    Affinity fire;
+    @Column
+    Affinity air;
+    @Column
+    Affinity electricity;
+    @Column
+    Affinity ice;
+    @Column
+    Affinity light;
+    @Column
+    Affinity dark;
+    @Column
+    Affinity poison;
+
     @OneToOne
     @JoinColumn(name = "character_id")
     @JsonIgnore
@@ -111,6 +134,17 @@ public class CharacterStatsDto {
         martialShields = false;
         martialMeleeWeapons = false;
         martialDistanceWeapons = false;
+
+        physical = Affinity.Nulla;
+        water = Affinity.Nulla;
+        earth = Affinity.Nulla;
+        fire = Affinity.Nulla;
+        air = Affinity.Nulla;
+        electricity = Affinity.Nulla;
+        ice = Affinity.Nulla;
+        light = Affinity.Nulla;
+        dark = Affinity.Nulla;
+        poison = Affinity.Nulla;
 
         levelUp();
     }

@@ -70,4 +70,9 @@ public class EnumController {
     public ResponseEntity<List<StandardOfLiving>> getStandardsOfLiving() {
         return ResponseEntity.ok(Arrays.stream(StandardOfLiving.values()).toList());
     }
+
+    @GetMapping("/getAffinities")
+    public ResponseEntity<List<Affinity>> getAffinities() {
+        return ResponseEntity.ok(Arrays.stream(Affinity.values()).toList());
+    }
 }

@@ -1,27 +1,20 @@
 package it.mystic.chat.model.enums;
 
 public enum Class {
-    Arcanista,
     Artefice,
-    Canaglia,
-    Chimerista,
-    Elementalista,
-    Entropista,
-    Furia,
+    Avventuriero,
+    Bardo,
+    Berserker,
+    Chierico,
+    Druido,
+    Evocatore,
+    Guerriero,
     Guardiano,
-    Lama_Oscura,
-    Maestro_d_Armi,
+    Ladro,
+    Mago_Bianco,
+    Mago_Nero,
     Oratore,
-    Sapiente,
-    Spiritista,
-    Tiratore,
-    Viandante,
-    Danzatore,
-    Simbolista,
-    Comandante,
-    Cantore,
-    Mutante,
-    Piolata,
-    Esper
+    Studioso,
+    Tiratore
 
 }

@@ -5,5 +5,7 @@ public enum ObjectType {
     Mano_Sinistra,
     Due_Mani,
     Vestito,
-    Accessorio
+    Accessorio,
+    Compagno,
+    Cavalcatura
 }

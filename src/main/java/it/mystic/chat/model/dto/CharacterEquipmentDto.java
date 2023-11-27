@@ -29,6 +29,14 @@ public class CharacterEquipmentDto {
     @JoinColumn(name = "accessory")
     ObjectDto accessory;
 
+    @ManyToOne
+    @JoinColumn(name = "pet")
+    ObjectDto pet;
+
+    @ManyToOne
+    @JoinColumn(name = "mount")
+    ObjectDto mount;
+
 
     @OneToOne
     @JoinColumn(name = "character_id")
