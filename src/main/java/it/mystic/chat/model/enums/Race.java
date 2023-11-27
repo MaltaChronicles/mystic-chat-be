@@ -16,8 +16,9 @@ public enum Race {
     Celestiale,
     Goblinoide,
     Djinn,
-    Golem,
+    Costrutto,
     Non_Morta,
-    Bestiale
+    Bestiale,
+    Sirenide
 
 }

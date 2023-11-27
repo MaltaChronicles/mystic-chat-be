@@ -10,9 +10,10 @@ public enum Job {
     Fabbro,
     Pescatore,
     Cacciatore,
-    Agricoltore,
     Archeologo,
     Ingegniere,
-    Minatore
+    Allevatore,
+    Giardiniere,
+    Falegmane
 
 }

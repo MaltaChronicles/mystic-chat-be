@@ -1,5 +1,6 @@
 package it.mystic.chat.model.dto;
 
+import it.mystic.chat.model.enums.Affinity;
 import it.mystic.chat.model.enums.Feature;
 import it.mystic.chat.model.enums.ObjectRank;
 import it.mystic.chat.model.enums.ObjectType;
@@ -29,6 +30,8 @@ public class ObjectDto {
     Feature featurePrecisionTwo;
     @Column
     Integer damage;
+    @Column
+    Affinity damageType;
     @Column
     Integer defenseModifier;
     @Column
