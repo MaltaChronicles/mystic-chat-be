@@ -20,13 +20,9 @@ public class PlayerController {
     private PlayerService playerService;
 
     @PostMapping("/create")
-    public ResponseEntity<Object> createPlayer(@RequestBody PlayerDao playerDao) {
-        try {
-            PlayerDto playerDto = playerService.create(playerDao);
-            return ResponseEntity.ok(playerDto);
-        } catch (ValidationException e) {
-            return ResponseEntity.badRequest().body(e.getViolations());
-        }
+    public ResponseEntity<PlayerDto> createPlayer(@RequestBody PlayerDao playerDao) {
+        PlayerDto playerDto = playerService.create(playerDao);
+        return ResponseEntity.ok(playerDto);
     }
 
     @GetMapping("/getById/{playerId}")
@@ -42,33 +38,21 @@ public class PlayerController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Object> updatePlayer(@RequestBody PlayerDao playerDao) {
-        try {
+    public ResponseEntity<Void> updatePlayer(@RequestBody PlayerDao playerDao) {
             playerService.update(playerDao);
             return ResponseEntity.ok().build();
-        } catch (ValidationException e) {
-            return ResponseEntity.badRequest().body(e.getViolations());
-        }
     }
 
     @DeleteMapping("/deleteById/{playerId}")
-    public ResponseEntity<Object> deletePlayerById(@PathVariable Long playerId) {
+    public ResponseEntity<Void> deletePlayerById(@PathVariable Long playerId) {
         playerService.deleteById(playerId);
         return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/addCharacter/{playerId}")
-    public ResponseEntity<Object> addCharacter(@PathVariable Long playerId, @RequestBody Long characterId) {
-        try {
-            try {
-                PlayerDto playerDto = playerService.addCharacter(playerId, characterId);
-                return ResponseEntity.ok().build();
-            } catch (GenericException e) {
-                return ResponseEntity.badRequest().body(e);
-            }
-        } catch (ValidationException e) {
-            return ResponseEntity.badRequest().body(e.getViolations());
-        }
+    public ResponseEntity<PlayerDto> addCharacter(@PathVariable Long playerId, @RequestBody Long characterId) throws GenericException {
+        PlayerDto playerDto = playerService.addCharacter(playerId, characterId);
+        return ResponseEntity.ok().build();
     }
 
 }
