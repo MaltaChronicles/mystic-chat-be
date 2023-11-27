@@ -1,21 +1,27 @@
 package it.mystic.chat.service;
 
+import it.mystic.chat.exception.GenericException;
 import it.mystic.chat.exception.ValidationException;
 import it.mystic.chat.mapper.PlayerMapper;
 import it.mystic.chat.model.dao.PlayerDao;
+import it.mystic.chat.model.dto.CharacterDto;
 import it.mystic.chat.model.dto.PlayerDto;
+import it.mystic.chat.repo.CharacterRepo;
 import it.mystic.chat.repo.PlayerRepo;
 import it.mystic.chat.util.BeanValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class PlayerService {
 
     @Autowired
     private PlayerRepo playerRepo;
+    @Autowired
+    private CharacterRepo characterRepo;
     @Autowired
     private PlayerMapper playerMapper;
     @Autowired
@@ -62,5 +68,19 @@ public class PlayerService {
         if (playerRepo.existsByEmail(email)) {
             throw new ValidationException("email", "email già in uso");
         }
+    }
+
+    public PlayerDto addCharacter(Long playerId, Long characterId) throws GenericException {
+        PlayerDto playerDto = playerRepo.getReferenceById(playerId);
+        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
+        if(Objects.nonNull(playerDto.getCharacter1()))
+            playerDto.setCharacter1(characterDto);
+        else if(Objects.nonNull(playerDto.getCharacter2()))
+            playerDto.setCharacter2(characterDto);
+        else if(Objects.nonNull(playerDto.getCharacter3()))
+            playerDto.setCharacter3(characterDto);
+        else
+            throw new GenericException("Non è possibile avere più di 3 personaggi!");
+        return playerRepo.save(playerDto);
     }
 }

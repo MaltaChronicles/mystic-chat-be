@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Data
-public class ValidationException extends RuntimeException {
+public class ValidationException extends jakarta.validation.ValidationException {
 
     private List<InvalidParam> violations;
 
