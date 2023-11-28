@@ -1,9 +1,8 @@
 package it.mystic.chat.model.enums;
 
 public enum ObjectType {
-    Mano_Destra,
-    Mano_Sinistra,
-    Due_Mani,
+    Arma,
+    A_Due_Mani,
     Vestito,
     Accessorio,
     Compagno,
