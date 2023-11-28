@@ -37,14 +37,14 @@ public class SwaggerConfiguration {
     @Bean
     public OpenAPI openApiServers() {
         return new OpenAPI().servers(
-            List.of(
-                new io.swagger.v3.oas.models.servers.Server()
-                    .url("http://localhost:8080")
-                    .description("Server di sviluppo"),
-                new io.swagger.v3.oas.models.servers.Server()
-                        .url("")
-                        .description("Server di produzione")
-            )
+                List.of(
+                        new io.swagger.v3.oas.models.servers.Server()
+                                .url("http://localhost:8080")
+                                .description("Server di sviluppo"),
+                        new io.swagger.v3.oas.models.servers.Server()
+                                .url("")
+                                .description("Server di produzione")
+                )
         );
     }
 }

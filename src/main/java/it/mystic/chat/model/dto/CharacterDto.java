@@ -50,6 +50,7 @@ public class CharacterDto {
 
     //TODO aggiungere abilità
     //TODO aggiungere legami
+    //TODO aggiungere List<LevelClass>
 
     public CharacterDto(String name, String identity, Origin origin, Theme theme, Job job, Race race) {
         this.name = name;

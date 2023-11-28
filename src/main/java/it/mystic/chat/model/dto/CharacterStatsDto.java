@@ -149,7 +149,6 @@ public class CharacterStatsDto {
         martialMeleeWeapons = false;
         martialDistanceWeapons = false;
 
-        resetAffinity();
         levelUp();
         sleep();
         setRaceAffinity(characterDto.getRace());
@@ -169,71 +168,71 @@ public class CharacterStatsDto {
         return Integer.valueOf(dice.toString().replace("d", ""));
     }
 
-    public void setRaceAffinity(Race race){
-        resetAffinity();
+    public void setRaceAffinity(Race race) {
+        resetAffinityToNulla();
         switch (race) {
             case Elfica -> {
-                airAffinity=Affinity.Resistente;
-                iceAffinity=Affinity.Debole;
+                airAffinity = Affinity.Resistente;
+                iceAffinity = Affinity.Debole;
             }
             case Nanica -> {
-                earthAffinity=Affinity.Resistente;
-                waterAffinity=Affinity.Debole;
+                earthAffinity = Affinity.Resistente;
+                waterAffinity = Affinity.Debole;
             }
             case Orchesca -> {
-                waterAffinity=Affinity.Resistente;
-                fireAffinity=Affinity.Debole;
+                waterAffinity = Affinity.Resistente;
+                fireAffinity = Affinity.Debole;
             }
             case Draconica -> {
-                fireAffinity=Affinity.Resistente;
-                darkAffinity=Affinity.Debole;
+                fireAffinity = Affinity.Resistente;
+                darkAffinity = Affinity.Debole;
             }
             case Mannara -> {
-                poisonAffinity=Affinity.Resistente;
-                fireAffinity=Affinity.Debole;
+                poisonAffinity = Affinity.Resistente;
+                fireAffinity = Affinity.Debole;
             }
             case Fatata -> {
-                lightAffinity=Affinity.Resistente;
-                poisonAffinity=Affinity.Debole;
+                lightAffinity = Affinity.Resistente;
+                poisonAffinity = Affinity.Debole;
             }
             case Mezzogigante -> {
-                iceAffinity=Affinity.Resistente;
-                electricityAffinity=Affinity.Debole;
+                iceAffinity = Affinity.Resistente;
+                electricityAffinity = Affinity.Debole;
             }
             case Infernale -> {
-                fireAffinity=Affinity.Resistente;
-                iceAffinity=Affinity.Debole;
+                fireAffinity = Affinity.Resistente;
+                iceAffinity = Affinity.Debole;
             }
             case Celestiale -> {
-                lightAffinity=Affinity.Resistente;
-                darkAffinity=Affinity.Debole;
+                lightAffinity = Affinity.Resistente;
+                darkAffinity = Affinity.Debole;
             }
             case Goblinoide -> {
-                earthAffinity=Affinity.Resistente;
-                lightAffinity=Affinity.Debole;
+                earthAffinity = Affinity.Resistente;
+                lightAffinity = Affinity.Debole;
             }
             case Djinn -> {
-                airAffinity=Affinity.Resistente;
-                waterAffinity=Affinity.Debole;
+                airAffinity = Affinity.Resistente;
+                waterAffinity = Affinity.Debole;
             }
             case Costrutto -> {
-                iceAffinity=Affinity.Resistente;
-                waterAffinity=Affinity.Debole;
+                iceAffinity = Affinity.Resistente;
+                waterAffinity = Affinity.Debole;
             }
             case Non_Morta -> {
-                darkAffinity=Affinity.Resistente;
-                lightAffinity=Affinity.Debole;
+                darkAffinity = Affinity.Resistente;
+                lightAffinity = Affinity.Debole;
             }
             case Sirenide -> {
-                waterAffinity=Affinity.Resistente;
-                electricityAffinity=Affinity.Debole;
+                waterAffinity = Affinity.Resistente;
+                electricityAffinity = Affinity.Debole;
             }
-        };
+        }
         resetActualAffinity();
     }
 
-    public void sleep(){
-        actualLife =  totalLife;
+    public void sleep() {
+        actualLife = totalLife;
         actualMana = totalMana;
 
         actualInitiative = totalInitiative;
@@ -249,7 +248,7 @@ public class CharacterStatsDto {
         resetActualAffinity();
     }
 
-    private void resetActualAffinity(){
+    private void resetActualAffinity() {
         actualPhysicalAffinity = physicalAffinity;
         actualWaterAffinity = waterAffinity;
         actualEarthAffinity = earthAffinity;
@@ -262,7 +261,7 @@ public class CharacterStatsDto {
         actualPoisonAffinity = poisonAffinity;
     }
 
-    private void resetAffinity(){
+    private void resetAffinityToNulla() {
         physicalAffinity = Affinity.Nulla;
         waterAffinity = Affinity.Nulla;
         earthAffinity = Affinity.Nulla;

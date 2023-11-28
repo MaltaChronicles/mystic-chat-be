@@ -17,6 +17,7 @@ public class CharacterEquipmentService {
 
     //TODO update delle stats IN e OUT
     //TODO Aggiugere ad Object le varie stats
+    //TODO Aggiungere controlli marziali
 
     public void equipRightHand(Long characterId, Long objectId) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);

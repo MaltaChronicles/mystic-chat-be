@@ -49,6 +49,7 @@ public class CharacterStatsController {
         characterService.subExperience(characterId, value);
         return ResponseEntity.ok().build();
     }
+
     @PatchMapping("/levelUp/{characterId}")
     public ResponseEntity<Void> levelUp(@PathVariable Long characterId) throws GenericException {
         characterService.levelUp(characterId);

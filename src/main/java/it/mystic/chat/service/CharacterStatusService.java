@@ -22,67 +22,64 @@ public class CharacterStatusService {
 
     public void updateTotalLife(Long characterId, Integer value) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        if(characterDto.getStatus().getTotalLife().equals(characterDto.getStatus().getActualLife()))
-            characterDto.getStatus().setActualLife(characterDto.getStatus().getActualLife()+value);
-        characterDto.getStatus().setTotalLife(characterDto.getStatus().getTotalLife()+value);
-        characterDto.getStatus().setCrisis(characterDto.getStatus().getTotalLife()/2);
+        if (characterDto.getStatus().getTotalLife().equals(characterDto.getStatus().getActualLife()))
+            characterDto.getStatus().setActualLife(characterDto.getStatus().getActualLife() + value);
+        characterDto.getStatus().setTotalLife(characterDto.getStatus().getTotalLife() + value);
+        characterDto.getStatus().setCrisis(characterDto.getStatus().getTotalLife() / 2);
         characterRepo.save(characterDto);
     }
 
     public void updateActualLife(Long characterId, Integer value) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        characterDto.getStatus().setActualLife(characterDto.getStatus().getActualLife()+value);
+        characterDto.getStatus().setActualLife(characterDto.getStatus().getActualLife() + value);
         characterRepo.save(characterDto);
     }
 
     public void updateTotalMana(Long characterId, Integer value) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        if(characterDto.getStatus().getTotalMana().equals(characterDto.getStatus().getActualMana()))
-            characterDto.getStatus().setActualMana(characterDto.getStatus().getActualMana()+value);
-        characterDto.getStatus().setTotalMana(characterDto.getStatus().getTotalMana()+value);
+        if (characterDto.getStatus().getTotalMana().equals(characterDto.getStatus().getActualMana()))
+            characterDto.getStatus().setActualMana(characterDto.getStatus().getActualMana() + value);
+        characterDto.getStatus().setTotalMana(characterDto.getStatus().getTotalMana() + value);
         characterRepo.save(characterDto);
     }
 
     public void updateActualMana(Long characterId, Integer value) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        characterDto.getStatus().setActualMana(characterDto.getStatus().getActualMana()+value);
+        characterDto.getStatus().setActualMana(characterDto.getStatus().getActualMana() + value);
         characterRepo.save(characterDto);
     }
 
     public void addExperience(Long characterId, Integer value) throws GenericException {
-        if(value > 0) {
+        if (value > 0) {
             CharacterDto characterDto = characterRepo.getReferenceById(characterId);
             characterDto.getStatus().setTotalExperience(characterDto.getStatus().getTotalExperience() + value);
             characterDto.getStatus().setActualExperience(characterDto.getStatus().getActualExperience() + value);
             characterRepo.save(characterDto);
-        }
-        else
+        } else
             throw new GenericException("Valore non valido!");
     }
 
     public void subExperience(Long characterId, Integer value) throws GenericException {
-        if(value < 0) {
+        if (value < 0) {
             CharacterDto characterDto = characterRepo.getReferenceById(characterId);
             characterDto.getStatus().setActualExperience(characterDto.getStatus().getActualExperience() + value);
             characterRepo.save(characterDto);
-        }
-        else
+        } else
             throw new GenericException("Valore non valido!");
     }
 
     public void levelUp(Long characterId) throws GenericException {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        if(characterDto.getStatus().getActualExperience() >= 10) {
+        if (characterDto.getStatus().getActualExperience() >= 10) {
             characterDto.getStatus().levelUp();
             characterRepo.save(characterDto);
-        }
-        else
+        } else
             throw new GenericException("Esperienza insufficiente!");
     }
 
     public void updateTotalInitiative(Long characterId, Integer value) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        if(characterDto.getStatus().getTotalInitiative().equals(characterDto.getStatus().getActualInitiative()))
+        if (characterDto.getStatus().getTotalInitiative().equals(characterDto.getStatus().getActualInitiative()))
             characterDto.getStatus().setActualInitiative(value);
         characterDto.getStatus().setTotalInitiative(value);
         characterRepo.save(characterDto);
@@ -103,7 +100,7 @@ public class CharacterStatusService {
     public void updateTotalDexterity(Long characterId) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
         DiceValue next = DiceValue.values()[(characterDto.getStatus().getTotalDexterity().ordinal() + 1)];
-        if(characterDto.getStatus().getTotalDexterity().equals(characterDto.getStatus().getActualDexterity()))
+        if (characterDto.getStatus().getTotalDexterity().equals(characterDto.getStatus().getActualDexterity()))
             characterDto.getStatus().setActualDexterity(next);
         characterDto.getStatus().setTotalDexterity(next);
         characterRepo.save(characterDto);
@@ -118,7 +115,7 @@ public class CharacterStatusService {
     public void updateTotalInsight(Long characterId) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
         DiceValue next = DiceValue.values()[(characterDto.getStatus().getTotalInsight().ordinal() + 1)];
-        if(characterDto.getStatus().getTotalInsight().equals(characterDto.getStatus().getActualInsight()))
+        if (characterDto.getStatus().getTotalInsight().equals(characterDto.getStatus().getActualInsight()))
             characterDto.getStatus().setActualInsight(next);
         characterDto.getStatus().setTotalInsight(next);
         characterRepo.save(characterDto);
@@ -133,7 +130,7 @@ public class CharacterStatusService {
     public void updateTotalVigor(Long characterId) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
         DiceValue next = DiceValue.values()[(characterDto.getStatus().getTotalVigor().ordinal() + 1)];
-        if(characterDto.getStatus().getTotalVigor().equals(characterDto.getStatus().getActualVigor()))
+        if (characterDto.getStatus().getTotalVigor().equals(characterDto.getStatus().getActualVigor()))
             characterDto.getStatus().setActualVigor(next);
         characterDto.getStatus().setTotalVigor(next);
         characterRepo.save(characterDto);
@@ -148,7 +145,7 @@ public class CharacterStatusService {
     public void updateTotalWill(Long characterId) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
         DiceValue next = DiceValue.values()[(characterDto.getStatus().getTotalWill().ordinal() + 1)];
-        if(characterDto.getStatus().getTotalWill().equals(characterDto.getStatus().getActualWill()))
+        if (characterDto.getStatus().getTotalWill().equals(characterDto.getStatus().getActualWill()))
             characterDto.getStatus().setActualWill(next);
         characterDto.getStatus().setTotalWill(next);
         characterRepo.save(characterDto);
@@ -210,7 +207,7 @@ public class CharacterStatusService {
 
     public void updatePhysicalAffinity(Long characterId, Affinity value) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        if(characterDto.getStatus().getPhysicalAffinity().equals(characterDto.getStatus().getActualPhysicalAffinity()))
+        if (characterDto.getStatus().getPhysicalAffinity().equals(characterDto.getStatus().getActualPhysicalAffinity()))
             characterDto.getStatus().setActualPhysicalAffinity(value);
         characterDto.getStatus().setPhysicalAffinity(value);
         characterRepo.save(characterDto);
@@ -224,7 +221,7 @@ public class CharacterStatusService {
 
     public void updateWaterAffinity(Long characterId, Affinity value) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        if(characterDto.getStatus().getWaterAffinity().equals(characterDto.getStatus().getActualWaterAffinity()))
+        if (characterDto.getStatus().getWaterAffinity().equals(characterDto.getStatus().getActualWaterAffinity()))
             characterDto.getStatus().setActualWaterAffinity(value);
         characterDto.getStatus().setWaterAffinity(value);
         characterRepo.save(characterDto);
@@ -238,7 +235,7 @@ public class CharacterStatusService {
 
     public void updateEarthAffinity(Long characterId, Affinity value) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        if(characterDto.getStatus().getEarthAffinity().equals(characterDto.getStatus().getActualEarthAffinity()))
+        if (characterDto.getStatus().getEarthAffinity().equals(characterDto.getStatus().getActualEarthAffinity()))
             characterDto.getStatus().setActualEarthAffinity(value);
         characterDto.getStatus().setEarthAffinity(value);
         characterRepo.save(characterDto);
@@ -252,7 +249,7 @@ public class CharacterStatusService {
 
     public void updateFireAffinity(Long characterId, Affinity value) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        if(characterDto.getStatus().getFireAffinity().equals(characterDto.getStatus().getActualFireAffinity()))
+        if (characterDto.getStatus().getFireAffinity().equals(characterDto.getStatus().getActualFireAffinity()))
             characterDto.getStatus().setActualFireAffinity(value);
         characterDto.getStatus().setFireAffinity(value);
         characterRepo.save(characterDto);
@@ -266,7 +263,7 @@ public class CharacterStatusService {
 
     public void updateAirAffinity(Long characterId, Affinity value) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        if(characterDto.getStatus().getAirAffinity().equals(characterDto.getStatus().getActualAirAffinity()))
+        if (characterDto.getStatus().getAirAffinity().equals(characterDto.getStatus().getActualAirAffinity()))
             characterDto.getStatus().setActualAirAffinity(value);
         characterDto.getStatus().setAirAffinity(value);
         characterRepo.save(characterDto);
@@ -280,7 +277,7 @@ public class CharacterStatusService {
 
     public void updateElectricityAffinity(Long characterId, Affinity value) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        if(characterDto.getStatus().getElectricityAffinity().equals(characterDto.getStatus().getActualElectricityAffinity()))
+        if (characterDto.getStatus().getElectricityAffinity().equals(characterDto.getStatus().getActualElectricityAffinity()))
             characterDto.getStatus().setActualElectricityAffinity(value);
         characterDto.getStatus().setElectricityAffinity(value);
         characterRepo.save(characterDto);
@@ -294,7 +291,7 @@ public class CharacterStatusService {
 
     public void updateIceAffinity(Long characterId, Affinity value) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        if(characterDto.getStatus().getIceAffinity().equals(characterDto.getStatus().getActualIceAffinity()))
+        if (characterDto.getStatus().getIceAffinity().equals(characterDto.getStatus().getActualIceAffinity()))
             characterDto.getStatus().setActualIceAffinity(value);
         characterDto.getStatus().setIceAffinity(value);
         characterRepo.save(characterDto);
@@ -308,7 +305,7 @@ public class CharacterStatusService {
 
     public void updateLightAffinity(Long characterId, Affinity value) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        if(characterDto.getStatus().getLightAffinity().equals(characterDto.getStatus().getActualLightAffinity()))
+        if (characterDto.getStatus().getLightAffinity().equals(characterDto.getStatus().getActualLightAffinity()))
             characterDto.getStatus().setActualLightAffinity(value);
         characterDto.getStatus().setLightAffinity(value);
         characterRepo.save(characterDto);
@@ -322,7 +319,7 @@ public class CharacterStatusService {
 
     public void updateDarkAffinity(Long characterId, Affinity value) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        if(characterDto.getStatus().getDarkAffinity().equals(characterDto.getStatus().getActualDarkAffinity()))
+        if (characterDto.getStatus().getDarkAffinity().equals(characterDto.getStatus().getActualDarkAffinity()))
             characterDto.getStatus().setActualDarkAffinity(value);
         characterDto.getStatus().setDarkAffinity(value);
         characterRepo.save(characterDto);
@@ -336,7 +333,7 @@ public class CharacterStatusService {
 
     public void updatePoisonAffinity(Long characterId, Affinity value) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        if(characterDto.getStatus().getPoisonAffinity().equals(characterDto.getStatus().getActualPoisonAffinity()))
+        if (characterDto.getStatus().getPoisonAffinity().equals(characterDto.getStatus().getActualPoisonAffinity()))
             characterDto.getStatus().setActualPoisonAffinity(value);
         characterDto.getStatus().setPoisonAffinity(value);
         characterRepo.save(characterDto);
