@@ -14,6 +14,7 @@ public enum Job {
     Ingegniere,
     Allevatore,
     Giardiniere,
-    Falegmane
+    Falegmane,
+    Cuoco
 
 }
