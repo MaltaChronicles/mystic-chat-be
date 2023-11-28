@@ -1,7 +1,7 @@
 package it.mystic.chat.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import it.mystic.chat.model.dto.pk.CharacterInventoryPk;
+import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -19,9 +19,6 @@ public class CharacterInventoryDto {
     @EmbeddedId
     CharacterInventoryPk id;
 
+    @Column
     Boolean isEquip;
-
-    Boolean isUnique;
-
-
 }

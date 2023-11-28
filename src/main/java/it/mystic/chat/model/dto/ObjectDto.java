@@ -31,6 +31,8 @@ public class ObjectDto {
     Boolean isMartial;
     @Column
     RangeType rangeType;
+    @Column
+    RangeType price;
 
     @Column
     Feature featurePrecisionOne;
@@ -82,6 +84,9 @@ public class ObjectDto {
     Affinity darkModifier;
     @Column
     Affinity poisonModifier;
+
+    @Column
+    Boolean isUnique;
 
     @OneToMany(mappedBy = "character", cascade = CascadeType.ALL)
     private List<CharacterInventoryDto> characterInventory;

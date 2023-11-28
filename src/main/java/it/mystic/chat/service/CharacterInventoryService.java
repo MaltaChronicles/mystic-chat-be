@@ -31,4 +31,20 @@ public class CharacterInventoryService {
         characterInventoryDto.setIsEquip(false);
         characterInventoryRepo.save(characterInventoryDto);
     }
+
+    public void addObject(Long characterId, Long objectId){
+        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
+        ObjectDto objectDto = objectRepo.getReferenceById(objectId);
+        CharacterInventoryDto characterInventoryDto = new CharacterInventoryDto();
+        characterInventoryDto.setId(new CharacterInventoryPk(characterDto, objectDto));
+        characterInventoryRepo.save(characterInventoryDto);
+    }
+
+    public void removeObject(Long characterId, Long objectId) {
+        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
+        ObjectDto objectDto = objectRepo.getReferenceById(objectId);
+        CharacterInventoryDto characterInventoryDto = new CharacterInventoryDto();
+        characterInventoryDto.setId(new CharacterInventoryPk(characterDto, objectDto));
+        characterInventoryRepo.delete(characterInventoryDto);
+    }
 }
