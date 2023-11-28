@@ -10,7 +10,7 @@ public class ObjectMapper {
     public ObjectDto daoToDto(ObjectDao objectDao){
         return new ObjectDto(
                 objectDao.getObjectId(),
-                objectDao.getNome(),
+                objectDao.getName(),
                 objectDao.getImgUrl(),
                 objectDao.getType(),
                 objectDao.getDescription(),

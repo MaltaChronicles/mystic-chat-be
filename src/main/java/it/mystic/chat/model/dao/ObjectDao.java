@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @AllArgsConstructor
 public class ObjectDao {
     Long objectId;
-    String nome;
+    String name;
     String imgUrl;
     ObjectType type;
     String description;
