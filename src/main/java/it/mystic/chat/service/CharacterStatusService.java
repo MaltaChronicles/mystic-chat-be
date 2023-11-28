@@ -97,12 +97,20 @@ public class CharacterStatusService {
         characterRepo.save(characterDto);
     }
 
-    public void updateTotalDexterity(Long characterId) {
+    public void upTotalDexterity(Long characterId) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
         DiceValue next = DiceValue.values()[(characterDto.getStatus().getTotalDexterity().ordinal() + 1)];
         if (characterDto.getStatus().getTotalDexterity().equals(characterDto.getStatus().getActualDexterity()))
             characterDto.getStatus().setActualDexterity(next);
         characterDto.getStatus().setTotalDexterity(next);
+        characterRepo.save(characterDto);
+    }
+
+    public void updateTotalDexterity(Long characterId, DiceValue value) {
+        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
+        if (characterDto.getStatus().getTotalDexterity().equals(characterDto.getStatus().getActualDexterity()))
+            characterDto.getStatus().setActualDexterity(value);
+        characterDto.getStatus().setTotalDexterity(value);
         characterRepo.save(characterDto);
     }
 
@@ -112,12 +120,20 @@ public class CharacterStatusService {
         characterRepo.save(characterDto);
     }
 
-    public void updateTotalInsight(Long characterId) {
+    public void upTotalInsight(Long characterId) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
         DiceValue next = DiceValue.values()[(characterDto.getStatus().getTotalInsight().ordinal() + 1)];
         if (characterDto.getStatus().getTotalInsight().equals(characterDto.getStatus().getActualInsight()))
             characterDto.getStatus().setActualInsight(next);
         characterDto.getStatus().setTotalInsight(next);
+        characterRepo.save(characterDto);
+    }
+
+    public void upTotalInsight(Long characterId, DiceValue value) {
+        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
+        if (characterDto.getStatus().getTotalInsight().equals(characterDto.getStatus().getActualInsight()))
+            characterDto.getStatus().setActualInsight(value);
+        characterDto.getStatus().setTotalInsight(value);
         characterRepo.save(characterDto);
     }
 
@@ -127,12 +143,20 @@ public class CharacterStatusService {
         characterRepo.save(characterDto);
     }
 
-    public void updateTotalVigor(Long characterId) {
+    public void upTotalVigor(Long characterId) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
         DiceValue next = DiceValue.values()[(characterDto.getStatus().getTotalVigor().ordinal() + 1)];
         if (characterDto.getStatus().getTotalVigor().equals(characterDto.getStatus().getActualVigor()))
             characterDto.getStatus().setActualVigor(next);
         characterDto.getStatus().setTotalVigor(next);
+        characterRepo.save(characterDto);
+    }
+
+    public void updateTotalVigor(Long characterId, DiceValue value) {
+        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
+        if (characterDto.getStatus().getTotalVigor().equals(characterDto.getStatus().getActualVigor()))
+            characterDto.getStatus().setActualVigor(value);
+        characterDto.getStatus().setTotalVigor(value);
         characterRepo.save(characterDto);
     }
 
@@ -142,12 +166,20 @@ public class CharacterStatusService {
         characterRepo.save(characterDto);
     }
 
-    public void updateTotalWill(Long characterId) {
+    public void upTotalWill(Long characterId) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
         DiceValue next = DiceValue.values()[(characterDto.getStatus().getTotalWill().ordinal() + 1)];
         if (characterDto.getStatus().getTotalWill().equals(characterDto.getStatus().getActualWill()))
             characterDto.getStatus().setActualWill(next);
         characterDto.getStatus().setTotalWill(next);
+        characterRepo.save(characterDto);
+    }
+
+    public void updateTotalWill(Long characterId, DiceValue value) {
+        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
+        if (characterDto.getStatus().getTotalWill().equals(characterDto.getStatus().getActualWill()))
+            characterDto.getStatus().setActualWill(value);
+        characterDto.getStatus().setTotalWill(value);
         characterRepo.save(characterDto);
     }
 

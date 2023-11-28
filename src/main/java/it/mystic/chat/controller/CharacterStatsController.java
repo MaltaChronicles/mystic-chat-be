@@ -70,7 +70,7 @@ public class CharacterStatsController {
 
     @PatchMapping("/upTotalDexterity/{characterId}")
     public ResponseEntity<Void> updateTotalDexterity(@PathVariable Long characterId) {
-        characterService.updateTotalDexterity(characterId);
+        characterService.upTotalDexterity(characterId);
         return ResponseEntity.ok().build();
     }
 
@@ -82,7 +82,7 @@ public class CharacterStatsController {
 
     @PatchMapping("/upTotalInsight/{characterId}")
     public ResponseEntity<Void> updateTotalInsight(@PathVariable Long characterId) {
-        characterService.updateTotalInsight(characterId);
+        characterService.upTotalInsight(characterId);
         return ResponseEntity.ok().build();
     }
 
@@ -94,7 +94,7 @@ public class CharacterStatsController {
 
     @PatchMapping("/upTotalVigor/{characterId}")
     public ResponseEntity<Void> updateTotalVigor(@PathVariable Long characterId) {
-        characterService.updateTotalVigor(characterId);
+        characterService.upTotalVigor(characterId);
         return ResponseEntity.ok().build();
     }
 
@@ -106,7 +106,7 @@ public class CharacterStatsController {
 
     @PatchMapping("/upTotalWill/{characterId}")
     public ResponseEntity<Void> updateTotalWill(@PathVariable Long characterId) {
-        characterService.updateTotalWill(characterId);
+        characterService.upTotalWill(characterId);
         return ResponseEntity.ok().build();
     }
 
