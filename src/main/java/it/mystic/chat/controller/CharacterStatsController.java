@@ -63,7 +63,7 @@ public class CharacterStatsController {
     }
 
     @PatchMapping("/updateCoin/{characterId}/{value}")
-    public ResponseEntity<Void> updateCoin(@PathVariable Long characterId, @PathVariable Integer value) {
+    public ResponseEntity<Void> updateCoin(@PathVariable Long characterId, @PathVariable Integer value) throws GenericException {
         characterService.updateCoin(characterId, value);
         return ResponseEntity.ok().build();
     }

@@ -91,9 +91,12 @@ public class CharacterStatusService {
         characterRepo.save(characterDto);
     }
 
-    public void updateCoin(Long characterId, Integer value) {
+    public void updateCoin(Long characterId, Integer value) throws GenericException {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        characterDto.getStatus().setCoin(characterDto.getStatus().getCoin() + value);
+        if(value < 0 && value <= characterDto.getStatus().getCoin())
+            characterDto.getStatus().setCoin(characterDto.getStatus().getCoin() + value);
+        else
+            throw new GenericException("Monete insufficienti!");
         characterRepo.save(characterDto);
     }
 

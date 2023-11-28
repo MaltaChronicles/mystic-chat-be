@@ -80,4 +80,9 @@ public class EnumController {
     public ResponseEntity<List<Race>> getRaces() {
         return ResponseEntity.ok(Arrays.stream(Race.values()).toList());
     }
+
+    @GetMapping("/getRangeTypes")
+    public ResponseEntity<List<RangeType>> getRangeTypes() {
+        return ResponseEntity.ok(Arrays.stream(RangeType.values()).toList());
+    }
 }
