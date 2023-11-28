@@ -1,5 +1,6 @@
 package it.mystic.chat.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import it.mystic.chat.model.dto.pk.CharacterInventoryPk;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
@@ -14,6 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "character_inventory")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class CharacterInventoryDto {
 
     @EmbeddedId

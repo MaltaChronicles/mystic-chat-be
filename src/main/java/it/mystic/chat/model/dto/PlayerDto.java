@@ -13,8 +13,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})//TODO fix this
 @Table(name = "player")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class PlayerDto {
 
     @Id

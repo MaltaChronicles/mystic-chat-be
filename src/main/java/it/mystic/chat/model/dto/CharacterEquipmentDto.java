@@ -1,6 +1,7 @@
 package it.mystic.chat.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "character_equipment")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class CharacterEquipmentDto {
 
     @ManyToOne(cascade = CascadeType.REMOVE)

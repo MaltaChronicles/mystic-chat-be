@@ -1,6 +1,7 @@
 package it.mystic.chat.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import it.mystic.chat.model.enums.Color;
 import it.mystic.chat.model.enums.Gender;
 import jakarta.persistence.*;
@@ -14,6 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "character_description")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class CharacterDescriptionDto {
     @Column
     Color rightEye;
