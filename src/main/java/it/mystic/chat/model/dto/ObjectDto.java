@@ -1,5 +1,6 @@
 package it.mystic.chat.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import it.mystic.chat.model.enums.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "object")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ObjectDto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
