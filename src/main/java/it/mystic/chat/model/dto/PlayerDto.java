@@ -34,13 +34,13 @@ public class PlayerDto {
     @OneToMany(mappedBy = "id.player", cascade = CascadeType.ALL)
     private List<PlayerRoleDto> roles;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "character1")
     CharacterDto character1;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "character2")
     CharacterDto character2;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "character3")
     CharacterDto character3;
 

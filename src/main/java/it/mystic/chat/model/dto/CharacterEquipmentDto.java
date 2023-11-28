@@ -13,32 +13,32 @@ import lombok.NoArgsConstructor;
 @Table(name = "character_equipment")
 public class CharacterEquipmentDto {
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "rightHand")
     ObjectDto rightHand;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "leftHand")
     ObjectDto leftHand;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "dress")
     ObjectDto dress;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "accessory")
     ObjectDto accessory;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "pet")
     ObjectDto pet;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "mount")
     ObjectDto mount;
 
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "character_id")
     @JsonIgnore
     @Id

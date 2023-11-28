@@ -83,6 +83,6 @@ public class ObjectDto {
     @Column
     Affinity poisonModifier;
 
-    @OneToMany(mappedBy = "character")
+    @OneToMany(mappedBy = "character", cascade = CascadeType.ALL)
     private List<CharacterInventoryDto> characterInventory;
 }

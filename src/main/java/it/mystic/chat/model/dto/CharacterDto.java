@@ -49,7 +49,7 @@ public class CharacterDto {
     @OneToOne(mappedBy = "character", cascade = CascadeType.ALL)
     private CharacterEquipmentDto equipment;
 
-    @OneToMany(mappedBy = "character")
+    @OneToMany(mappedBy = "character", cascade = CascadeType.ALL)
     private List<CharacterInventoryDto> characterInventory;
 
 
