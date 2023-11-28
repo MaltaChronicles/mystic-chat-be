@@ -26,13 +26,13 @@ public class PlayerController {
 
     @GetMapping("/getById/{playerId}")
     public ResponseEntity<PlayerDto> getPlayerById(@PathVariable Long playerId) {
-        PlayerDto playerDto = playerService.readById(playerId);
+        PlayerDto playerDto = playerService.getById(playerId);
         return ResponseEntity.ok(playerDto);
     }
 
     @GetMapping("/getAll")
     public ResponseEntity<List<PlayerDto>> getPlayerById() {
-        List<PlayerDto> playerDtoList = playerService.readAll();
+        List<PlayerDto> playerDtoList = playerService.getAll();
         return ResponseEntity.ok(playerDtoList);
     }
 

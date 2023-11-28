@@ -22,13 +22,13 @@ public class RoleController {
     }
 
     @PatchMapping("/changeBoss")
-    public ResponseEntity<PlayerRoleDto> updateRole(@RequestBody RoleDao roleDao) {
+    public ResponseEntity<Void> updateRole(@RequestBody RoleDao roleDao) {
         roleService.update(roleDao);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/deleteById")
-    public ResponseEntity<PlayerRoleDto> deleteRoleById(@RequestBody RoleDao roleDao) {
+    public ResponseEntity<Void> deleteRoleById(@RequestBody RoleDao roleDao) {
         roleService.deleteById(roleDao);
         return ResponseEntity.ok().build();
     }

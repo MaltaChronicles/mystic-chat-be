@@ -38,11 +38,15 @@ public class CharacterService {
         return characterRepo.save(characterDto);
     }
 
-    public CharacterDto readById(Long characterId) {
-        return characterRepo.getReferenceById(characterId);
+    public CharacterDto getById(Long characterId) {
+        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
+        characterDto.setStatus(null);
+        characterDto.setEquipment(null);
+        characterDto.setInventory(null);
+        return characterDto;
     }
 
-    public List<CharacterDto> readAll() {
+    public List<CharacterDto> getAll() {
         return characterRepo.findAll();
     }
 

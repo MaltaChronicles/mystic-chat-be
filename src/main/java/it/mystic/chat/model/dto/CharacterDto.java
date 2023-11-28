@@ -39,6 +39,8 @@ public class CharacterDto {
     String personalNote;
     @Column
     String rumors;
+    @Column
+    Long Location;
 
     @OneToOne(mappedBy = "character", cascade = CascadeType.ALL)
     private CharacterStatsDto status;
@@ -49,8 +51,8 @@ public class CharacterDto {
     @OneToOne(mappedBy = "character", cascade = CascadeType.ALL)
     private CharacterEquipmentDto equipment;
 
-    @OneToMany(mappedBy = "character", cascade = CascadeType.ALL)
-    private List<CharacterInventoryDto> characterInventory;
+    @OneToMany(mappedBy = "id.character", cascade = CascadeType.ALL)
+    private List<CharacterInventoryDto> inventory;
 
 
     //TODO aggiungere abilità

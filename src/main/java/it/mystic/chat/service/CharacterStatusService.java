@@ -2,6 +2,7 @@ package it.mystic.chat.service;
 
 import it.mystic.chat.exception.GenericException;
 import it.mystic.chat.model.dto.CharacterDto;
+import it.mystic.chat.model.dto.CharacterStatsDto;
 import it.mystic.chat.model.enums.Affinity;
 import it.mystic.chat.model.enums.DiceValue;
 import it.mystic.chat.repo.CharacterRepo;
@@ -14,6 +15,10 @@ public class CharacterStatusService {
     @Autowired
     private CharacterRepo characterRepo;
 
+    public CharacterStatsDto getById(Long characterId) {
+        return characterRepo.getReferenceById(characterId).getStatus();
+    }
+    
     public void sleep(Long characterId) {
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
         characterDto.getStatus().sleep();
@@ -379,4 +384,6 @@ public class CharacterStatusService {
         characterDto.getStatus().setActualPoisonAffinity(value);
         characterRepo.save(characterDto);
     }
+
+
 }

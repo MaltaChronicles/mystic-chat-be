@@ -10,6 +10,8 @@ import it.mystic.chat.repo.ObjectRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CharacterInventoryService {
 
@@ -21,13 +23,13 @@ public class CharacterInventoryService {
     private ObjectRepo objectRepo;
 
     public void equipObject(Long characterId, Long objectId){
-        CharacterInventoryDto characterInventoryDto = characterInventoryRepo.getReferenceByCharacterIdAndObjectId(characterId, objectId);
+        CharacterInventoryDto characterInventoryDto = getReferenceByCharacterIdAndObjectId(characterId, objectId);
         characterInventoryDto.setIsEquip(true);
         characterInventoryRepo.save(characterInventoryDto);
     }
 
     public void unequipObject(Long characterId, Long objectId){
-        CharacterInventoryDto characterInventoryDto = characterInventoryRepo.getReferenceByCharacterIdAndObjectId(characterId, objectId);
+        CharacterInventoryDto characterInventoryDto = getReferenceByCharacterIdAndObjectId(characterId, objectId);
         characterInventoryDto.setIsEquip(false);
         characterInventoryRepo.save(characterInventoryDto);
     }
@@ -41,10 +43,18 @@ public class CharacterInventoryService {
     }
 
     public void removeObject(Long characterId, Long objectId) {
+        CharacterInventoryDto characterInventoryDto = getReferenceByCharacterIdAndObjectId(characterId, objectId);
+        characterInventoryRepo.delete(characterInventoryDto);
+    }
+
+    public List<CharacterInventoryDto> getAllByCharacterId(Long characterId) {
+        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
+        return characterDto.getInventory();
+    }
+
+    private CharacterInventoryDto getReferenceByCharacterIdAndObjectId(Long characterId, Long objectId){
         CharacterDto characterDto = characterRepo.getReferenceById(characterId);
         ObjectDto objectDto = objectRepo.getReferenceById(objectId);
-        CharacterInventoryDto characterInventoryDto = new CharacterInventoryDto();
-        characterInventoryDto.setId(new CharacterInventoryPk(characterDto, objectDto));
-        characterInventoryRepo.delete(characterInventoryDto);
+        return characterInventoryRepo.getReferenceById(new CharacterInventoryPk(characterDto,objectDto));
     }
 }

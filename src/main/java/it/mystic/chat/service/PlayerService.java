@@ -33,17 +33,20 @@ public class PlayerService {
         return playerRepo.save(playerDto);
     }
 
-    public PlayerDto readById(Long userId) {
+    public PlayerDto getById(Long userId) {
         return playerRepo.getReferenceById(userId);
     }
 
-    public List<PlayerDto> readAll() {
+    public List<PlayerDto> getAll() {
         return playerRepo.findAll();
     }
 
     public void update(PlayerDao playerDao) {
         validate(playerDao);
-        PlayerDto playerDto = playerMapper.daoToDto(playerDao);
+        PlayerDto playerDto = playerRepo.getReferenceById(playerDao.getId());
+        playerDto.setUsername(playerDao.getUsername());
+        playerDto.setPassword(playerDao.getPassword());
+        playerDto.setEmail(playerDao.getEmail());
         playerRepo.save(playerDto);
     }
 

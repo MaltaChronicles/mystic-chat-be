@@ -28,13 +28,13 @@ public class CharacterController {
 
     @GetMapping("/getById/{characterId}")
     public ResponseEntity<CharacterDto> getCharacterById(@PathVariable Long characterId) {
-        CharacterDto characterDto = characterService.readById(characterId);
+        CharacterDto characterDto = characterService.getById(characterId);
         return ResponseEntity.ok(characterDto);
     }
 
     @GetMapping("/getAll")
     public ResponseEntity<List<CharacterDto>> getCharacterById() {
-        List<CharacterDto> characterDtoList = characterService.readAll();
+        List<CharacterDto> characterDtoList = characterService.getAll();
         return ResponseEntity.ok(characterDtoList);
     }
 

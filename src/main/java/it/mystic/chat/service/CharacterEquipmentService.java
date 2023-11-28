@@ -2,6 +2,7 @@ package it.mystic.chat.service;
 
 import it.mystic.chat.exception.GenericException;
 import it.mystic.chat.model.dto.CharacterDto;
+import it.mystic.chat.model.dto.CharacterEquipmentDto;
 import it.mystic.chat.model.dto.ObjectDto;
 import it.mystic.chat.model.enums.RangeType;
 import it.mystic.chat.repo.CharacterRepo;
@@ -131,5 +132,9 @@ public class CharacterEquipmentService {
         characterInventoryService.unequipObject(characterId, characterDto.getEquipment().getMount().getObjectId());
         characterDto.getEquipment().setMount(null);
         characterRepo.save(characterDto);
+    }
+
+    public CharacterEquipmentDto getById(Long characterId) {
+        return characterRepo.getReferenceById(characterId).getEquipment();
     }
 }

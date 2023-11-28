@@ -13,7 +13,7 @@ public class SwaggerConfiguration {
     @Bean
     public GroupedOpenApi config() {
         return GroupedOpenApi.builder()
-                .group("Config")
+                .group("System")
                 .pathsToMatch("/**/config/**/")
                 .build();
     }

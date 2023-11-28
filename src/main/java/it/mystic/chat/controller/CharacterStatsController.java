@@ -2,15 +2,13 @@ package it.mystic.chat.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.exception.GenericException;
+import it.mystic.chat.model.dto.CharacterStatsDto;
 import it.mystic.chat.model.enums.Affinity;
 import it.mystic.chat.model.enums.DiceValue;
 import it.mystic.chat.service.CharacterStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/on/character/stats")
@@ -19,6 +17,11 @@ public class CharacterStatsController {
     @Autowired
     private CharacterStatusService characterService;
 
+    @GetMapping("/getCharacterStatsById/{characterId}")
+    public ResponseEntity<CharacterStatsDto> getCharacterStatsById(@PathVariable Long characterId) {
+        CharacterStatsDto characterStatsDto = characterService.getById(characterId);
+        return ResponseEntity.ok(characterStatsDto);
+    }
 
     @PatchMapping("/sleep/{characterId}")
     public ResponseEntity<Void> sleep(@PathVariable Long characterId) {

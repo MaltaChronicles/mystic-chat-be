@@ -43,11 +43,4 @@ public class PlayerDto {
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "character3")
     CharacterDto character3;
-
-    public PlayerDto(String username, String password, String email) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.dataIscrizione = new Date();
-    }
 }
