@@ -1,6 +1,7 @@
 package it.mystic.chat.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import it.mystic.chat.exception.GenericException;
 import it.mystic.chat.service.CharacterEquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class CharacterEquipmentController {
     private CharacterEquipmentService characterService;
 
     @PatchMapping("/equipRightHand/{characterId}/{objectId}")
-    public ResponseEntity<Void> equipRightHand(@PathVariable Long characterId, @PathVariable Long objectId) {
+    public ResponseEntity<Void> equipRightHand(@PathVariable Long characterId, @PathVariable Long objectId) throws GenericException {
         characterService.equipRightHand(characterId, objectId);
         return ResponseEntity.ok().build();
     }
@@ -29,7 +30,7 @@ public class CharacterEquipmentController {
     }
 
     @PatchMapping("/equipLeftHand/{characterId}/{objectId}")
-    public ResponseEntity<Void> equipLeftHand(@PathVariable Long characterId, @PathVariable Long objectId) {
+    public ResponseEntity<Void> equipLeftHand(@PathVariable Long characterId, @PathVariable Long objectId) throws GenericException {
         characterService.equipLeftHand(characterId, objectId);
         return ResponseEntity.ok().build();
     }
@@ -41,7 +42,7 @@ public class CharacterEquipmentController {
     }
 
     @PatchMapping("/equipDress/{characterId}/{objectId}")
-    public ResponseEntity<Void> equipDress(@PathVariable Long characterId, @PathVariable Long objectId) {
+    public ResponseEntity<Void> equipDress(@PathVariable Long characterId, @PathVariable Long objectId) throws GenericException {
         characterService.equipDress(characterId, objectId);
         return ResponseEntity.ok().build();
     }
