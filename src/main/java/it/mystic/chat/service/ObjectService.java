@@ -6,10 +6,16 @@ import it.mystic.chat.model.dto.Object;
 import it.mystic.chat.model.enums.ObjectRank;
 import it.mystic.chat.model.enums.ObjectType;
 import it.mystic.chat.repo.ObjectRepo;
+import it.mystic.chat.util.MultipartFileConverter;
+import jakarta.persistence.EntityNotFoundException;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -19,13 +25,15 @@ public class ObjectService {
 
     @Autowired
     private ObjectMapper objectMapper;
+    @Autowired
+    private MultipartFileConverter converter;
 
     public Object create(ObjectDao objectDao) {
         Object object = objectMapper.daoTo(objectDao);
         return objectRepo.save(object);
     }
 
-    public void update(ObjectDao objectDao) {
+    public void update(ObjectDao objectDao) throws IOException {
         Object object = objectMapper.daoTo(objectDao);
         objectRepo.save(object);
     }
@@ -44,5 +52,15 @@ public class ObjectService {
             Boolean notUnique = !object.getIsUnique();
             return rank && notUnique;
         }).collect(Collectors.toList());
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    public void uploadImage(Long objectId, MultipartFile file) throws IOException {
+        Object object = objectRepo.getReferenceById(objectId);
+        Hibernate.initialize(object);
+        if(object!=null) {
+            object.setImageUrl(converter.saveMultipartFile(file, "object", objectId));
+            objectRepo.save(object);
+        }
     }
 }

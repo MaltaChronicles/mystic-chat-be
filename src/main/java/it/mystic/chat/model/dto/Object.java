@@ -20,9 +20,9 @@ public class Object {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long objectId;
     @Column
-    String nome;
+    String name;
     @Column
-    String imgUrl;
+    String imageUrl;
     @Column
     ObjectType type;
     @Column

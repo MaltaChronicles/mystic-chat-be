@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 @NoArgsConstructor
@@ -13,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class ObjectDao {
     Long objectId;
     String name;
-    String imgUrl;
     ObjectType type;
     String description;
     ObjectRank rank;

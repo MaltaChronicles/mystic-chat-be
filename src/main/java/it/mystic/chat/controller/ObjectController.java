@@ -1,6 +1,7 @@
 package it.mystic.chat.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import it.mystic.chat.exception.GenericException;
 import it.mystic.chat.model.dao.ObjectDao;
 import it.mystic.chat.model.dao.RoleDao;
 import it.mystic.chat.model.dto.Object;
@@ -9,9 +10,12 @@ import it.mystic.chat.model.enums.ObjectType;
 import it.mystic.chat.service.ObjectService;
 import it.mystic.chat.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -21,14 +25,14 @@ public class ObjectController {
     @Autowired
     private ObjectService objectService;
 
-    @PostMapping("/create")
+    @PostMapping(value = "/create")
     public ResponseEntity<Object> create(@RequestBody ObjectDao objectDao) {
         Object object = objectService.create(objectDao);
         return ResponseEntity.ok(object);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Void> update(@RequestBody ObjectDao objectDao) {
+    public ResponseEntity<Void> update(@RequestBody ObjectDao objectDao) throws IOException {
         objectService.update(objectDao);
         return ResponseEntity.ok().build();
     }
@@ -49,6 +53,12 @@ public class ObjectController {
     public ResponseEntity<List<Object>> getMarketByType(@PathVariable ObjectType objectType) {
         List<Object> objectList = objectService.getMarketByType(objectType);
         return ResponseEntity.ok(objectList);
+    }
+
+    @PatchMapping(value = "/uploadImage/{objectId}", consumes = "multipart/form-data")
+    public ResponseEntity<Void> uploadImage(@PathVariable Long objectId, @RequestParam("file") MultipartFile file) throws IOException {
+        objectService.uploadImage(objectId, file);
+        return ResponseEntity.ok().build();
     }
 
 }

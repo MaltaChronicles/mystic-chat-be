@@ -1,6 +1,7 @@
 package it.mystic.chat.exception;
 
 import it.mystic.chat.model.response.InvalidParam;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -26,5 +27,9 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(e.getMessage());
     }
 
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<String> handleException(EntityNotFoundException e) {
+        return ResponseEntity.badRequest().body("Id non trovato!");
+    }
 
 }
