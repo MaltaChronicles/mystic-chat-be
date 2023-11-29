@@ -36,9 +36,15 @@ public class PlayerController {
         return ResponseEntity.ok(playerList);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<Void> updatePlayer(@RequestBody PlayerDao playerDao) {
-        playerService.update(playerDao);
+    @PatchMapping("/updateEmail/{playerId}")
+    public ResponseEntity<Void> updateEmail(@PathVariable Long playerId, @RequestBody String email) {
+        playerService.updateEmail(playerId, email);
+        return ResponseEntity.ok().build();
+    }
+
+    @PatchMapping("/updatePassword/{playerId}")
+    public ResponseEntity<Void> updatePassword(@PathVariable Long playerId, @RequestBody String password) {
+        playerService.updatePassword(playerId, password);
         return ResponseEntity.ok().build();
     }
 

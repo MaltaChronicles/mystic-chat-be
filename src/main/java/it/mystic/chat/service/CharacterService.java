@@ -1,5 +1,6 @@
 package it.mystic.chat.service;
 
+import it.mystic.chat.exception.ValidationException;
 import it.mystic.chat.mapper.CharacterMapper;
 import it.mystic.chat.model.dao.CharacterDao;
 import it.mystic.chat.model.dao.CharacterDescriptionDao;
@@ -27,13 +28,10 @@ public class CharacterService {
     @Autowired
     private CharacterMapper characterMapper;
     @Autowired
-    private BeanValidator validator;
-    @Autowired
     private MultipartFileConverter converter;
 
     public Character create(CharacterDao characterDao) {
-        validator.validate(characterDao);
-        //TODO aggiungere validazione Nome
+        nameNotUsed(characterDao.getName());
 
         Character character = characterMapper.daoTo(characterDao);
         character.setStandardOfLiving(StandardOfLiving.Nullo);
@@ -61,6 +59,7 @@ public class CharacterService {
     }
 
     public void updateNameById(Long characterId, String name) {
+        nameNotUsed(name);
         Character character = characterRepo.getReferenceById(characterId);
         character.setName(name);
         characterRepo.save(character);
@@ -134,6 +133,12 @@ public class CharacterService {
         if (character != null) {
             character.getDescription().setImageUrl(converter.saveMultipartFile(file, "character", characterId, "jpeg"));
             characterRepo.save(character);
+        }
+    }
+
+    private void nameNotUsed(String name) {
+        if (characterRepo.existsByName(name)) {
+            throw new ValidationException("name", "nome già in uso");
         }
     }
 }

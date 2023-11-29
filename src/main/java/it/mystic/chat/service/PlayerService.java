@@ -24,8 +24,6 @@ public class PlayerService {
     private CharacterRepo characterRepo;
     @Autowired
     private PlayerMapper playerMapper;
-    @Autowired
-    private BeanValidator validator;
 
     public Player create(PlayerDao playerDao) throws ValidationException {
         validate(playerDao);
@@ -41,22 +39,12 @@ public class PlayerService {
         return playerRepo.findAll();
     }
 
-    public void update(PlayerDao playerDao) {
-        validate(playerDao);
-        Player player = playerRepo.getReferenceById(playerDao.getId());
-        player.setUsername(playerDao.getUsername());
-        player.setPassword(playerDao.getPassword());
-        player.setEmail(playerDao.getEmail());
-        playerRepo.save(player);
-    }
-
     public void deleteById(Long playerId) {
         playerRepo.deleteById(playerId);
     }
 
     /* VALIDAZIONE*/
     private void validate(PlayerDao playerDao) {
-        validator.validate(playerDao);
         usernameNotUsed(playerDao.getUsername());
         emailNotUsed(playerDao.getEmail());
     }
@@ -85,5 +73,19 @@ public class PlayerService {
         else
             throw new GenericException("Non è possibile avere più di 3 personaggi!");
         return playerRepo.save(player);
+    }
+
+    public void updateEmail(Long playerId, String email) {
+        emailNotUsed(email);
+        Player player = playerRepo.getReferenceById(playerId);
+        player.setEmail(email);
+        playerRepo.save(player);
+    }
+
+    public void updatePassword(Long playerId, String password) {
+        Player player = playerRepo.getReferenceById(playerId);
+        player.setPassword(password);
+        playerRepo.save(player);
+
     }
 }

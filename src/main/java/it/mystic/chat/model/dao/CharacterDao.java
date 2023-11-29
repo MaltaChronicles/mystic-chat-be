@@ -10,17 +10,10 @@ import lombok.Data;
 
 @Data
 public class CharacterDao {
-
-    @NotNull @Pattern(regexp = "^[A-Za-z]+$", message = "Il nome può contenere solamente caratteri alfabetici")
     String name;
-    @NotNull @Pattern(regexp = "^[A-Za-z]+$", message = "L'identità può contenere solamente caratteri alfabetici")
     String identity;
-    @NotNull
     Origin origin;
-    @NotNull
     Theme theme;
-    @NotNull
     Job job;
-    @NotNull
     Race race;
 }
