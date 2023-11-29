@@ -52,6 +52,8 @@ public class Character {
     @OneToMany(mappedBy = "id.character", cascade = CascadeType.ALL)
     List<CharacterInventory> inventory;
 
+    @OneToMany(mappedBy = "id.character", cascade = CascadeType.ALL)
+    List<LocationMessage> messages;
 
     //TODO aggiungere abilità
     //TODO aggiungere legami

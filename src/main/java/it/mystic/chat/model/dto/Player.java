@@ -52,6 +52,10 @@ public class Player {
     @JoinColumn(name = "activeCharacter")
     Character activeCharacter;
 
+    @ManyToOne
+    @JoinColumn(name = "location")
+    Location location;
+
     @ManyToMany
     @JoinTable(
             name = "player_medal",
