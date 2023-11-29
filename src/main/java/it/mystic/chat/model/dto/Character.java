@@ -41,16 +41,16 @@ public class Character {
     String rumors;
 
     @OneToOne(mappedBy = "character", cascade = CascadeType.ALL)
-    private CharacterStats status;
+    CharacterStats status;
 
     @OneToOne(mappedBy = "character", cascade = CascadeType.ALL)
-    private CharacterDescription description;
+    CharacterDescription description;
 
     @OneToOne(mappedBy = "character", cascade = CascadeType.ALL)
-    private CharacterEquipment equipment;
+    CharacterEquipment equipment;
 
     @OneToMany(mappedBy = "id.character", cascade = CascadeType.ALL)
-    private List<CharacterInventory> inventory;
+    List<CharacterInventory> inventory;
 
 
     //TODO aggiungere abilità

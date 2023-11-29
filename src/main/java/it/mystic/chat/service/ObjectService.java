@@ -7,7 +7,6 @@ import it.mystic.chat.model.enums.ObjectRank;
 import it.mystic.chat.model.enums.ObjectType;
 import it.mystic.chat.repo.ObjectRepo;
 import it.mystic.chat.util.MultipartFileConverter;
-import jakarta.persistence.EntityNotFoundException;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -58,7 +56,7 @@ public class ObjectService {
     public void uploadImage(Long objectId, MultipartFile file) throws IOException {
         Object object = objectRepo.getReferenceById(objectId);
         Hibernate.initialize(object);
-        if(object!=null) {
+        if (object != null) {
             object.setImageUrl(converter.saveMultipartFile(file, "object", objectId));
             objectRepo.save(object);
         }

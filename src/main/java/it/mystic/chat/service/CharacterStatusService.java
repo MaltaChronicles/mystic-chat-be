@@ -18,7 +18,7 @@ public class CharacterStatusService {
     public CharacterStats getById(Long characterId) {
         return characterRepo.getReferenceById(characterId).getStatus();
     }
-    
+
     public void sleep(Long characterId) {
         Character character = characterRepo.getReferenceById(characterId);
         character.getStatus().sleep();
@@ -98,7 +98,7 @@ public class CharacterStatusService {
 
     public void updateCoin(Long characterId, Integer value) throws GenericException {
         Character character = characterRepo.getReferenceById(characterId);
-        if(value < 0 && value <= character.getStatus().getCoin())
+        if (value < 0 && value <= character.getStatus().getCoin())
             character.getStatus().setCoin(character.getStatus().getCoin() + value);
         else
             throw new GenericException("Monete insufficienti!");

@@ -91,5 +91,5 @@ public class Object {
     Boolean isUnique;
 
     @OneToMany(mappedBy = "id.object", cascade = CascadeType.ALL)
-    private List<CharacterInventory> characterInventory;
+    List<CharacterInventory> characterInventory;
 }

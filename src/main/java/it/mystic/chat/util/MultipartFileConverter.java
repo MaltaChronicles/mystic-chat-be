@@ -8,20 +8,20 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Objects;
 
 @Component
 public class MultipartFileConverter {
     @Value("${upload.dir}")
     private String uploadDir;
+
     public String saveMultipartFile(MultipartFile file, String type, Long fileId) throws IOException {
         byte[] imageData = file.getBytes();
 
-        String dir = uploadDir+type+"/";
+        String dir = uploadDir + type + "/";
         Path uploadPath = Paths.get(dir);
         checkFolderExists(uploadPath);
 
-        String fileName = fileId +".jpeg";
+        String fileName = fileId + ".jpeg";
         Path filePath = uploadPath.resolve(fileName);
         Files.write(filePath, imageData);
 

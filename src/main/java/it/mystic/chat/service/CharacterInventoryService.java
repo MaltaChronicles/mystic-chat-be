@@ -22,19 +22,19 @@ public class CharacterInventoryService {
     @Autowired
     private ObjectRepo objectRepo;
 
-    public void equipObject(Long characterId, Long objectId){
+    public void equipObject(Long characterId, Long objectId) {
         CharacterInventory characterInventory = getReferenceByCharacterIdAndObjectId(characterId, objectId);
         characterInventory.setIsEquip(true);
         characterInventoryRepo.save(characterInventory);
     }
 
-    public void unequipObject(Long characterId, Long objectId){
+    public void unequipObject(Long characterId, Long objectId) {
         CharacterInventory characterInventory = getReferenceByCharacterIdAndObjectId(characterId, objectId);
         characterInventory.setIsEquip(false);
         characterInventoryRepo.save(characterInventory);
     }
 
-    public void addObject(Long characterId, Long objectId){
+    public void addObject(Long characterId, Long objectId) {
         Character character = characterRepo.getReferenceById(characterId);
         Object object = objectRepo.getReferenceById(objectId);
         CharacterInventory characterInventory = new CharacterInventory();
@@ -52,9 +52,9 @@ public class CharacterInventoryService {
         return character.getInventory();
     }
 
-    private CharacterInventory getReferenceByCharacterIdAndObjectId(Long characterId, Long objectId){
+    private CharacterInventory getReferenceByCharacterIdAndObjectId(Long characterId, Long objectId) {
         Character character = characterRepo.getReferenceById(characterId);
         Object object = objectRepo.getReferenceById(objectId);
-        return characterInventoryRepo.getReferenceById(new CharacterInventoryPk(character,object));
+        return characterInventoryRepo.getReferenceById(new CharacterInventoryPk(character, object));
     }
 }

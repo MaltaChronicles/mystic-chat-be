@@ -3,8 +3,8 @@ package it.mystic.chat.mapper;
 
 import it.mystic.chat.model.dao.CharacterDao;
 import it.mystic.chat.model.dao.CharacterDescriptionDao;
-import it.mystic.chat.model.dto.CharacterDescription;
 import it.mystic.chat.model.dto.Character;
+import it.mystic.chat.model.dto.CharacterDescription;
 import org.springframework.stereotype.Component;
 
 

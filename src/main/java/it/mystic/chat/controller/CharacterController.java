@@ -114,7 +114,7 @@ public class CharacterController {
 
     //TODO rimuovere in caso di sovraccarico del DB
     @PatchMapping(value = "/uploadImage/{characterId}", consumes = "multipart/form-data")
-    public ResponseEntity<Void> uploadImage(@PathVariable Long characterId,  @RequestParam("file") MultipartFile file) throws IOException {
+    public ResponseEntity<Void> uploadImage(@PathVariable Long characterId, @RequestParam("file") MultipartFile file) throws IOException {
         characterService.uploadImage(characterId, file);
         return ResponseEntity.ok().build();
     }

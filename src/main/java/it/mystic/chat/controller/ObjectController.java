@@ -1,16 +1,11 @@
 package it.mystic.chat.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-import it.mystic.chat.exception.GenericException;
 import it.mystic.chat.model.dao.ObjectDao;
-import it.mystic.chat.model.dao.RoleDao;
 import it.mystic.chat.model.dto.Object;
-import it.mystic.chat.model.dto.PlayerRole;
 import it.mystic.chat.model.enums.ObjectType;
 import it.mystic.chat.service.ObjectService;
-import it.mystic.chat.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;

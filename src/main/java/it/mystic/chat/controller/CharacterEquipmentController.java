@@ -3,7 +3,6 @@ package it.mystic.chat.controller;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.exception.GenericException;
 import it.mystic.chat.model.dto.CharacterEquipment;
-import it.mystic.chat.model.dto.CharacterStats;
 import it.mystic.chat.service.CharacterEquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

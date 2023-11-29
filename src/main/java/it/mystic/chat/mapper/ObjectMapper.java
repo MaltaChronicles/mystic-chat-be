@@ -2,12 +2,7 @@ package it.mystic.chat.mapper;
 
 import it.mystic.chat.model.dao.ObjectDao;
 import it.mystic.chat.model.dto.Object;
-import it.mystic.chat.util.MultipartFileConverter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
 
 @Component
 public class ObjectMapper {

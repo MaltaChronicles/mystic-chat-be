@@ -1,12 +1,9 @@
 package it.mystic.chat.model.dao;
 
 import it.mystic.chat.model.enums.*;
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.multipart.MultipartFile;
 
 @Data
 @NoArgsConstructor
