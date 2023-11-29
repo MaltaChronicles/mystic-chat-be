@@ -20,7 +20,11 @@ public class PlayerMapper {
                 new Date(),
                 null,
                 null,
-                null,null, null
+                null,
+                null,
+                null, null,null,
+                null,
+                null
         );
     }
 

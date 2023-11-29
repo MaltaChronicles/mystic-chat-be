@@ -30,9 +30,13 @@ public class Player {
     Date dataIscrizione;
     @Column
     Date ultimaAzione;
+    @Column
+    Date ultimoAccesso;
+    @Column
+    Date ultimaGiocata;
 
     @OneToMany(mappedBy = "id.player", cascade = CascadeType.ALL)
-    private List<PlayerRole> roles;
+    List<PlayerRole> roles;
 
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "character1")
@@ -43,4 +47,16 @@ public class Player {
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "character3")
     Character character3;
+
+    @ManyToOne
+    @JoinColumn(name = "activeCharacter")
+    Character activeCharacter;
+
+    @ManyToMany
+    @JoinTable(
+            name = "player_medal",
+            joinColumns = @JoinColumn(name = "player_id"),
+            inverseJoinColumns = @JoinColumn(name = "medal_id")
+    )
+    List<Medal> medals;
 }
