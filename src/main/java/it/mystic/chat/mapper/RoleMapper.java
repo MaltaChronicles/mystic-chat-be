@@ -2,8 +2,8 @@ package it.mystic.chat.mapper;
 
 
 import it.mystic.chat.model.dao.RoleDao;
-import it.mystic.chat.model.dto.PlayerDto;
-import it.mystic.chat.model.dto.PlayerRoleDto;
+import it.mystic.chat.model.dto.Player;
+import it.mystic.chat.model.dto.PlayerRole;
 import it.mystic.chat.model.dto.pk.PlayerRolePk;
 import org.springframework.stereotype.Component;
 
@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class RoleMapper {
 
-    public PlayerRoleDto daoToDto(RoleDao roleDao, PlayerDto playerDto) {
-        return new PlayerRoleDto(
-                new PlayerRolePk(playerDto, roleDao.getRole()),
+    public PlayerRole daoTo(RoleDao roleDao, Player player) {
+        return new PlayerRole(
+                new PlayerRolePk(player, roleDao.getRole()),
                 roleDao.getIsBoss()
         );
     }

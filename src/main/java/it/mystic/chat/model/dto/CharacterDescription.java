@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "character_description")
+@Table
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class CharacterDescriptionDto {
+public class CharacterDescription {
     @Column
     Color rightEye;
     @Column
@@ -36,9 +36,9 @@ public class CharacterDescriptionDto {
     @JoinColumn(name = "character_id")
     @JsonIgnore
     @Id
-    CharacterDto character;
+    Character character;
 
-    public CharacterDescriptionDto(CharacterDto characterDto) {
-        this.character = characterDto;
+    public CharacterDescription(Character character) {
+        this.character = character;
     }
 }

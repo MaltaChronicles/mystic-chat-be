@@ -2,7 +2,7 @@ package it.mystic.chat.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.model.dao.RoleDao;
-import it.mystic.chat.model.dto.PlayerRoleDto;
+import it.mystic.chat.model.dto.PlayerRole;
 import it.mystic.chat.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +16,9 @@ public class RoleController {
     private RoleService roleService;
 
     @PostMapping("/create")
-    public ResponseEntity<PlayerRoleDto> createRole(@RequestBody RoleDao roleDao) {
-        PlayerRoleDto playerRoleDto = roleService.create(roleDao);
-        return ResponseEntity.ok(playerRoleDto);
+    public ResponseEntity<PlayerRole> createRole(@RequestBody RoleDao roleDao) {
+        PlayerRole playerRole = roleService.create(roleDao);
+        return ResponseEntity.ok(playerRole);
     }
 
     @PatchMapping("/changeBoss")

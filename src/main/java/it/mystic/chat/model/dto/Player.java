@@ -13,9 +13,9 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "player")
+@Table
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class PlayerDto {
+public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,15 +32,15 @@ public class PlayerDto {
     Date ultimaAzione;
 
     @OneToMany(mappedBy = "id.player", cascade = CascadeType.ALL)
-    private List<PlayerRoleDto> roles;
+    private List<PlayerRole> roles;
 
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "character1")
-    CharacterDto character1;
+    Character character1;
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "character2")
-    CharacterDto character2;
+    Character character2;
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "character3")
-    CharacterDto character3;
+    Character character3;
 }

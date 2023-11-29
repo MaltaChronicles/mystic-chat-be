@@ -4,8 +4,8 @@ import it.mystic.chat.exception.GenericException;
 import it.mystic.chat.exception.ValidationException;
 import it.mystic.chat.mapper.PlayerMapper;
 import it.mystic.chat.model.dao.PlayerDao;
-import it.mystic.chat.model.dto.CharacterDto;
-import it.mystic.chat.model.dto.PlayerDto;
+import it.mystic.chat.model.dto.Character;
+import it.mystic.chat.model.dto.Player;
 import it.mystic.chat.repo.CharacterRepo;
 import it.mystic.chat.repo.PlayerRepo;
 import it.mystic.chat.util.BeanValidator;
@@ -27,27 +27,27 @@ public class PlayerService {
     @Autowired
     private BeanValidator validator;
 
-    public PlayerDto create(PlayerDao playerDao) throws ValidationException {
+    public Player create(PlayerDao playerDao) throws ValidationException {
         validate(playerDao);
-        PlayerDto playerDto = playerMapper.daoToDto(playerDao);
-        return playerRepo.save(playerDto);
+        Player player = playerMapper.daoTo(playerDao);
+        return playerRepo.save(player);
     }
 
-    public PlayerDto getById(Long userId) {
+    public Player getById(Long userId) {
         return playerRepo.getReferenceById(userId);
     }
 
-    public List<PlayerDto> getAll() {
+    public List<Player> getAll() {
         return playerRepo.findAll();
     }
 
     public void update(PlayerDao playerDao) {
         validate(playerDao);
-        PlayerDto playerDto = playerRepo.getReferenceById(playerDao.getId());
-        playerDto.setUsername(playerDao.getUsername());
-        playerDto.setPassword(playerDao.getPassword());
-        playerDto.setEmail(playerDao.getEmail());
-        playerRepo.save(playerDto);
+        Player player = playerRepo.getReferenceById(playerDao.getId());
+        player.setUsername(playerDao.getUsername());
+        player.setPassword(playerDao.getPassword());
+        player.setEmail(playerDao.getEmail());
+        playerRepo.save(player);
     }
 
     public void deleteById(Long playerId) {
@@ -73,17 +73,17 @@ public class PlayerService {
         }
     }
 
-    public PlayerDto addCharacter(Long playerId, Long characterId) throws GenericException {
-        PlayerDto playerDto = playerRepo.getReferenceById(playerId);
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        if (Objects.nonNull(playerDto.getCharacter1()))
-            playerDto.setCharacter1(characterDto);
-        else if (Objects.nonNull(playerDto.getCharacter2()))
-            playerDto.setCharacter2(characterDto);
-        else if (Objects.nonNull(playerDto.getCharacter3()))
-            playerDto.setCharacter3(characterDto);
+    public Player addCharacter(Long playerId, Long characterId) throws GenericException {
+        Player player = playerRepo.getReferenceById(playerId);
+        Character character = characterRepo.getReferenceById(characterId);
+        if (Objects.nonNull(player.getCharacter1()))
+            player.setCharacter1(character);
+        else if (Objects.nonNull(player.getCharacter2()))
+            player.setCharacter2(character);
+        else if (Objects.nonNull(player.getCharacter3()))
+            player.setCharacter3(character);
         else
             throw new GenericException("Non è possibile avere più di 3 personaggi!");
-        return playerRepo.save(playerDto);
+        return playerRepo.save(player);
     }
 }

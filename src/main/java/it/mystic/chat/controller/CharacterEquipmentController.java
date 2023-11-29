@@ -2,8 +2,8 @@ package it.mystic.chat.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.exception.GenericException;
-import it.mystic.chat.model.dto.CharacterEquipmentDto;
-import it.mystic.chat.model.dto.CharacterStatsDto;
+import it.mystic.chat.model.dto.CharacterEquipment;
+import it.mystic.chat.model.dto.CharacterStats;
 import it.mystic.chat.service.CharacterEquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +17,9 @@ public class CharacterEquipmentController {
     private CharacterEquipmentService characterService;
 
     @GetMapping("/getCharacterEquipmentById/{characterId}")
-    public ResponseEntity<CharacterEquipmentDto> getCharacterStatsById(@PathVariable Long characterId) {
-        CharacterEquipmentDto characterStatsDto = characterService.getById(characterId);
-        return ResponseEntity.ok(characterStatsDto);
+    public ResponseEntity<CharacterEquipment> getCharacterStatsById(@PathVariable Long characterId) {
+        CharacterEquipment characterStats = characterService.getById(characterId);
+        return ResponseEntity.ok(characterStats);
     }
 
     @PatchMapping("/equipRightHand/{characterId}/{objectId}")

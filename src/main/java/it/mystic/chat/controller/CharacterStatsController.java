@@ -2,7 +2,7 @@ package it.mystic.chat.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.exception.GenericException;
-import it.mystic.chat.model.dto.CharacterStatsDto;
+import it.mystic.chat.model.dto.CharacterStats;
 import it.mystic.chat.model.enums.Affinity;
 import it.mystic.chat.model.enums.DiceValue;
 import it.mystic.chat.service.CharacterStatusService;
@@ -18,9 +18,9 @@ public class CharacterStatsController {
     private CharacterStatusService characterService;
 
     @GetMapping("/getCharacterStatsById/{characterId}")
-    public ResponseEntity<CharacterStatsDto> getCharacterStatsById(@PathVariable Long characterId) {
-        CharacterStatsDto characterStatsDto = characterService.getById(characterId);
-        return ResponseEntity.ok(characterStatsDto);
+    public ResponseEntity<CharacterStats> getCharacterStatsById(@PathVariable Long characterId) {
+        CharacterStats characterStats = characterService.getById(characterId);
+        return ResponseEntity.ok(characterStats);
     }
 
     @PatchMapping("/sleep/{characterId}")

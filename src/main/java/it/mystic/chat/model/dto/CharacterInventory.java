@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "character_inventory")
+@Table
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class CharacterInventoryDto {
+public class CharacterInventory {
 
     @EmbeddedId
     CharacterInventoryPk id;

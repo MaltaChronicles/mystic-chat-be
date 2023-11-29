@@ -1,7 +1,7 @@
 package it.mystic.chat.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-import it.mystic.chat.model.dto.CharacterInventoryDto;
+import it.mystic.chat.model.dto.CharacterInventory;
 import it.mystic.chat.service.CharacterInventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,8 +30,8 @@ public class CharacterInventoryController {
     }
 
     @GetMapping("/getCharacterInventoryById/{characterId}")
-    public ResponseEntity<List<CharacterInventoryDto>> getCharacterInventory(@PathVariable Long characterId) {
-        List<CharacterInventoryDto> characterInventoryDtoList = characterInventoryService.getAllByCharacterId(characterId);
-        return ResponseEntity.ok(characterInventoryDtoList);
+    public ResponseEntity<List<CharacterInventory>> getCharacterInventory(@PathVariable Long characterId) {
+        List<CharacterInventory> characterInventoryList = characterInventoryService.getAllByCharacterId(characterId);
+        return ResponseEntity.ok(characterInventoryList);
     }
 }

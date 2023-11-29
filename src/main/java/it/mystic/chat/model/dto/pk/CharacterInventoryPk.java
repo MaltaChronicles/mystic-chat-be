@@ -1,9 +1,9 @@
 package it.mystic.chat.model.dto.pk;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import it.mystic.chat.model.dto.CharacterDto;
-import it.mystic.chat.model.dto.ObjectDto;
-import it.mystic.chat.model.dto.PlayerDto;
+import it.mystic.chat.model.dto.Character;
+import it.mystic.chat.model.dto.Object;
+import it.mystic.chat.model.dto.Player;
 import it.mystic.chat.model.enums.Role;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
@@ -21,10 +21,10 @@ public class CharacterInventoryPk implements Serializable {
     @ManyToOne
     @JoinColumn(name = "character_id")
     @JsonIgnore
-    CharacterDto character;
+    Character character;
 
     @ManyToOne
     @JoinColumn(name = "object_id")
     @JsonIgnore
-    ObjectDto object;
+    Object object;
 }

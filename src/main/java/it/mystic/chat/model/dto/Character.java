@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "character_root")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class CharacterDto {
+public class Character {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long characterId;
@@ -43,23 +43,23 @@ public class CharacterDto {
     Long Location;
 
     @OneToOne(mappedBy = "character", cascade = CascadeType.ALL)
-    private CharacterStatsDto status;
+    private CharacterStats status;
 
     @OneToOne(mappedBy = "character", cascade = CascadeType.ALL)
-    private CharacterDescriptionDto description;
+    private CharacterDescription description;
 
     @OneToOne(mappedBy = "character", cascade = CascadeType.ALL)
-    private CharacterEquipmentDto equipment;
+    private CharacterEquipment equipment;
 
     @OneToMany(mappedBy = "id.character", cascade = CascadeType.ALL)
-    private List<CharacterInventoryDto> inventory;
+    private List<CharacterInventory> inventory;
 
 
     //TODO aggiungere abilità
     //TODO aggiungere legami
     //TODO aggiungere List<LevelClass>
 
-    public CharacterDto(String name, String identity, Origin origin, Theme theme, Job job, Race race) {
+    public Character(String name, String identity, Origin origin, Theme theme, Job job, Race race) {
         this.name = name;
         this.identity = identity;
         this.origin = origin;

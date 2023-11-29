@@ -3,7 +3,7 @@ package it.mystic.chat.controller;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.exception.GenericException;
 import it.mystic.chat.model.dao.PlayerDao;
-import it.mystic.chat.model.dto.PlayerDto;
+import it.mystic.chat.model.dto.Player;
 import it.mystic.chat.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,21 +19,21 @@ public class PlayerController {
     private PlayerService playerService;
 
     @PostMapping("/create")
-    public ResponseEntity<PlayerDto> createPlayer(@RequestBody PlayerDao playerDao) {
-        PlayerDto playerDto = playerService.create(playerDao);
-        return ResponseEntity.ok(playerDto);
+    public ResponseEntity<Player> createPlayer(@RequestBody PlayerDao playerDao) {
+        Player player = playerService.create(playerDao);
+        return ResponseEntity.ok(player);
     }
 
     @GetMapping("/getById/{playerId}")
-    public ResponseEntity<PlayerDto> getPlayerById(@PathVariable Long playerId) {
-        PlayerDto playerDto = playerService.getById(playerId);
-        return ResponseEntity.ok(playerDto);
+    public ResponseEntity<Player> getPlayerById(@PathVariable Long playerId) {
+        Player player = playerService.getById(playerId);
+        return ResponseEntity.ok(player);
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<PlayerDto>> getPlayerById() {
-        List<PlayerDto> playerDtoList = playerService.getAll();
-        return ResponseEntity.ok(playerDtoList);
+    public ResponseEntity<List<Player>> getPlayerById() {
+        List<Player> playerList = playerService.getAll();
+        return ResponseEntity.ok(playerList);
     }
 
     @PutMapping("/update")
@@ -49,8 +49,8 @@ public class PlayerController {
     }
 
     @PatchMapping("/addCharacter/{playerId}")
-    public ResponseEntity<PlayerDto> addCharacter(@PathVariable Long playerId, @RequestBody Long characterId) throws GenericException {
-        PlayerDto playerDto = playerService.addCharacter(playerId, characterId);
+    public ResponseEntity<Player> addCharacter(@PathVariable Long playerId, @RequestBody Long characterId) throws GenericException {
+        Player player = playerService.addCharacter(playerId, characterId);
         return ResponseEntity.ok().build();
     }
 

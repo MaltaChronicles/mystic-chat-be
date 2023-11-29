@@ -3,16 +3,16 @@ package it.mystic.chat.mapper;
 
 import it.mystic.chat.model.dao.CharacterDao;
 import it.mystic.chat.model.dao.CharacterDescriptionDao;
-import it.mystic.chat.model.dto.CharacterDescriptionDto;
-import it.mystic.chat.model.dto.CharacterDto;
+import it.mystic.chat.model.dto.CharacterDescription;
+import it.mystic.chat.model.dto.Character;
 import org.springframework.stereotype.Component;
 
 
 @Component
 public class CharacterMapper {
 
-    public CharacterDto daoToDto(CharacterDao characterDao) {
-        return new CharacterDto(
+    public Character daoTo(CharacterDao characterDao) {
+        return new Character(
                 characterDao.getName(),
                 characterDao.getIdentity(),
                 characterDao.getOrigin(),
@@ -22,8 +22,8 @@ public class CharacterMapper {
         );
     }
 
-    public CharacterDescriptionDto descriptionDaoToDescriptionDto(CharacterDescriptionDao characterDescriptionDao, CharacterDto characterDto) {
-        return new CharacterDescriptionDto(
+    public CharacterDescription descriptionDaoToDescription(CharacterDescriptionDao characterDescriptionDao, Character character) {
+        return new CharacterDescription(
                 characterDescriptionDao.getRightEye(),
                 characterDescriptionDao.getLeftEye(),
                 characterDescriptionDao.getHair(),
@@ -31,7 +31,7 @@ public class CharacterMapper {
                 characterDescriptionDao.getWeight(),
                 characterDescriptionDao.getAge(),
                 characterDescriptionDao.getGender(),
-                characterDto
+                character
         );
     }
 }

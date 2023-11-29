@@ -1,8 +1,8 @@
 package it.mystic.chat.service;
 
-import it.mystic.chat.model.dto.CharacterDto;
-import it.mystic.chat.model.dto.CharacterInventoryDto;
-import it.mystic.chat.model.dto.ObjectDto;
+import it.mystic.chat.model.dto.Character;
+import it.mystic.chat.model.dto.CharacterInventory;
+import it.mystic.chat.model.dto.Object;
 import it.mystic.chat.model.dto.pk.CharacterInventoryPk;
 import it.mystic.chat.repo.CharacterInventoryRepo;
 import it.mystic.chat.repo.CharacterRepo;
@@ -23,38 +23,38 @@ public class CharacterInventoryService {
     private ObjectRepo objectRepo;
 
     public void equipObject(Long characterId, Long objectId){
-        CharacterInventoryDto characterInventoryDto = getReferenceByCharacterIdAndObjectId(characterId, objectId);
-        characterInventoryDto.setIsEquip(true);
-        characterInventoryRepo.save(characterInventoryDto);
+        CharacterInventory characterInventory = getReferenceByCharacterIdAndObjectId(characterId, objectId);
+        characterInventory.setIsEquip(true);
+        characterInventoryRepo.save(characterInventory);
     }
 
     public void unequipObject(Long characterId, Long objectId){
-        CharacterInventoryDto characterInventoryDto = getReferenceByCharacterIdAndObjectId(characterId, objectId);
-        characterInventoryDto.setIsEquip(false);
-        characterInventoryRepo.save(characterInventoryDto);
+        CharacterInventory characterInventory = getReferenceByCharacterIdAndObjectId(characterId, objectId);
+        characterInventory.setIsEquip(false);
+        characterInventoryRepo.save(characterInventory);
     }
 
     public void addObject(Long characterId, Long objectId){
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        ObjectDto objectDto = objectRepo.getReferenceById(objectId);
-        CharacterInventoryDto characterInventoryDto = new CharacterInventoryDto();
-        characterInventoryDto.setId(new CharacterInventoryPk(characterDto, objectDto));
-        characterInventoryRepo.save(characterInventoryDto);
+        Character character = characterRepo.getReferenceById(characterId);
+        Object object = objectRepo.getReferenceById(objectId);
+        CharacterInventory characterInventory = new CharacterInventory();
+        characterInventory.setId(new CharacterInventoryPk(character, object));
+        characterInventoryRepo.save(characterInventory);
     }
 
     public void removeObject(Long characterId, Long objectId) {
-        CharacterInventoryDto characterInventoryDto = getReferenceByCharacterIdAndObjectId(characterId, objectId);
-        characterInventoryRepo.delete(characterInventoryDto);
+        CharacterInventory characterInventory = getReferenceByCharacterIdAndObjectId(characterId, objectId);
+        characterInventoryRepo.delete(characterInventory);
     }
 
-    public List<CharacterInventoryDto> getAllByCharacterId(Long characterId) {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        return characterDto.getInventory();
+    public List<CharacterInventory> getAllByCharacterId(Long characterId) {
+        Character character = characterRepo.getReferenceById(characterId);
+        return character.getInventory();
     }
 
-    private CharacterInventoryDto getReferenceByCharacterIdAndObjectId(Long characterId, Long objectId){
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        ObjectDto objectDto = objectRepo.getReferenceById(objectId);
-        return characterInventoryRepo.getReferenceById(new CharacterInventoryPk(characterDto,objectDto));
+    private CharacterInventory getReferenceByCharacterIdAndObjectId(Long characterId, Long objectId){
+        Character character = characterRepo.getReferenceById(characterId);
+        Object object = objectRepo.getReferenceById(objectId);
+        return characterInventoryRepo.getReferenceById(new CharacterInventoryPk(character,object));
     }
 }

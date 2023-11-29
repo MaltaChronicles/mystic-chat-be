@@ -13,9 +13,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "player_role")
+@Table
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class PlayerRoleDto {
+public class PlayerRole {
     @EmbeddedId
     PlayerRolePk id;
     Boolean isBoss;

@@ -1,9 +1,9 @@
 package it.mystic.chat.service;
 
 import it.mystic.chat.exception.GenericException;
-import it.mystic.chat.model.dto.CharacterDto;
-import it.mystic.chat.model.dto.CharacterEquipmentDto;
-import it.mystic.chat.model.dto.ObjectDto;
+import it.mystic.chat.model.dto.Character;
+import it.mystic.chat.model.dto.CharacterEquipment;
+import it.mystic.chat.model.dto.Object;
 import it.mystic.chat.model.enums.RangeType;
 import it.mystic.chat.repo.CharacterRepo;
 import it.mystic.chat.repo.ObjectRepo;
@@ -24,128 +24,128 @@ public class CharacterEquipmentService {
     //TODO update delle stats IN e OUT
 
     public void equipRightHand(Long characterId, Long objectId) throws GenericException {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        ObjectDto objectDto = objectRepo.getReferenceById(objectId);
-        if(objectDto.getIsMartial() && (
-                objectDto.getRangeType().equals(RangeType.Mischia) && !characterDto.getStatus().getMartialMeleeWeapons() ||
-                objectDto.getRangeType().equals(RangeType.Distanza) && !characterDto.getStatus().getMartialDistanceWeapons()))
+        Character character = characterRepo.getReferenceById(characterId);
+        Object object = objectRepo.getReferenceById(objectId);
+        if(object.getIsMartial() && (
+                object.getRangeType().equals(RangeType.Mischia) && !character.getStatus().getMartialMeleeWeapons() ||
+                object.getRangeType().equals(RangeType.Distanza) && !character.getStatus().getMartialDistanceWeapons()))
             throw new GenericException("Non puoi equipaggaire questa arma!");
 
-        if(characterDto.getEquipment().getRightHand()!=null && characterDto.getEquipment().getLeftHand()==null){
+        if(character.getEquipment().getRightHand()!=null && character.getEquipment().getLeftHand()==null){
             equipLeftHand(characterId, objectId);
         }
         else {
-            if(characterDto.getEquipment().getRightHand()!=null)
-                characterInventoryService.unequipObject(characterId, characterDto.getEquipment().getRightHand().getObjectId());
-            characterDto.getEquipment().setRightHand(objectDto);
-            characterInventoryService.equipObject(characterId, characterDto.getEquipment().getRightHand().getObjectId());
-            characterRepo.save(characterDto);
+            if(character.getEquipment().getRightHand()!=null)
+                characterInventoryService.unequipObject(characterId, character.getEquipment().getRightHand().getObjectId());
+            character.getEquipment().setRightHand(object);
+            characterInventoryService.equipObject(characterId, character.getEquipment().getRightHand().getObjectId());
+            characterRepo.save(character);
         }
     }
 
     public void unequipRightHand(Long characterId) {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        characterInventoryService.unequipObject(characterId, characterDto.getEquipment().getRightHand().getObjectId());
-        characterDto.getEquipment().setRightHand(null);
-        characterRepo.save(characterDto);
+        Character character = characterRepo.getReferenceById(characterId);
+        characterInventoryService.unequipObject(characterId, character.getEquipment().getRightHand().getObjectId());
+        character.getEquipment().setRightHand(null);
+        characterRepo.save(character);
     }
 
     public void equipLeftHand(Long characterId, Long objectId) throws GenericException {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        ObjectDto objectDto = objectRepo.getReferenceById(objectId);
-        if(objectDto.getIsMartial()) {
-            if(objectDto.getRangeType().equals(RangeType.Mischia) && !characterDto.getStatus().getMartialMeleeWeapons() ||
-                    objectDto.getRangeType().equals(RangeType.Distanza) && !characterDto.getStatus().getMartialDistanceWeapons())
+        Character character = characterRepo.getReferenceById(characterId);
+        Object object = objectRepo.getReferenceById(objectId);
+        if(object.getIsMartial()) {
+            if(object.getRangeType().equals(RangeType.Mischia) && !character.getStatus().getMartialMeleeWeapons() ||
+                    object.getRangeType().equals(RangeType.Distanza) && !character.getStatus().getMartialDistanceWeapons())
                 throw new GenericException("Non puoi equipaggaire questa arma!");
-            else if (!characterDto.getStatus().getMartialShields())
+            else if (!character.getStatus().getMartialShields())
                     throw new GenericException("Non puoi equipaggaire questo scudo!");
         }
-        if(characterDto.getEquipment().getLeftHand()!=null)
-            characterInventoryService.unequipObject(characterId, characterDto.getEquipment().getLeftHand().getObjectId());
-        characterDto.getEquipment().setLeftHand(objectDto);
-        characterInventoryService.equipObject(characterId, characterDto.getEquipment().getLeftHand().getObjectId());
-        characterRepo.save(characterDto);
+        if(character.getEquipment().getLeftHand()!=null)
+            characterInventoryService.unequipObject(characterId, character.getEquipment().getLeftHand().getObjectId());
+        character.getEquipment().setLeftHand(object);
+        characterInventoryService.equipObject(characterId, character.getEquipment().getLeftHand().getObjectId());
+        characterRepo.save(character);
     }
 
     public void unequipLeftHand(Long characterId) {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        characterInventoryService.unequipObject(characterId, characterDto.getEquipment().getLeftHand().getObjectId());
-        characterDto.getEquipment().setLeftHand(null);
-        characterRepo.save(characterDto);
+        Character character = characterRepo.getReferenceById(characterId);
+        characterInventoryService.unequipObject(characterId, character.getEquipment().getLeftHand().getObjectId());
+        character.getEquipment().setLeftHand(null);
+        characterRepo.save(character);
     }
 
     public void equipDress(Long characterId, Long objectId) throws GenericException {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        ObjectDto objectDto = objectRepo.getReferenceById(objectId);
-        if(objectDto.getIsMartial() && !characterDto.getStatus().getMartialArmors()) {
+        Character character = characterRepo.getReferenceById(characterId);
+        Object object = objectRepo.getReferenceById(objectId);
+        if(object.getIsMartial() && !character.getStatus().getMartialArmors()) {
             throw new GenericException("Non puoi equipaggaire questa armatura!");
         }
-        if(characterDto.getEquipment().getDress()!=null)
-            characterInventoryService.unequipObject(characterId, characterDto.getEquipment().getDress().getObjectId());
-        characterDto.getEquipment().setDress(objectDto);
-        characterInventoryService.equipObject(characterId, characterDto.getEquipment().getDress().getObjectId());
-        characterRepo.save(characterDto);
+        if(character.getEquipment().getDress()!=null)
+            characterInventoryService.unequipObject(characterId, character.getEquipment().getDress().getObjectId());
+        character.getEquipment().setDress(object);
+        characterInventoryService.equipObject(characterId, character.getEquipment().getDress().getObjectId());
+        characterRepo.save(character);
     }
 
     public void unequipDress(Long characterId) {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        characterInventoryService.unequipObject(characterId, characterDto.getEquipment().getDress().getObjectId());
-        characterDto.getEquipment().setDress(null);
-        characterRepo.save(characterDto);
+        Character character = characterRepo.getReferenceById(characterId);
+        characterInventoryService.unequipObject(characterId, character.getEquipment().getDress().getObjectId());
+        character.getEquipment().setDress(null);
+        characterRepo.save(character);
     }
 
     public void equipAccessory(Long characterId, Long objectId) {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        ObjectDto objectDto = objectRepo.getReferenceById(objectId);
-        if(characterDto.getEquipment().getAccessory()!=null)
-            characterInventoryService.unequipObject(characterId, characterDto.getEquipment().getAccessory().getObjectId());
-        characterDto.getEquipment().setAccessory(objectDto);
-        characterInventoryService.equipObject(characterId, characterDto.getEquipment().getAccessory().getObjectId());
-        characterRepo.save(characterDto);
+        Character character = characterRepo.getReferenceById(characterId);
+        Object object = objectRepo.getReferenceById(objectId);
+        if(character.getEquipment().getAccessory()!=null)
+            characterInventoryService.unequipObject(characterId, character.getEquipment().getAccessory().getObjectId());
+        character.getEquipment().setAccessory(object);
+        characterInventoryService.equipObject(characterId, character.getEquipment().getAccessory().getObjectId());
+        characterRepo.save(character);
     }
 
     public void unequipAccessory(Long characterId) {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        characterInventoryService.unequipObject(characterId, characterDto.getEquipment().getAccessory().getObjectId());
-        characterDto.getEquipment().setAccessory(null);
-        characterRepo.save(characterDto);
+        Character character = characterRepo.getReferenceById(characterId);
+        characterInventoryService.unequipObject(characterId, character.getEquipment().getAccessory().getObjectId());
+        character.getEquipment().setAccessory(null);
+        characterRepo.save(character);
     }
 
     public void equipPet(Long characterId, Long objectId) {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        ObjectDto objectDto = objectRepo.getReferenceById(objectId);
-        if(characterDto.getEquipment().getPet()!=null)
-            characterInventoryService.unequipObject(characterId, characterDto.getEquipment().getPet().getObjectId());
-        characterDto.getEquipment().setPet(objectDto);
-        characterInventoryService.equipObject(characterId, characterDto.getEquipment().getPet().getObjectId());
-        characterRepo.save(characterDto);
+        Character character = characterRepo.getReferenceById(characterId);
+        Object object = objectRepo.getReferenceById(objectId);
+        if(character.getEquipment().getPet()!=null)
+            characterInventoryService.unequipObject(characterId, character.getEquipment().getPet().getObjectId());
+        character.getEquipment().setPet(object);
+        characterInventoryService.equipObject(characterId, character.getEquipment().getPet().getObjectId());
+        characterRepo.save(character);
     }
 
     public void unequipPet(Long characterId) {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        characterInventoryService.unequipObject(characterId, characterDto.getEquipment().getPet().getObjectId());
-        characterDto.getEquipment().setPet(null);
-        characterRepo.save(characterDto);
+        Character character = characterRepo.getReferenceById(characterId);
+        characterInventoryService.unequipObject(characterId, character.getEquipment().getPet().getObjectId());
+        character.getEquipment().setPet(null);
+        characterRepo.save(character);
     }
 
     public void equipMount(Long characterId, Long objectId) {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        ObjectDto objectDto = objectRepo.getReferenceById(objectId);
-        if(characterDto.getEquipment().getMount()!=null)
-            characterInventoryService.unequipObject(characterId, characterDto.getEquipment().getMount().getObjectId());
-        characterDto.getEquipment().setMount(objectDto);
-        characterInventoryService.equipObject(characterId, characterDto.getEquipment().getMount().getObjectId());
-        characterRepo.save(characterDto);
+        Character character = characterRepo.getReferenceById(characterId);
+        Object object = objectRepo.getReferenceById(objectId);
+        if(character.getEquipment().getMount()!=null)
+            characterInventoryService.unequipObject(characterId, character.getEquipment().getMount().getObjectId());
+        character.getEquipment().setMount(object);
+        characterInventoryService.equipObject(characterId, character.getEquipment().getMount().getObjectId());
+        characterRepo.save(character);
     }
 
     public void unequipMount(Long characterId) {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        characterInventoryService.unequipObject(characterId, characterDto.getEquipment().getMount().getObjectId());
-        characterDto.getEquipment().setMount(null);
-        characterRepo.save(characterDto);
+        Character character = characterRepo.getReferenceById(characterId);
+        characterInventoryService.unequipObject(characterId, character.getEquipment().getMount().getObjectId());
+        character.getEquipment().setMount(null);
+        characterRepo.save(character);
     }
 
-    public CharacterEquipmentDto getById(Long characterId) {
+    public CharacterEquipment getById(Long characterId) {
         return characterRepo.getReferenceById(characterId).getEquipment();
     }
 }

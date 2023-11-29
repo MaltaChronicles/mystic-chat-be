@@ -1,14 +1,14 @@
 package it.mystic.chat.mapper;
 
 import it.mystic.chat.model.dao.ObjectDao;
-import it.mystic.chat.model.dto.ObjectDto;
+import it.mystic.chat.model.dto.Object;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ObjectMapper {
 
-    public ObjectDto daoToDto(ObjectDao objectDao){
-        return new ObjectDto(
+    public Object daoTo(ObjectDao objectDao){
+        return new Object(
                 objectDao.getObjectId(),
                 objectDao.getName(),
                 objectDao.getImgUrl(),

@@ -3,7 +3,7 @@ package it.mystic.chat.controller;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.model.dao.CharacterDao;
 import it.mystic.chat.model.dao.CharacterDescriptionDao;
-import it.mystic.chat.model.dto.CharacterDto;
+import it.mystic.chat.model.dto.Character;
 import it.mystic.chat.model.enums.*;
 import it.mystic.chat.service.CharacterService;
 import jakarta.validation.constraints.Pattern;
@@ -21,21 +21,21 @@ public class CharacterController {
     private CharacterService characterService;
 
     @PostMapping("/create")
-    public ResponseEntity<CharacterDto> createCharacter(@RequestBody CharacterDao characterDao) {
-        CharacterDto characterDto = characterService.create(characterDao);
-        return ResponseEntity.ok(characterDto);
+    public ResponseEntity<Character> createCharacter(@RequestBody CharacterDao characterDao) {
+        Character character = characterService.create(characterDao);
+        return ResponseEntity.ok(character);
     }
 
     @GetMapping("/getById/{characterId}")
-    public ResponseEntity<CharacterDto> getCharacterById(@PathVariable Long characterId) {
-        CharacterDto characterDto = characterService.getById(characterId);
-        return ResponseEntity.ok(characterDto);
+    public ResponseEntity<Character> getCharacterById(@PathVariable Long characterId) {
+        Character character = characterService.getById(characterId);
+        return ResponseEntity.ok(character);
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<CharacterDto>> getCharacterById() {
-        List<CharacterDto> characterDtoList = characterService.getAll();
-        return ResponseEntity.ok(characterDtoList);
+    public ResponseEntity<List<Character>> getCharacterById() {
+        List<Character> characterList = characterService.getAll();
+        return ResponseEntity.ok(characterList);
     }
 
     @DeleteMapping("/deleteById/{characterId}")

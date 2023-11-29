@@ -13,9 +13,9 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "object")
+@Table
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class ObjectDto {
+public class Object {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long objectId;
@@ -91,5 +91,5 @@ public class ObjectDto {
     Boolean isUnique;
 
     @OneToMany(mappedBy = "id.object", cascade = CascadeType.ALL)
-    private List<CharacterInventoryDto> characterInventory;
+    private List<CharacterInventory> characterInventory;
 }

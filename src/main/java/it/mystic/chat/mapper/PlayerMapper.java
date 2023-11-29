@@ -2,7 +2,7 @@ package it.mystic.chat.mapper;
 
 
 import it.mystic.chat.model.dao.PlayerDao;
-import it.mystic.chat.model.dto.PlayerDto;
+import it.mystic.chat.model.dto.Player;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -11,8 +11,8 @@ import java.util.Date;
 @Component
 public class PlayerMapper {
 
-    public PlayerDto daoToDto(PlayerDao playerDao) {
-        return new PlayerDto(
+    public Player daoTo(PlayerDao playerDao) {
+        return new Player(
                 playerDao.getId(),
                 playerDao.getUsername(),
                 playerDao.getPassword(),

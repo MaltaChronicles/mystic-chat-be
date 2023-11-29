@@ -3,8 +3,8 @@ package it.mystic.chat.controller;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.model.dao.ObjectDao;
 import it.mystic.chat.model.dao.RoleDao;
-import it.mystic.chat.model.dto.ObjectDto;
-import it.mystic.chat.model.dto.PlayerRoleDto;
+import it.mystic.chat.model.dto.Object;
+import it.mystic.chat.model.dto.PlayerRole;
 import it.mystic.chat.model.enums.ObjectType;
 import it.mystic.chat.service.ObjectService;
 import it.mystic.chat.service.RoleService;
@@ -22,9 +22,9 @@ public class ObjectController {
     private ObjectService objectService;
 
     @PostMapping("/create")
-    public ResponseEntity<ObjectDto> create(@RequestBody ObjectDao objectDao) {
-        ObjectDto objectDto = objectService.create(objectDao);
-        return ResponseEntity.ok(objectDto);
+    public ResponseEntity<Object> create(@RequestBody ObjectDao objectDao) {
+        Object object = objectService.create(objectDao);
+        return ResponseEntity.ok(object);
     }
 
     @PutMapping("/update")
@@ -40,15 +40,15 @@ public class ObjectController {
     }
 
     @GetMapping("/getById/{objectId}")
-    public ResponseEntity<ObjectDto> getById(@PathVariable Long objectId) {
-        ObjectDto objectDto = objectService.getById(objectId);
-        return ResponseEntity.ok(objectDto);
+    public ResponseEntity<Object> getById(@PathVariable Long objectId) {
+        Object object = objectService.getById(objectId);
+        return ResponseEntity.ok(object);
     }
 
     @GetMapping("/getMarketByType/{objectType}")
-    public ResponseEntity<List<ObjectDto>> getMarketByType(@PathVariable ObjectType objectType) {
-        List<ObjectDto> objectDtoList = objectService.getMarketByType(objectType);
-        return ResponseEntity.ok(objectDtoList);
+    public ResponseEntity<List<Object>> getMarketByType(@PathVariable ObjectType objectType) {
+        List<Object> objectList = objectService.getMarketByType(objectType);
+        return ResponseEntity.ok(objectList);
     }
 
 }

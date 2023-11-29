@@ -1,7 +1,7 @@
 package it.mystic.chat.model.dto.pk;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import it.mystic.chat.model.dto.PlayerDto;
+import it.mystic.chat.model.dto.Player;
 import it.mystic.chat.model.enums.Role;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
@@ -19,7 +19,7 @@ public class PlayerRolePk implements Serializable {
     @ManyToOne
     @JoinColumn(name = "player_id")
     @JsonIgnore
-    PlayerDto player;
+    Player player;
     @Column
     Role role;
 }

@@ -15,9 +15,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "character_stats")
+@Table
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class CharacterStatsDto {
+public class CharacterStats {
     @Column
     Integer level;
     @Column
@@ -125,10 +125,10 @@ public class CharacterStatsDto {
     @JoinColumn(name = "character_id")
     @JsonIgnore
     @Id
-    CharacterDto character;
+    Character character;
 
-    public CharacterStatsDto(CharacterDto characterDto) {
-        this.character = characterDto;
+    public CharacterStats(Character character) {
+        this.character = character;
 
         level = 0;
 
@@ -153,7 +153,7 @@ public class CharacterStatsDto {
 
         levelUp();
         sleep();
-        setRaceAffinity(characterDto.getRace());
+        setRaceAffinity(character.getRace());
     }
 
     public void levelUp() {

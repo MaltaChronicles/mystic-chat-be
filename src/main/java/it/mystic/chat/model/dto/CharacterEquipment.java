@@ -11,42 +11,42 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "character_equipment")
+@Table
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class CharacterEquipmentDto {
+public class CharacterEquipment {
 
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "rightHand")
-    ObjectDto rightHand;
+    Object rightHand;
 
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "leftHand")
-    ObjectDto leftHand;
+    Object leftHand;
 
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "dress")
-    ObjectDto dress;
+    Object dress;
 
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "accessory")
-    ObjectDto accessory;
+    Object accessory;
 
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "pet")
-    ObjectDto pet;
+    Object pet;
 
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "mount")
-    ObjectDto mount;
+    Object mount;
 
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "character_id")
     @JsonIgnore
     @Id
-    CharacterDto character;
+    Character character;
 
-    public CharacterEquipmentDto(CharacterDto characterDto) {
-        this.character = characterDto;
+    public CharacterEquipment(Character character) {
+        this.character = character;
     }
 }

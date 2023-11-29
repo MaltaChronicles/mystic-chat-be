@@ -12,13 +12,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "config_ip")
-public class IpDto {
+public class Ip {
     @EmbeddedId
     IpPk id;
 
     Boolean isBan;
 
-    public IpDto(IpPk id) {
+    public Ip(IpPk id) {
         this.id = id;
         isBan = false;
     }

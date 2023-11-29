@@ -3,10 +3,10 @@ package it.mystic.chat.service;
 import it.mystic.chat.mapper.CharacterMapper;
 import it.mystic.chat.model.dao.CharacterDao;
 import it.mystic.chat.model.dao.CharacterDescriptionDao;
-import it.mystic.chat.model.dto.CharacterDescriptionDto;
-import it.mystic.chat.model.dto.CharacterDto;
-import it.mystic.chat.model.dto.CharacterEquipmentDto;
-import it.mystic.chat.model.dto.CharacterStatsDto;
+import it.mystic.chat.model.dto.CharacterDescription;
+import it.mystic.chat.model.dto.Character;
+import it.mystic.chat.model.dto.CharacterEquipment;
+import it.mystic.chat.model.dto.CharacterStats;
 import it.mystic.chat.model.enums.*;
 import it.mystic.chat.repo.CharacterRepo;
 import it.mystic.chat.util.BeanValidator;
@@ -25,28 +25,28 @@ public class CharacterService {
     @Autowired
     private BeanValidator validator;
 
-    public CharacterDto create(CharacterDao characterDao) {
+    public Character create(CharacterDao characterDao) {
         validator.validate(characterDao);
         //TODO aggiungere validazione Nome
 
-        CharacterDto characterDto = characterMapper.daoToDto(characterDao);
-        characterDto.setStandardOfLiving(StandardOfLiving.Nullo);
+        Character character = characterMapper.daoTo(characterDao);
+        character.setStandardOfLiving(StandardOfLiving.Nullo);
 
-        characterDto.setStatus(new CharacterStatsDto(characterDto));
-        characterDto.setEquipment(new CharacterEquipmentDto(characterDto));
-        characterDto.setDescription(new CharacterDescriptionDto(characterDto));
-        return characterRepo.save(characterDto);
+        character.setStatus(new CharacterStats(character));
+        character.setEquipment(new CharacterEquipment(character));
+        character.setDescription(new CharacterDescription(character));
+        return characterRepo.save(character);
     }
 
-    public CharacterDto getById(Long characterId) {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        characterDto.setStatus(null);
-        characterDto.setEquipment(null);
-        characterDto.setInventory(null);
-        return characterDto;
+    public Character getById(Long characterId) {
+        Character character = characterRepo.getReferenceById(characterId);
+        character.setStatus(null);
+        character.setEquipment(null);
+        character.setInventory(null);
+        return character;
     }
 
-    public List<CharacterDto> getAll() {
+    public List<Character> getAll() {
         return characterRepo.findAll();
     }
 
@@ -55,69 +55,69 @@ public class CharacterService {
     }
 
     public void updateNameById(Long characterId, String name) {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        characterDto.setName(name);
-        characterRepo.save(characterDto);
+        Character character = characterRepo.getReferenceById(characterId);
+        character.setName(name);
+        characterRepo.save(character);
     }
 
     public void updateIdentityById(Long characterId, String identity) {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        characterDto.setIdentity(identity);
-        characterRepo.save(characterDto);
+        Character character = characterRepo.getReferenceById(characterId);
+        character.setIdentity(identity);
+        characterRepo.save(character);
     }
 
     public void updateOriginById(Long characterId, Origin origin) {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        characterDto.setOrigin(origin);
-        characterRepo.save(characterDto);
+        Character character = characterRepo.getReferenceById(characterId);
+        character.setOrigin(origin);
+        characterRepo.save(character);
     }
 
     public void updateThemeById(Long characterId, Theme theme) {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        characterDto.setTheme(theme);
-        characterRepo.save(characterDto);
+        Character character = characterRepo.getReferenceById(characterId);
+        character.setTheme(theme);
+        characterRepo.save(character);
     }
 
     public void updateStandardOfLivingById(Long characterId, StandardOfLiving standardOfLiving) {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        characterDto.setStandardOfLiving(standardOfLiving);
-        characterRepo.save(characterDto);
+        Character character = characterRepo.getReferenceById(characterId);
+        character.setStandardOfLiving(standardOfLiving);
+        characterRepo.save(character);
     }
 
     public void updateJobById(Long characterId, Job job) {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        characterDto.setJob(job);
-        characterRepo.save(characterDto);
+        Character character = characterRepo.getReferenceById(characterId);
+        character.setJob(job);
+        characterRepo.save(character);
     }
 
     public void updateMasterNoteById(Long characterId, String masterNote) {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        characterDto.setMasterNote(masterNote);
-        characterRepo.save(characterDto);
+        Character character = characterRepo.getReferenceById(characterId);
+        character.setMasterNote(masterNote);
+        characterRepo.save(character);
     }
 
     public void updatePersonalNoteById(Long characterId, String personalNote) {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        characterDto.setPersonalNote(personalNote);
-        characterRepo.save(characterDto);
+        Character character = characterRepo.getReferenceById(characterId);
+        character.setPersonalNote(personalNote);
+        characterRepo.save(character);
     }
 
     public void updateRumorsById(Long characterId, String rumors) {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        characterDto.setRumors(rumors);
-        characterRepo.save(characterDto);
+        Character character = characterRepo.getReferenceById(characterId);
+        character.setRumors(rumors);
+        characterRepo.save(character);
     }
 
     public void updateRaceById(Long characterId, Race race) {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        characterDto.setRace(race);
-        characterRepo.save(characterDto);
+        Character character = characterRepo.getReferenceById(characterId);
+        character.setRace(race);
+        characterRepo.save(character);
     }
 
     public void updateDescriptionById(Long characterId, CharacterDescriptionDao characterDescriptionDao) {
-        CharacterDto characterDto = characterRepo.getReferenceById(characterId);
-        CharacterDescriptionDto characterDescriptionDto = characterMapper.descriptionDaoToDescriptionDto(characterDescriptionDao, characterDto);
-        characterDto.setDescription(characterDescriptionDto);
-        characterRepo.save(characterDto);
+        Character character = characterRepo.getReferenceById(characterId);
+        CharacterDescription characterDescription = characterMapper.descriptionDaoToDescription(characterDescriptionDao, character);
+        character.setDescription(characterDescription);
+        characterRepo.save(character);
     }
 }
