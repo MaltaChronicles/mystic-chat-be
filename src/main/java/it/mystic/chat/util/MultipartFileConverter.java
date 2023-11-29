@@ -14,14 +14,14 @@ public class MultipartFileConverter {
     @Value("${upload.dir}")
     private String uploadDir;
 
-    public String saveMultipartFile(MultipartFile file, String type, Long fileId) throws IOException {
+    public String saveMultipartFile(MultipartFile file, String type, Long fileId, String extension) throws IOException {
         byte[] imageData = file.getBytes();
 
         String dir = uploadDir + type + "/";
         Path uploadPath = Paths.get(dir);
         checkFolderExists(uploadPath);
 
-        String fileName = fileId + ".jpeg";
+        String fileName = fileId + "." + extension;
         Path filePath = uploadPath.resolve(fileName);
         Files.write(filePath, imageData);
 

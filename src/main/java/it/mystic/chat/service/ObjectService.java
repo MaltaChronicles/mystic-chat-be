@@ -57,7 +57,7 @@ public class ObjectService {
         Object object = objectRepo.getReferenceById(objectId);
         Hibernate.initialize(object);
         if (object != null) {
-            object.setImageUrl(converter.saveMultipartFile(file, "object", objectId));
+            object.setImageUrl(converter.saveMultipartFile(file, "object", objectId, "jpeg"));
             objectRepo.save(object);
         }
     }

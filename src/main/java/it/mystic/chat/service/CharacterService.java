@@ -132,7 +132,7 @@ public class CharacterService {
         Character character = characterRepo.getReferenceById(characterId);
         Hibernate.initialize(character);
         if (character != null) {
-            character.getDescription().setImageUrl(converter.saveMultipartFile(file, "character", characterId));
+            character.getDescription().setImageUrl(converter.saveMultipartFile(file, "character", characterId, "jpeg"));
             characterRepo.save(character);
         }
     }
