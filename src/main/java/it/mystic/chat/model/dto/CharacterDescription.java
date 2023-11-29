@@ -31,6 +31,8 @@ public class CharacterDescription {
     Integer age;
     @Column
     Gender gender;
+    @Column
+    String imageUrl;
 
     @OneToOne
     @JoinColumn(name = "character_id")

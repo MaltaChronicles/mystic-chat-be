@@ -10,7 +10,9 @@ import jakarta.validation.constraints.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -107,6 +109,13 @@ public class CharacterController {
     @PatchMapping("/updateDescription/{characterId}")
     public ResponseEntity<Void> updateDescription(@PathVariable Long characterId, @RequestBody CharacterDescriptionDao characterDescription) {
         characterService.updateDescriptionById(characterId, characterDescription);
+        return ResponseEntity.ok().build();
+    }
+
+    //TODO rimuovere in caso di sovraccarico del DB
+    @PatchMapping(value = "/uploadImage/{characterId}", consumes = "multipart/form-data")
+    public ResponseEntity<Void> uploadImage(@PathVariable Long characterId,  @RequestParam("file") MultipartFile file) throws IOException {
+        characterService.uploadImage(characterId, file);
         return ResponseEntity.ok().build();
     }
 }

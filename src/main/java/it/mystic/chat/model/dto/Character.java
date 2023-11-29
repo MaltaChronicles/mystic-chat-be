@@ -39,8 +39,6 @@ public class Character {
     String personalNote;
     @Column
     String rumors;
-    @Column
-    Long Location;
 
     @OneToOne(mappedBy = "character", cascade = CascadeType.ALL)
     private CharacterStats status;
@@ -57,7 +55,6 @@ public class Character {
 
     //TODO aggiungere abilità
     //TODO aggiungere legami
-    //TODO aggiungere List<LevelClass>
 
     public Character(String name, String identity, Origin origin, Theme theme, Job job, Race race) {
         this.name = name;

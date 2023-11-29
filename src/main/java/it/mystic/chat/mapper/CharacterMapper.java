@@ -31,6 +31,7 @@ public class CharacterMapper {
                 characterDescriptionDao.getWeight(),
                 characterDescriptionDao.getAge(),
                 characterDescriptionDao.getGender(),
+                "uploads/object/default.jpeg",
                 character
         );
     }

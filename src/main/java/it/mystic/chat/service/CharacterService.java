@@ -7,12 +7,18 @@ import it.mystic.chat.model.dto.CharacterDescription;
 import it.mystic.chat.model.dto.Character;
 import it.mystic.chat.model.dto.CharacterEquipment;
 import it.mystic.chat.model.dto.CharacterStats;
+import it.mystic.chat.model.dto.Object;
 import it.mystic.chat.model.enums.*;
 import it.mystic.chat.repo.CharacterRepo;
 import it.mystic.chat.util.BeanValidator;
+import it.mystic.chat.util.MultipartFileConverter;
+import jakarta.persistence.EntityNotFoundException;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -24,6 +30,8 @@ public class CharacterService {
     private CharacterMapper characterMapper;
     @Autowired
     private BeanValidator validator;
+    @Autowired
+    private MultipartFileConverter converter;
 
     public Character create(CharacterDao characterDao) {
         validator.validate(characterDao);
@@ -119,5 +127,15 @@ public class CharacterService {
         CharacterDescription characterDescription = characterMapper.descriptionDaoToDescription(characterDescriptionDao, character);
         character.setDescription(characterDescription);
         characterRepo.save(character);
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    public void uploadImage(Long characterId, MultipartFile file) throws IOException {
+        Character character= characterRepo.getReferenceById(characterId);
+        Hibernate.initialize(character);
+        if(character!=null) {
+            character.getDescription().setImageUrl(converter.saveMultipartFile(file, "character", characterId));
+            characterRepo.save(character);
+        }
     }
 }
