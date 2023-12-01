@@ -8,7 +8,6 @@ import it.mystic.chat.model.dto.Character;
 import it.mystic.chat.model.dto.Player;
 import it.mystic.chat.repo.CharacterRepo;
 import it.mystic.chat.repo.PlayerRepo;
-import it.mystic.chat.util.BeanValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

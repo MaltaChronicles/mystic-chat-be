@@ -10,7 +10,6 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.logging.log4j.message.Message;
 
 @Entity
 @Data
@@ -32,5 +31,5 @@ public class LocationMessage {
     String body;
 
     @Column
-    String imageUrl;
+    String imageLink;
 }

@@ -10,7 +10,6 @@ import it.mystic.chat.model.dto.CharacterEquipment;
 import it.mystic.chat.model.dto.CharacterStats;
 import it.mystic.chat.model.enums.*;
 import it.mystic.chat.repo.CharacterRepo;
-import it.mystic.chat.util.BeanValidator;
 import it.mystic.chat.util.MultipartFileConverter;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
