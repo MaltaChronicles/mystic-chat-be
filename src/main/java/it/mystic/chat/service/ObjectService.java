@@ -31,8 +31,9 @@ public class ObjectService {
         return objectRepo.save(object);
     }
 
-    public void update(ObjectDao objectDao) throws IOException {
+    public void update(ObjectDao objectDao, Long objectId) throws IOException {
         Object object = objectMapper.daoTo(objectDao);
+        object.setObjectId(objectId);
         objectRepo.save(object);
     }
 

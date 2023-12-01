@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ObjectDao {
-    Long objectId;
     String name;
     ObjectType type;
     String description;

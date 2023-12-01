@@ -26,9 +26,9 @@ public class ObjectController {
         return ResponseEntity.ok(object);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<Void> update(@RequestBody ObjectDao objectDao) throws IOException {
-        objectService.update(objectDao);
+    @PutMapping("/updateById/{objectId}")
+    public ResponseEntity<Void> update(@RequestBody ObjectDao objectDao, @PathVariable Long objectId) throws IOException {
+        objectService.update(objectDao, objectId);
         return ResponseEntity.ok().build();
     }
 

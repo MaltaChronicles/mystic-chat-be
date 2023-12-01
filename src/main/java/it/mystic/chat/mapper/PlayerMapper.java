@@ -13,7 +13,7 @@ public class PlayerMapper {
 
     public Player daoTo(PlayerDao playerDao) {
         return new Player(
-                playerDao.getId(),
+                null,
                 playerDao.getUsername(),
                 playerDao.getPassword(),
                 playerDao.getEmail(),
