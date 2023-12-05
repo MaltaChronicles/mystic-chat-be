@@ -1,5 +1,6 @@
 package it.mystic.chat.util;
 
+import it.mystic.chat.model.enums.Affinity;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,7 +18,14 @@ public class MultipartFileConverter {
     public String saveMultipartFile(MultipartFile file, String type, Long fileId, String extension) throws IOException {
         byte[] imageData = file.getBytes();
 
-        String dir = uploadDir + type + "/";
+        String typeDir;
+        switch (extension) {
+            case "jpeg" -> typeDir = "img/" + type;
+            case "mp3" -> typeDir = "mp3/" + type;
+            default -> typeDir = type;
+        }
+
+        String dir = uploadDir + typeDir + "/";
         Path uploadPath = Paths.get(dir);
         checkFolderExists(uploadPath);
 

@@ -2,16 +2,20 @@ package it.mystic.chat.mapper;
 
 import it.mystic.chat.model.dao.ObjectDao;
 import it.mystic.chat.model.dto.Object;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ObjectMapper {
 
+    @Value("${upload.dir}")
+    private String uploadDir;
+
     public Object daoTo(ObjectDao objectDao) {
         return new Object(
-                objectDao.getObjectId(),
+                null,
                 objectDao.getName(),
-                "uploads/object/default.jpeg",
+                uploadDir + "img/object/default.jpeg",
                 objectDao.getType(),
                 objectDao.getDescription(),
                 objectDao.getRank(),

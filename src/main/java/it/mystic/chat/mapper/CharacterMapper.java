@@ -5,11 +5,15 @@ import it.mystic.chat.model.dao.CharacterDao;
 import it.mystic.chat.model.dao.CharacterDescriptionDao;
 import it.mystic.chat.model.dto.Character;
 import it.mystic.chat.model.dto.CharacterDescription;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 
 @Component
 public class CharacterMapper {
+
+    @Value("${upload.dir}")
+    private String uploadDir;
 
     public Character daoTo(CharacterDao characterDao) {
         return new Character(
@@ -31,7 +35,7 @@ public class CharacterMapper {
                 characterDescriptionDao.getWeight(),
                 characterDescriptionDao.getAge(),
                 characterDescriptionDao.getGender(),
-                "uploads/object/default.jpeg",
+                uploadDir + "img/character/default.jpeg",
                 character
         );
     }
