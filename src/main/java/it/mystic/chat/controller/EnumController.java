@@ -85,4 +85,29 @@ public class EnumController {
     public ResponseEntity<List<RangeType>> getRangeTypes() {
         return ResponseEntity.ok(Arrays.stream(RangeType.values()).toList());
     }
+
+    @GetMapping("/getAbilityTypes")
+    public ResponseEntity<List<AbilityType>> getAbilityTypes() {
+        return ResponseEntity.ok(Arrays.stream(AbilityType.values()).toList());
+    }
+
+    @GetMapping("/getDurationTypes")
+    public ResponseEntity<List<DurationType>> getDurationTypes() {
+        return ResponseEntity.ok(Arrays.stream(DurationType.values()).toList());
+    }
+
+    @GetMapping("/getGenders")
+    public ResponseEntity<List<Gender>> getGenders() {
+        return ResponseEntity.ok(Arrays.stream(Gender.values()).toList());
+    }
+
+    @GetMapping("/getMessageTypes")
+    public ResponseEntity<List<MessageType>> getMessageTypes() {
+        return ResponseEntity.ok(Arrays.stream(MessageType.values()).toList());
+    }
+
+    @GetMapping("/getTargetTypes")
+    public ResponseEntity<List<TargetType>> getTargetTypes() {
+        return ResponseEntity.ok(Arrays.stream(TargetType.values()).toList());
+    }
 }

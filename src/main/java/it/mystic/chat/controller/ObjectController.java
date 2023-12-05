@@ -26,13 +26,13 @@ public class ObjectController {
         return ResponseEntity.ok(object);
     }
 
-    @PutMapping("/updateById/{objectId}")
+    @PutMapping("/update/{objectId}")
     public ResponseEntity<Void> update(@RequestBody ObjectDao objectDao, @PathVariable Long objectId) throws IOException {
         objectService.update(objectDao, objectId);
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/deleteById/{objectId}")
+    @DeleteMapping("/delete/{objectId}")
     public ResponseEntity<Void> deleteById(@PathVariable Long objectId) {
         objectService.deleteById(objectId);
         return ResponseEntity.ok().build();
