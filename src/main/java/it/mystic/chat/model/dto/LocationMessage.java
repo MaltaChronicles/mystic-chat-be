@@ -25,7 +25,7 @@ public class LocationMessage {
     MessageType messageType;
 
     @Column
-    String location;
+    String tag;
 
     @Column
     String body;
