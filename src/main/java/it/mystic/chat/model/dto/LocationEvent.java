@@ -2,6 +2,7 @@ package it.mystic.chat.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import it.mystic.chat.model.dto.pk.LocationEventPk;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,6 +17,9 @@ import java.util.Date;
 @Table
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class LocationEvent {
+    @EmbeddedId
+    LocationEventPk id;
+
     @Column
     String name;
 
@@ -23,14 +27,5 @@ public class LocationEvent {
     String description;
 
     @Column
-    Date date;
-
-    @Column
-    String playerName;
-
-    @OneToOne
-    @JoinColumn(name = "location_id")
-    @JsonIgnore
-    @Id
-    Location location;
+    String createBy;
 }

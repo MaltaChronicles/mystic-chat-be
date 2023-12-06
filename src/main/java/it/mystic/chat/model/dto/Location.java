@@ -35,7 +35,7 @@ public class Location {
     @Column
     String ambientUrl;
 
-    @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "id.location", cascade = CascadeType.ALL)
     List<LocationEvent> events;
 
     @OneToMany(mappedBy = "id.location", cascade = CascadeType.ALL)
