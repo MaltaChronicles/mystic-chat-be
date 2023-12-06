@@ -1,47 +1,39 @@
-package it.mystic.chat.model.dto;
+package it.mystic.chat.model.dao;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import it.mystic.chat.model.enums.AbilityType;
 import it.mystic.chat.model.enums.Class;
 import it.mystic.chat.model.enums.DurationType;
 import it.mystic.chat.model.enums.TargetType;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-@Table
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Ability {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long abilityId;
-    @Column
+@NoArgsConstructor
+public class AbilityDao {
+    
     String name;
-    @Column
-    String imageUrl;
-    @Column
+    
     Class abilityClass;
-    @Column
+    
     AbilityType type;
-    @Column
+    
     String description;
-    @Column
+    
     DurationType duration;
-    @Column
+    
     TargetType targetType;
-    @Column
+    
     Integer maxTargetNumber;
-    @Column
+    
     Integer maxLevel;
-    @Column
+    
     Integer manaPriceForTarget;
-    @Column
+    
     Integer hpPriceForTarget;
-    @Column
-    String actionLink;
 }
