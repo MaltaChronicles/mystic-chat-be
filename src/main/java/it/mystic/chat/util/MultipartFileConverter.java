@@ -1,6 +1,5 @@
 package it.mystic.chat.util;
 
-import it.mystic.chat.model.enums.Affinity;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;

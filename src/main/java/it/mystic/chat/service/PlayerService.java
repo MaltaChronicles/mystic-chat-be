@@ -6,13 +6,11 @@ import it.mystic.chat.mapper.PlayerMapper;
 import it.mystic.chat.model.dao.PlayerDao;
 import it.mystic.chat.model.dto.Character;
 import it.mystic.chat.model.dto.Player;
-import it.mystic.chat.model.enums.Role;
 import it.mystic.chat.repo.CharacterRepo;
 import it.mystic.chat.repo.PlayerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -40,8 +38,8 @@ public class PlayerService {
     public Map<Long, String> getAll() {
         return playerRepo.findAll()
                 .stream().collect(
-                Collectors.toMap(Player::getPlayerId, Player::getUsername)
-        );
+                        Collectors.toMap(Player::getPlayerId, Player::getUsername)
+                );
     }
 
     public void deleteById(Long playerId) {

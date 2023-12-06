@@ -4,8 +4,10 @@ import it.mystic.chat.exception.ValidationException;
 import it.mystic.chat.mapper.CharacterMapper;
 import it.mystic.chat.model.dao.CharacterDao;
 import it.mystic.chat.model.dao.CharacterDescriptionDao;
-import it.mystic.chat.model.dto.*;
 import it.mystic.chat.model.dto.Character;
+import it.mystic.chat.model.dto.CharacterDescription;
+import it.mystic.chat.model.dto.CharacterEquipment;
+import it.mystic.chat.model.dto.CharacterStats;
 import it.mystic.chat.model.enums.*;
 import it.mystic.chat.repo.CharacterRepo;
 import it.mystic.chat.util.MultipartFileConverter;
@@ -15,7 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
