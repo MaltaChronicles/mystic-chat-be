@@ -6,6 +6,7 @@ import it.mystic.chat.mapper.PlayerMapper;
 import it.mystic.chat.model.dao.PlayerDao;
 import it.mystic.chat.model.dto.Character;
 import it.mystic.chat.model.dto.Player;
+import it.mystic.chat.model.enums.Role;
 import it.mystic.chat.repo.CharacterRepo;
 import it.mystic.chat.repo.PlayerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +65,7 @@ public class PlayerService {
             throw new ValidationException("email", "email già in uso");
         }
     }
+    /* FINE VALIDAZIONE*/
 
     public Player addCharacter(Long playerId, Long characterId) throws GenericException {
         Player player = playerRepo.getReferenceById(playerId);
@@ -91,5 +93,13 @@ public class PlayerService {
         player.setPassword(password);
         playerRepo.save(player);
 
+    }
+
+    public Map<Long, String> getAllLikeUsername(String username) {
+        username = "%" + username + "%";
+        return playerRepo.findByUsernameIgnoreCaseLike(username)
+                .stream().collect(
+                        Collectors.toMap(Player::getPlayerId, Player::getUsername)
+                );
     }
 }

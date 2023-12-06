@@ -119,4 +119,11 @@ public class CharacterController {
         characterService.uploadImage(characterId, file);
         return ResponseEntity.ok().build();
     }
+
+
+    @GetMapping("/getAllLikeName/{name}")
+    public ResponseEntity<Map<Long, String>> getAllLikeName(@PathVariable String name) {
+        Map<Long, String> characterList = characterService.getAllLikeName(name);
+        return ResponseEntity.ok(characterList);
+    }
 }

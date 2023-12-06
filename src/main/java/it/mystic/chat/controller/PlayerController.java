@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.exception.GenericException;
 import it.mystic.chat.model.dao.PlayerDao;
 import it.mystic.chat.model.dto.Player;
+import it.mystic.chat.model.enums.Role;
 import it.mystic.chat.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +35,12 @@ public class PlayerController {
     @GetMapping("/getAll")
     public ResponseEntity<Map<Long, String>> getPlayerById() {
         Map<Long, String> playerList = playerService.getAll();
+        return ResponseEntity.ok(playerList);
+    }
+
+    @GetMapping("/getAllLikeUsername/{username}")
+    public ResponseEntity<Map<Long, String>> getAllLikeUsername(@PathVariable String username) {
+        Map<Long, String> playerList = playerService.getAllLikeUsername(username);
         return ResponseEntity.ok(playerList);
     }
 

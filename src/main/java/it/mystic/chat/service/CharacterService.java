@@ -4,10 +4,8 @@ import it.mystic.chat.exception.ValidationException;
 import it.mystic.chat.mapper.CharacterMapper;
 import it.mystic.chat.model.dao.CharacterDao;
 import it.mystic.chat.model.dao.CharacterDescriptionDao;
+import it.mystic.chat.model.dto.*;
 import it.mystic.chat.model.dto.Character;
-import it.mystic.chat.model.dto.CharacterDescription;
-import it.mystic.chat.model.dto.CharacterEquipment;
-import it.mystic.chat.model.dto.CharacterStats;
 import it.mystic.chat.model.enums.*;
 import it.mystic.chat.repo.CharacterRepo;
 import it.mystic.chat.util.MultipartFileConverter;
@@ -53,6 +51,14 @@ public class CharacterService {
 
     public Map<Long, String> getAll() {
         return characterRepo.findAll()
+                .stream().collect(
+                        Collectors.toMap(Character::getCharacterId, Character::getName)
+                );
+    }
+
+    public Map<Long, String> getAllLikeName(String name) {
+        name = "%" + name + "%";
+        return characterRepo.findByNameIgnoreCaseLike(name)
                 .stream().collect(
                         Collectors.toMap(Character::getCharacterId, Character::getName)
                 );

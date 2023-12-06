@@ -9,6 +9,10 @@ import it.mystic.chat.repo.PlayerRoleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 @Service
 public class PlayerRoleService {
 
@@ -36,5 +40,12 @@ public class PlayerRoleService {
     private PlayerRolePk getPk(Long playerId, Role role){
         Player player = playerRepo.getReferenceById(playerId);
         return new PlayerRolePk(player, role);
+    }
+
+    public Map<Long, String> getPlayerByRole(Role role) {
+        return playerRoleRepo.findAll().stream()
+                .filter(playerRole -> {return playerRole.getId().getRole() == role;})
+                .map(playerRole -> {return playerRole.getId().getPlayer();})
+                .collect(Collectors.toMap(Player::getPlayerId, Player::getUsername));
     }
 }
