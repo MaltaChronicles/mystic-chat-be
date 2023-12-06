@@ -18,6 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class CharacterService {
@@ -49,8 +51,11 @@ public class CharacterService {
         return character;
     }
 
-    public List<Character> getAll() {
-        return characterRepo.findAll();
+    public Map<Long, String> getAll() {
+        return characterRepo.findAll()
+                .stream().collect(
+                        Collectors.toMap(Character::getCharacterId, Character::getName)
+                );
     }
 
     public void deleteById(Long characterId) {

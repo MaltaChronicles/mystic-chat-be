@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/off/player")
@@ -31,8 +32,8 @@ public class PlayerController {
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<Player>> getPlayerById() {
-        List<Player> playerList = playerService.getAll();
+    public ResponseEntity<Map<Long, String>> getPlayerById() {
+        Map<Long, String> playerList = playerService.getAll();
         return ResponseEntity.ok(playerList);
     }
 

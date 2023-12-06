@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/on/character")
@@ -35,8 +36,8 @@ public class CharacterController {
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<Character>> getCharacterById() {
-        List<Character> characterList = characterService.getAll();
+    public ResponseEntity<Map<Long, String>> getCharacterById() {
+        Map<Long, String> characterList = characterService.getAll();
         return ResponseEntity.ok(characterList);
     }
 

@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class PlayerService {
@@ -34,8 +36,11 @@ public class PlayerService {
         return playerRepo.getReferenceById(userId);
     }
 
-    public List<Player> getAll() {
-        return playerRepo.findAll();
+    public Map<Long, String> getAll() {
+        return playerRepo.findAll()
+                .stream().collect(
+                Collectors.toMap(Player::getPlayerId, Player::getUsername)
+        );
     }
 
     public void deleteById(Long playerId) {
