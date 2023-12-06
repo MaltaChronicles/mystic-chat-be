@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.model.dao.AbilityDao;
 import it.mystic.chat.model.dto.Ability;
 import it.mystic.chat.model.enums.Class;
+import it.mystic.chat.model.response.AbilityResponse;
 import it.mystic.chat.service.AbilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +22,9 @@ public class AbilityController {
     private AbilityService abilityService;
 
     @PostMapping("/create")
-    public ResponseEntity<Ability> create(@RequestBody AbilityDao abilityDao) {
-        Ability ability = abilityService.create(abilityDao);
-        return ResponseEntity.ok(ability);
+    public ResponseEntity<AbilityResponse> create(@RequestBody AbilityDao abilityDao) {
+        AbilityResponse response = abilityService.create(abilityDao);
+        return ResponseEntity.ok(response);
     }
 
     @PutMapping("/update/{abilityId}")
@@ -39,9 +40,9 @@ public class AbilityController {
     }
 
     @GetMapping(value = "/getById/{abilityId}")
-    public ResponseEntity<Ability> getById(@PathVariable Long abilityId) {
-        Ability ability = abilityService.getById(abilityId);
-        return ResponseEntity.ok(ability);
+    public ResponseEntity<AbilityResponse> getById(@PathVariable Long abilityId) {
+        AbilityResponse response = abilityService.getById(abilityId);
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping(value = "/delete/{abilityId}")
@@ -51,8 +52,8 @@ public class AbilityController {
     }
 
     @GetMapping(value = "/getByClass/{abilityClass}")
-    public ResponseEntity<List<Ability>> getByClass(@PathVariable Class abilityClass) {
-        List<Ability> abilityList = abilityService.getByClass(abilityClass);
-        return ResponseEntity.ok(abilityList);
+    public ResponseEntity<List<AbilityResponse>> getByClass(@PathVariable Class abilityClass) {
+        List<AbilityResponse> responseList = abilityService.getByClass(abilityClass);
+        return ResponseEntity.ok(responseList);
     }
 }

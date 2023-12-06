@@ -4,6 +4,7 @@ import it.mystic.chat.mapper.AbilityMapper;
 import it.mystic.chat.model.dao.AbilityDao;
 import it.mystic.chat.model.dto.Ability;
 import it.mystic.chat.model.enums.Class;
+import it.mystic.chat.model.response.AbilityResponse;
 import it.mystic.chat.repo.AbilityRepo;
 import it.mystic.chat.util.MultipartFileConverter;
 import org.hibernate.Hibernate;
@@ -23,10 +24,10 @@ public class AbilityService {
     @Autowired
     private MultipartFileConverter converter;
 
-    public Ability create(AbilityDao abilityDao) {
+    public AbilityResponse create(AbilityDao abilityDao) {
         Ability ability = abilityMapper.daoToDto(abilityDao);
         ability.setActionLink("system/useAbility/" + ability.getAbilityId());
-        return abilityRepo.save(ability);
+        return abilityMapper.dtoToResponse(abilityRepo.save(ability));
     }
 
     public void update(Long abilityId, AbilityDao abilityDao) {
@@ -54,15 +55,16 @@ public class AbilityService {
         }
     }
 
-    public Ability getById(Long abilityId) {
-        return abilityRepo.getReferenceById(abilityId);
+    public AbilityResponse getById(Long abilityId) {
+        return abilityMapper.dtoToResponse(abilityRepo.getReferenceById(abilityId));
     }
 
     public void delete(Long abilityId) {
         abilityRepo.deleteById(abilityId);
     }
 
-    public List<Ability> getByClass(Class abilityClass) {
-        return abilityRepo.getReferenceByAbilityClass(abilityClass);
+    public List<AbilityResponse> getByClass(Class abilityClass) {
+        return abilityRepo.getReferenceByAbilityClass(abilityClass).stream()
+                .map(ability -> {return abilityMapper.dtoToResponse(ability);}).toList();
     }
 }
