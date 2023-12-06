@@ -26,7 +26,7 @@ public class AbilityController {
         return ResponseEntity.ok(ability);
     }
 
-    @PutMapping("/upload/{abilityId}")
+    @PutMapping("/update/{abilityId}")
     public ResponseEntity<Void> update(@PathVariable Long abilityId, @RequestBody AbilityDao abilityDao) {
         abilityService.update(abilityId, abilityDao);
         return ResponseEntity.ok().build();

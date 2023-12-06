@@ -1,5 +1,6 @@
 package it.mystic.chat.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,5 +27,6 @@ public class Medal {
     String imageUrl;
 
     @ManyToMany(mappedBy = "medals")
+    @JsonIgnore
     List<Player> players;
 }
