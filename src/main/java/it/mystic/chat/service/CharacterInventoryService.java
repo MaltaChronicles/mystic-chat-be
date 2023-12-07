@@ -9,6 +9,7 @@ import it.mystic.chat.model.response.CharacterInventoryResponse;
 import it.mystic.chat.repo.CharacterInventoryRepo;
 import it.mystic.chat.repo.CharacterRepo;
 import it.mystic.chat.repo.ObjectRepo;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,11 +39,22 @@ public class CharacterInventoryService {
         characterInventoryRepo.save(characterInventory);
     }
 
+    @SuppressWarnings("ConstantConditions")
     public void addObject(Long characterId, Long objectId) {
         Character character = characterRepo.getReferenceById(characterId);
         Object object = objectRepo.getReferenceById(objectId);
-        CharacterInventory characterInventory = new CharacterInventory();
-        characterInventory.setId(new CharacterInventoryPk(character, object));
+
+        CharacterInventory characterInventory = characterInventoryRepo.getReferenceById(new CharacterInventoryPk(character, object));
+        Hibernate.initialize(object);
+        if(characterInventory != null){
+            characterInventory = new CharacterInventory(
+                    new CharacterInventoryPk(character, object),
+                    false,
+                    1
+            );
+        } else {
+            characterInventory.setQuantity(characterInventory.getQuantity() + 1);
+        }
         characterInventoryRepo.save(characterInventory);
     }
 
