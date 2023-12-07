@@ -18,7 +18,6 @@ import java.io.Serializable;
 public class PlayerRolePk implements Serializable {
     @ManyToOne
     @JoinColumn(name = "player_id")
-    @JsonIgnore
     Player player;
     @Column
     Role role;

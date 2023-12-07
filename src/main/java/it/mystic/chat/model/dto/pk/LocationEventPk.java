@@ -17,7 +17,6 @@ import java.util.Date;
 public class LocationEventPk implements Serializable {
     @ManyToOne
     @JoinColumn(name = "location_id")
-    @JsonIgnore
     Location location;
 
     Date data;

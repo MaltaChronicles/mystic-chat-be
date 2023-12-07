@@ -25,6 +25,5 @@ public class Medal {
     String imageUrl;
 
     @ManyToMany(mappedBy = "medals")
-    @JsonIgnore
     List<Player> players;
 }

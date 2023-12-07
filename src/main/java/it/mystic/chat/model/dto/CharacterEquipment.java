@@ -40,7 +40,6 @@ public class CharacterEquipment {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "character_id")
-    @JsonIgnore
     @Id
     Character character;
 

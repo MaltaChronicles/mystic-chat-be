@@ -17,11 +17,9 @@ import java.io.Serializable;
 public class CharacterInventoryPk implements Serializable {
     @ManyToOne
     @JoinColumn(name = "character_id")
-    @JsonIgnore
     Character character;
 
     @ManyToOne
     @JoinColumn(name = "object_id")
-    @JsonIgnore
     Object object;
 }

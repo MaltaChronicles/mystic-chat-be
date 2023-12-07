@@ -34,7 +34,6 @@ public class CharacterDescription {
 
     @OneToOne
     @JoinColumn(name = "character_id")
-    @JsonIgnore
     @Id
     Character character;
 
