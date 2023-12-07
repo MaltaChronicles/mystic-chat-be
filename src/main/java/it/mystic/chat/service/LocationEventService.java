@@ -1,10 +1,11 @@
 package it.mystic.chat.service;
 
-import it.mystic.chat.mapper.LocationEventMapper;
+import it.mystic.chat.mapper.LocationMapper;
 import it.mystic.chat.model.dao.LocationEventDao;
 import it.mystic.chat.model.dto.Location;
 import it.mystic.chat.model.dto.LocationEvent;
 import it.mystic.chat.model.dto.pk.LocationEventPk;
+import it.mystic.chat.model.response.LocationEventResponse;
 import it.mystic.chat.repo.LocationEventRepo;
 import it.mystic.chat.repo.LocationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +25,11 @@ public class LocationEventService {
     private LocationRepo locationRepo;
 
     @Autowired
-    private LocationEventMapper locationEventMapper;
+    private LocationMapper locationMapper;
 
     public void addEvent(Long locationId, LocationEventDao locationEventDao) {
         Location location = locationRepo.getReferenceById(locationId);
-        LocationEvent locationEvent = locationEventMapper.daoToDto(location, locationEventDao);
+        LocationEvent locationEvent = locationMapper.eventDaoToEventDto(location, locationEventDao);
         locationEventRepo.save(locationEvent);
     }
 
@@ -46,8 +47,8 @@ public class LocationEventService {
         locationEventRepo.deleteById(new LocationEventPk(location, convertLocalDateTimeToDate(date)));
     }
 
-    public List<LocationEvent> getAllByLocation(Long locationId) {
+    public List<LocationEventResponse> getAllByLocation(Long locationId) {
         Location location = locationRepo.getReferenceById(locationId);
-        return locationEventRepo.findByIdLocation(location);
+        return locationMapper.eventToEventResponse(locationEventRepo.findByIdLocation(location));
     }
 }

@@ -1,9 +1,23 @@
 package it.mystic.chat.mapper;
 
 import it.mystic.chat.model.dao.LocationDao;
+import it.mystic.chat.model.dao.LocationEventDao;
+import it.mystic.chat.model.dao.LocationMessageDao;
 import it.mystic.chat.model.dto.Location;
+import it.mystic.chat.model.dto.LocationEvent;
+import it.mystic.chat.model.dto.LocationMessage;
+import it.mystic.chat.model.dto.pk.LocationEventPk;
+import it.mystic.chat.model.dto.pk.LocationMessagePk;
+import it.mystic.chat.model.enums.MessageType;
+import it.mystic.chat.model.response.CharacterInventoryResponse;
+import it.mystic.chat.model.response.LocationEventResponse;
+import it.mystic.chat.model.response.LocationMessageResponse;
+import it.mystic.chat.model.response.LocationResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import java.util.Date;
+import java.util.List;
 
 @Component
 public class LocationMapper {
@@ -22,5 +36,65 @@ public class LocationMapper {
                 null,
                 null
         );
+    }
+
+    public LocationEvent eventDaoToEventDto(Location location, LocationEventDao locationEventDao) {
+        return new LocationEvent(
+                new LocationEventPk(location, new Date()),
+                locationEventDao.getName(),
+                locationEventDao.getDescription(),
+                locationEventDao.getCreateBy()
+        );
+    }
+
+    public LocationMessage messageDaoToMessageDto(Location location, MessageType messageType, LocationMessageDao locationMessageDao) {
+        return new LocationMessage(
+                new LocationMessagePk(
+                        location,
+                        locationMessageDao.getSender(),
+                        new Date()
+                ),
+                messageType,
+                locationMessageDao.getTag(),
+                locationMessageDao.getBody(),
+                locationMessageDao.getImageLink()
+        );
+    }
+
+    public LocationResponse locationToLocationResponse(Location location) {
+        return new LocationResponse(
+                location.getLocationId(),
+                location.getName(),
+                location.getDescription(),
+                location.getImageUrl(),
+                location.getBackgroundUrl(),
+                location.getAmbientUrl()
+        );
+    }
+
+    public List<LocationEventResponse> eventToEventResponse(List<LocationEvent> locationEventList) {
+        return  locationEventList.stream().map(event->{
+           return  new LocationEventResponse(
+                event.getId().getData(),
+                   event.getName(),
+                   event.getDescription(),
+                   event.getCreateBy()
+           );
+        }).toList();
+    }
+
+    public List<LocationMessageResponse> messageToMessageResponse(Long locationId, List<LocationMessage> locationMessageList) {
+        return locationMessageList.stream().filter(locationMessage -> {
+            return locationMessage.getId().getLocation().getLocationId() == locationId;
+        }).map(message->{
+           return new LocationMessageResponse(
+              message.getId().getSender(),
+              message.getId().getData(),
+              message.getMessageType(),
+              message.getTag(),
+              message.getBody(),
+              message.getImageLink()
+            );
+        }).toList();
     }
 }

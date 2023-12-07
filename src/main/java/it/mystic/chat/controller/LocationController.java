@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.model.dao.LocationDao;
 import it.mystic.chat.model.dto.Location;
 import it.mystic.chat.model.enums.Class;
+import it.mystic.chat.model.response.LocationResponse;
 import it.mystic.chat.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +22,9 @@ public class LocationController {
     private LocationService locationService;
 
     @PostMapping("/create")
-    public ResponseEntity<Location> create(@RequestBody LocationDao locationDao) {
-        Location location = locationService.create(locationDao);
-        return ResponseEntity.ok(location);
+    public ResponseEntity<LocationResponse> create(@RequestBody LocationDao locationDao) {
+        LocationResponse response = locationService.create(locationDao);
+        return ResponseEntity.ok(response);
     }
 
     @PutMapping("/update/{locationId}")
@@ -51,9 +52,9 @@ public class LocationController {
     }
 
     @GetMapping(value = "/getById/{locationId}")
-    public ResponseEntity<Location> getById(@PathVariable Long locationId) {
-        Location location = locationService.getById(locationId);
-        return ResponseEntity.ok(location);
+    public ResponseEntity<LocationResponse> getById(@PathVariable Long locationId) {
+        LocationResponse response = locationService.getById(locationId);
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping(value = "/delete/{locationId}")

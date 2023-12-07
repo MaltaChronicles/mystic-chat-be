@@ -4,6 +4,7 @@ import it.mystic.chat.mapper.LocationMapper;
 import it.mystic.chat.model.dao.LocationDao;
 import it.mystic.chat.model.dto.Ability;
 import it.mystic.chat.model.dto.Location;
+import it.mystic.chat.model.response.LocationResponse;
 import it.mystic.chat.repo.LocationRepo;
 import it.mystic.chat.util.MultipartFileConverter;
 import org.hibernate.Hibernate;
@@ -23,9 +24,9 @@ public class LocationService {
     @Autowired
     private MultipartFileConverter converter;
 
-    public Location create(LocationDao locationDao) {
+    public LocationResponse create(LocationDao locationDao) {
         Location location = locationMapper.daoToDto(locationDao);
-        return locationRepo.save(location);
+        return locationMapper.locationToLocationResponse(locationRepo.save(location));
     }
 
     public void update(Long locationId, LocationDao locationDao) {
@@ -65,8 +66,8 @@ public class LocationService {
         }
     }
 
-    public Location getById(Long locationId) {
-        return locationRepo.getReferenceById(locationId);
+    public LocationResponse getById(Long locationId) {
+        return locationMapper.locationToLocationResponse(locationRepo.getReferenceById(locationId));
     }
 
     public void delete(Long locationId) {

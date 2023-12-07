@@ -5,6 +5,7 @@ import it.mystic.chat.model.dao.LocationDao;
 import it.mystic.chat.model.dao.LocationMessageDao;
 import it.mystic.chat.model.dto.Location;
 import it.mystic.chat.model.dto.LocationMessage;
+import it.mystic.chat.model.response.LocationMessageResponse;
 import it.mystic.chat.service.LocationMessageService;
 import it.mystic.chat.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,16 +39,16 @@ public class LocationMessageController {
     }
 
     @GetMapping("/readChat/{locationId}")
-    public ResponseEntity<List<LocationMessage>> readChat(@PathVariable Long locationId) {
-        List<LocationMessage> locationMessageList = locationMessageService.readChat(locationId);
-        return ResponseEntity.ok(locationMessageList);
+    public ResponseEntity<List<LocationMessageResponse>> readChat(@PathVariable Long locationId) {
+        List<LocationMessageResponse> responseList = locationMessageService.readChat(locationId);
+        return ResponseEntity.ok(responseList);
     }
 
     @GetMapping("/readChatBetween/{locationId}")
-    public ResponseEntity<List<LocationMessage>> readChat(@PathVariable Long locationId,
+    public ResponseEntity<List<LocationMessageResponse>> readChat(@PathVariable Long locationId,
                                                           @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
                                                           @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate) {
-        List<LocationMessage> locationMessageList = locationMessageService.readChatBetween(locationId, startDate, endDate);
-        return ResponseEntity.ok(locationMessageList);
+        List<LocationMessageResponse> responseList = locationMessageService.readChatBetween(locationId, startDate, endDate);
+        return ResponseEntity.ok(responseList);
     }
 }

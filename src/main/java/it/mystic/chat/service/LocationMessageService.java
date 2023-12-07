@@ -1,10 +1,11 @@
 package it.mystic.chat.service;
 
-import it.mystic.chat.mapper.LocationMessageMapper;
+import it.mystic.chat.mapper.LocationMapper;
 import it.mystic.chat.model.dao.LocationMessageDao;
 import it.mystic.chat.model.dto.Location;
 import it.mystic.chat.model.dto.LocationMessage;
 import it.mystic.chat.model.enums.MessageType;
+import it.mystic.chat.model.response.LocationMessageResponse;
 import it.mystic.chat.repo.LocationMessageRepo;
 import it.mystic.chat.repo.LocationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,46 +26,44 @@ public class LocationMessageService {
     private LocationRepo locationRepo;
 
     @Autowired
-    private LocationMessageMapper locationMessageMapper;
+    private LocationMapper locationMapper;
 
     public void send(LocationMessageDao locationMessageDao) {
         Location location = locationRepo.getReferenceById(locationMessageDao.getLocationId());
-        LocationMessage locationMessage = locationMessageMapper.daoToDto(location, MessageType.Standard, locationMessageDao);
+        LocationMessage locationMessage = locationMapper.messageDaoToMessageDto(location, MessageType.Standard, locationMessageDao);
         locationMessageRepo.save(locationMessage);
     }
 
     public void sendMaster(LocationMessageDao locationMessageDao) {
         Location location = locationRepo.getReferenceById(locationMessageDao.getLocationId());
-        LocationMessage locationMessage = locationMessageMapper.daoToDto(location, MessageType.Master, locationMessageDao);
+        LocationMessage locationMessage = locationMapper.messageDaoToMessageDto(location, MessageType.Master, locationMessageDao);
         locationMessageRepo.save(locationMessage);
     }
 
     public void sendAction(LocationMessageDao locationMessageDao) {
         Location location = locationRepo.getReferenceById(locationMessageDao.getLocationId());
-        LocationMessage locationMessage = locationMessageMapper.daoToDto(location, MessageType.Azione, locationMessageDao);
+        LocationMessage locationMessage = locationMapper.messageDaoToMessageDto(location, MessageType.Azione, locationMessageDao);
         locationMessageRepo.save(locationMessage);
     }
 
     public void sendSystem(LocationMessageDao locationMessageDao) {
         Location location = locationRepo.getReferenceById(locationMessageDao.getLocationId());
         locationMessageDao.setSender("Sistema");
-        LocationMessage locationMessage = locationMessageMapper.daoToDto(location, MessageType.Sistema, locationMessageDao);
+        LocationMessage locationMessage = locationMapper.messageDaoToMessageDto(location, MessageType.Sistema, locationMessageDao);
         locationMessageRepo.save(locationMessage);
     }
 
-    public List<LocationMessage> readChat(Long locationId) {
+    public List<LocationMessageResponse> readChat(Long locationId) {
         Date endDate = new Date();
         Date startDate = subtractHours(endDate, 3);
-        return locationMessageRepo.findByIdDataBetween(startDate,endDate).stream().filter(locationMessage -> {
-           return locationMessage.getId().getLocation().getLocationId() == locationId;
-        }).toList();
+        return locationMapper.messageToMessageResponse(locationId, locationMessageRepo.findByIdDataBetween(startDate,endDate));
+
     }
 
-    public List<LocationMessage> readChatBetween(Long locationId, LocalDateTime startDate, LocalDateTime endDate) {
-
-        return locationMessageRepo.findByIdDataBetween(convertLocalDateTimeToDate(startDate), convertLocalDateTimeToDate(endDate)).stream()
-                .filter(locationMessage -> {
-            return locationMessage.getId().getLocation().getLocationId() == locationId;
-        }).toList();
+    public List<LocationMessageResponse> readChatBetween(Long locationId, LocalDateTime startDate, LocalDateTime endDate) {
+        return locationMapper.messageToMessageResponse(
+                locationId,
+                locationMessageRepo.findByIdDataBetween(convertLocalDateTimeToDate(startDate), convertLocalDateTimeToDate(endDate))
+        );
     }
 }

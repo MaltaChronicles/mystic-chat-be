@@ -3,6 +3,7 @@ package it.mystic.chat.controller;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.model.dao.LocationEventDao;
 import it.mystic.chat.model.dto.LocationEvent;
+import it.mystic.chat.model.response.LocationEventResponse;
 import it.mystic.chat.service.LocationEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -40,8 +41,8 @@ public class LocationEventController {
     }
 
     @GetMapping("/getAllByLocation/{locationId}")
-    public ResponseEntity<List<LocationEvent>> readChat(@PathVariable Long locationId) {
-        List<LocationEvent> locationEventList = locationEventService.getAllByLocation(locationId);
-        return ResponseEntity.ok(locationEventList);
+    public ResponseEntity<List<LocationEventResponse>> readChat(@PathVariable Long locationId) {
+        List<LocationEventResponse> responseList = locationEventService.getAllByLocation(locationId);
+        return ResponseEntity.ok(responseList);
     }
 }
