@@ -6,11 +6,14 @@ import it.mystic.chat.mapper.PlayerMapper;
 import it.mystic.chat.model.dao.PlayerDao;
 import it.mystic.chat.model.dto.Character;
 import it.mystic.chat.model.dto.Player;
+import it.mystic.chat.model.response.EssentialData;
+import it.mystic.chat.model.response.PlayerResponse;
 import it.mystic.chat.repo.CharacterRepo;
 import it.mystic.chat.repo.PlayerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -25,21 +28,18 @@ public class PlayerService {
     @Autowired
     private PlayerMapper playerMapper;
 
-    public Player create(PlayerDao playerDao) throws ValidationException {
+    public PlayerResponse create(PlayerDao playerDao) throws ValidationException {
         validate(playerDao);
         Player player = playerMapper.daoTo(playerDao);
-        return playerRepo.save(player);
+        return playerMapper.playerToPlayerResponse(playerRepo.save(player));
     }
 
-    public Player getById(Long userId) {
-        return playerRepo.getReferenceById(userId);
+    public PlayerResponse getById(Long userId) {
+        return playerMapper.playerToPlayerResponse(playerRepo.getReferenceById(userId));
     }
 
-    public Map<Long, String> getAll() {
-        return playerRepo.findAll()
-                .stream().collect(
-                        Collectors.toMap(Player::getPlayerId, Player::getUsername)
-                );
+    public List<EssentialData> getAll() {
+        return playerMapper.playerListToMap(playerRepo.findAll());
     }
 
     public void deleteById(Long playerId) {
@@ -93,11 +93,8 @@ public class PlayerService {
 
     }
 
-    public Map<Long, String> getAllLikeUsername(String username) {
+    public List<EssentialData> getAllLikeUsername(String username) {
         username = "%" + username + "%";
-        return playerRepo.findByUsernameIgnoreCaseLike(username)
-                .stream().collect(
-                        Collectors.toMap(Player::getPlayerId, Player::getUsername)
-                );
+        return playerMapper.playerListToMap(playerRepo.findByUsernameIgnoreCaseLike(username));
     }
 }

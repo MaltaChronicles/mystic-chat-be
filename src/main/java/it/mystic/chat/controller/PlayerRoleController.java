@@ -3,11 +3,13 @@ package it.mystic.chat.controller;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.model.dto.PlayerRole;
 import it.mystic.chat.model.enums.Role;
+import it.mystic.chat.model.response.EssentialData;
 import it.mystic.chat.service.PlayerRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -36,8 +38,8 @@ public class PlayerRoleController {
     }
 
     @GetMapping("/getPlayerByRole/{role}")
-    public ResponseEntity<Map<Long, String>> getPlayerByRole(@PathVariable Role role) {
-        Map<Long, String> playerList = playerRoleService.getPlayerByRole(role);
+    public ResponseEntity<List<EssentialData>> getPlayerByRole(@PathVariable Role role) {
+        List<EssentialData> playerList = playerRoleService.getPlayerByRole(role);
         return ResponseEntity.ok(playerList);
     }
 

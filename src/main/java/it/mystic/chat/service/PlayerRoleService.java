@@ -1,14 +1,17 @@
 package it.mystic.chat.service;
 
+import it.mystic.chat.mapper.PlayerMapper;
 import it.mystic.chat.model.dto.Player;
 import it.mystic.chat.model.dto.PlayerRole;
 import it.mystic.chat.model.dto.pk.PlayerRolePk;
 import it.mystic.chat.model.enums.Role;
+import it.mystic.chat.model.response.EssentialData;
 import it.mystic.chat.repo.PlayerRepo;
 import it.mystic.chat.repo.PlayerRoleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -19,6 +22,9 @@ public class PlayerRoleService {
     private PlayerRoleRepo playerRoleRepo;
     @Autowired
     private PlayerRepo playerRepo;
+
+    @Autowired
+    private PlayerMapper playerMapper;
 
     public void removeRole(Long playerId, Role role) {
         playerRoleRepo.deleteById(getPk(playerId, role));
@@ -41,14 +47,7 @@ public class PlayerRoleService {
         return new PlayerRolePk(player, role);
     }
 
-    public Map<Long, String> getPlayerByRole(Role role) {
-        return playerRoleRepo.findAll().stream()
-                .filter(playerRole -> {
-                    return playerRole.getId().getRole() == role;
-                })
-                .map(playerRole -> {
-                    return playerRole.getId().getPlayer();
-                })
-                .collect(Collectors.toMap(Player::getPlayerId, Player::getUsername));
+    public List<EssentialData> getPlayerByRole(Role role) {
+        return playerMapper.roleListToMap(playerRoleRepo.findByIdRole(role));
     }
 }

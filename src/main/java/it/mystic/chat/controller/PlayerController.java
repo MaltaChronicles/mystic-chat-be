@@ -4,11 +4,14 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.exception.GenericException;
 import it.mystic.chat.model.dao.PlayerDao;
 import it.mystic.chat.model.dto.Player;
+import it.mystic.chat.model.response.EssentialData;
+import it.mystic.chat.model.response.PlayerResponse;
 import it.mystic.chat.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -19,26 +22,26 @@ public class PlayerController {
     private PlayerService playerService;
 
     @PostMapping("/create")
-    public ResponseEntity<Player> createPlayer(@RequestBody PlayerDao playerDao) {
-        Player player = playerService.create(playerDao);
-        return ResponseEntity.ok(player);
+    public ResponseEntity<PlayerResponse> createPlayer(@RequestBody PlayerDao playerDao) {
+        PlayerResponse response = playerService.create(playerDao);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/getById/{playerId}")
-    public ResponseEntity<Player> getPlayerById(@PathVariable Long playerId) {
-        Player player = playerService.getById(playerId);
-        return ResponseEntity.ok(player);
+    public ResponseEntity<PlayerResponse> getPlayerById(@PathVariable Long playerId) {
+        PlayerResponse response = playerService.getById(playerId);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<Map<Long, String>> getPlayerById() {
-        Map<Long, String> playerList = playerService.getAll();
+    public ResponseEntity<List<EssentialData>> getPlayerById() {
+        List<EssentialData> playerList = playerService.getAll();
         return ResponseEntity.ok(playerList);
     }
 
     @GetMapping("/getAllLikeUsername/{username}")
-    public ResponseEntity<Map<Long, String>> getAllLikeUsername(@PathVariable String username) {
-        Map<Long, String> playerList = playerService.getAllLikeUsername(username);
+    public ResponseEntity<List<EssentialData>> getAllLikeUsername(@PathVariable String username) {
+        List<EssentialData> playerList = playerService.getAllLikeUsername(username);
         return ResponseEntity.ok(playerList);
     }
 
@@ -61,8 +64,8 @@ public class PlayerController {
     }
 
     @PatchMapping("/addCharacter/{playerId}")
-    public ResponseEntity<Player> addCharacter(@PathVariable Long playerId, @RequestBody Long characterId) throws GenericException {
-        Player player = playerService.addCharacter(playerId, characterId);
+    public ResponseEntity<Void> addCharacter(@PathVariable Long playerId, @RequestBody Long characterId) throws GenericException {
+        playerService.addCharacter(playerId, characterId);
         return ResponseEntity.ok().build();
     }
 
