@@ -9,6 +9,7 @@ import it.mystic.chat.model.dto.CharacterDescription;
 import it.mystic.chat.model.dto.CharacterEquipment;
 import it.mystic.chat.model.dto.CharacterStats;
 import it.mystic.chat.model.enums.*;
+import it.mystic.chat.model.response.CharacterResponse;
 import it.mystic.chat.repo.CharacterRepo;
 import it.mystic.chat.util.MultipartFileConverter;
 import org.hibernate.Hibernate;
@@ -30,39 +31,33 @@ public class CharacterService {
     @Autowired
     private MultipartFileConverter converter;
 
-    public Character create(CharacterDao characterDao) {
+    public CharacterResponse create(CharacterDao characterDao) {
         nameNotUsed(characterDao.getName());
 
-        Character character = characterMapper.daoTo(characterDao);
+        Character character = characterMapper.daoToDto(characterDao);
         character.setStandardOfLiving(StandardOfLiving.Nullo);
 
         character.setStatus(new CharacterStats(character));
         character.setEquipment(new CharacterEquipment(character));
         character.setDescription(new CharacterDescription(character));
-        return characterRepo.save(character);
+        return characterMapper.dtoToResponse(characterRepo.save(character));
     }
 
-    public Character getById(Long characterId) {
+    public CharacterResponse getById(Long characterId) {
         Character character = characterRepo.getReferenceById(characterId);
         character.setStatus(null);
         character.setEquipment(null);
         character.setInventory(null);
-        return character;
+        return characterMapper.dtoToResponse(character);
     }
 
     public Map<Long, String> getAll() {
-        return characterRepo.findAll()
-                .stream().collect(
-                        Collectors.toMap(Character::getCharacterId, Character::getName)
-                );
+        return characterMapper.characterListToMap(characterRepo.findAll());
     }
 
     public Map<Long, String> getAllLikeName(String name) {
         name = "%" + name + "%";
-        return characterRepo.findByNameIgnoreCaseLike(name)
-                .stream().collect(
-                        Collectors.toMap(Character::getCharacterId, Character::getName)
-                );
+        return characterMapper.characterListToMap(characterRepo.findByNameIgnoreCaseLike(name));
     }
 
     public void deleteById(Long characterId) {
@@ -151,5 +146,9 @@ public class CharacterService {
         if (characterRepo.existsByName(name)) {
             throw new ValidationException("name", "nome già in uso");
         }
+    }
+
+    public String getPersonalNote(Long characterId) {
+        return  characterRepo.getReferenceById(characterId).getPersonalNote();
     }
 }

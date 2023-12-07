@@ -3,6 +3,7 @@ package it.mystic.chat.controller;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.exception.GenericException;
 import it.mystic.chat.model.dto.CharacterEquipment;
+import it.mystic.chat.model.response.CharacterEquipmentResponse;
 import it.mystic.chat.service.CharacterEquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +17,9 @@ public class CharacterEquipmentController {
     private CharacterEquipmentService characterService;
 
     @GetMapping("/getCharacterEquipmentById/{characterId}")
-    public ResponseEntity<CharacterEquipment> getCharacterStatsById(@PathVariable Long characterId) {
-        CharacterEquipment characterStats = characterService.getById(characterId);
-        return ResponseEntity.ok(characterStats);
+    public ResponseEntity<CharacterEquipmentResponse> getCharacterEquipmentById(@PathVariable Long characterId) {
+        CharacterEquipmentResponse response = characterService.getById(characterId);
+        return ResponseEntity.ok(response);
     }
 
     @PatchMapping("/equipRightHand/{characterId}/{objectId}")

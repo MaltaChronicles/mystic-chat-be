@@ -1,9 +1,11 @@
 package it.mystic.chat.service;
 
+import it.mystic.chat.mapper.CharacterMapper;
 import it.mystic.chat.model.dto.Character;
 import it.mystic.chat.model.dto.CharacterInventory;
 import it.mystic.chat.model.dto.Object;
 import it.mystic.chat.model.dto.pk.CharacterInventoryPk;
+import it.mystic.chat.model.response.CharacterInventoryResponse;
 import it.mystic.chat.repo.CharacterInventoryRepo;
 import it.mystic.chat.repo.CharacterRepo;
 import it.mystic.chat.repo.ObjectRepo;
@@ -21,6 +23,8 @@ public class CharacterInventoryService {
     private CharacterRepo characterRepo;
     @Autowired
     private ObjectRepo objectRepo;
+    @Autowired
+    private CharacterMapper characterMapper;
 
     public void equipObject(Long characterId, Long objectId) {
         CharacterInventory characterInventory = getReferenceByCharacterIdAndObjectId(characterId, objectId);
@@ -47,9 +51,9 @@ public class CharacterInventoryService {
         characterInventoryRepo.delete(characterInventory);
     }
 
-    public List<CharacterInventory> getAllByCharacterId(Long characterId) {
+    public List<CharacterInventoryResponse> getAllByCharacterId(Long characterId) {
         Character character = characterRepo.getReferenceById(characterId);
-        return character.getInventory();
+        return characterMapper.inventoryToInventoryResponse(character.getInventory());
     }
 
     private CharacterInventory getReferenceByCharacterIdAndObjectId(Long characterId, Long objectId) {

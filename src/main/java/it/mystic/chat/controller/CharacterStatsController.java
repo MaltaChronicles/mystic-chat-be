@@ -5,6 +5,7 @@ import it.mystic.chat.exception.GenericException;
 import it.mystic.chat.model.dto.CharacterStats;
 import it.mystic.chat.model.enums.Affinity;
 import it.mystic.chat.model.enums.DiceValue;
+import it.mystic.chat.model.response.CharacterStatsResponse;
 import it.mystic.chat.service.CharacterStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +19,9 @@ public class CharacterStatsController {
     private CharacterStatusService characterService;
 
     @GetMapping("/getCharacterStatsById/{characterId}")
-    public ResponseEntity<CharacterStats> getCharacterStatsById(@PathVariable Long characterId) {
-        CharacterStats characterStats = characterService.getById(characterId);
-        return ResponseEntity.ok(characterStats);
+    public ResponseEntity<CharacterStatsResponse> getCharacterStatsById(@PathVariable Long characterId) {
+        CharacterStatsResponse response = characterService.getById(characterId);
+        return ResponseEntity.ok(response);
     }
 
     @PatchMapping("/sleep/{characterId}")

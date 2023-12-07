@@ -1,10 +1,12 @@
 package it.mystic.chat.service;
 
 import it.mystic.chat.exception.GenericException;
+import it.mystic.chat.mapper.CharacterMapper;
 import it.mystic.chat.model.dto.Character;
 import it.mystic.chat.model.dto.CharacterEquipment;
 import it.mystic.chat.model.dto.Object;
 import it.mystic.chat.model.enums.RangeType;
+import it.mystic.chat.model.response.CharacterEquipmentResponse;
 import it.mystic.chat.repo.CharacterRepo;
 import it.mystic.chat.repo.ObjectRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ public class CharacterEquipmentService {
 
     @Autowired
     private CharacterInventoryService characterInventoryService;
+
+    @Autowired
+    private CharacterMapper characterMapper;
 
 
     //TODO update delle stats IN e OUT
@@ -144,7 +149,7 @@ public class CharacterEquipmentService {
         characterRepo.save(character);
     }
 
-    public CharacterEquipment getById(Long characterId) {
-        return characterRepo.getReferenceById(characterId).getEquipment();
+    public CharacterEquipmentResponse getById(Long characterId) {
+        return characterMapper.equipmentToEquipmentResponse(characterRepo.getReferenceById(characterId).getEquipment());
     }
 }

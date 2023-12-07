@@ -3,8 +3,8 @@ package it.mystic.chat.controller;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.model.dao.CharacterDao;
 import it.mystic.chat.model.dao.CharacterDescriptionDao;
-import it.mystic.chat.model.dto.Character;
 import it.mystic.chat.model.enums.*;
+import it.mystic.chat.model.response.CharacterResponse;
 import it.mystic.chat.service.CharacterService;
 import jakarta.validation.constraints.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +23,15 @@ public class CharacterController {
     private CharacterService characterService;
 
     @PostMapping("/create")
-    public ResponseEntity<Character> createCharacter(@RequestBody CharacterDao characterDao) {
-        Character character = characterService.create(characterDao);
-        return ResponseEntity.ok(character);
+    public ResponseEntity<CharacterResponse> createCharacter(@RequestBody CharacterDao characterDao) {
+        CharacterResponse response = characterService.create(characterDao);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/getById/{characterId}")
-    public ResponseEntity<Character> getCharacterById(@PathVariable Long characterId) {
-        Character character = characterService.getById(characterId);
-        return ResponseEntity.ok(character);
+    public ResponseEntity<CharacterResponse> getCharacterById(@PathVariable Long characterId) {
+        CharacterResponse response = characterService.getById(characterId);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/getAll")
@@ -119,10 +119,15 @@ public class CharacterController {
         return ResponseEntity.ok().build();
     }
 
-
     @GetMapping("/getAllLikeName/{name}")
     public ResponseEntity<Map<Long, String>> getAllLikeName(@PathVariable String name) {
         Map<Long, String> characterList = characterService.getAllLikeName(name);
         return ResponseEntity.ok(characterList);
+    }
+
+    @GetMapping("/getPersonalNote/{characterId}")
+    public ResponseEntity<String> getPersonalNote(@PathVariable Long characterId) {
+        String personalNote = characterService.getPersonalNote(characterId);
+        return ResponseEntity.ok(personalNote);
     }
 }

@@ -1,10 +1,12 @@
 package it.mystic.chat.service;
 
 import it.mystic.chat.exception.GenericException;
+import it.mystic.chat.mapper.CharacterMapper;
 import it.mystic.chat.model.dto.Character;
 import it.mystic.chat.model.dto.CharacterStats;
 import it.mystic.chat.model.enums.Affinity;
 import it.mystic.chat.model.enums.DiceValue;
+import it.mystic.chat.model.response.CharacterStatsResponse;
 import it.mystic.chat.repo.CharacterRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +17,11 @@ public class CharacterStatusService {
     @Autowired
     private CharacterRepo characterRepo;
 
-    public CharacterStats getById(Long characterId) {
-        return characterRepo.getReferenceById(characterId).getStatus();
+    @Autowired
+    private CharacterMapper characterMapper;
+
+    public CharacterStatsResponse getById(Long characterId) {
+        return characterMapper.statsToStatsResponse(characterRepo.getReferenceById(characterId).getStatus());
     }
 
     public void sleep(Long characterId) {
