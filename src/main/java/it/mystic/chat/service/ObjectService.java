@@ -5,6 +5,7 @@ import it.mystic.chat.model.dao.ObjectDao;
 import it.mystic.chat.model.dto.Object;
 import it.mystic.chat.model.enums.ObjectRank;
 import it.mystic.chat.model.enums.ObjectType;
+import it.mystic.chat.model.response.ObjectResponse;
 import it.mystic.chat.repo.ObjectRepo;
 import it.mystic.chat.util.MultipartFileConverter;
 import org.hibernate.Hibernate;
@@ -26,9 +27,9 @@ public class ObjectService {
     @Autowired
     private MultipartFileConverter converter;
 
-    public Object create(ObjectDao objectDao) {
+    public ObjectResponse create(ObjectDao objectDao) {
         Object object = objectMapper.daoTo(objectDao);
-        return objectRepo.save(object);
+        return objectMapper.objectToObjectResponse(objectRepo.save(object));
     }
 
     public void update(ObjectDao objectDao, Long objectId) throws IOException {
@@ -41,15 +42,17 @@ public class ObjectService {
         objectRepo.deleteById(objectId);
     }
 
-    public Object getById(Long objectId) {
-        return objectRepo.getReferenceById(objectId);
+    public ObjectResponse getById(Long objectId) {
+        return objectMapper.objectToObjectResponse(objectRepo.getReferenceById(objectId));
     }
 
-    public List<Object> getMarketByType(ObjectType objectType) {
+    public List<ObjectResponse> getMarketByType(ObjectType objectType) {
         return objectRepo.getAllByType(objectType).stream().filter(object -> {
             Boolean rank = object.getRank().equals(ObjectRank.D) || object.getRank().equals(ObjectRank.C) || object.getRank().equals(ObjectRank.B);
             Boolean notUnique = !object.getIsUnique();
             return rank && notUnique;
+        }).map(object -> {
+            return objectMapper.objectToObjectResponse(object);
         }).collect(Collectors.toList());
     }
 
