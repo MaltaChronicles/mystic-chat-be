@@ -1,6 +1,5 @@
 package it.mystic.chat.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import it.mystic.chat.model.dto.pk.LocationMessagePk;
 import it.mystic.chat.model.enums.MessageType;
 import jakarta.persistence.Column;
@@ -16,7 +15,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class LocationMessage {
     @EmbeddedId
     LocationMessagePk id;

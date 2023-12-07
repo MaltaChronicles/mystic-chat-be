@@ -1,7 +1,6 @@
 package it.mystic.chat.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import it.mystic.chat.model.enums.Affinity;
 import it.mystic.chat.model.enums.DiceValue;
 import it.mystic.chat.model.enums.Race;
@@ -16,7 +15,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class CharacterStats {
     @Column
     Integer level;

@@ -1,6 +1,5 @@
 package it.mystic.chat.model.dao;
 
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

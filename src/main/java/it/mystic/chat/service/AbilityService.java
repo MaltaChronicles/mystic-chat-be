@@ -65,6 +65,8 @@ public class AbilityService {
 
     public List<AbilityResponse> getByClass(Class abilityClass) {
         return abilityRepo.getReferenceByAbilityClass(abilityClass).stream()
-                .map(ability -> {return abilityMapper.dtoToResponse(ability);}).toList();
+                .map(ability -> {
+                    return abilityMapper.dtoToResponse(ability);
+                }).toList();
     }
 }

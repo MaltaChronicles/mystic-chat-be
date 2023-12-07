@@ -1,11 +1,7 @@
 package it.mystic.chat.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-import it.mystic.chat.model.dao.AbilityDao;
-import it.mystic.chat.model.dto.Ability;
 import it.mystic.chat.model.dto.Medal;
-import it.mystic.chat.model.enums.Class;
-import it.mystic.chat.service.AbilityService;
 import it.mystic.chat.service.MedalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.List;
 
 @RestController
 @RequestMapping("/off/medal")

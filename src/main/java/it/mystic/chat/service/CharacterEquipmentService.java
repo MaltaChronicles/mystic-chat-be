@@ -3,7 +3,6 @@ package it.mystic.chat.service;
 import it.mystic.chat.exception.GenericException;
 import it.mystic.chat.mapper.CharacterMapper;
 import it.mystic.chat.model.dto.Character;
-import it.mystic.chat.model.dto.CharacterEquipment;
 import it.mystic.chat.model.dto.Object;
 import it.mystic.chat.model.enums.RangeType;
 import it.mystic.chat.model.response.CharacterEquipmentResponse;

@@ -1,9 +1,7 @@
 package it.mystic.chat.service;
 
-import it.mystic.chat.model.dto.Ability;
 import it.mystic.chat.model.dto.Medal;
 import it.mystic.chat.model.dto.Player;
-import it.mystic.chat.repo.CharacterRepo;
 import it.mystic.chat.repo.MedalRepo;
 import it.mystic.chat.repo.PlayerRepo;
 import it.mystic.chat.util.MultipartFileConverter;
@@ -47,7 +45,7 @@ public class MedalService {
     }
 
     public Medal getById(Long medalId) {
-        return  medalRepo.getReferenceById(medalId);
+        return medalRepo.getReferenceById(medalId);
     }
 
     public void delete(Long medalId) {

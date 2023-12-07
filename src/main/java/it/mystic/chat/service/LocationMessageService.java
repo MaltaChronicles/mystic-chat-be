@@ -56,7 +56,7 @@ public class LocationMessageService {
     public List<LocationMessageResponse> readChat(Long locationId) {
         Date endDate = new Date();
         Date startDate = subtractHours(endDate, 3);
-        return locationMapper.messageToMessageResponse(locationId, locationMessageRepo.findByIdDataBetween(startDate,endDate));
+        return locationMapper.messageToMessageResponse(locationId, locationMessageRepo.findByIdDataBetween(startDate, endDate));
 
     }
 

@@ -1,6 +1,5 @@
 package it.mystic.chat.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import it.mystic.chat.model.enums.AbilityType;
 import it.mystic.chat.model.enums.Class;
 import it.mystic.chat.model.enums.DurationType;
@@ -15,7 +14,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Ability {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -2,7 +2,6 @@ package it.mystic.chat.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.exception.GenericException;
-import it.mystic.chat.model.dto.CharacterEquipment;
 import it.mystic.chat.model.response.CharacterEquipmentResponse;
 import it.mystic.chat.service.CharacterEquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;

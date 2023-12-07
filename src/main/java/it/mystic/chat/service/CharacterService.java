@@ -19,7 +19,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Service
 public class CharacterService {
@@ -149,6 +148,6 @@ public class CharacterService {
     }
 
     public String getPersonalNote(Long characterId) {
-        return  characterRepo.getReferenceById(characterId).getPersonalNote();
+        return characterRepo.getReferenceById(characterId).getPersonalNote();
     }
 }

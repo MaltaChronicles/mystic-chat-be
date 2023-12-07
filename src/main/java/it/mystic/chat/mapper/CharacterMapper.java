@@ -3,8 +3,8 @@ package it.mystic.chat.mapper;
 
 import it.mystic.chat.model.dao.CharacterDao;
 import it.mystic.chat.model.dao.CharacterDescriptionDao;
-import it.mystic.chat.model.dto.*;
 import it.mystic.chat.model.dto.Character;
+import it.mystic.chat.model.dto.*;
 import it.mystic.chat.model.response.CharacterEquipmentResponse;
 import it.mystic.chat.model.response.CharacterInventoryResponse;
 import it.mystic.chat.model.response.CharacterResponse;
@@ -87,7 +87,7 @@ public class CharacterMapper {
     }
 
     public List<CharacterInventoryResponse> inventoryToInventoryResponse(List<CharacterInventory> inventory) {
-        return inventory.stream().map(inv->{
+        return inventory.stream().map(inv -> {
             return new CharacterInventoryResponse(inv.getId().getObject(), inv.getIsEquip());
         }).toList();
     }

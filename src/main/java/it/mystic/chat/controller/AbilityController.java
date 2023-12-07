@@ -2,7 +2,6 @@ package it.mystic.chat.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.model.dao.AbilityDao;
-import it.mystic.chat.model.dto.Ability;
 import it.mystic.chat.model.enums.Class;
 import it.mystic.chat.model.response.AbilityResponse;
 import it.mystic.chat.service.AbilityService;

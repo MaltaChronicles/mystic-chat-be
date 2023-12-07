@@ -1,7 +1,6 @@
 package it.mystic.chat.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-import it.mystic.chat.model.dto.CharacterInventory;
 import it.mystic.chat.model.response.CharacterInventoryResponse;
 import it.mystic.chat.service.CharacterInventoryService;
 import org.springframework.beans.factory.annotation.Autowired;

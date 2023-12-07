@@ -9,7 +9,6 @@ import it.mystic.chat.model.dto.LocationMessage;
 import it.mystic.chat.model.dto.pk.LocationEventPk;
 import it.mystic.chat.model.dto.pk.LocationMessagePk;
 import it.mystic.chat.model.enums.MessageType;
-import it.mystic.chat.model.response.CharacterInventoryResponse;
 import it.mystic.chat.model.response.LocationEventResponse;
 import it.mystic.chat.model.response.LocationMessageResponse;
 import it.mystic.chat.model.response.LocationResponse;
@@ -24,7 +23,7 @@ public class LocationMapper {
     @Value("${upload.dir}")
     private String uploadDir;
 
-    public Location daoToDto(LocationDao locationDao){
+    public Location daoToDto(LocationDao locationDao) {
         return new Location(
                 null,
                 locationDao.getName(),
@@ -73,27 +72,27 @@ public class LocationMapper {
     }
 
     public List<LocationEventResponse> eventToEventResponse(List<LocationEvent> locationEventList) {
-        return  locationEventList.stream().map(event->{
-           return  new LocationEventResponse(
-                event.getId().getData(),
-                   event.getName(),
-                   event.getDescription(),
-                   event.getCreateBy()
-           );
+        return locationEventList.stream().map(event -> {
+            return new LocationEventResponse(
+                    event.getId().getData(),
+                    event.getName(),
+                    event.getDescription(),
+                    event.getCreateBy()
+            );
         }).toList();
     }
 
     public List<LocationMessageResponse> messageToMessageResponse(Long locationId, List<LocationMessage> locationMessageList) {
         return locationMessageList.stream().filter(locationMessage -> {
             return locationMessage.getId().getLocation().getLocationId() == locationId;
-        }).map(message->{
-           return new LocationMessageResponse(
-              message.getId().getSender(),
-              message.getId().getData(),
-              message.getMessageType(),
-              message.getTag(),
-              message.getBody(),
-              message.getImageLink()
+        }).map(message -> {
+            return new LocationMessageResponse(
+                    message.getId().getSender(),
+                    message.getId().getData(),
+                    message.getMessageType(),
+                    message.getTag(),
+                    message.getBody(),
+                    message.getImageLink()
             );
         }).toList();
     }
