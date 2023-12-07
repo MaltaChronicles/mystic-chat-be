@@ -30,38 +30,38 @@ public class LocationMessageService {
 
     public void send(LocationMessageDao locationMessageDao) {
         Location location = locationRepo.getReferenceById(locationMessageDao.getLocationId());
-        LocationMessage locationMessage = locationMapper.messageDaoToMessageDto(location, MessageType.Standard, locationMessageDao);
+        LocationMessage locationMessage = locationMapper.messageDaoToDto(location, MessageType.Standard, locationMessageDao);
         locationMessageRepo.save(locationMessage);
     }
 
     public void sendMaster(LocationMessageDao locationMessageDao) {
         Location location = locationRepo.getReferenceById(locationMessageDao.getLocationId());
-        LocationMessage locationMessage = locationMapper.messageDaoToMessageDto(location, MessageType.Master, locationMessageDao);
+        LocationMessage locationMessage = locationMapper.messageDaoToDto(location, MessageType.Master, locationMessageDao);
         locationMessageRepo.save(locationMessage);
     }
 
     public void sendAction(LocationMessageDao locationMessageDao) {
         Location location = locationRepo.getReferenceById(locationMessageDao.getLocationId());
-        LocationMessage locationMessage = locationMapper.messageDaoToMessageDto(location, MessageType.Azione, locationMessageDao);
+        LocationMessage locationMessage = locationMapper.messageDaoToDto(location, MessageType.Azione, locationMessageDao);
         locationMessageRepo.save(locationMessage);
     }
 
     public void sendSystem(LocationMessageDao locationMessageDao) {
         Location location = locationRepo.getReferenceById(locationMessageDao.getLocationId());
         locationMessageDao.setSender("Sistema");
-        LocationMessage locationMessage = locationMapper.messageDaoToMessageDto(location, MessageType.Sistema, locationMessageDao);
+        LocationMessage locationMessage = locationMapper.messageDaoToDto(location, MessageType.Sistema, locationMessageDao);
         locationMessageRepo.save(locationMessage);
     }
 
     public List<LocationMessageResponse> readChat(Long locationId) {
         Date endDate = new Date();
         Date startDate = subtractHours(endDate, 3);
-        return locationMapper.messageToMessageResponse(locationId, locationMessageRepo.findByIdDataBetween(startDate, endDate));
+        return locationMapper.messageDtoToResponse(locationId, locationMessageRepo.findByIdDataBetween(startDate, endDate));
 
     }
 
     public List<LocationMessageResponse> readChatBetween(Long locationId, LocalDateTime startDate, LocalDateTime endDate) {
-        return locationMapper.messageToMessageResponse(
+        return locationMapper.messageDtoToResponse(
                 locationId,
                 locationMessageRepo.findByIdDataBetween(convertLocalDateTimeToDate(startDate), convertLocalDateTimeToDate(endDate))
         );

@@ -28,7 +28,7 @@ public class MedalService {
 
     public MedalResponse create(String name) {
         Medal medal = medalMapper.daoTo(name);
-        return medalMapper.medalToMedalResponse(medalRepo.save(medal));
+        return medalMapper.dtoToResponse(medalRepo.save(medal));
     }
 
     public void update(Long medalId, String name) {
@@ -48,7 +48,7 @@ public class MedalService {
     }
 
     public MedalResponse getById(Long medalId) {
-        return medalMapper.medalToMedalResponse(medalRepo.getReferenceById(medalId));
+        return medalMapper.dtoToResponse(medalRepo.getReferenceById(medalId));
     }
 
     public void delete(Long medalId) {

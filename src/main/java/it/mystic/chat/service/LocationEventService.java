@@ -29,7 +29,7 @@ public class LocationEventService {
 
     public void addEvent(Long locationId, LocationEventDao locationEventDao) {
         Location location = locationRepo.getReferenceById(locationId);
-        LocationEvent locationEvent = locationMapper.eventDaoToEventDto(location, locationEventDao);
+        LocationEvent locationEvent = locationMapper.eventDaoToDto(location, locationEventDao);
         locationEventRepo.save(locationEvent);
     }
 
@@ -49,6 +49,6 @@ public class LocationEventService {
 
     public List<LocationEventResponse> getAllByLocation(Long locationId) {
         Location location = locationRepo.getReferenceById(locationId);
-        return locationMapper.eventToEventResponse(locationEventRepo.findByIdLocation(location));
+        return locationMapper.eventDtoToResponse(locationEventRepo.findByIdLocation(location));
     }
 }

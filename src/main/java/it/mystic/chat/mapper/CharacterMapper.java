@@ -5,7 +5,9 @@ import it.mystic.chat.model.dao.CharacterDao;
 import it.mystic.chat.model.dao.CharacterDescriptionDao;
 import it.mystic.chat.model.dto.Character;
 import it.mystic.chat.model.dto.*;
+import it.mystic.chat.model.enums.StandardOfLiving;
 import it.mystic.chat.model.response.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -20,18 +22,34 @@ public class CharacterMapper {
     @Value("${upload.dir}")
     private String uploadDir;
 
+    @Autowired
+    private ObjectMapper objectMapper;
+    @Autowired
+    private AbilityMapper abilityMapper;
+
     public Character daoToDto(CharacterDao characterDao) {
         return new Character(
+                null,
                 characterDao.getName(),
                 characterDao.getIdentity(),
                 characterDao.getOrigin(),
                 characterDao.getTheme(),
+                StandardOfLiving.Nullo,
                 characterDao.getJob(),
-                characterDao.getRace()
+                characterDao.getRace(),
+                "",
+                "",
+                "",
+
+                new CharacterStats(),
+                new CharacterDescription(),
+                new CharacterEquipment(),
+                null,
+                null
         );
     }
 
-    public CharacterDescription descriptionDaoToDescription(CharacterDescriptionDao characterDescriptionDao, Character character) {
+    public CharacterDescription descriptionDaoToDto(CharacterDescriptionDao characterDescriptionDao, Character character) {
         return new CharacterDescription(
                 characterDescriptionDao.getRightEye(),
                 characterDescriptionDao.getLeftEye(),
@@ -74,7 +92,7 @@ public class CharacterMapper {
         }).toList();
     }
 
-    public CharacterEquipmentResponse equipmentToEquipmentResponse(CharacterEquipment equipment) {
+    public CharacterEquipmentResponse equipmentDtoToResponse(CharacterEquipment equipment) {
         return new CharacterEquipmentResponse(
                 equipment.getRightHand(),
                 equipment.getLeftHand(),
@@ -85,13 +103,13 @@ public class CharacterMapper {
         );
     }
 
-    public List<CharacterInventoryResponse> inventoryToInventoryResponse(List<CharacterInventory> inventory) {
+    public List<CharacterInventoryResponse> inventoryDtoToResponse(List<CharacterInventory> inventory) {
         return inventory.stream().map(inv -> {
-            return new CharacterInventoryResponse(inv.getId().getObject(), inv.getIsEquip());
+            return new CharacterInventoryResponse(objectMapper.dtoToResponse(inv.getId().getObject()), inv.getIsEquip());
         }).toList();
     }
 
-    public CharacterStatsResponse statsToStatsResponse(CharacterStats status) {
+    public CharacterStatsResponse statsDtoToResponse(CharacterStats status) {
         return new CharacterStatsResponse(
                 status.getLevel(),
                 status.getTotalLife(),
@@ -147,10 +165,10 @@ public class CharacterMapper {
         );
     }
 
-    public List<CharacterAbilityThreeResponse> abilityThreeToAbilityThreeResponse(List<CharacterAbilityThree> characterAbilityThreeList) {
+    public List<CharacterAbilityThreeResponse> abilityThreeDtoToResponse(List<CharacterAbilityThree> characterAbilityThreeList) {
         return characterAbilityThreeList.stream().map(abilityThree -> {
             return new CharacterAbilityThreeResponse(
-                    abilityThree.getId().getAbility(),
+                    abilityMapper.dtoToResponse(abilityThree.getId().getAbility()),
                     abilityThree.getLevel()
             );
         }).toList();

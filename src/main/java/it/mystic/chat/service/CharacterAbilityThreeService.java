@@ -29,8 +29,6 @@ public class CharacterAbilityThreeService {
     private AbilityRepo abilityRepo;
     @Autowired
     private CharacterMapper characterMapper;
-    @Autowired
-    private CharacterStatusService characterStatusService;
 
     @SuppressWarnings("ConstantConditions")
     public void addAbility(Long characterId, Long abilityId) {
@@ -56,6 +54,6 @@ public class CharacterAbilityThreeService {
 
     public List<CharacterAbilityThreeResponse> getAllByCharacterId(Long characterId) {
         Character character = characterRepo.getReferenceById(characterId);
-        return characterMapper.abilityThreeToAbilityThreeResponse(character.getAbilityThree());
+        return characterMapper.abilityThreeDtoToResponse(character.getAbilityThree());
     }
 }

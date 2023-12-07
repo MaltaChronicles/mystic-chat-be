@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.builder.ToStringExclude;
 
 @Entity
 @Data
@@ -41,6 +42,7 @@ public class CharacterEquipment {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "character_id")
     @Id
+    @ToStringExclude
     Character character;
 
     public CharacterEquipment(Character character) {

@@ -22,7 +22,7 @@ public class PlayerMapper {
     @Autowired
     private MedalMapper medalMapper;
 
-    public Player daoTo(PlayerDao playerDao) {
+    public Player daoToDto(PlayerDao playerDao) {
         return new Player(
                 null,
                 playerDao.getUsername(),
@@ -52,7 +52,7 @@ public class PlayerMapper {
         }).toList();
     }
 
-    public PlayerResponse playerToPlayerResponse(Player player) {
+    public PlayerResponse dtoToResponse(Player player) {
         return new  PlayerResponse(
                 player.getPlayerId(),
                 player.getUsername(),
@@ -61,7 +61,7 @@ public class PlayerMapper {
                 player.getUltimoAccesso(),
                 player.getUltimaGiocata(),
 
-                roleListToRoleResponseList(player.getRoles()),
+                roleListToResponseList(player.getRoles()),
 
                 new EssentialData(player.getCharacter1().getCharacterId(), player.getCharacter1().getName()),
                 new EssentialData(player.getCharacter2().getCharacterId(), player.getCharacter2().getName()),
@@ -70,11 +70,11 @@ public class PlayerMapper {
 
                 new EssentialData(player.getLocation().getLocationId(), player.getLocation().getName()),
 
-                medalMapper.medalListToMedalResponseList(player.getMedals())
+                medalMapper.medalListToResponseList(player.getMedals())
         );
     }
 
-    private List<PlayerRoleResponse> roleListToRoleResponseList(List<PlayerRole> playerRoleList) {
+    private List<PlayerRoleResponse> roleListToResponseList(List<PlayerRole> playerRoleList) {
         return playerRoleList.stream().map(playerRole -> {
             return new PlayerRoleResponse(playerRole.getId().getRole(), playerRole.getIsBoss());
         }).toList();

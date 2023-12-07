@@ -12,7 +12,7 @@ public class ObjectMapper {
     @Value("${upload.dir}")
     private String uploadDir;
 
-    public Object daoTo(ObjectDao objectDao) {
+    public Object daoToDto(ObjectDao objectDao) {
         return new Object(
                 null,
                 objectDao.getName(),
@@ -57,7 +57,7 @@ public class ObjectMapper {
         );
     }
 
-    public ObjectResponse objectToObjectResponse(Object object) {
+    public ObjectResponse dtoToResponse(Object object) {
         return new ObjectResponse(
                 object.getObjectId(),
                 object.getName(),

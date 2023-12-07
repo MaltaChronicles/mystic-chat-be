@@ -8,6 +8,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.builder.ToStringExclude;
 
 
 @Entity
@@ -122,6 +123,7 @@ public class CharacterStats {
     @OneToOne
     @JoinColumn(name = "character_id")
     @Id
+    @ToStringExclude
     Character character;
 
     public CharacterStats(Character character) {

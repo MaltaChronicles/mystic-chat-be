@@ -4,7 +4,7 @@ import it.mystic.chat.model.dto.Ability;
 
 public record CharacterAbilityThreeResponse (
 
-    Ability ability,
+    AbilityResponse abilityResponse,
 
     Integer level
 ){}

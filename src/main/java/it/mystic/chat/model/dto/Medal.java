@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.builder.ToStringExclude;
 
 import java.util.List;
 
@@ -25,5 +26,6 @@ public class Medal {
     String imageUrl;
 
     @ManyToMany(mappedBy = "medals")
+    @ToStringExclude
     List<Player> players;
 }

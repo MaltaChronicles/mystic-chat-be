@@ -37,7 +37,7 @@ public class LocationMapper {
         );
     }
 
-    public LocationEvent eventDaoToEventDto(Location location, LocationEventDao locationEventDao) {
+    public LocationEvent eventDaoToDto(Location location, LocationEventDao locationEventDao) {
         return new LocationEvent(
                 new LocationEventPk(location, new Date()),
                 locationEventDao.getName(),
@@ -46,7 +46,7 @@ public class LocationMapper {
         );
     }
 
-    public LocationMessage messageDaoToMessageDto(Location location, MessageType messageType, LocationMessageDao locationMessageDao) {
+    public LocationMessage messageDaoToDto(Location location, MessageType messageType, LocationMessageDao locationMessageDao) {
         return new LocationMessage(
                 new LocationMessagePk(
                         location,
@@ -60,7 +60,7 @@ public class LocationMapper {
         );
     }
 
-    public LocationResponse locationToLocationResponse(Location location) {
+    public LocationResponse dtoToResponse(Location location) {
         return new LocationResponse(
                 location.getLocationId(),
                 location.getName(),
@@ -71,7 +71,7 @@ public class LocationMapper {
         );
     }
 
-    public List<LocationEventResponse> eventToEventResponse(List<LocationEvent> locationEventList) {
+    public List<LocationEventResponse> eventDtoToResponse(List<LocationEvent> locationEventList) {
         return locationEventList.stream().map(event -> {
             return new LocationEventResponse(
                     event.getId().getData(),
@@ -82,7 +82,7 @@ public class LocationMapper {
         }).toList();
     }
 
-    public List<LocationMessageResponse> messageToMessageResponse(Long locationId, List<LocationMessage> locationMessageList) {
+    public List<LocationMessageResponse> messageDtoToResponse(Long locationId, List<LocationMessage> locationMessageList) {
         return locationMessageList.stream().filter(locationMessage -> {
             return locationMessage.getId().getLocation().getLocationId() == locationId;
         }).map(message -> {

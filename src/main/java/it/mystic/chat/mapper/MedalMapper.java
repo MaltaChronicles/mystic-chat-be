@@ -24,14 +24,14 @@ public class MedalMapper {
         );
     }
 
-    public MedalResponse medalToMedalResponse(Medal medal) {
+    public MedalResponse dtoToResponse(Medal medal) {
         return new MedalResponse(
                 medal.getName(),
                 medal.getImageUrl()
         );
     }
 
-    public List<MedalResponse> medalListToMedalResponseList(List<Medal> medalList) {
+    public List<MedalResponse> medalListToResponseList(List<Medal> medalList) {
         return medalList.stream().map(medal -> {
           return new MedalResponse(medal.getName(), medal.getImageUrl())  ;
         }).toList();

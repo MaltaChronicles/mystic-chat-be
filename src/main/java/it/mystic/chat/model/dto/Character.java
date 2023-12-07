@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.apache.commons.lang3.builder.ToStringExclude;
 
 import java.util.List;
 
@@ -40,47 +41,26 @@ public class Character {
     String rumors;
 
     @OneToOne(mappedBy = "character", cascade = CascadeType.ALL)
+    @ToStringExclude
     CharacterStats status;
 
     @OneToOne(mappedBy = "character", cascade = CascadeType.ALL)
+    @ToStringExclude
     CharacterDescription description;
 
     @OneToOne(mappedBy = "character", cascade = CascadeType.ALL)
+    @ToStringExclude
     CharacterEquipment equipment;
 
     @OneToMany(mappedBy = "id.character", cascade = CascadeType.ALL)
+    @ToStringExclude
     List<CharacterInventory> inventory;
 
     @OneToMany(mappedBy = "id.character", cascade = CascadeType.ALL)
+    @ToStringExclude
     List<CharacterAbilityThree> abilityThree;
 
 
 
     //TODO Aggiungere Talenti
-
-    public Character(String name, String identity, Origin origin, Theme theme, Job job, Race race) {
-        this.name = name;
-        this.identity = identity;
-        this.origin = origin;
-        this.theme = theme;
-        this.job = job;
-        this.race = race;
-    }
-
-    @Override
-    public String toString() {
-        return "Character{" +
-                "characterId=" + characterId +
-                ", name='" + name + '\'' +
-                ", identity='" + identity + '\'' +
-                ", origin=" + origin +
-                ", theme=" + theme +
-                ", standardOfLiving=" + standardOfLiving +
-                ", job=" + job +
-                ", race=" + race +
-                ", masterNote='" + masterNote + '\'' +
-                ", personalNote='" + personalNote + '\'' +
-                ", rumors='" + rumors + '\'' +
-                '}';
-    }
 }

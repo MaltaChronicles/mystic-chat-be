@@ -70,7 +70,7 @@ public class CharacterInventoryService {
 
     public List<CharacterInventoryResponse> getAllByCharacterId(Long characterId) {
         Character character = characterRepo.getReferenceById(characterId);
-        return characterMapper.inventoryToInventoryResponse(character.getInventory());
+        return characterMapper.inventoryDtoToResponse(character.getInventory());
     }
 
     private CharacterInventory getReferenceByCharacterIdAndObjectId(Long characterId, Long objectId) {

@@ -25,7 +25,7 @@ public class LocationService {
 
     public LocationResponse create(LocationDao locationDao) {
         Location location = locationMapper.daoToDto(locationDao);
-        return locationMapper.locationToLocationResponse(locationRepo.save(location));
+        return locationMapper.dtoToResponse(locationRepo.save(location));
     }
 
     public void update(Long locationId, LocationDao locationDao) {
@@ -66,7 +66,7 @@ public class LocationService {
     }
 
     public LocationResponse getById(Long locationId) {
-        return locationMapper.locationToLocationResponse(locationRepo.getReferenceById(locationId));
+        return locationMapper.dtoToResponse(locationRepo.getReferenceById(locationId));
     }
 
     public void delete(Long locationId) {

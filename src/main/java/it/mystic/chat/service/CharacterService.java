@@ -36,11 +36,6 @@ public class CharacterService {
         nameNotUsed(characterDao.getName());
 
         Character character = characterMapper.daoToDto(characterDao);
-        character.setStandardOfLiving(StandardOfLiving.Nullo);
-
-        character.setStatus(new CharacterStats(character));
-        character.setEquipment(new CharacterEquipment(character));
-        character.setDescription(new CharacterDescription(character));
         return characterMapper.dtoToResponse(characterRepo.save(character));
     }
 
@@ -128,7 +123,7 @@ public class CharacterService {
 
     public void updateDescriptionById(Long characterId, CharacterDescriptionDao characterDescriptionDao) {
         Character character = characterRepo.getReferenceById(characterId);
-        CharacterDescription characterDescription = characterMapper.descriptionDaoToDescription(characterDescriptionDao, character);
+        CharacterDescription characterDescription = characterMapper.descriptionDaoToDto(characterDescriptionDao, character);
         character.setDescription(characterDescription);
         characterRepo.save(character);
     }

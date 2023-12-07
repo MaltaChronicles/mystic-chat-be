@@ -8,6 +8,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.builder.ToStringExclude;
 
 import java.util.List;
 
@@ -46,5 +47,6 @@ public class Ability {
     String actionLink;
 
     @OneToMany(mappedBy = "id.ability", cascade = CascadeType.ALL)
+    @ToStringExclude
     List<CharacterAbilityThree> characterAbilityThrees;
 }

@@ -20,7 +20,7 @@ public class CharacterStatusService {
     private CharacterMapper characterMapper;
 
     public CharacterStatsResponse getById(Long characterId) {
-        return characterMapper.statsToStatsResponse(characterRepo.getReferenceById(characterId).getStatus());
+        return characterMapper.statsDtoToResponse(characterRepo.getReferenceById(characterId).getStatus());
     }
 
     public void sleep(Long characterId) {

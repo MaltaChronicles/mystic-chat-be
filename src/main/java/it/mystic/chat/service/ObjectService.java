@@ -28,12 +28,12 @@ public class ObjectService {
     private MultipartFileConverter converter;
 
     public ObjectResponse create(ObjectDao objectDao) {
-        Object object = objectMapper.daoTo(objectDao);
-        return objectMapper.objectToObjectResponse(objectRepo.save(object));
+        Object object = objectMapper.daoToDto(objectDao);
+        return objectMapper.dtoToResponse(objectRepo.save(object));
     }
 
     public void update(ObjectDao objectDao, Long objectId) throws IOException {
-        Object object = objectMapper.daoTo(objectDao);
+        Object object = objectMapper.daoToDto(objectDao);
         object.setObjectId(objectId);
         objectRepo.save(object);
     }
@@ -43,7 +43,7 @@ public class ObjectService {
     }
 
     public ObjectResponse getById(Long objectId) {
-        return objectMapper.objectToObjectResponse(objectRepo.getReferenceById(objectId));
+        return objectMapper.dtoToResponse(objectRepo.getReferenceById(objectId));
     }
 
     public List<ObjectResponse> getMarketByType(ObjectType objectType) {
@@ -52,7 +52,7 @@ public class ObjectService {
             Boolean notUnique = !object.getIsUnique();
             return rank && notUnique;
         }).map(object -> {
-            return objectMapper.objectToObjectResponse(object);
+            return objectMapper.dtoToResponse(object);
         }).collect(Collectors.toList());
     }
 

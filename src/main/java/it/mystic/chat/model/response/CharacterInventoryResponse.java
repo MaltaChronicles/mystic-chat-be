@@ -4,7 +4,7 @@ import it.mystic.chat.model.dto.Object;
 
 public record CharacterInventoryResponse(
 
-        Object object,
+        ObjectResponse objectResponse,
 
         Boolean isEquip
 ) {

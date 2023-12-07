@@ -149,6 +149,6 @@ public class CharacterEquipmentService {
     }
 
     public CharacterEquipmentResponse getById(Long characterId) {
-        return characterMapper.equipmentToEquipmentResponse(characterRepo.getReferenceById(characterId).getEquipment());
+        return characterMapper.equipmentDtoToResponse(characterRepo.getReferenceById(characterId).getEquipment());
     }
 }

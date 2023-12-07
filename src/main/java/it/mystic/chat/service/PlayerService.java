@@ -30,12 +30,12 @@ public class PlayerService {
 
     public PlayerResponse create(PlayerDao playerDao) throws ValidationException {
         validate(playerDao);
-        Player player = playerMapper.daoTo(playerDao);
-        return playerMapper.playerToPlayerResponse(playerRepo.save(player));
+        Player player = playerMapper.daoToDto(playerDao);
+        return playerMapper.dtoToResponse(playerRepo.save(player));
     }
 
     public PlayerResponse getById(Long userId) {
-        return playerMapper.playerToPlayerResponse(playerRepo.getReferenceById(userId));
+        return playerMapper.dtoToResponse(playerRepo.getReferenceById(userId));
     }
 
     public List<EssentialData> getAll() {
