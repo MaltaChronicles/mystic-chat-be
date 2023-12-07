@@ -1,9 +1,10 @@
 package it.mystic.chat.service;
 
 import it.mystic.chat.mapper.CharacterMapper;
+import it.mystic.chat.model.dto.*;
 import it.mystic.chat.model.dto.Character;
-import it.mystic.chat.model.dto.CharacterInventory;
 import it.mystic.chat.model.dto.Object;
+import it.mystic.chat.model.dto.pk.CharacterAbilityThreePk;
 import it.mystic.chat.model.dto.pk.CharacterInventoryPk;
 import it.mystic.chat.model.response.CharacterInventoryResponse;
 import it.mystic.chat.repo.CharacterInventoryRepo;
@@ -44,16 +45,20 @@ public class CharacterInventoryService {
         Character character = characterRepo.getReferenceById(characterId);
         Object object = objectRepo.getReferenceById(objectId);
 
-        CharacterInventory characterInventory = characterInventoryRepo.getReferenceById(new CharacterInventoryPk(character, object));
-        Hibernate.initialize(object);
-        if(characterInventory != null){
+        boolean isPossessed = character.getInventory().stream().anyMatch(inventory -> {
+            return inventory.getId().equals(new CharacterInventoryPk(character, object));
+        });
+
+        CharacterInventory characterInventory;
+        if(isPossessed) {
+            characterInventory = characterInventoryRepo.getReferenceById(new CharacterInventoryPk(character, object));
+            characterInventory.setQuantity(characterInventory.getQuantity() + 1);
+        } else {
             characterInventory = new CharacterInventory(
                     new CharacterInventoryPk(character, object),
                     false,
                     1
             );
-        } else {
-            characterInventory.setQuantity(characterInventory.getQuantity() + 1);
         }
         characterInventoryRepo.save(characterInventory);
     }
