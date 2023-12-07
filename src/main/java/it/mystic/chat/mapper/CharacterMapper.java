@@ -146,4 +146,13 @@ public class CharacterMapper {
                 status.getActualPoisonAffinity()
         );
     }
+
+    public List<CharacterAbilityThreeResponse> abilityThreeToAbilityThreeResponse(List<CharacterAbilityThree> characterAbilityThreeList) {
+        return characterAbilityThreeList.stream().map(abilityThree -> {
+            return new CharacterAbilityThreeResponse(
+                    abilityThree.getId().getAbility(),
+                    abilityThree.getLevel()
+            );
+        }).toList();
+    }
 }

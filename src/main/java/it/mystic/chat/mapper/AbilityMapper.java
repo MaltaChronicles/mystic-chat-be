@@ -25,6 +25,7 @@ public class AbilityMapper {
                 abilityDao.getMaxLevel(),
                 abilityDao.getManaPriceForTarget(),
                 abilityDao.getHpPriceForTarget(),
+                null,
                 null
         );
     }

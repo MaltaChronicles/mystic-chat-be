@@ -121,7 +121,6 @@ public class CharacterStats {
 
     @OneToOne
     @JoinColumn(name = "character_id")
-    @JsonIgnore
     @Id
     Character character;
 
@@ -272,5 +271,58 @@ public class CharacterStats {
         lightAffinity = Affinity.Nulla;
         darkAffinity = Affinity.Nulla;
         poisonAffinity = Affinity.Nulla;
+    }
+
+    @Override
+    public String toString() {
+        return "CharacterStats{" +
+                "level=" + level +
+                ", totalLife=" + totalLife +
+                ", actualLife=" + actualLife +
+                ", crisis=" + crisis +
+                ", totalMana=" + totalMana +
+                ", actualMana=" + actualMana +
+                ", totalExperience=" + totalExperience +
+                ", actualExperience=" + actualExperience +
+                ", totalInitiative=" + totalInitiative +
+                ", actualInitiative=" + actualInitiative +
+                ", coin=" + coin +
+                ", totalDexterity=" + totalDexterity +
+                ", actualDexterity=" + actualDexterity +
+                ", totalInsight=" + totalInsight +
+                ", actualInsight=" + actualInsight +
+                ", totalVigor=" + totalVigor +
+                ", actualVigor=" + actualVigor +
+                ", totalWill=" + totalWill +
+                ", actualWill=" + actualWill +
+                ", totalDefense=" + totalDefense +
+                ", actualDefense=" + actualDefense +
+                ", totalResistance=" + totalResistance +
+                ", actualResistance=" + actualResistance +
+                ", martialArmors=" + martialArmors +
+                ", martialShields=" + martialShields +
+                ", martialMeleeWeapons=" + martialMeleeWeapons +
+                ", martialDistanceWeapons=" + martialDistanceWeapons +
+                ", physicalAffinity=" + physicalAffinity +
+                ", waterAffinity=" + waterAffinity +
+                ", earthAffinity=" + earthAffinity +
+                ", fireAffinity=" + fireAffinity +
+                ", airAffinity=" + airAffinity +
+                ", electricityAffinity=" + electricityAffinity +
+                ", iceAffinity=" + iceAffinity +
+                ", lightAffinity=" + lightAffinity +
+                ", darkAffinity=" + darkAffinity +
+                ", poisonAffinity=" + poisonAffinity +
+                ", actualPhysicalAffinity=" + actualPhysicalAffinity +
+                ", actualWaterAffinity=" + actualWaterAffinity +
+                ", actualEarthAffinity=" + actualEarthAffinity +
+                ", actualFireAffinity=" + actualFireAffinity +
+                ", actualAirAffinity=" + actualAirAffinity +
+                ", actualElectricityAffinity=" + actualElectricityAffinity +
+                ", actualIceAffinity=" + actualIceAffinity +
+                ", actualLightAffinity=" + actualLightAffinity +
+                ", actualDarkAffinity=" + actualDarkAffinity +
+                ", actualPoisonAffinity=" + actualPoisonAffinity +
+                '}';
     }
 }

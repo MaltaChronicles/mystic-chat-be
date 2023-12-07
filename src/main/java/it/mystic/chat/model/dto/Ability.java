@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -42,4 +44,7 @@ public class Ability {
     Integer hpPriceForTarget;
     @Column
     String actionLink;
+
+    @OneToMany(mappedBy = "id.ability", cascade = CascadeType.ALL)
+    List<CharacterAbilityThree> characterAbilityThrees;
 }

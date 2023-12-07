@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -50,8 +51,12 @@ public class Character {
     @OneToMany(mappedBy = "id.character", cascade = CascadeType.ALL)
     List<CharacterInventory> inventory;
 
-    //TODO aggiungere abilità
-    //TODO aggiungere legami
+    @OneToMany(mappedBy = "id.character", cascade = CascadeType.ALL)
+    List<CharacterAbilityThree> abilityThree;
+
+
+
+    //TODO Aggiungere Talenti
 
     public Character(String name, String identity, Origin origin, Theme theme, Job job, Race race) {
         this.name = name;
@@ -60,5 +65,22 @@ public class Character {
         this.theme = theme;
         this.job = job;
         this.race = race;
+    }
+
+    @Override
+    public String toString() {
+        return "Character{" +
+                "characterId=" + characterId +
+                ", name='" + name + '\'' +
+                ", identity='" + identity + '\'' +
+                ", origin=" + origin +
+                ", theme=" + theme +
+                ", standardOfLiving=" + standardOfLiving +
+                ", job=" + job +
+                ", race=" + race +
+                ", masterNote='" + masterNote + '\'' +
+                ", personalNote='" + personalNote + '\'' +
+                ", rumors='" + rumors + '\'' +
+                '}';
     }
 }
