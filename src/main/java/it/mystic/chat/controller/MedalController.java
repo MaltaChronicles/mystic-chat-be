@@ -2,6 +2,7 @@ package it.mystic.chat.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.model.dto.Medal;
+import it.mystic.chat.model.response.MedalResponse;
 import it.mystic.chat.service.MedalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +19,9 @@ public class MedalController {
     private MedalService medalService;
 
     @PostMapping("/create")
-    public ResponseEntity<Medal> create(@RequestBody String name) {
-        Medal medal = medalService.create(name);
-        return ResponseEntity.ok(medal);
+    public ResponseEntity<MedalResponse> create(@RequestBody String name) {
+        MedalResponse response = medalService.create(name);
+        return ResponseEntity.ok(response);
     }
 
     @PatchMapping("/updateName/{medalId}")
@@ -36,9 +37,9 @@ public class MedalController {
     }
 
     @GetMapping(value = "/getById/{medalId}")
-    public ResponseEntity<Medal> getById(@PathVariable Long medalId) {
-        Medal medal = medalService.getById(medalId);
-        return ResponseEntity.ok(medal);
+    public ResponseEntity<MedalResponse> getById(@PathVariable Long medalId) {
+        MedalResponse response = medalService.getById(medalId);
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping(value = "/delete/{medalId}")

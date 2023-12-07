@@ -1,7 +1,9 @@
 package it.mystic.chat.service;
 
+import it.mystic.chat.mapper.MedalMapper;
 import it.mystic.chat.model.dto.Medal;
 import it.mystic.chat.model.dto.Player;
+import it.mystic.chat.model.response.MedalResponse;
 import it.mystic.chat.repo.MedalRepo;
 import it.mystic.chat.repo.PlayerRepo;
 import it.mystic.chat.util.MultipartFileConverter;
@@ -21,11 +23,12 @@ public class MedalService {
 
     @Autowired
     private MultipartFileConverter converter;
+    @Autowired
+    private MedalMapper medalMapper;
 
-    public Medal create(String name) {
-        Medal medal = new Medal();
-        medal.setName(name);
-        return medalRepo.save(medal);
+    public MedalResponse create(String name) {
+        Medal medal = medalMapper.daoTo(name);
+        return medalMapper.medalToMedalResponse(medalRepo.save(medal));
     }
 
     public void update(Long medalId, String name) {
@@ -44,8 +47,8 @@ public class MedalService {
         }
     }
 
-    public Medal getById(Long medalId) {
-        return medalRepo.getReferenceById(medalId);
+    public MedalResponse getById(Long medalId) {
+        return medalMapper.medalToMedalResponse(medalRepo.getReferenceById(medalId));
     }
 
     public void delete(Long medalId) {
