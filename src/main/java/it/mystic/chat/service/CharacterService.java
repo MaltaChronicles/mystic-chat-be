@@ -10,6 +10,7 @@ import it.mystic.chat.model.dto.CharacterEquipment;
 import it.mystic.chat.model.dto.CharacterStats;
 import it.mystic.chat.model.enums.*;
 import it.mystic.chat.model.response.CharacterResponse;
+import it.mystic.chat.model.response.EssentialData;
 import it.mystic.chat.repo.CharacterRepo;
 import it.mystic.chat.util.MultipartFileConverter;
 import org.hibernate.Hibernate;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -50,11 +52,11 @@ public class CharacterService {
         return characterMapper.dtoToResponse(character);
     }
 
-    public Map<Long, String> getAll() {
+    public List<EssentialData> getAll() {
         return characterMapper.characterListToMap(characterRepo.findAll());
     }
 
-    public Map<Long, String> getAllLikeName(String name) {
+    public List<EssentialData> getAllLikeName(String name) {
         name = "%" + name + "%";
         return characterMapper.characterListToMap(characterRepo.findByNameIgnoreCaseLike(name));
     }

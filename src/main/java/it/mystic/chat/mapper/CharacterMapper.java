@@ -5,10 +5,7 @@ import it.mystic.chat.model.dao.CharacterDao;
 import it.mystic.chat.model.dao.CharacterDescriptionDao;
 import it.mystic.chat.model.dto.Character;
 import it.mystic.chat.model.dto.*;
-import it.mystic.chat.model.response.CharacterEquipmentResponse;
-import it.mystic.chat.model.response.CharacterInventoryResponse;
-import it.mystic.chat.model.response.CharacterResponse;
-import it.mystic.chat.model.response.CharacterStatsResponse;
+import it.mystic.chat.model.response.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -71,8 +68,10 @@ public class CharacterMapper {
         );
     }
 
-    public Map<Long, String> characterListToMap(List<Character> characterList) {
-        return characterList.stream().collect(Collectors.toMap(Character::getCharacterId, Character::getName));
+    public List<EssentialData> characterListToMap(List<Character> characterList) {
+        return characterList.stream().map(character -> {
+            return new EssentialData(character.getCharacterId(), character.getName());
+        }).toList();
     }
 
     public CharacterEquipmentResponse equipmentToEquipmentResponse(CharacterEquipment equipment) {

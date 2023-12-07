@@ -5,6 +5,7 @@ import it.mystic.chat.model.dao.CharacterDao;
 import it.mystic.chat.model.dao.CharacterDescriptionDao;
 import it.mystic.chat.model.enums.*;
 import it.mystic.chat.model.response.CharacterResponse;
+import it.mystic.chat.model.response.EssentialData;
 import it.mystic.chat.service.CharacterService;
 import jakarta.validation.constraints.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -35,8 +37,8 @@ public class CharacterController {
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<Map<Long, String>> getCharacterById() {
-        Map<Long, String> characterList = characterService.getAll();
+    public ResponseEntity<List<EssentialData>> getCharacterById() {
+        List<EssentialData> characterList = characterService.getAll();
         return ResponseEntity.ok(characterList);
     }
 
@@ -120,8 +122,8 @@ public class CharacterController {
     }
 
     @GetMapping("/getAllLikeName/{name}")
-    public ResponseEntity<Map<Long, String>> getAllLikeName(@PathVariable String name) {
-        Map<Long, String> characterList = characterService.getAllLikeName(name);
+    public ResponseEntity<List<EssentialData>> getAllLikeName(@PathVariable String name) {
+        List<EssentialData> characterList = characterService.getAllLikeName(name);
         return ResponseEntity.ok(characterList);
     }
 

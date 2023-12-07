@@ -7,6 +7,8 @@ import it.mystic.chat.model.response.MedalResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class MedalMapper {
 
@@ -27,5 +29,11 @@ public class MedalMapper {
                 medal.getName(),
                 medal.getImageUrl()
         );
+    }
+
+    public List<MedalResponse> medalListToMedalResponseList(List<Medal> medalList) {
+        return medalList.stream().map(medal -> {
+          return new MedalResponse(medal.getName(), medal.getImageUrl())  ;
+        }).toList();
     }
 }
