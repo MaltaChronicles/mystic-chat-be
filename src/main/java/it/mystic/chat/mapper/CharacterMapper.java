@@ -45,6 +45,7 @@ public class CharacterMapper {
                 new CharacterDescription(),
                 new CharacterEquipment(),
                 null,
+                null,
                 null
         );
     }
