@@ -60,6 +60,9 @@ public class Character {
     @ToStringExclude
     List<CharacterAbilityThree> abilityThree;
 
+    @OneToOne(mappedBy = "id.character", cascade = CascadeType.ALL)
+    @ToStringExclude
+    GuildList guild;
 
 
     //TODO Aggiungere Talenti
