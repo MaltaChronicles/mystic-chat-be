@@ -1,9 +1,5 @@
 package it.mystic.chat.model.dto;
 
-import it.mystic.chat.model.enums.AbilityType;
-import it.mystic.chat.model.enums.Class;
-import it.mystic.chat.model.enums.DurationType;
-import it.mystic.chat.model.enums.TargetType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,8 +25,8 @@ public class Guild {
     String description;
 
 
-    @OneToMany(mappedBy = "id.guild", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "guild", cascade = CascadeType.ALL)
     @ToStringExclude
-    List<GuildList> guilders;
+    List<CharacterGuild> guilders;
 
 }

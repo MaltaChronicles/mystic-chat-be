@@ -15,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "character_root")
+@ToString
 public class Character {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,10 +61,19 @@ public class Character {
     @ToStringExclude
     List<CharacterAbilityThree> abilityThree;
 
-    @OneToOne(mappedBy = "id.character", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "character", cascade = CascadeType.ALL)
     @ToStringExclude
-    GuildList guild;
+    CharacterGuild guild;
 
+    public Character(String name, String identity, Origin origin, Theme theme, StandardOfLiving standardOfLiving, Job job, Race race) {
+        this.name = name;
+        this.identity = identity;
+        this.origin = origin;
+        this.theme = theme;
+        this.standardOfLiving = standardOfLiving;
+        this.job = job;
+        this.race = race;
+    }
 
     //TODO Aggiungere Talenti
 }

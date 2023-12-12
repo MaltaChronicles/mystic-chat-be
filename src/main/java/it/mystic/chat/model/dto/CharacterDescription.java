@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.apache.commons.lang3.builder.ToStringExclude;
 
 
@@ -15,6 +16,7 @@ import org.apache.commons.lang3.builder.ToStringExclude;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table
+@ToString
 public class CharacterDescription {
     @Column
     Color rightEye;

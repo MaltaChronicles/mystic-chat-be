@@ -31,26 +31,16 @@ public class CharacterMapper {
     public Character daoToDto(CharacterDao characterDao) {
         if(Objects.isNull(characterDao))
             return null;
-        return new Character(
-                null,
+        Character character = new Character(
                 characterDao.getName(),
                 characterDao.getIdentity(),
                 characterDao.getOrigin(),
                 characterDao.getTheme(),
                 StandardOfLiving.Nullo,
                 characterDao.getJob(),
-                characterDao.getRace(),
-                "",
-                "",
-                "",
-
-                new CharacterStats(),
-                new CharacterDescription(),
-                new CharacterEquipment(),
-                null,
-                null,
-                null
+                characterDao.getRace()
         );
+        return character;
     }
 
     public CharacterDescription descriptionDaoToDto(CharacterDescriptionDao characterDescriptionDao, Character character) {

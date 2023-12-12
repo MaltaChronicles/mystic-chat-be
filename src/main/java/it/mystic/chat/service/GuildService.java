@@ -2,19 +2,14 @@ package it.mystic.chat.service;
 
 import it.mystic.chat.mapper.GuildMapper;
 import it.mystic.chat.model.dao.GuildDao;
-import it.mystic.chat.model.dto.Ability;
 import it.mystic.chat.model.dto.Character;
 import it.mystic.chat.model.dto.Guild;
-import it.mystic.chat.model.dto.GuildList;
-import it.mystic.chat.model.dto.pk.GuildListPk;
-import it.mystic.chat.model.enums.DiceValue;
+import it.mystic.chat.model.dto.CharacterGuild;
 import it.mystic.chat.model.enums.GuildRank;
 import it.mystic.chat.model.response.GuildResponse;
 import it.mystic.chat.repo.CharacterRepo;
-import it.mystic.chat.repo.GuildListRepo;
 import it.mystic.chat.repo.GuildRepo;
 import it.mystic.chat.util.MultipartFileConverter;
-import jakarta.persistence.Column;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,8 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.OptionalInt;
-import java.util.stream.IntStream;
 
 @Service
 public class GuildService {
@@ -31,8 +24,6 @@ public class GuildService {
     private GuildRepo guildRepo;
     @Autowired
     private CharacterRepo characterRepo;
-    @Autowired
-    private GuildListRepo guildListRepo;
 
     @Autowired
     private GuildMapper guildMapper;
@@ -73,27 +64,37 @@ public class GuildService {
         Guild guild = guildRepo.getReferenceById(guildId);
         Character character = characterRepo.getReferenceById(characterId);
 
-        GuildList guildList = new GuildList(
-                new GuildListPk(character, guild),
+        CharacterGuild characterGuild = new CharacterGuild(
+                character,
+                guild,
                 GuildRank.Iniziato,
                 new Date()
         );
-        guildListRepo.save(guildList);
+
+        character.setGuild(characterGuild);
+        characterRepo.save(character);
     }
 
     public void removeGuilder(Long characterId) {
         Character character = characterRepo.getReferenceById(characterId);
-        Guild guild = character.getGuild().getId().getGuild();
 
-        guildListRepo.deleteById(new GuildListPk(character, guild));
+        CharacterGuild characterGuild = new CharacterGuild(
+                character,
+                null,
+                null,
+                new Date()
+        );
+
+        character.setGuild(characterGuild);
+        characterRepo.save(character);
     }
 
     public void increaseRank(Long characterId) {
         Character character = characterRepo.getReferenceById(characterId);
         GuildRank next = GuildRank.values()[(character.getGuild().getRank().ordinal() + 1)];
 
-        GuildList guildList = character.getGuild();
-        guildList.setRank(next);
+        CharacterGuild characterGuild = character.getGuild();
+        characterGuild.setRank(next);
 
         characterRepo.save(character);
     }
@@ -102,8 +103,8 @@ public class GuildService {
         Character character = characterRepo.getReferenceById(characterId);
         GuildRank previous = GuildRank.values()[(character.getGuild().getRank().ordinal() + 1)];
 
-        GuildList guildList = character.getGuild();
-        guildList.setRank(previous);
+        CharacterGuild characterGuild = character.getGuild();
+        characterGuild.setRank(previous);
 
         characterRepo.save(character);
     }
