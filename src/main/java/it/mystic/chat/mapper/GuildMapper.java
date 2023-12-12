@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class GuildMapper {
@@ -16,6 +17,8 @@ public class GuildMapper {
     private String uploadDir;
 
     public Guild daoToDto(GuildDao guildDao) {
+        if(Objects.isNull(guildDao))
+            return null;
         return new Guild(
                 null,
                 guildDao.getName(),
@@ -26,6 +29,8 @@ public class GuildMapper {
     }
 
     public GuildResponse guildToResponse(Guild guild) {
+        if(Objects.isNull(guild))
+            return null;
         return new GuildResponse(
                 guild.getGuildId(),
                 guild.getName(),
@@ -36,8 +41,8 @@ public class GuildMapper {
     }
 
     private List<GuildListResponse> guildersToResponse(List<GuildList> guilders) {
-        if (guilders == null)
-            return List.of();
+        if(Objects.isNull(guilders))
+            return null;
         return guilders.stream().map(guildList -> {
             return new GuildListResponse(
                 guildList.getId().getCharacter().getCharacterId(),

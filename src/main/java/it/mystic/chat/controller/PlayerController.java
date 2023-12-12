@@ -63,8 +63,8 @@ public class PlayerController {
         return ResponseEntity.ok().build();
     }
 
-    @PatchMapping("/addCharacter/{playerId}")
-    public ResponseEntity<Void> addCharacter(@PathVariable Long playerId, @RequestBody Long characterId) throws GenericException {
+    @PatchMapping("/addCharacter/{playerId}/{characterId}")
+    public ResponseEntity<Void> addCharacter(@PathVariable Long playerId, @PathVariable Long characterId) throws GenericException {
         playerService.addCharacter(playerId, characterId);
         return ResponseEntity.ok().build();
     }

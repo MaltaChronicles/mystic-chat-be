@@ -6,12 +6,16 @@ import it.mystic.chat.model.response.AbilityResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
+
 @Component
 public class AbilityMapper {
     @Value("${upload.dir}")
     private String uploadDir;
 
     public Ability daoToDto(AbilityDao abilityDao) {
+        if(Objects.isNull(abilityDao))
+            return null;
         return new Ability(
                 null,
                 abilityDao.getName(),
@@ -31,6 +35,8 @@ public class AbilityMapper {
     }
 
     public AbilityResponse dtoToResponse(Ability ability) {
+        if(Objects.isNull(ability))
+            return null;
         return new AbilityResponse(
                 ability.getAbilityId(),
                 ability.getName(),

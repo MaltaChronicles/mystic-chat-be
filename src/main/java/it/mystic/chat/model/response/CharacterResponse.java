@@ -13,13 +13,6 @@ public record CharacterResponse(
         Race race,
         String masterNote,
         String rumors,
-        Color rightEye,
-        Color leftEye,
-        Color hair,
-        Double height,
-        Double weight,
-        Integer age,
-        Gender gender,
-        String imageUrl
+        CharacterDescriptionResponse description
 ) {
 }

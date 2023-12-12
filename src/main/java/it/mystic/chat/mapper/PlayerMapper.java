@@ -3,6 +3,7 @@ package it.mystic.chat.mapper;
 
 import it.mystic.chat.model.dao.PlayerDao;
 import it.mystic.chat.model.dto.Character;
+import it.mystic.chat.model.dto.Location;
 import it.mystic.chat.model.dto.Player;
 import it.mystic.chat.model.dto.PlayerRole;
 import it.mystic.chat.model.response.EssentialData;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 
 @Component
@@ -23,6 +25,8 @@ public class PlayerMapper {
     private MedalMapper medalMapper;
 
     public Player daoToDto(PlayerDao playerDao) {
+        if(Objects.isNull(playerDao))
+            return null;
         return new Player(
                 null,
                 playerDao.getUsername(),
@@ -41,19 +45,25 @@ public class PlayerMapper {
     }
 
     public List<EssentialData> playerListToMap(List<Player> playerList) {
+        if(Objects.isNull(playerList))
+            return null;
         return playerList.stream().map(character -> {
             return new EssentialData(character.getPlayerId(), character.getUsername());
         }).toList();
     }
 
     public List<EssentialData> roleListToMap(List<PlayerRole> playerRoleList) {
+        if(Objects.isNull(playerRoleList))
+            return null;
         return playerRoleList.stream().map(playerRole -> {
             return new EssentialData(playerRole.getId().getPlayer().getPlayerId(), playerRole.getId().getPlayer().getUsername());
         }).toList();
     }
 
     public PlayerResponse dtoToResponse(Player player) {
-        return new  PlayerResponse(
+        if(Objects.isNull(player))
+            return null;
+        return new PlayerResponse(
                 player.getPlayerId(),
                 player.getUsername(),
                 player.getDataIscrizione(),
@@ -63,21 +73,35 @@ public class PlayerMapper {
 
                 roleListToResponseList(player.getRoles()),
 
-                new EssentialData(player.getCharacter1().getCharacterId(), player.getCharacter1().getName()),
-                new EssentialData(player.getCharacter2().getCharacterId(), player.getCharacter2().getName()),
-                new EssentialData(player.getCharacter3().getCharacterId(), player.getCharacter3().getName()),
-                new EssentialData(player.getActiveCharacter().getCharacterId(), player.getActiveCharacter().getName()),
+                characterToEssentialData(player.getCharacter1()),
+                characterToEssentialData(player.getCharacter2()),
+                characterToEssentialData(player.getCharacter3()),
+                characterToEssentialData(player.getActiveCharacter()),
 
-                new EssentialData(player.getLocation().getLocationId(), player.getLocation().getName()),
+                locationToEssentialData(player.getLocation()),
 
                 medalMapper.medalListToResponseList(player.getMedals())
         );
     }
 
     private List<PlayerRoleResponse> roleListToResponseList(List<PlayerRole> playerRoleList) {
+        if(Objects.isNull(playerRoleList))
+            return null;
         return playerRoleList.stream().map(playerRole -> {
             return new PlayerRoleResponse(playerRole.getId().getRole(), playerRole.getIsBoss());
         }).toList();
+    }
+
+    private EssentialData characterToEssentialData(Character character){
+        if(Objects.isNull(character))
+            return null;
+        return  new EssentialData(character.getCharacterId(), character.getName());
+    }
+
+    private EssentialData locationToEssentialData(Location location){
+        if(Objects.isNull(location))
+            return null;
+        return new EssentialData(location.getLocationId(), location.getName());
     }
 
 }

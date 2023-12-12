@@ -6,6 +6,8 @@ import it.mystic.chat.model.response.ObjectResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
+
 @Component
 public class ObjectMapper {
 
@@ -13,6 +15,8 @@ public class ObjectMapper {
     private String uploadDir;
 
     public Object daoToDto(ObjectDao objectDao) {
+        if(Objects.isNull(objectDao))
+            return null;
         return new Object(
                 null,
                 objectDao.getName(),
@@ -58,6 +62,8 @@ public class ObjectMapper {
     }
 
     public ObjectResponse dtoToResponse(Object object) {
+        if(Objects.isNull(object))
+            return null;
         return new ObjectResponse(
                 object.getObjectId(),
                 object.getName(),

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 
@@ -28,6 +29,8 @@ public class CharacterMapper {
     private AbilityMapper abilityMapper;
 
     public Character daoToDto(CharacterDao characterDao) {
+        if(Objects.isNull(characterDao))
+            return null;
         return new Character(
                 null,
                 characterDao.getName(),
@@ -51,6 +54,8 @@ public class CharacterMapper {
     }
 
     public CharacterDescription descriptionDaoToDto(CharacterDescriptionDao characterDescriptionDao, Character character) {
+        if(Objects.isNull(characterDescriptionDao) || Objects.isNull(character))
+            return null;
         return new CharacterDescription(
                 characterDescriptionDao.getRightEye(),
                 characterDescriptionDao.getLeftEye(),
@@ -65,6 +70,8 @@ public class CharacterMapper {
     }
 
     public CharacterResponse dtoToResponse(Character character) {
+        if(Objects.isNull(character))
+            return null;
         return new CharacterResponse(
                 character.getCharacterId(),
                 character.getName(),
@@ -76,24 +83,36 @@ public class CharacterMapper {
                 character.getRace(),
                 character.getMasterNote(),
                 character.getRumors(),
-                character.getDescription().getRightEye(),
-                character.getDescription().getLeftEye(),
-                character.getDescription().getHair(),
-                character.getDescription().getHeight(),
-                character.getDescription().getWeight(),
-                character.getDescription().getAge(),
-                character.getDescription().getGender(),
-                character.getDescription().getImageUrl()
+                descriptionDtoToResponse(character.getDescription())
+        );
+    }
+
+    private CharacterDescriptionResponse descriptionDtoToResponse(CharacterDescription characterDescription){
+        if(Objects.isNull(characterDescription))
+            return null;
+        return new CharacterDescriptionResponse(
+                characterDescription.getRightEye(),
+                characterDescription.getLeftEye(),
+                characterDescription.getHair(),
+                characterDescription.getHeight(),
+                characterDescription.getWeight(),
+                characterDescription.getAge(),
+                characterDescription.getGender(),
+                characterDescription.getImageUrl()
         );
     }
 
     public List<EssentialData> characterListToMap(List<Character> characterList) {
+        if(Objects.isNull(characterList))
+            return null;
         return characterList.stream().map(character -> {
             return new EssentialData(character.getCharacterId(), character.getName());
         }).toList();
     }
 
     public CharacterEquipmentResponse equipmentDtoToResponse(CharacterEquipment equipment) {
+        if(Objects.isNull(equipment))
+            return null;
         return new CharacterEquipmentResponse(
                 equipment.getRightHand(),
                 equipment.getLeftHand(),
@@ -105,12 +124,16 @@ public class CharacterMapper {
     }
 
     public List<CharacterInventoryResponse> inventoryDtoToResponse(List<CharacterInventory> inventory) {
+        if(Objects.isNull(inventory))
+            return null;
         return inventory.stream().map(inv -> {
             return new CharacterInventoryResponse(objectMapper.dtoToResponse(inv.getId().getObject()), inv.getIsEquip());
         }).toList();
     }
 
     public CharacterStatsResponse statsDtoToResponse(CharacterStats status) {
+        if(Objects.isNull(status))
+            return null;
         return new CharacterStatsResponse(
                 status.getLevel(),
                 status.getTotalLife(),
@@ -167,6 +190,8 @@ public class CharacterMapper {
     }
 
     public List<CharacterAbilityThreeResponse> abilityThreeDtoToResponse(List<CharacterAbilityThree> characterAbilityThreeList) {
+        if(Objects.isNull(characterAbilityThreeList))
+            return null;
         return characterAbilityThreeList.stream().map(abilityThree -> {
             return new CharacterAbilityThreeResponse(
                     abilityMapper.dtoToResponse(abilityThree.getId().getAbility()),

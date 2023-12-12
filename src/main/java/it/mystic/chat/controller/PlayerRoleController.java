@@ -20,9 +20,9 @@ public class PlayerRoleController {
     private PlayerRoleService playerRoleService;
 
     @PostMapping("/add/{playerId}/{role}")
-    public ResponseEntity<PlayerRole> addRole(@PathVariable Long playerId, @PathVariable Role role) {
-        PlayerRole playerRole = playerRoleService.addRole(playerId, role);
-        return ResponseEntity.ok(playerRole);
+    public ResponseEntity<Void> addRole(@PathVariable Long playerId, @PathVariable Role role) {
+        playerRoleService.addRole(playerId, role);
+        return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/changeBoss/{playerId}/{role}")
