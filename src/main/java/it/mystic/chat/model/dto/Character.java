@@ -34,11 +34,11 @@ public class Character {
     Job job;
     @Column
     Race race;
-    @Column
+    @Column(length = 16000000)
     String masterNote;
-    @Column
+    @Column(length = 16000000)
     String personalNote;
-    @Column
+    @Column(length = 16000000)
     String rumors;
 
     @OneToOne(mappedBy = "character", cascade = CascadeType.ALL)

@@ -25,7 +25,7 @@ public class LocationMessage {
     @Column
     String tag;
 
-    @Column
+    @Column(length = 65000)
     String body;
 
     @Column

@@ -22,7 +22,7 @@ public class Text {
     TextType type;
     @Column
     String title;
-    @Column
+    @Column(length = 65000)
     String body;
 
     @OneToMany(mappedBy = "text", cascade = CascadeType.ALL)

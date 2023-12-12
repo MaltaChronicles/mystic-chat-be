@@ -20,7 +20,7 @@ public class TextParagraph {
     Long paragraphId;
     @Column
     String title;
-    @Column
+    @Column(length = 16000000)
     String body;
 
     @ManyToOne
