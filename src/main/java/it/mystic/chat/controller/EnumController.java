@@ -115,4 +115,14 @@ public class EnumController {
     public ResponseEntity<List<GuildRank>> getGuildRanks() {
         return ResponseEntity.ok(Arrays.stream(GuildRank.values()).toList());
     }
+
+    @GetMapping("/getTextTypes")
+    public ResponseEntity<List<TextType>> getTextTypes() {
+        return ResponseEntity.ok(Arrays.stream(TextType.values()).toList());
+    }
+
+    @GetMapping("/getBoardTypes")
+    public ResponseEntity<List<BoardType>> getBoardTypes() {
+        return ResponseEntity.ok(Arrays.stream(BoardType.values()).toList());
+    }
 }

@@ -1,6 +1,8 @@
 package it.mystic.chat.model.response;
 
+
+
 public record EssentialData(
-  Long id,
+  Object id,
   String name
 ) {}
