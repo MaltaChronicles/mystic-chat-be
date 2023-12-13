@@ -12,8 +12,6 @@ import it.mystic.chat.model.dto.pk.BoardDiscussionPk;
 import it.mystic.chat.model.response.board.BoardAnswerResponse;
 import it.mystic.chat.model.response.board.BoardDiscussionResponse;
 import it.mystic.chat.model.response.board.BoardResponse;
-import it.mystic.chat.model.response.id.BoardAnswerIdResponse;
-import it.mystic.chat.model.response.id.BoardDiscussionIdResponse;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -71,21 +69,13 @@ public class BoardMapper {
         );
     }
 
-    private BoardDiscussionIdResponse discussionPkToIdResponse(BoardDiscussionPk pk){
-        if(Objects.isNull(pk))
-            return null;
-        return new BoardDiscussionIdResponse(
-                pk.getBoard().getBoardId(),
-                pk.getOpenBy().getPlayerId(),
-                pk.getDiscussionUuid()
-        );
-    }
-
     public BoardDiscussionResponse discussionDtoToResponse(BoardDiscussion boardDiscussion) {
         if(Objects.isNull(boardDiscussion))
             return null;
         return new BoardDiscussionResponse(
-                discussionPkToIdResponse(boardDiscussion.getId()),
+                boardDiscussion.getId().getBoard().getBoardId(),
+                boardDiscussion.getId().getOpenBy().getPlayerId(),
+                boardDiscussion.getId().getDiscussionUuid(),
                 boardDiscussion.getTitle(),
                 boardDiscussion.getBody(),
                 boardDiscussion.getIsOpen(),
@@ -118,10 +108,8 @@ public class BoardMapper {
         if(Objects.isNull(boardAnswer))
             return null;
         return new BoardAnswerResponse(
-                new BoardAnswerIdResponse(
-                        boardAnswer.getId().getWrittenBy().getPlayerId(),
-                        boardAnswer.getId().getAnswerUuid()
-                ),
+                boardAnswer.getId().getWrittenBy().getPlayerId(),
+                boardAnswer.getId().getAnswerUuid(),
                 boardAnswer.getBody(),
                 boardAnswer.getAnswerDate()
         );

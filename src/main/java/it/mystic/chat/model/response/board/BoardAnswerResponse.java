@@ -1,14 +1,13 @@
 package it.mystic.chat.model.response.board;
 
-import it.mystic.chat.model.dto.pk.BoardAnswerPk;
-import it.mystic.chat.model.response.id.BoardAnswerIdResponse;
 
 import java.util.Date;
 import java.util.List;
 
 
 public record BoardAnswerResponse(
-    BoardAnswerIdResponse id,
+    Long writtenPlayerId,
+    String answerUuid,
     String body,
     Date answerDate
 ){}
