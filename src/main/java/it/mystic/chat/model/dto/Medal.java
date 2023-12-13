@@ -1,6 +1,6 @@
 package it.mystic.chat.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import it.mystic.chat.model.dto.player.Player;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

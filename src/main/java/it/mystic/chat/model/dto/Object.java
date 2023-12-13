@@ -1,5 +1,6 @@
 package it.mystic.chat.model.dto;
 
+import it.mystic.chat.model.dto.character.CharacterInventory;
 import it.mystic.chat.model.enums.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

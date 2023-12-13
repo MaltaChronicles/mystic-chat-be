@@ -1,9 +1,7 @@
 package it.mystic.chat.model.dto.pk;
 
-import it.mystic.chat.model.dto.Board;
-import it.mystic.chat.model.dto.Character;
-import it.mystic.chat.model.dto.Player;
-import it.mystic.chat.model.enums.Role;
+import it.mystic.chat.model.dto.board.Board;
+import it.mystic.chat.model.dto.player.Player;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
@@ -13,8 +11,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.UUID;
 
 @Data
 @NoArgsConstructor

@@ -4,17 +4,15 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.model.dao.BoardAnswerDao;
 import it.mystic.chat.model.dao.BoardDao;
 import it.mystic.chat.model.dao.BoardDiscussionDao;
-import it.mystic.chat.model.dto.BoardAnswer;
-import it.mystic.chat.model.dto.BoardDiscussion;
 import it.mystic.chat.model.enums.BoardType;
-import it.mystic.chat.model.response.*;
+import it.mystic.chat.model.response.board.BoardAnswerResponse;
+import it.mystic.chat.model.response.board.BoardDiscussionResponse;
+import it.mystic.chat.model.response.board.BoardResponse;
 import it.mystic.chat.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 

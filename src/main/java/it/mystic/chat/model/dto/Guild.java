@@ -1,5 +1,6 @@
 package it.mystic.chat.model.dto;
 
+import it.mystic.chat.model.dto.character.CharacterGuild;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

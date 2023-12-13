@@ -1,7 +1,6 @@
 package it.mystic.chat.model.dto.pk;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import it.mystic.chat.model.dto.Location;
+import it.mystic.chat.model.dto.location.Location;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;

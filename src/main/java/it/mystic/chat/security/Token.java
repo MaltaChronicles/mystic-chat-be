@@ -1,6 +1,6 @@
 package it.mystic.chat.security;
 
-import it.mystic.chat.model.dto.Player;
+import it.mystic.chat.model.dto.player.Player;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

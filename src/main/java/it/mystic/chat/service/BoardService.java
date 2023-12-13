@@ -4,29 +4,24 @@ import it.mystic.chat.mapper.BoardMapper;
 import it.mystic.chat.model.dao.BoardAnswerDao;
 import it.mystic.chat.model.dao.BoardDao;
 import it.mystic.chat.model.dao.BoardDiscussionDao;
-import it.mystic.chat.model.dto.Board;
-import it.mystic.chat.model.dto.BoardAnswer;
-import it.mystic.chat.model.dto.BoardDiscussion;
-import it.mystic.chat.model.dto.Player;
+import it.mystic.chat.model.dto.board.Board;
+import it.mystic.chat.model.dto.board.BoardAnswer;
+import it.mystic.chat.model.dto.board.BoardDiscussion;
+import it.mystic.chat.model.dto.player.Player;
 import it.mystic.chat.model.dto.pk.BoardDiscussionPk;
 import it.mystic.chat.model.enums.BoardType;
-import it.mystic.chat.model.response.BoardAnswerResponse;
-import it.mystic.chat.model.response.BoardDiscussionResponse;
-import it.mystic.chat.model.response.BoardResponse;
-import it.mystic.chat.model.response.EssentialData;
-import it.mystic.chat.repo.BoardAnswerRepo;
-import it.mystic.chat.repo.BoardDiscussionRepo;
-import it.mystic.chat.repo.BoardRepo;
-import it.mystic.chat.repo.PlayerRepo;
+import it.mystic.chat.model.response.board.BoardAnswerResponse;
+import it.mystic.chat.model.response.board.BoardDiscussionResponse;
+import it.mystic.chat.model.response.board.BoardResponse;
+import it.mystic.chat.repo.board.BoardAnswerRepo;
+import it.mystic.chat.repo.board.BoardDiscussionRepo;
+import it.mystic.chat.repo.board.BoardRepo;
+import it.mystic.chat.repo.player.PlayerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-
-import static it.mystic.chat.util.DateUtil.convertLocalDateTimeToDate;
 
 @Service
 public class BoardService {

@@ -2,10 +2,10 @@ package it.mystic.chat.service;
 
 import it.mystic.chat.mapper.MedalMapper;
 import it.mystic.chat.model.dto.Medal;
-import it.mystic.chat.model.dto.Player;
+import it.mystic.chat.model.dto.player.Player;
 import it.mystic.chat.model.response.MedalResponse;
 import it.mystic.chat.repo.MedalRepo;
-import it.mystic.chat.repo.PlayerRepo;
+import it.mystic.chat.repo.player.PlayerRepo;
 import it.mystic.chat.util.MultipartFileConverter;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;

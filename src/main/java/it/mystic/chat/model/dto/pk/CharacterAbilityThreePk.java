@@ -1,7 +1,7 @@
 package it.mystic.chat.model.dto.pk;
 
 import it.mystic.chat.model.dto.Ability;
-import it.mystic.chat.model.dto.Character;
+import it.mystic.chat.model.dto.character.Character;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;

@@ -1,7 +1,6 @@
 package it.mystic.chat.model.dto.pk;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import it.mystic.chat.model.dto.Player;
+import it.mystic.chat.model.dto.player.Player;
 import it.mystic.chat.model.enums.Role;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;

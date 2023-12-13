@@ -3,18 +3,17 @@ package it.mystic.chat.mapper;
 
 import it.mystic.chat.model.dao.CharacterDao;
 import it.mystic.chat.model.dao.CharacterDescriptionDao;
-import it.mystic.chat.model.dto.Character;
-import it.mystic.chat.model.dto.*;
+import it.mystic.chat.model.dto.character.*;
+import it.mystic.chat.model.dto.character.Character;
 import it.mystic.chat.model.enums.StandardOfLiving;
 import it.mystic.chat.model.response.*;
+import it.mystic.chat.model.response.character.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 
 @Component

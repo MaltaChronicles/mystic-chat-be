@@ -2,11 +2,10 @@ package it.mystic.chat.mapper;
 
 import it.mystic.chat.model.dao.TextDao;
 import it.mystic.chat.model.dao.TextParagraphDao;
-import it.mystic.chat.model.dto.Text;
-import it.mystic.chat.model.dto.TextParagraph;
+import it.mystic.chat.model.dto.text.Text;
+import it.mystic.chat.model.dto.text.TextParagraph;
 import it.mystic.chat.model.response.EssentialData;
 import it.mystic.chat.model.response.TextResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

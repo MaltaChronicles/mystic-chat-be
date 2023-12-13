@@ -2,8 +2,8 @@ package it.mystic.chat.mapper;
 
 import it.mystic.chat.model.dao.GuildDao;
 import it.mystic.chat.model.dto.Guild;
-import it.mystic.chat.model.dto.CharacterGuild;
-import it.mystic.chat.model.response.GuildListResponse;
+import it.mystic.chat.model.dto.character.CharacterGuild;
+import it.mystic.chat.model.response.character.CharacterGuildResponse;
 import it.mystic.chat.model.response.GuildResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -40,11 +40,11 @@ public class GuildMapper {
         );
     }
 
-    private List<GuildListResponse> guildersToResponse(List<CharacterGuild> guilders) {
+    private List<CharacterGuildResponse> guildersToResponse(List<CharacterGuild> guilders) {
         if(Objects.isNull(guilders))
             return null;
         return guilders.stream().map(guildList -> {
-            return new GuildListResponse(
+            return new CharacterGuildResponse(
                 guildList.getCharacter().getCharacterId(),
                     guildList.getCharacter().getName(),
                     guildList.getRank()

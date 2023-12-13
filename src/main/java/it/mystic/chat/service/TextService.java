@@ -3,13 +3,13 @@ package it.mystic.chat.service;
 import it.mystic.chat.mapper.TextMapper;
 import it.mystic.chat.model.dao.TextDao;
 import it.mystic.chat.model.dao.TextParagraphDao;
-import it.mystic.chat.model.dto.Text;
-import it.mystic.chat.model.dto.TextParagraph;
+import it.mystic.chat.model.dto.text.Text;
+import it.mystic.chat.model.dto.text.TextParagraph;
 import it.mystic.chat.model.enums.TextType;
 import it.mystic.chat.model.response.EssentialData;
 import it.mystic.chat.model.response.TextResponse;
-import it.mystic.chat.repo.TextParagraphRepo;
-import it.mystic.chat.repo.TextRepo;
+import it.mystic.chat.repo.text.TextParagraphRepo;
+import it.mystic.chat.repo.text.TextRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

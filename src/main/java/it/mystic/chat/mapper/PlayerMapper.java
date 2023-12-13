@@ -2,14 +2,13 @@ package it.mystic.chat.mapper;
 
 
 import it.mystic.chat.model.dao.PlayerDao;
-import it.mystic.chat.model.dto.Character;
-import it.mystic.chat.model.dto.Location;
-import it.mystic.chat.model.dto.Player;
-import it.mystic.chat.model.dto.PlayerRole;
+import it.mystic.chat.model.dto.character.Character;
+import it.mystic.chat.model.dto.location.Location;
+import it.mystic.chat.model.dto.player.Player;
+import it.mystic.chat.model.dto.player.PlayerRole;
 import it.mystic.chat.model.response.EssentialData;
-import it.mystic.chat.model.response.MedalResponse;
-import it.mystic.chat.model.response.PlayerResponse;
-import it.mystic.chat.model.response.PlayerRoleResponse;
+import it.mystic.chat.model.response.player.PlayerResponse;
+import it.mystic.chat.model.response.player.PlayerRoleResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

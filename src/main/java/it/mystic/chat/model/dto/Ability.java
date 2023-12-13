@@ -1,5 +1,6 @@
 package it.mystic.chat.model.dto;
 
+import it.mystic.chat.model.dto.character.CharacterAbilityThree;
 import it.mystic.chat.model.enums.AbilityType;
 import it.mystic.chat.model.enums.Class;
 import it.mystic.chat.model.enums.DurationType;
