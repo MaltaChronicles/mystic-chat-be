@@ -14,7 +14,7 @@ public class AbilityMapper {
     private String uploadDir;
 
     public Ability daoToDto(AbilityDao abilityDao) {
-        if(Objects.isNull(abilityDao))
+        if (Objects.isNull(abilityDao))
             return null;
         return new Ability(
                 null,
@@ -35,7 +35,7 @@ public class AbilityMapper {
     }
 
     public AbilityResponse dtoToResponse(Ability ability) {
-        if(Objects.isNull(ability))
+        if (Objects.isNull(ability))
             return null;
         return new AbilityResponse(
                 ability.getAbilityId(),

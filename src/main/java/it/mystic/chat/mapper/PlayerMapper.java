@@ -24,7 +24,7 @@ public class PlayerMapper {
     private MedalMapper medalMapper;
 
     public Player daoToDto(PlayerDao playerDao) {
-        if(Objects.isNull(playerDao))
+        if (Objects.isNull(playerDao))
             return null;
         return new Player(
                 null,
@@ -44,7 +44,7 @@ public class PlayerMapper {
     }
 
     public List<EssentialData> playerListToMap(List<Player> playerList) {
-        if(Objects.isNull(playerList))
+        if (Objects.isNull(playerList))
             return null;
         return playerList.stream().map(character -> {
             return new EssentialData(character.getPlayerId(), character.getUsername());
@@ -52,7 +52,7 @@ public class PlayerMapper {
     }
 
     public List<EssentialData> roleListToMap(List<PlayerRole> playerRoleList) {
-        if(Objects.isNull(playerRoleList))
+        if (Objects.isNull(playerRoleList))
             return null;
         return playerRoleList.stream().map(playerRole -> {
             return new EssentialData(playerRole.getId().getPlayer().getPlayerId(), playerRole.getId().getPlayer().getUsername());
@@ -60,7 +60,7 @@ public class PlayerMapper {
     }
 
     public PlayerResponse dtoToResponse(Player player) {
-        if(Objects.isNull(player))
+        if (Objects.isNull(player))
             return null;
         return new PlayerResponse(
                 player.getPlayerId(),
@@ -84,21 +84,21 @@ public class PlayerMapper {
     }
 
     private List<PlayerRoleResponse> roleListToResponseList(List<PlayerRole> playerRoleList) {
-        if(Objects.isNull(playerRoleList))
+        if (Objects.isNull(playerRoleList))
             return null;
         return playerRoleList.stream().map(playerRole -> {
             return new PlayerRoleResponse(playerRole.getId().getRole(), playerRole.getIsBoss());
         }).toList();
     }
 
-    private EssentialData characterToEssentialData(Character character){
-        if(Objects.isNull(character))
+    private EssentialData characterToEssentialData(Character character) {
+        if (Objects.isNull(character))
             return null;
-        return  new EssentialData(character.getCharacterId(), character.getName());
+        return new EssentialData(character.getCharacterId(), character.getName());
     }
 
-    private EssentialData locationToEssentialData(Location location){
-        if(Objects.isNull(location))
+    private EssentialData locationToEssentialData(Location location) {
+        if (Objects.isNull(location))
             return null;
         return new EssentialData(location.getLocationId(), location.getName());
     }

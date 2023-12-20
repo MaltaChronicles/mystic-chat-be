@@ -1,7 +1,7 @@
 package it.mystic.chat.service.location;
 
 import it.mystic.chat.mapper.LocationMapper;
-import it.mystic.chat.model.dao.LocationMessageDao;
+import it.mystic.chat.model.dao.location.LocationMessageDao;
 import it.mystic.chat.model.dto.location.Location;
 import it.mystic.chat.model.dto.location.LocationMessage;
 import it.mystic.chat.model.enums.MessageType;

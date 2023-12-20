@@ -2,13 +2,13 @@ package it.mystic.chat.service.location;
 
 import it.mystic.chat.mapper.LocationMapper;
 import it.mystic.chat.model.dao.location.LocationPosterDao;
-import it.mystic.chat.model.dto.location.LocationPoster;
 import it.mystic.chat.model.dto.character.Character;
 import it.mystic.chat.model.dto.location.Location;
-import it.mystic.chat.model.dto.pk.PosterPk;
+import it.mystic.chat.model.dto.location.LocationPoster;
+import it.mystic.chat.model.dto.pk.LocationPosterPk;
 import it.mystic.chat.model.response.location.LocationPosterResponse;
-import it.mystic.chat.repo.location.LocationPosterRepo;
 import it.mystic.chat.repo.character.CharacterRepo;
+import it.mystic.chat.repo.location.LocationPosterRepo;
 import it.mystic.chat.repo.location.LocationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,7 +38,7 @@ public class LocationPosterService {
     public LocationPosterResponse getById(Long characterId, Long locationId, UUID uuid) {
         Character character = characterRepo.getReferenceById(characterId);
         Location location = locationRepo.getReferenceById(locationId);
-        return locationMapper.locationDtoToResponse(locationPosterRepo.getReferenceById(new PosterPk(uuid.toString(), character, location)));
+        return locationMapper.locationDtoToResponse(locationPosterRepo.getReferenceById(new LocationPosterPk(uuid.toString(), character, location)));
     }
 
     public List<LocationPosterResponse> getByLocation(Long locationId) {
@@ -49,6 +49,6 @@ public class LocationPosterService {
     public void delete(Long locationId, Long characterId, UUID uuid) {
         Character character = characterRepo.getReferenceById(characterId);
         Location location = locationRepo.getReferenceById(locationId);
-        locationPosterRepo.deleteById(new PosterPk(uuid.toString(), character, location));
+        locationPosterRepo.deleteById(new LocationPosterPk(uuid.toString(), character, location));
     }
 }

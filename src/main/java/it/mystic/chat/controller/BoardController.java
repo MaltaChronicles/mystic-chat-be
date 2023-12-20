@@ -1,9 +1,9 @@
 package it.mystic.chat.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-import it.mystic.chat.model.dao.BoardAnswerDao;
-import it.mystic.chat.model.dao.BoardDao;
-import it.mystic.chat.model.dao.BoardDiscussionDao;
+import it.mystic.chat.model.dao.board.BoardAnswerDao;
+import it.mystic.chat.model.dao.board.BoardDao;
+import it.mystic.chat.model.dao.board.BoardDiscussionDao;
 import it.mystic.chat.model.enums.BoardType;
 import it.mystic.chat.model.response.board.BoardAnswerResponse;
 import it.mystic.chat.model.response.board.BoardDiscussionResponse;

@@ -1,7 +1,6 @@
 package it.mystic.chat.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-import it.mystic.chat.model.dto.Medal;
 import it.mystic.chat.model.response.MedalResponse;
 import it.mystic.chat.service.MedalService;
 import org.springframework.beans.factory.annotation.Autowired;

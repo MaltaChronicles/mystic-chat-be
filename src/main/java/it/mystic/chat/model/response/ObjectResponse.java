@@ -3,76 +3,77 @@ package it.mystic.chat.model.response;
 import it.mystic.chat.model.enums.*;
 
 
-public record ObjectResponse (
-    Long objectId,
+public record ObjectResponse(
+        Long objectId,
 
-    String name,
+        String name,
 
-    String imageUrl,
+        String imageUrl,
 
-    ObjectType type,
+        ObjectType type,
 
-    String description,
+        String description,
 
-    ObjectRank rank,
+        ObjectRank rank,
 
-    Boolean isMartial,
+        Boolean isMartial,
 
-    RangeType rangeType,
+        RangeType rangeType,
 
-    RangeType price,
-
-
-    Feature featurePrecisionOne,
-
-    Feature featurePrecisionTwo,
-
-    Integer damage,
-
-    Affinity damageType,
+        RangeType price,
 
 
-    Integer defenseModifier,
+        Feature featurePrecisionOne,
 
-    Integer resistanceModifier,
+        Feature featurePrecisionTwo,
 
-    Integer initiativeModifier,
+        Integer damage,
 
-
-    Integer lifeModifier,
-
-    Integer manaModifier,
+        Affinity damageType,
 
 
-    DiceValue dexterityModifier,
+        Integer defenseModifier,
 
-    DiceValue insightModifier,
+        Integer resistanceModifier,
 
-    DiceValue vigorModifier,
-
-    DiceValue willModifier,
+        Integer initiativeModifier,
 
 
-    Affinity physicalModifier,
+        Integer lifeModifier,
 
-    Affinity waterModifier,
-
-    Affinity earthModifier,
-
-    Affinity fireModifier,
-
-    Affinity airModifier,
-
-    Affinity electricityModifier,
-
-    Affinity iceModifier,
-
-    Affinity lightModifier,
-
-    Affinity darkModifier,
-
-    Affinity poisonModifier,
+        Integer manaModifier,
 
 
-    Boolean isUnique
-){}
+        DiceValue dexterityModifier,
+
+        DiceValue insightModifier,
+
+        DiceValue vigorModifier,
+
+        DiceValue willModifier,
+
+
+        Affinity physicalModifier,
+
+        Affinity waterModifier,
+
+        Affinity earthModifier,
+
+        Affinity fireModifier,
+
+        Affinity airModifier,
+
+        Affinity electricityModifier,
+
+        Affinity iceModifier,
+
+        Affinity lightModifier,
+
+        Affinity darkModifier,
+
+        Affinity poisonModifier,
+
+
+        Boolean isUnique
+) {
+}

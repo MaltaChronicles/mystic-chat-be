@@ -1,14 +1,14 @@
 package it.mystic.chat.service.character;
 
 import it.mystic.chat.mapper.CharacterMapper;
-import it.mystic.chat.model.dto.character.Character;
 import it.mystic.chat.model.dto.Object;
+import it.mystic.chat.model.dto.character.Character;
 import it.mystic.chat.model.dto.character.CharacterInventory;
 import it.mystic.chat.model.dto.pk.CharacterInventoryPk;
 import it.mystic.chat.model.response.character.CharacterInventoryResponse;
+import it.mystic.chat.repo.ObjectRepo;
 import it.mystic.chat.repo.character.CharacterInventoryRepo;
 import it.mystic.chat.repo.character.CharacterRepo;
-import it.mystic.chat.repo.ObjectRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,7 +48,7 @@ public class CharacterInventoryService {
         });
 
         CharacterInventory characterInventory;
-        if(isPossessed) {
+        if (isPossessed) {
             characterInventory = characterInventoryRepo.getReferenceById(new CharacterInventoryPk(character, object));
             characterInventory.setQuantity(characterInventory.getQuantity() + 1);
         } else {

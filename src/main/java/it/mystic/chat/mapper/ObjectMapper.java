@@ -15,7 +15,7 @@ public class ObjectMapper {
     private String uploadDir;
 
     public Object daoToDto(ObjectDao objectDao) {
-        if(Objects.isNull(objectDao))
+        if (Objects.isNull(objectDao))
             return null;
         return new Object(
                 null,
@@ -62,7 +62,7 @@ public class ObjectMapper {
     }
 
     public ObjectResponse dtoToResponse(Object object) {
-        if(Objects.isNull(object))
+        if (Objects.isNull(object))
             return null;
         return new ObjectResponse(
                 object.getObjectId(),

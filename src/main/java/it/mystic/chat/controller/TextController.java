@@ -1,8 +1,8 @@
 package it.mystic.chat.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-import it.mystic.chat.model.dao.TextDao;
-import it.mystic.chat.model.dao.TextParagraphDao;
+import it.mystic.chat.model.dao.text.TextDao;
+import it.mystic.chat.model.dao.text.TextParagraphDao;
 import it.mystic.chat.model.enums.TextType;
 import it.mystic.chat.model.response.EssentialData;
 import it.mystic.chat.model.response.TextResponse;
@@ -10,9 +10,7 @@ import it.mystic.chat.service.TextService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.List;
 
 @RestController

@@ -1,4 +1,4 @@
-package it.mystic.chat.model.dao;
+package it.mystic.chat.model.dao.location;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

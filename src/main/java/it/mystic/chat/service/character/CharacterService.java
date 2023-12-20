@@ -2,13 +2,13 @@ package it.mystic.chat.service.character;
 
 import it.mystic.chat.exception.ValidationException;
 import it.mystic.chat.mapper.CharacterMapper;
-import it.mystic.chat.model.dao.CharacterDao;
-import it.mystic.chat.model.dao.CharacterDescriptionDao;
-import it.mystic.chat.model.dto.character.*;
+import it.mystic.chat.model.dao.character.CharacterDao;
+import it.mystic.chat.model.dao.character.CharacterDescriptionDao;
 import it.mystic.chat.model.dto.character.Character;
+import it.mystic.chat.model.dto.character.*;
 import it.mystic.chat.model.enums.*;
-import it.mystic.chat.model.response.character.CharacterResponse;
 import it.mystic.chat.model.response.EssentialData;
+import it.mystic.chat.model.response.character.CharacterResponse;
 import it.mystic.chat.repo.character.CharacterRepo;
 import it.mystic.chat.util.MultipartFileConverter;
 import org.hibernate.Hibernate;
@@ -38,13 +38,14 @@ public class CharacterService {
         return characterMapper.dtoToResponse(character);
     }
 
-    private void createOtherTable(Character character){
+    private void createOtherTable(Character character) {
         character.setStatus(new CharacterStats(character));
         character.setDescription(new CharacterDescription(character));
         character.setEquipment(new CharacterEquipment(character));
         character.setGuild(new CharacterGuild(character));
         characterRepo.save(character);
     }
+
     public CharacterResponse getById(Long characterId) {
         Character character = characterRepo.getReferenceById(characterId);
         character.setStatus(null);

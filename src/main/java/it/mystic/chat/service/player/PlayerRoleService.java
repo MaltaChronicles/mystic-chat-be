@@ -1,9 +1,9 @@
 package it.mystic.chat.service.player;
 
 import it.mystic.chat.mapper.PlayerMapper;
+import it.mystic.chat.model.dto.pk.PlayerRolePk;
 import it.mystic.chat.model.dto.player.Player;
 import it.mystic.chat.model.dto.player.PlayerRole;
-import it.mystic.chat.model.dto.pk.PlayerRolePk;
 import it.mystic.chat.model.enums.Role;
 import it.mystic.chat.model.response.EssentialData;
 import it.mystic.chat.repo.player.PlayerRepo;

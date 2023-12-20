@@ -1,7 +1,7 @@
 package it.mystic.chat.controller.location;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-import it.mystic.chat.model.dao.LocationDao;
+import it.mystic.chat.model.dao.location.LocationDao;
 import it.mystic.chat.model.response.location.LocationResponse;
 import it.mystic.chat.service.location.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;

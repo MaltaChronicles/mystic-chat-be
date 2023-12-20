@@ -1,14 +1,14 @@
 package it.mystic.chat.service.character;
 
 import it.mystic.chat.mapper.CharacterMapper;
+import it.mystic.chat.model.dto.Ability;
 import it.mystic.chat.model.dto.character.Character;
 import it.mystic.chat.model.dto.character.CharacterAbilityThree;
-import it.mystic.chat.model.dto.Ability;
 import it.mystic.chat.model.dto.pk.CharacterAbilityThreePk;
 import it.mystic.chat.model.response.character.CharacterAbilityThreeResponse;
+import it.mystic.chat.repo.AbilityRepo;
 import it.mystic.chat.repo.character.CharacterAbilityThreeRepo;
 import it.mystic.chat.repo.character.CharacterRepo;
-import it.mystic.chat.repo.AbilityRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +36,7 @@ public class CharacterAbilityThreeService {
         });
 
         CharacterAbilityThree characterAbilityThree;
-        if(isPossessed) {
+        if (isPossessed) {
             characterAbilityThree = characterAbilityThreeRepo.getReferenceById(new CharacterAbilityThreePk(character, ability));
             characterAbilityThree.setLevel(characterAbilityThree.getLevel() + 1);
         } else {

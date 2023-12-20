@@ -1,7 +1,10 @@
 package it.mystic.chat.model.dto.location;
 
-import it.mystic.chat.model.dto.pk.PosterPk;
-import jakarta.persistence.*;
+import it.mystic.chat.model.dto.pk.LocationPosterPk;
+import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +18,7 @@ import java.util.Date;
 @Table
 public class LocationPoster {
     @EmbeddedId
-    PosterPk id;
+    LocationPosterPk id;
 
     @Column
     String title;

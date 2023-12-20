@@ -1,7 +1,6 @@
-package it.mystic.chat.model.dao;
+package it.mystic.chat.model.dao.text;
 
 import it.mystic.chat.model.enums.TextType;
-import jakarta.persistence.Column;
 
 public record TextDao(
 

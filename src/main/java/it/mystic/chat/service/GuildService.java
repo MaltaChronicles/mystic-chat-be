@@ -2,13 +2,13 @@ package it.mystic.chat.service;
 
 import it.mystic.chat.mapper.GuildMapper;
 import it.mystic.chat.model.dao.GuildDao;
-import it.mystic.chat.model.dto.character.Character;
 import it.mystic.chat.model.dto.Guild;
+import it.mystic.chat.model.dto.character.Character;
 import it.mystic.chat.model.dto.character.CharacterGuild;
 import it.mystic.chat.model.enums.GuildRank;
 import it.mystic.chat.model.response.GuildResponse;
-import it.mystic.chat.repo.character.CharacterRepo;
 import it.mystic.chat.repo.GuildRepo;
+import it.mystic.chat.repo.character.CharacterRepo;
 import it.mystic.chat.util.MultipartFileConverter;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;

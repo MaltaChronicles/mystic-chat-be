@@ -3,8 +3,8 @@ package it.mystic.chat.mapper;
 import it.mystic.chat.model.dao.GuildDao;
 import it.mystic.chat.model.dto.Guild;
 import it.mystic.chat.model.dto.character.CharacterGuild;
-import it.mystic.chat.model.response.character.CharacterGuildResponse;
 import it.mystic.chat.model.response.GuildResponse;
+import it.mystic.chat.model.response.character.CharacterGuildResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +17,7 @@ public class GuildMapper {
     private String uploadDir;
 
     public Guild daoToDto(GuildDao guildDao) {
-        if(Objects.isNull(guildDao))
+        if (Objects.isNull(guildDao))
             return null;
         return new Guild(
                 null,
@@ -29,7 +29,7 @@ public class GuildMapper {
     }
 
     public GuildResponse guildToResponse(Guild guild) {
-        if(Objects.isNull(guild))
+        if (Objects.isNull(guild))
             return null;
         return new GuildResponse(
                 guild.getGuildId(),
@@ -41,11 +41,11 @@ public class GuildMapper {
     }
 
     private List<CharacterGuildResponse> guildersToResponse(List<CharacterGuild> guilders) {
-        if(Objects.isNull(guilders))
+        if (Objects.isNull(guilders))
             return null;
         return guilders.stream().map(guildList -> {
             return new CharacterGuildResponse(
-                guildList.getCharacter().getCharacterId(),
+                    guildList.getCharacter().getCharacterId(),
                     guildList.getCharacter().getName(),
                     guildList.getRank()
             );

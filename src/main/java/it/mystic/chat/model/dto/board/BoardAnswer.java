@@ -1,12 +1,13 @@
 package it.mystic.chat.model.dto.board;
 
 import it.mystic.chat.model.dto.pk.BoardAnswerPk;
-import it.mystic.chat.model.dto.pk.BoardDiscussionPk;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Type;
 
 import java.util.Date;
 

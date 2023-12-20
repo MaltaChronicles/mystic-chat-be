@@ -1,14 +1,14 @@
 package it.mystic.chat.mapper;
 
-import it.mystic.chat.model.dao.BoardAnswerDao;
-import it.mystic.chat.model.dao.BoardDao;
-import it.mystic.chat.model.dao.BoardDiscussionDao;
+import it.mystic.chat.model.dao.board.BoardAnswerDao;
+import it.mystic.chat.model.dao.board.BoardDao;
+import it.mystic.chat.model.dao.board.BoardDiscussionDao;
 import it.mystic.chat.model.dto.board.Board;
 import it.mystic.chat.model.dto.board.BoardAnswer;
 import it.mystic.chat.model.dto.board.BoardDiscussion;
-import it.mystic.chat.model.dto.player.Player;
 import it.mystic.chat.model.dto.pk.BoardAnswerPk;
 import it.mystic.chat.model.dto.pk.BoardDiscussionPk;
+import it.mystic.chat.model.dto.player.Player;
 import it.mystic.chat.model.response.board.BoardAnswerResponse;
 import it.mystic.chat.model.response.board.BoardDiscussionResponse;
 import it.mystic.chat.model.response.board.BoardResponse;
@@ -22,7 +22,7 @@ import java.util.UUID;
 @Component
 public class BoardMapper {
     public Board daoToDto(BoardDao boardDao) {
-        if(Objects.isNull(boardDao))
+        if (Objects.isNull(boardDao))
             return null;
         return new Board(
                 null,
@@ -34,7 +34,7 @@ public class BoardMapper {
     }
 
     public BoardResponse dtoToResponse(Board board) {
-        if(Objects.isNull(board))
+        if (Objects.isNull(board))
             return null;
         return new BoardResponse(
                 board.getBoardId(),
@@ -44,19 +44,19 @@ public class BoardMapper {
     }
 
     public List<BoardResponse> dtoListToResponseList(List<Board> boardList) {
-        if(Objects.isNull(boardList))
+        if (Objects.isNull(boardList))
             return null;
         return boardList.stream().map(this::dtoToResponse).toList();
     }
 
     public List<BoardDiscussionResponse> discussionListToResponseList(List<BoardDiscussion> discussionList) {
-        if(Objects.isNull(discussionList))
+        if (Objects.isNull(discussionList))
             return null;
         return discussionList.stream().map(this::discussionDtoToResponse).toList();
     }
 
     public BoardDiscussion discussionDaoToDto(Board board, Player player, BoardDiscussionDao boardDiscussionDao) {
-        if(Objects.isNull(board) || Objects.isNull(player) || Objects.isNull(boardDiscussionDao))
+        if (Objects.isNull(board) || Objects.isNull(player) || Objects.isNull(boardDiscussionDao))
             return null;
         return new BoardDiscussion(
                 new BoardDiscussionPk(board, player, UUID.randomUUID().toString()),
@@ -70,7 +70,7 @@ public class BoardMapper {
     }
 
     public BoardDiscussionResponse discussionDtoToResponse(BoardDiscussion boardDiscussion) {
-        if(Objects.isNull(boardDiscussion))
+        if (Objects.isNull(boardDiscussion))
             return null;
         return new BoardDiscussionResponse(
                 boardDiscussion.getId().getBoard().getBoardId(),
@@ -85,13 +85,13 @@ public class BoardMapper {
     }
 
     public List<BoardAnswerResponse> answerListToResponseList(List<BoardAnswer> answerList) {
-        if(Objects.isNull(answerList))
+        if (Objects.isNull(answerList))
             return null;
         return answerList.stream().map(this::answerDtoToResponse).toList();
     }
 
     public BoardAnswer answerDaoToDto(BoardDiscussion boardDiscussion, Player player, BoardAnswerDao boardAnswerDao) {
-        if(Objects.isNull(boardDiscussion) || Objects.isNull(boardAnswerDao))
+        if (Objects.isNull(boardDiscussion) || Objects.isNull(boardAnswerDao))
             return null;
         return new BoardAnswer(
                 new BoardAnswerPk(
@@ -105,7 +105,7 @@ public class BoardMapper {
     }
 
     public BoardAnswerResponse answerDtoToResponse(BoardAnswer boardAnswer) {
-        if(Objects.isNull(boardAnswer))
+        if (Objects.isNull(boardAnswer))
             return null;
         return new BoardAnswerResponse(
                 boardAnswer.getId().getWrittenBy().getPlayerId(),

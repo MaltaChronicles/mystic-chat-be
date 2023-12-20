@@ -15,9 +15,9 @@ import java.io.Serializable;
 public class BoardAnswerPk implements Serializable {
     @ManyToOne
     @JoinColumns({
-        @JoinColumn(name = "board_id", referencedColumnName = "board_id", insertable = false, updatable = false),
-        @JoinColumn(name = "openBy", referencedColumnName = "openBy", insertable = false, updatable = false),
-        @JoinColumn(name = "discussionUuid", referencedColumnName = "discussionUuid", insertable = false, updatable = false)
+            @JoinColumn(name = "board_id", referencedColumnName = "board_id", insertable = false, updatable = false),
+            @JoinColumn(name = "openBy", referencedColumnName = "openBy", insertable = false, updatable = false),
+            @JoinColumn(name = "discussionUuid", referencedColumnName = "discussionUuid", insertable = false, updatable = false)
     })
     BoardDiscussion discussion;
 

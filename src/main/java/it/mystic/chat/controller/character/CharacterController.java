@@ -1,11 +1,11 @@
 package it.mystic.chat.controller.character;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-import it.mystic.chat.model.dao.CharacterDao;
-import it.mystic.chat.model.dao.CharacterDescriptionDao;
+import it.mystic.chat.model.dao.character.CharacterDao;
+import it.mystic.chat.model.dao.character.CharacterDescriptionDao;
 import it.mystic.chat.model.enums.*;
-import it.mystic.chat.model.response.character.CharacterResponse;
 import it.mystic.chat.model.response.EssentialData;
+import it.mystic.chat.model.response.character.CharacterResponse;
 import it.mystic.chat.service.character.CharacterService;
 import jakarta.validation.constraints.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;

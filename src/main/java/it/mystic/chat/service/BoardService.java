@@ -1,14 +1,14 @@
 package it.mystic.chat.service;
 
 import it.mystic.chat.mapper.BoardMapper;
-import it.mystic.chat.model.dao.BoardAnswerDao;
-import it.mystic.chat.model.dao.BoardDao;
-import it.mystic.chat.model.dao.BoardDiscussionDao;
+import it.mystic.chat.model.dao.board.BoardAnswerDao;
+import it.mystic.chat.model.dao.board.BoardDao;
+import it.mystic.chat.model.dao.board.BoardDiscussionDao;
 import it.mystic.chat.model.dto.board.Board;
 import it.mystic.chat.model.dto.board.BoardAnswer;
 import it.mystic.chat.model.dto.board.BoardDiscussion;
-import it.mystic.chat.model.dto.player.Player;
 import it.mystic.chat.model.dto.pk.BoardDiscussionPk;
+import it.mystic.chat.model.dto.player.Player;
 import it.mystic.chat.model.enums.BoardType;
 import it.mystic.chat.model.response.board.BoardAnswerResponse;
 import it.mystic.chat.model.response.board.BoardDiscussionResponse;
@@ -38,7 +38,7 @@ public class BoardService {
     private BoardMapper boardMapper;
 
     public BoardResponse create(BoardDao boardDao) {
-        Board board =  boardMapper.daoToDto(boardDao);
+        Board board = boardMapper.daoToDto(boardDao);
         return boardMapper.dtoToResponse(boardRepo.save(board));
     }
 
@@ -69,7 +69,7 @@ public class BoardService {
         return boardMapper.discussionDtoToResponse(boardDiscussionRepo.save(boardDiscussion));
     }
 
-    private BoardDiscussion getDiscussion(Long boardId, Long playerId, UUID uuid){
+    private BoardDiscussion getDiscussion(Long boardId, Long playerId, UUID uuid) {
         Board board = boardRepo.getReferenceById(boardId);
         Player player = playerRepo.getReferenceById(playerId);
         return boardDiscussionRepo.getReferenceById(new BoardDiscussionPk(board, player, uuid.toString()));
@@ -81,19 +81,19 @@ public class BoardService {
     }
 
     public void changeIsOpen(Long boardId, Long playerId, UUID uuid) {
-        BoardDiscussion boardDiscussion =  getDiscussion(boardId, playerId, uuid);
+        BoardDiscussion boardDiscussion = getDiscussion(boardId, playerId, uuid);
         boardDiscussion.setIsOpen(!boardDiscussion.getIsOpen());
         boardDiscussionRepo.save(boardDiscussion);
     }
 
     public void changeIsPin(Long boardId, Long playerId, UUID uuid) {
-        BoardDiscussion boardDiscussion =  getDiscussion(boardId, playerId, uuid);
+        BoardDiscussion boardDiscussion = getDiscussion(boardId, playerId, uuid);
         boardDiscussion.setIsPin(!boardDiscussion.getIsPin());
         boardDiscussionRepo.save(boardDiscussion);
     }
 
     public BoardAnswerResponse createAnswer(Long boardId, Long openPlayerId, UUID uuid, BoardAnswerDao boardAnswerDao) {
-        BoardDiscussion boardDiscussion =  getDiscussion(boardId, openPlayerId, uuid);
+        BoardDiscussion boardDiscussion = getDiscussion(boardId, openPlayerId, uuid);
         Player player = playerRepo.getReferenceById(boardAnswerDao.playerId());
         BoardAnswer boardAnswer = boardMapper.answerDaoToDto(boardDiscussion, player, boardAnswerDao);
         return boardMapper.answerDtoToResponse(boardAnswerRepo.save(boardAnswer));

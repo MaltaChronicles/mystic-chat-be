@@ -2,8 +2,6 @@ package it.mystic.chat.model.dto.pk;
 
 import it.mystic.chat.model.dto.character.Character;
 import it.mystic.chat.model.dto.location.Location;
-import it.mystic.chat.model.dto.player.Player;
-import it.mystic.chat.model.enums.Role;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
@@ -17,7 +15,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PosterPk implements Serializable {
+public class LocationPosterPk implements Serializable {
     @Column
     String uuid;
 

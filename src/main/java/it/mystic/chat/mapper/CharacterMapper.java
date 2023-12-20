@@ -1,12 +1,12 @@
 package it.mystic.chat.mapper;
 
 
-import it.mystic.chat.model.dao.CharacterDao;
-import it.mystic.chat.model.dao.CharacterDescriptionDao;
-import it.mystic.chat.model.dto.character.*;
+import it.mystic.chat.model.dao.character.CharacterDao;
+import it.mystic.chat.model.dao.character.CharacterDescriptionDao;
 import it.mystic.chat.model.dto.character.Character;
+import it.mystic.chat.model.dto.character.*;
 import it.mystic.chat.model.enums.StandardOfLiving;
-import it.mystic.chat.model.response.*;
+import it.mystic.chat.model.response.EssentialData;
 import it.mystic.chat.model.response.character.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,7 +28,7 @@ public class CharacterMapper {
     private AbilityMapper abilityMapper;
 
     public Character daoToDto(CharacterDao characterDao) {
-        if(Objects.isNull(characterDao))
+        if (Objects.isNull(characterDao))
             return null;
         Character character = new Character(
                 characterDao.getName(),
@@ -43,7 +43,7 @@ public class CharacterMapper {
     }
 
     public CharacterDescription descriptionDaoToDto(CharacterDescriptionDao characterDescriptionDao, Character character) {
-        if(Objects.isNull(characterDescriptionDao) || Objects.isNull(character))
+        if (Objects.isNull(characterDescriptionDao) || Objects.isNull(character))
             return null;
         return new CharacterDescription(
                 characterDescriptionDao.getRightEye(),
@@ -59,7 +59,7 @@ public class CharacterMapper {
     }
 
     public CharacterResponse dtoToResponse(Character character) {
-        if(Objects.isNull(character))
+        if (Objects.isNull(character))
             return null;
         return new CharacterResponse(
                 character.getCharacterId(),
@@ -76,8 +76,8 @@ public class CharacterMapper {
         );
     }
 
-    private CharacterDescriptionResponse descriptionDtoToResponse(CharacterDescription characterDescription){
-        if(Objects.isNull(characterDescription))
+    private CharacterDescriptionResponse descriptionDtoToResponse(CharacterDescription characterDescription) {
+        if (Objects.isNull(characterDescription))
             return null;
         return new CharacterDescriptionResponse(
                 characterDescription.getRightEye(),
@@ -92,7 +92,7 @@ public class CharacterMapper {
     }
 
     public List<EssentialData> characterListToMap(List<Character> characterList) {
-        if(Objects.isNull(characterList))
+        if (Objects.isNull(characterList))
             return null;
         return characterList.stream().map(character -> {
             return new EssentialData(character.getCharacterId(), character.getName());
@@ -100,7 +100,7 @@ public class CharacterMapper {
     }
 
     public CharacterEquipmentResponse equipmentDtoToResponse(CharacterEquipment equipment) {
-        if(Objects.isNull(equipment))
+        if (Objects.isNull(equipment))
             return null;
         return new CharacterEquipmentResponse(
                 equipment.getRightHand(),
@@ -113,7 +113,7 @@ public class CharacterMapper {
     }
 
     public List<CharacterInventoryResponse> inventoryDtoToResponse(List<CharacterInventory> inventory) {
-        if(Objects.isNull(inventory))
+        if (Objects.isNull(inventory))
             return null;
         return inventory.stream().map(inv -> {
             return new CharacterInventoryResponse(objectMapper.dtoToResponse(inv.getId().getObject()), inv.getIsEquip());
@@ -121,7 +121,7 @@ public class CharacterMapper {
     }
 
     public CharacterStatsResponse statsDtoToResponse(CharacterStats status) {
-        if(Objects.isNull(status))
+        if (Objects.isNull(status))
             return null;
         return new CharacterStatsResponse(
                 status.getLevel(),
@@ -179,7 +179,7 @@ public class CharacterMapper {
     }
 
     public List<CharacterAbilityThreeResponse> abilityThreeDtoToResponse(List<CharacterAbilityThree> characterAbilityThreeList) {
-        if(Objects.isNull(characterAbilityThreeList))
+        if (Objects.isNull(characterAbilityThreeList))
             return null;
         return characterAbilityThreeList.stream().map(abilityThree -> {
             return new CharacterAbilityThreeResponse(

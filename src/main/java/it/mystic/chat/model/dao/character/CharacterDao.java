@@ -1,4 +1,4 @@
-package it.mystic.chat.model.dao;
+package it.mystic.chat.model.dao.character;
 
 import it.mystic.chat.model.enums.Job;
 import it.mystic.chat.model.enums.Origin;

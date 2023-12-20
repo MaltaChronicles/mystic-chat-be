@@ -1,7 +1,7 @@
 package it.mystic.chat.service.location;
 
 import it.mystic.chat.mapper.LocationMapper;
-import it.mystic.chat.model.dao.LocationEventDao;
+import it.mystic.chat.model.dao.location.LocationEventDao;
 import it.mystic.chat.model.dto.location.Location;
 import it.mystic.chat.model.dto.location.LocationEvent;
 import it.mystic.chat.model.dto.pk.LocationEventPk;

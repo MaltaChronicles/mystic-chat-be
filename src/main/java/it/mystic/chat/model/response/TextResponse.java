@@ -6,4 +6,5 @@ public record TextResponse(
         String title,
         String body,
         List<EssentialData> paragraphs
-) {}
+) {
+}

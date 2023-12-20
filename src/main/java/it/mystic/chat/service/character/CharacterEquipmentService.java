@@ -2,12 +2,12 @@ package it.mystic.chat.service.character;
 
 import it.mystic.chat.exception.GenericException;
 import it.mystic.chat.mapper.CharacterMapper;
-import it.mystic.chat.model.dto.character.Character;
 import it.mystic.chat.model.dto.Object;
+import it.mystic.chat.model.dto.character.Character;
 import it.mystic.chat.model.enums.RangeType;
 import it.mystic.chat.model.response.character.CharacterEquipmentResponse;
-import it.mystic.chat.repo.character.CharacterRepo;
 import it.mystic.chat.repo.ObjectRepo;
+import it.mystic.chat.repo.character.CharacterRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

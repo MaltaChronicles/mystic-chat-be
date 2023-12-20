@@ -3,7 +3,7 @@ package it.mystic.chat.model.response.board;
 import java.util.Date;
 
 
-public record BoardDiscussionResponse (
+public record BoardDiscussionResponse(
         Long boardId,
         Long openPlayerId,
         String discussionUuid,
@@ -12,4 +12,5 @@ public record BoardDiscussionResponse (
         Boolean isOpen,
         Boolean isPin,
         Date openDate
-){}
+) {
+}

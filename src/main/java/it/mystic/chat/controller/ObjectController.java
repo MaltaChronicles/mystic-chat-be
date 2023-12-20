@@ -2,7 +2,6 @@ package it.mystic.chat.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.model.dao.ObjectDao;
-import it.mystic.chat.model.dto.Object;
 import it.mystic.chat.model.enums.ObjectType;
 import it.mystic.chat.model.response.ObjectResponse;
 import it.mystic.chat.service.ObjectService;

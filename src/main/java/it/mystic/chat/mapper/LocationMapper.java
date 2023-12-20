@@ -11,7 +11,7 @@ import it.mystic.chat.model.dto.location.LocationMessage;
 import it.mystic.chat.model.dto.location.LocationPoster;
 import it.mystic.chat.model.dto.pk.LocationEventPk;
 import it.mystic.chat.model.dto.pk.LocationMessagePk;
-import it.mystic.chat.model.dto.pk.PosterPk;
+import it.mystic.chat.model.dto.pk.LocationPosterPk;
 import it.mystic.chat.model.enums.MessageType;
 import it.mystic.chat.model.response.location.LocationEventResponse;
 import it.mystic.chat.model.response.location.LocationMessageResponse;
@@ -31,7 +31,7 @@ public class LocationMapper {
     private String uploadDir;
 
     public Location daoToDto(LocationDao locationDao) {
-        if(Objects.isNull(locationDao))
+        if (Objects.isNull(locationDao))
             return null;
         return new Location(
                 null,
@@ -48,7 +48,7 @@ public class LocationMapper {
     }
 
     public LocationEvent eventDaoToDto(Location location, LocationEventDao locationEventDao) {
-        if(Objects.isNull(location) || Objects.isNull(locationEventDao))
+        if (Objects.isNull(location) || Objects.isNull(locationEventDao))
             return null;
         return new LocationEvent(
                 new LocationEventPk(location, new Date()),
@@ -59,7 +59,7 @@ public class LocationMapper {
     }
 
     public LocationMessage messageDaoToDto(Location location, MessageType messageType, LocationMessageDao locationMessageDao) {
-        if(Objects.isNull(location) || Objects.isNull(messageType) || Objects.isNull(locationMessageDao))
+        if (Objects.isNull(location) || Objects.isNull(messageType) || Objects.isNull(locationMessageDao))
             return null;
         return new LocationMessage(
                 new LocationMessagePk(
@@ -75,7 +75,7 @@ public class LocationMapper {
     }
 
     public LocationResponse dtoToResponse(Location location) {
-        if(Objects.isNull(location))
+        if (Objects.isNull(location))
             return null;
         return new LocationResponse(
                 location.getLocationId(),
@@ -88,7 +88,7 @@ public class LocationMapper {
     }
 
     public List<LocationEventResponse> eventDtoToResponse(List<LocationEvent> locationEventList) {
-        if(Objects.isNull(locationEventList))
+        if (Objects.isNull(locationEventList))
             return null;
         return locationEventList.stream().map(event -> {
             return new LocationEventResponse(
@@ -101,7 +101,7 @@ public class LocationMapper {
     }
 
     public List<LocationMessageResponse> messageDtoToResponse(Long locationId, List<LocationMessage> locationMessageList) {
-        if(Objects.isNull(locationMessageList) || Objects.isNull(locationId))
+        if (Objects.isNull(locationMessageList) || Objects.isNull(locationId))
             return null;
         return locationMessageList.stream().filter(locationMessage -> {
             return locationMessage.getId().getLocation().getLocationId() == locationId;
@@ -118,10 +118,10 @@ public class LocationMapper {
     }
 
     public LocationPoster locationDaoToDto(Character character, Location location, LocationPosterDao locationPosterDao) {
-        if(Objects.isNull(character) || Objects.isNull(location) || Objects.isNull(locationPosterDao))
+        if (Objects.isNull(character) || Objects.isNull(location) || Objects.isNull(locationPosterDao))
             return null;
         return new LocationPoster(
-                new PosterPk(UUID.randomUUID().toString(), character, location),
+                new LocationPosterPk(UUID.randomUUID().toString(), character, location),
                 locationPosterDao.title(),
                 locationPosterDao.body(),
                 new Date()
@@ -129,7 +129,7 @@ public class LocationMapper {
     }
 
     public LocationPosterResponse locationDtoToResponse(LocationPoster locationPoster) {
-        if(Objects.isNull(locationPoster))
+        if (Objects.isNull(locationPoster))
             return null;
         return new LocationPosterResponse(
                 locationPoster.getId().getCharacter().getCharacterId(),
@@ -142,7 +142,7 @@ public class LocationMapper {
     }
 
     public List<LocationPosterResponse> locationDtoListToResponseList(List<LocationPoster> locationPosterList) {
-        if(Objects.isNull(locationPosterList))
+        if (Objects.isNull(locationPosterList))
             return null;
         return locationPosterList.stream().map(this::locationDtoToResponse).toList();
     }

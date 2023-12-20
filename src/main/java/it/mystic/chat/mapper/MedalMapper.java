@@ -1,8 +1,6 @@
 package it.mystic.chat.mapper;
 
-import it.mystic.chat.model.dao.ObjectDao;
 import it.mystic.chat.model.dto.Medal;
-import it.mystic.chat.model.dto.Object;
 import it.mystic.chat.model.response.MedalResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -17,7 +15,7 @@ public class MedalMapper {
     private String uploadDir;
 
     public Medal daoTo(String name) {
-        if(Objects.isNull(name))
+        if (Objects.isNull(name))
             return null;
         return new Medal(
                 null,
@@ -28,7 +26,7 @@ public class MedalMapper {
     }
 
     public MedalResponse dtoToResponse(Medal medal) {
-        if(Objects.isNull(medal))
+        if (Objects.isNull(medal))
             return null;
         return new MedalResponse(
                 medal.getName(),
@@ -37,10 +35,10 @@ public class MedalMapper {
     }
 
     public List<MedalResponse> medalListToResponseList(List<Medal> medalList) {
-        if(Objects.isNull(medalList))
+        if (Objects.isNull(medalList))
             return null;
         return medalList.stream().map(medal -> {
-          return new MedalResponse(medal.getName(), medal.getImageUrl())  ;
+            return new MedalResponse(medal.getName(), medal.getImageUrl());
         }).toList();
     }
 }

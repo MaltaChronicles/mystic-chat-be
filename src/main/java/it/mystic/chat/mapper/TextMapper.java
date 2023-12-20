@@ -1,7 +1,7 @@
 package it.mystic.chat.mapper;
 
-import it.mystic.chat.model.dao.TextDao;
-import it.mystic.chat.model.dao.TextParagraphDao;
+import it.mystic.chat.model.dao.text.TextDao;
+import it.mystic.chat.model.dao.text.TextParagraphDao;
 import it.mystic.chat.model.dto.text.Text;
 import it.mystic.chat.model.dto.text.TextParagraph;
 import it.mystic.chat.model.response.EssentialData;
@@ -14,7 +14,7 @@ import java.util.Objects;
 @Component
 public class TextMapper {
     public Text daoToDto(TextDao textDao) {
-        if(Objects.isNull(textDao))
+        if (Objects.isNull(textDao))
             return null;
         return new Text(
                 null,
@@ -26,7 +26,7 @@ public class TextMapper {
     }
 
     public TextResponse dtoToResponse(Text text) {
-        if(Objects.isNull(text))
+        if (Objects.isNull(text))
             return null;
         return new TextResponse(
                 text.getTitle(),
@@ -36,19 +36,19 @@ public class TextMapper {
     }
 
     private List<EssentialData> paragraphsToMap(List<TextParagraph> paragraphs) {
-        if(Objects.isNull(paragraphs))
+        if (Objects.isNull(paragraphs))
             return null;
         return paragraphs.stream().map(paragraph -> {
-           return new EssentialData(paragraph.getParagraphId(), paragraph.getTitle());
+            return new EssentialData(paragraph.getParagraphId(), paragraph.getTitle());
         }).toList();
     }
 
-    public List<EssentialData> dtoListToMap(List<Text> textList){
+    public List<EssentialData> dtoListToMap(List<Text> textList) {
         return textList.stream().map(text -> {
-           return new EssentialData(
-                   text.getTextId(),
-                   text.getTitle()
-           );
+            return new EssentialData(
+                    text.getTextId(),
+                    text.getTitle()
+            );
         }).toList();
     }
 

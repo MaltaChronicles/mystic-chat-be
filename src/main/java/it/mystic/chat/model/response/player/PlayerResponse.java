@@ -7,23 +7,24 @@ import java.util.Date;
 import java.util.List;
 
 
-public record PlayerResponse (
+public record PlayerResponse(
 
-    Long playerId,
-    String username,
-    Date dataIscrizione,
-    Date ultimaAzione,
-    Date ultimoAccesso,
-    Date ultimaGiocata,
+        Long playerId,
+        String username,
+        Date dataIscrizione,
+        Date ultimaAzione,
+        Date ultimoAccesso,
+        Date ultimaGiocata,
 
-    List<PlayerRoleResponse> roles,
+        List<PlayerRoleResponse> roles,
 
-    EssentialData character1,
-    EssentialData character2,
-    EssentialData character3,
-    EssentialData activeCharacter,
+        EssentialData character1,
+        EssentialData character2,
+        EssentialData character3,
+        EssentialData activeCharacter,
 
-    EssentialData location,
+        EssentialData location,
 
-    List<MedalResponse> medals
-) {}
+        List<MedalResponse> medals
+) {
+}

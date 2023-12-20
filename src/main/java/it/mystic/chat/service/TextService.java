@@ -1,8 +1,8 @@
 package it.mystic.chat.service;
 
 import it.mystic.chat.mapper.TextMapper;
-import it.mystic.chat.model.dao.TextDao;
-import it.mystic.chat.model.dao.TextParagraphDao;
+import it.mystic.chat.model.dao.text.TextDao;
+import it.mystic.chat.model.dao.text.TextParagraphDao;
 import it.mystic.chat.model.dto.text.Text;
 import it.mystic.chat.model.dto.text.TextParagraph;
 import it.mystic.chat.model.enums.TextType;
