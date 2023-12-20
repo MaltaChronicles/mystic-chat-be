@@ -46,4 +46,8 @@ public class Location {
     @JoinColumn(name = "manager")
     @ToStringExclude
     Player manager;
+
+    @OneToMany(mappedBy = "id.location", cascade = CascadeType.ALL)
+    @ToStringExclude
+    List<LocationPoster> locationPosters;
 }
