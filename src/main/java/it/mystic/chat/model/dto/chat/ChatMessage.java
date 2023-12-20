@@ -1,14 +1,13 @@
 package it.mystic.chat.model.dto.chat;
 
 import it.mystic.chat.model.dto.pk.ChatMessagePk;
-import it.mystic.chat.model.dto.player.PlayerChat;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.commons.lang3.builder.ToStringExclude;
-
-import java.util.List;
 
 @Entity
 @Data

@@ -1,4 +1,4 @@
-package it.mystic.chat.security;
+package it.mystic.chat.security.model;
 
 import it.mystic.chat.model.dto.player.Player;
 import jakarta.persistence.*;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "config_token")
+@Table(name = "security_token")
 public class Token {
     @ManyToOne
     @JoinColumn(name = "playerId")

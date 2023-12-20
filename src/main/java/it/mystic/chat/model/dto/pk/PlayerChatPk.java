@@ -2,8 +2,6 @@ package it.mystic.chat.model.dto.pk;
 
 import it.mystic.chat.model.dto.chat.Chat;
 import it.mystic.chat.model.dto.player.Player;
-import it.mystic.chat.model.enums.Role;
-import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;

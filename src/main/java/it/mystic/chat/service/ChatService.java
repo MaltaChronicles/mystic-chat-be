@@ -9,8 +9,8 @@ import it.mystic.chat.model.dto.player.PlayerChat;
 import it.mystic.chat.model.response.chat.ChatMemberResponse;
 import it.mystic.chat.model.response.chat.ChatMessageResponse;
 import it.mystic.chat.model.response.chat.ChatResponse;
-import it.mystic.chat.repo.chat.ChatRepo;
 import it.mystic.chat.repo.chat.ChatMessageRepo;
+import it.mystic.chat.repo.chat.ChatRepo;
 import it.mystic.chat.repo.player.PlayerChatRepo;
 import it.mystic.chat.repo.player.PlayerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,9 +44,9 @@ public class ChatService {
         return chatResponse;
     }
 
-    private void addAdmin(Chat chat, Long playerId){
+    private void addAdmin(Chat chat, Long playerId) {
         Player player = playerRepo.getReferenceById(playerId);
-        PlayerChat playerChat =  new PlayerChat(
+        PlayerChat playerChat = new PlayerChat(
                 new PlayerChatPk(
                         player,
                         chat
@@ -77,7 +77,7 @@ public class ChatService {
         chatRepo.deleteById(chatId.toString());
     }
 
-    private PlayerChatPk getPlayerChatPk(Long playerId, UUID chatId){
+    private PlayerChatPk getPlayerChatPk(Long playerId, UUID chatId) {
         Chat chat = chatRepo.getReferenceById(chatId.toString());
         Player player = playerRepo.getReferenceById(playerId);
         return new PlayerChatPk(player, chat);

@@ -1,8 +1,6 @@
 package it.mystic.chat.model.dto.chat;
 
-import it.mystic.chat.model.dto.player.Player;
 import it.mystic.chat.model.dto.player.PlayerChat;
-import it.mystic.chat.model.dto.text.TextParagraph;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

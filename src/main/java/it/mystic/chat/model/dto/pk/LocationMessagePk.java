@@ -20,5 +20,5 @@ public class LocationMessagePk implements Serializable {
 
     String sender;
 
-    Date data;
+    Date date;
 }

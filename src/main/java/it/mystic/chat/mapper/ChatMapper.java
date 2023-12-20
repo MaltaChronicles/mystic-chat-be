@@ -20,7 +20,7 @@ import java.util.UUID;
 @Component
 public class ChatMapper {
     public Chat daoToDto(String title) {
-        if(Objects.isNull(title))
+        if (Objects.isNull(title))
             return null;
         return new Chat(
                 UUID.randomUUID().toString(),
@@ -31,7 +31,7 @@ public class ChatMapper {
     }
 
     public ChatResponse dtoToResponse(Chat chat) {
-        if(Objects.isNull(chat))
+        if (Objects.isNull(chat))
             return null;
         return new ChatResponse(
                 chat.getChatId(),
@@ -40,18 +40,18 @@ public class ChatMapper {
     }
 
     public List<ChatMemberResponse> playerChatListToResponseList(List<PlayerChat> playerChats) {
-        if(Objects.isNull(playerChats))
+        if (Objects.isNull(playerChats))
             return null;
         return playerChats.stream().map(playerChat -> {
             return new ChatMemberResponse(
                     playerChat.getId().getPlayer().getPlayerId(),
                     playerChat.getId().getPlayer().getUsername(),
-                    playerChat.getIsAdmin()            );
+                    playerChat.getIsAdmin());
         }).toList();
     }
 
     public List<ChatMessageResponse> messageListDtoToResponse(String chatId, List<ChatMessage> chatMessageList) {
-        if(Objects.isNull(chatMessageList))
+        if (Objects.isNull(chatMessageList))
             return null;
         return chatMessageList.stream()
                 .filter(chatMessage -> {
@@ -60,7 +60,7 @@ public class ChatMapper {
     }
 
     public PlayerChat playerChatDaoToDto(PlayerChatPk playerChatPk) {
-        if(Objects.isNull(playerChatPk))
+        if (Objects.isNull(playerChatPk))
             return null;
         return new PlayerChat(
                 playerChatPk,
@@ -69,7 +69,7 @@ public class ChatMapper {
     }
 
     public ChatMessage messageToDto(Chat chat, Player player, String body) {
-        if(Objects.isNull(chat) || Objects.isNull(player) || Objects.isNull(body))
+        if (Objects.isNull(chat) || Objects.isNull(player) || Objects.isNull(body))
             return null;
         return new ChatMessage(
                 new ChatMessagePk(
@@ -82,7 +82,7 @@ public class ChatMapper {
     }
 
     public ChatMessageResponse messageDtoToResponse(ChatMessage chatMessage) {
-        if(Objects.isNull(chatMessage))
+        if (Objects.isNull(chatMessage))
             return null;
         return new ChatMessageResponse(
                 new EssentialData(

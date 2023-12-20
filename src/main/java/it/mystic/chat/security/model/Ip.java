@@ -1,4 +1,4 @@
-package it.mystic.chat.security;
+package it.mystic.chat.security.model;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "config_ip")
+@Table(name = "security_ip")
 public class Ip {
     @EmbeddedId
     IpPk id;

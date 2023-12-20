@@ -104,11 +104,11 @@ public class LocationMapper {
         if (Objects.isNull(locationMessageList) || Objects.isNull(locationId))
             return null;
         return locationMessageList.stream().filter(locationMessage -> {
-            return locationMessage.getId().getLocation().getLocationId() == locationId;
+            return Objects.equals(locationMessage.getId().getLocation().getLocationId(), locationId);
         }).map(message -> {
             return new LocationMessageResponse(
                     message.getId().getSender(),
-                    message.getId().getData(),
+                    message.getId().getDate(),
                     message.getMessageType(),
                     message.getTag(),
                     message.getBody(),

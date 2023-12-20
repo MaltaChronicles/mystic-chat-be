@@ -1,4 +1,4 @@
-package it.mystic.chat.security;
+package it.mystic.chat.security.model;
 
 import it.mystic.chat.model.dto.player.Player;
 import jakarta.persistence.JoinColumn;

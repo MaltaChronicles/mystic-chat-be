@@ -56,14 +56,14 @@ public class LocationMessageService {
     public List<LocationMessageResponse> readChat(Long locationId) {
         Date endDate = new Date();
         Date startDate = subtractHours(endDate, 3);
-        return locationMapper.messageDtoToResponse(locationId, locationMessageRepo.findByIdDataBetween(startDate, endDate));
+        return locationMapper.messageDtoToResponse(locationId, locationMessageRepo.findByIdDateBetween(startDate, endDate));
 
     }
 
     public List<LocationMessageResponse> readChatBetween(Long locationId, LocalDateTime startDate, LocalDateTime endDate) {
         return locationMapper.messageDtoToResponse(
                 locationId,
-                locationMessageRepo.findByIdDataBetween(convertLocalDateTimeToDate(startDate), convertLocalDateTimeToDate(endDate))
+                locationMessageRepo.findByIdDateBetween(convertLocalDateTimeToDate(startDate), convertLocalDateTimeToDate(endDate))
         );
     }
 }

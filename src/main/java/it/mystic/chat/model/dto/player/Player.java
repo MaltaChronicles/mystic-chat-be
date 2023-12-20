@@ -2,7 +2,6 @@ package it.mystic.chat.model.dto.player;
 
 import it.mystic.chat.model.dto.Medal;
 import it.mystic.chat.model.dto.character.Character;
-import it.mystic.chat.model.dto.chat.Chat;
 import it.mystic.chat.model.dto.chat.ChatMessage;
 import it.mystic.chat.model.dto.location.Location;
 import jakarta.persistence.*;
