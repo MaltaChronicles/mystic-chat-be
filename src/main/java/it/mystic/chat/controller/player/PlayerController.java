@@ -67,4 +67,10 @@ public class PlayerController {
         return ResponseEntity.ok().build();
     }
 
+    @PatchMapping("/updateUltimaAzione/{playerId}")
+    public ResponseEntity<Void> updateUltimaAzione(@PathVariable Long playerId) {
+        playerService.updateUltimaAzione(playerId);
+        return ResponseEntity.ok().build();
+    }
+
 }

@@ -13,6 +13,7 @@ import it.mystic.chat.repo.player.PlayerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -94,5 +95,11 @@ public class PlayerService {
     public List<EssentialData> getAllLikeUsername(String username) {
         username = "%" + username + "%";
         return playerMapper.playerListToMap(playerRepo.findByUsernameIgnoreCaseLike(username));
+    }
+
+    public void updateUltimaAzione(Long playerId) {
+        Player player = playerRepo.getReferenceById(playerId);
+        player.setUltimaAzione(new Date());
+        playerRepo.save(player);
     }
 }

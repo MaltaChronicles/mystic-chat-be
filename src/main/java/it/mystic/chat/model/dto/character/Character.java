@@ -74,7 +74,9 @@ public class Character {
     @ToStringExclude
     List<Mail> mailReceived;
 
+
     public Character(String name, String identity, Origin origin, Theme theme, StandardOfLiving standardOfLiving, Job job, Race race) {
+        //Se rimosso non funziona la creazione del personaggio
         this.name = name;
         this.identity = identity;
         this.origin = origin;
