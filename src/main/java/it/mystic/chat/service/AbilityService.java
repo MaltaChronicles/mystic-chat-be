@@ -26,22 +26,27 @@ public class AbilityService {
 
     public AbilityResponse create(AbilityDao abilityDao) {
         Ability ability = abilityMapper.daoToDto(abilityDao);
+        AbilityResponse abilityResponse = abilityMapper.dtoToResponse(abilityRepo.save(ability));
+        setActionLink(ability);
+        return abilityResponse;
+    }
+
+    private void setActionLink(Ability ability){
         ability.setActionLink("system/useAbility/" + ability.getAbilityId());
-        return abilityMapper.dtoToResponse(abilityRepo.save(ability));
     }
 
     public void update(Long abilityId, AbilityDao abilityDao) {
         Ability ability = abilityRepo.getReferenceById(abilityId);
-        ability.setName(abilityDao.getName());
-        ability.setAbilityClass(abilityDao.getAbilityClass());
-        ability.setType(abilityDao.getType());
-        ability.setDescription(abilityDao.getDescription());
-        ability.setDuration(abilityDao.getDuration());
-        ability.setTargetType(abilityDao.getTargetType());
-        ability.setMaxTargetNumber(abilityDao.getMaxTargetNumber());
-        ability.setMaxLevel(abilityDao.getMaxLevel());
-        ability.setManaPriceForTarget(abilityDao.getManaPriceForTarget());
-        ability.setHpPriceForTarget(abilityDao.getHpPriceForTarget());
+        ability.setName(abilityDao.name());
+        ability.setAbilityClass(abilityDao.abilityClass());
+        ability.setType(abilityDao.type());
+        ability.setDescription(abilityDao.description());
+        ability.setDuration(abilityDao.duration());
+        ability.setTargetType(abilityDao.targetType());
+        ability.setMaxTargetNumber(abilityDao.maxTargetNumber());
+        ability.setMaxLevel(abilityDao.maxLevel());
+        ability.setManaPriceForTarget(abilityDao.manaPriceForTarget());
+        ability.setHpPriceForTarget(abilityDao.hpPriceForTarget());
         abilityRepo.save(ability);
     }
 

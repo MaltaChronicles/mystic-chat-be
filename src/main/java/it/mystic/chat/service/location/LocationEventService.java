@@ -36,9 +36,9 @@ public class LocationEventService {
     public void update(Long locationId, LocalDateTime date, LocationEventDao locationEventDao) {
         Location location = locationRepo.getReferenceById(locationId);
         LocationEvent locationEvent = locationEventRepo.getReferenceById(new LocationEventPk(location, convertLocalDateTimeToDate(date)));
-        locationEvent.setName(locationEventDao.getName());
-        locationEvent.setDescription(locationEventDao.getDescription());
-        locationEvent.setCreateBy(locationEventDao.getCreateBy());
+        locationEvent.setName(locationEventDao.name());
+        locationEvent.setDescription(locationEventDao.description());
+        locationEvent.setCreateBy(locationEventDao.createBy());
         locationEventRepo.save(locationEvent);
     }
 

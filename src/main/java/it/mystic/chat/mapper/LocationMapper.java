@@ -35,8 +35,8 @@ public class LocationMapper {
             return null;
         return new Location(
                 null,
-                locationDao.getName(),
-                locationDao.getDescription(),
+                locationDao.name(),
+                locationDao.description(),
                 uploadDir + "img/location/icon/default.jpeg",
                 uploadDir + "img/location/background/default.jpeg",
                 uploadDir + "mp3/location/default.mp3",
@@ -52,9 +52,9 @@ public class LocationMapper {
             return null;
         return new LocationEvent(
                 new LocationEventPk(location, new Date()),
-                locationEventDao.getName(),
-                locationEventDao.getDescription(),
-                locationEventDao.getCreateBy()
+                locationEventDao.name(),
+                locationEventDao.description(),
+                locationEventDao.createBy()
         );
     }
 
@@ -64,13 +64,13 @@ public class LocationMapper {
         return new LocationMessage(
                 new LocationMessagePk(
                         location,
-                        locationMessageDao.getSender(),
+                        locationMessageDao.sender(),
                         new Date()
                 ),
                 messageType,
-                locationMessageDao.getTag(),
-                locationMessageDao.getBody(),
-                locationMessageDao.getImageLink()
+                locationMessageDao.tag(),
+                locationMessageDao.body(),
+                locationMessageDao.imageLink()
         );
     }
 

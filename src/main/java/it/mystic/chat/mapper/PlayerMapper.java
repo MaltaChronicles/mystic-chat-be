@@ -28,9 +28,9 @@ public class PlayerMapper {
             return null;
         return new Player(
                 null,
-                playerDao.getUsername(),
-                playerDao.getPassword(),
-                playerDao.getEmail(),
+                playerDao.username(),
+                playerDao.password(),
+                playerDao.email(),
                 new Date(),
                 null,
                 null,

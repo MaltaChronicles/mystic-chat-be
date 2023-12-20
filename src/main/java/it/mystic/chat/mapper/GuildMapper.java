@@ -21,9 +21,9 @@ public class GuildMapper {
             return null;
         return new Guild(
                 null,
-                guildDao.getName(),
+                guildDao.name(),
                 uploadDir + "img/guild/default.jpeg",
-                guildDao.getDescription(),
+                guildDao.description(),
                 null
         );
     }

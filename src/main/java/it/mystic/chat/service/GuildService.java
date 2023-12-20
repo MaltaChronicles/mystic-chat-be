@@ -37,8 +37,8 @@ public class GuildService {
 
     public void update(Long guildId, GuildDao guildDao) {
         Guild guild = guildRepo.getReferenceById(guildId);
-        guild.setName(guildDao.getName());
-        guild.setDescription(guildDao.getDescription());
+        guild.setName(guildDao.name());
+        guild.setDescription(guildDao.description());
         guildRepo.save(guild);
     }
 

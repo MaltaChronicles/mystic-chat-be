@@ -30,7 +30,7 @@ public class CharacterService {
     private MultipartFileConverter converter;
 
     public CharacterResponse create(CharacterDao characterDao) {
-        nameNotUsed(characterDao.getName());
+        nameNotUsed(characterDao.name());
 
         Character characterToSave = characterMapper.daoToDto(characterDao);
         Character character = characterRepo.save(characterToSave);

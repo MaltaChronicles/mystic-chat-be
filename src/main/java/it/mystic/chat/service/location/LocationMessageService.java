@@ -29,26 +29,25 @@ public class LocationMessageService {
     private LocationMapper locationMapper;
 
     public void send(LocationMessageDao locationMessageDao) {
-        Location location = locationRepo.getReferenceById(locationMessageDao.getLocationId());
+        Location location = locationRepo.getReferenceById(locationMessageDao.locationId());
         LocationMessage locationMessage = locationMapper.messageDaoToDto(location, MessageType.Standard, locationMessageDao);
         locationMessageRepo.save(locationMessage);
     }
 
     public void sendMaster(LocationMessageDao locationMessageDao) {
-        Location location = locationRepo.getReferenceById(locationMessageDao.getLocationId());
+        Location location = locationRepo.getReferenceById(locationMessageDao.locationId());
         LocationMessage locationMessage = locationMapper.messageDaoToDto(location, MessageType.Master, locationMessageDao);
         locationMessageRepo.save(locationMessage);
     }
 
     public void sendAction(LocationMessageDao locationMessageDao) {
-        Location location = locationRepo.getReferenceById(locationMessageDao.getLocationId());
+        Location location = locationRepo.getReferenceById(locationMessageDao.locationId());
         LocationMessage locationMessage = locationMapper.messageDaoToDto(location, MessageType.Azione, locationMessageDao);
         locationMessageRepo.save(locationMessage);
     }
 
     public void sendSystem(LocationMessageDao locationMessageDao) {
-        Location location = locationRepo.getReferenceById(locationMessageDao.getLocationId());
-        locationMessageDao.setSender("Sistema");
+        Location location = locationRepo.getReferenceById(locationMessageDao.locationId());
         LocationMessage locationMessage = locationMapper.messageDaoToDto(location, MessageType.Sistema, locationMessageDao);
         locationMessageRepo.save(locationMessage);
     }

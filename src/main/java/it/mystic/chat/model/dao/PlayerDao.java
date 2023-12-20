@@ -1,17 +1,11 @@
 package it.mystic.chat.model.dao;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+public record PlayerDao(
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class PlayerDao {
+        String username,
 
-    String username;
+        String password,
 
-    String password;
-
-    String email;
+        String email
+) {
 }

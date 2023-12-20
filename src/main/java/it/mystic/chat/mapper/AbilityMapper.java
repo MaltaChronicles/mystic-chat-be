@@ -18,17 +18,17 @@ public class AbilityMapper {
             return null;
         return new Ability(
                 null,
-                abilityDao.getName(),
+                abilityDao.name(),
                 uploadDir + "img/ability/default.jpeg",
-                abilityDao.getAbilityClass(),
-                abilityDao.getType(),
-                abilityDao.getDescription(),
-                abilityDao.getDuration(),
-                abilityDao.getTargetType(),
-                abilityDao.getMaxTargetNumber(),
-                abilityDao.getMaxLevel(),
-                abilityDao.getManaPriceForTarget(),
-                abilityDao.getHpPriceForTarget(),
+                abilityDao.abilityClass(),
+                abilityDao.type(),
+                abilityDao.description(),
+                abilityDao.duration(),
+                abilityDao.targetType(),
+                abilityDao.maxTargetNumber(),
+                abilityDao.maxTargetNumber(),
+                abilityDao.manaPriceForTarget(),
+                abilityDao.hpPriceForTarget(),
                 null,
                 null
         );

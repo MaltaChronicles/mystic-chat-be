@@ -46,8 +46,8 @@ public class PlayerService {
 
     /* VALIDAZIONE*/
     private void validate(PlayerDao playerDao) {
-        usernameNotUsed(playerDao.getUsername());
-        emailNotUsed(playerDao.getEmail());
+        usernameNotUsed(playerDao.username());
+        emailNotUsed(playerDao.email());
     }
 
     private void usernameNotUsed(String username) {

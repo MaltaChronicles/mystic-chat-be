@@ -1,17 +1,11 @@
 package it.mystic.chat.model.dao.location;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+public record LocationEventDao(
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class LocationEventDao {
+        String name,
 
-    String name;
+        String description,
 
-    String description;
-
-    String createBy;
+        String createBy
+) {
 }

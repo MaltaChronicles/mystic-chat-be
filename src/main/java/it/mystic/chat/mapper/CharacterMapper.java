@@ -30,29 +30,28 @@ public class CharacterMapper {
     public Character daoToDto(CharacterDao characterDao) {
         if (Objects.isNull(characterDao))
             return null;
-        Character character = new Character(
-                characterDao.getName(),
-                characterDao.getIdentity(),
-                characterDao.getOrigin(),
-                characterDao.getTheme(),
+        return new Character(
+                characterDao.name(),
+                characterDao.identity(),
+                characterDao.origin(),
+                characterDao.theme(),
                 StandardOfLiving.Nullo,
-                characterDao.getJob(),
-                characterDao.getRace()
+                characterDao.job(),
+                characterDao.race()
         );
-        return character;
     }
 
     public CharacterDescription descriptionDaoToDto(CharacterDescriptionDao characterDescriptionDao, Character character) {
         if (Objects.isNull(characterDescriptionDao) || Objects.isNull(character))
             return null;
         return new CharacterDescription(
-                characterDescriptionDao.getRightEye(),
-                characterDescriptionDao.getLeftEye(),
-                characterDescriptionDao.getHair(),
-                characterDescriptionDao.getHeight(),
-                characterDescriptionDao.getWeight(),
-                characterDescriptionDao.getAge(),
-                characterDescriptionDao.getGender(),
+                characterDescriptionDao.rightEye(),
+                characterDescriptionDao.leftEye(),
+                characterDescriptionDao.hair(),
+                characterDescriptionDao.height(),
+                characterDescriptionDao.weight(),
+                characterDescriptionDao.age(),
+                characterDescriptionDao.gender(),
                 uploadDir + "img/character/default.jpeg",
                 character
         );

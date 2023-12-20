@@ -4,32 +4,28 @@ import it.mystic.chat.model.enums.AbilityType;
 import it.mystic.chat.model.enums.Class;
 import it.mystic.chat.model.enums.DurationType;
 import it.mystic.chat.model.enums.TargetType;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class AbilityDao {
 
-    String name;
+public record AbilityDao(
 
-    Class abilityClass;
+        String name,
 
-    AbilityType type;
+        Class abilityClass,
 
-    String description;
+        AbilityType type,
 
-    DurationType duration;
+        String description,
 
-    TargetType targetType;
+        DurationType duration,
 
-    Integer maxTargetNumber;
+        TargetType targetType,
 
-    Integer maxLevel;
+        Integer maxTargetNumber,
 
-    Integer manaPriceForTarget;
+        Integer maxLevel,
 
-    Integer hpPriceForTarget;
+        Integer manaPriceForTarget,
+
+        Integer hpPriceForTarget
+) {
 }

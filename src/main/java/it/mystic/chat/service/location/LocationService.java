@@ -30,8 +30,8 @@ public class LocationService {
 
     public void update(Long locationId, LocationDao locationDao) {
         Location location = locationRepo.getReferenceById(locationId);
-        location.setName(locationDao.getName());
-        location.setDescription(locationDao.getDescription());
+        location.setName(locationDao.name());
+        location.setDescription(locationDao.description());
         locationRepo.save(location);
     }
 

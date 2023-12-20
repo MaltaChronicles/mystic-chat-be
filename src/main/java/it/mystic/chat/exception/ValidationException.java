@@ -13,14 +13,6 @@ public class ValidationException extends jakarta.validation.ValidationException 
 
     private List<InvalidParam> violations;
 
-    public ValidationException(List<InvalidParam> violations) {
-        this.violations = violations;
-    }
-
-    public ValidationException(InvalidParam violation) {
-        this.violations = Collections.singletonList(violation);
-    }
-
     public ValidationException(String param, String message) {
         this.violations = Collections.singletonList(new InvalidParam(param, message));
     }
