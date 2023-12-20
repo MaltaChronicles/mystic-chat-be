@@ -1,0 +1,32 @@
+package it.mystic.chat.model.dto.chat;
+
+import it.mystic.chat.model.dto.player.Player;
+import it.mystic.chat.model.dto.player.PlayerChat;
+import it.mystic.chat.model.dto.text.TextParagraph;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.builder.ToStringExclude;
+
+import java.util.List;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Table
+public class Chat {
+    @Id
+    String chatId;//UUID
+    @Column
+    String title;
+
+    @OneToMany(mappedBy = "id.chat", cascade = CascadeType.ALL)
+    @ToStringExclude
+    List<PlayerChat> members;
+
+    @OneToMany(mappedBy = "id.chat", cascade = CascadeType.ALL)
+    @ToStringExclude
+    List<ChatMessage> messages;
+}

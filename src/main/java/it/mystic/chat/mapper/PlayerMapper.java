@@ -39,7 +39,8 @@ public class PlayerMapper {
                 null, null, null,
                 null,
                 null,
-                null
+                null,
+                null, null
         );
     }
 
