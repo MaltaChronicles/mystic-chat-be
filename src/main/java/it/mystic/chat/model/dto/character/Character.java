@@ -1,5 +1,6 @@
 package it.mystic.chat.model.dto.character;
 
+import it.mystic.chat.model.dto.Mail;
 import it.mystic.chat.model.enums.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -64,6 +65,14 @@ public class Character {
     @OneToOne(mappedBy = "character", cascade = CascadeType.ALL)
     @ToStringExclude
     CharacterGuild guild;
+
+    @OneToMany(mappedBy = "id.sender", cascade = CascadeType.ALL)
+    @ToStringExclude
+    List<Mail> mailSent;
+
+    @OneToMany(mappedBy = "id.recipient", cascade = CascadeType.ALL)
+    @ToStringExclude
+    List<Mail> mailReceived;
 
     public Character(String name, String identity, Origin origin, Theme theme, StandardOfLiving standardOfLiving, Job job, Race race) {
         this.name = name;
