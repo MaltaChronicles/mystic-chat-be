@@ -8,6 +8,7 @@ import it.mystic.chat.model.dto.character.*;
 import it.mystic.chat.model.enums.StandardOfLiving;
 import it.mystic.chat.model.response.EssentialData;
 import it.mystic.chat.model.response.character.*;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -31,7 +32,7 @@ public class CharacterMapper {
         if (Objects.isNull(characterDao))
             return null;
         return new Character(
-                characterDao.name(),
+                StringUtils.capitalize(characterDao.name()),
                 characterDao.identity(),
                 characterDao.origin(),
                 characterDao.theme(),

@@ -10,6 +10,7 @@ import it.mystic.chat.model.response.EssentialData;
 import it.mystic.chat.model.response.player.PlayerResponse;
 import it.mystic.chat.repo.character.CharacterRepo;
 import it.mystic.chat.repo.player.PlayerRepo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,13 +53,13 @@ public class PlayerService {
     }
 
     private void usernameNotUsed(String username) {
-        if (playerRepo.existsByUsername(username)) {
+        if (playerRepo.existsByUsername(StringUtils.capitalize(username))) {
             throw new ValidationException("username", "username già in uso");
         }
     }
 
     private void emailNotUsed(String email) {
-        if (playerRepo.existsByEmail(email)) {
+        if (playerRepo.existsByEmail(email.toLowerCase())) {
             throw new ValidationException("email", "email già in uso");
         }
     }
@@ -86,7 +87,7 @@ public class PlayerService {
     public void updateEmail(Long playerId, String email) {
         emailNotUsed(email);
         Player player = playerRepo.getReferenceById(playerId);
-        player.setEmail(email);
+        player.setEmail(email.toLowerCase());
         playerRepo.save(player);
     }
 

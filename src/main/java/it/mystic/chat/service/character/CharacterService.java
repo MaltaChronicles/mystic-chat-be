@@ -11,6 +11,7 @@ import it.mystic.chat.model.response.EssentialData;
 import it.mystic.chat.model.response.character.CharacterResponse;
 import it.mystic.chat.repo.character.CharacterRepo;
 import it.mystic.chat.util.MultipartFileConverter;
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -77,7 +78,7 @@ public class CharacterService {
     public void updateNameById(Long characterId, String name) {
         nameNotUsed(name);
         Character character = characterRepo.getReferenceById(characterId);
-        character.setName(name);
+        character.setName(StringUtils.capitalize(name));
         characterRepo.save(character);
     }
 
@@ -159,7 +160,7 @@ public class CharacterService {
     }
 
     private void nameNotUsed(String name) {
-        if (characterRepo.existsByName(name)) {
+        if (characterRepo.existsByName(StringUtils.capitalize(name))) {
             throw new ValidationException("name", "nome già in uso");
         }
     }

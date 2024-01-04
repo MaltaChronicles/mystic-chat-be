@@ -9,6 +9,7 @@ import it.mystic.chat.model.dto.player.PlayerRole;
 import it.mystic.chat.model.response.EssentialData;
 import it.mystic.chat.model.response.player.PlayerResponse;
 import it.mystic.chat.model.response.player.PlayerRoleResponse;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,9 +29,9 @@ public class PlayerMapper {
             return null;
         return new Player(
                 null,
-                playerDao.username(),
+                StringUtils.capitalize(playerDao.username()),
                 playerDao.password(),
-                playerDao.email(),
+                playerDao.email().toLowerCase(),
                 null,
                 new Date(),
                 null,
