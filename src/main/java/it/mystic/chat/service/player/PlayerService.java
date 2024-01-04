@@ -64,18 +64,23 @@ public class PlayerService {
     }
     /* FINE VALIDAZIONE*/
 
-    public Player addCharacter(Long playerId, Long characterId) throws GenericException {
+    public void addCharacter(Long playerId, Long characterId) throws GenericException {
         Player player = playerRepo.getReferenceById(playerId);
         Character character = characterRepo.getReferenceById(characterId);
-        if (Objects.nonNull(player.getCharacter1()))
+
+        Character character1 = player.getCharacter1();
+        Character character2 = player.getCharacter2();
+        Character character3 = player.getCharacter3();
+        
+        if (Objects.isNull(character1))
             player.setCharacter1(character);
-        else if (Objects.nonNull(player.getCharacter2()))
+        else if (Objects.isNull(character2))
             player.setCharacter2(character);
-        else if (Objects.nonNull(player.getCharacter3()))
+        else if (Objects.isNull(character3))
             player.setCharacter3(character);
         else
             throw new GenericException("Non è possibile avere più di 3 personaggi!");
-        return playerRepo.save(player);
+        playerRepo.save(player);
     }
 
     public void updateEmail(Long playerId, String email) {
@@ -89,7 +94,6 @@ public class PlayerService {
         Player player = playerRepo.getReferenceById(playerId);
         player.setPassword(password);
         playerRepo.save(player);
-
     }
 
     public List<EssentialData> getAllLikeUsername(String username) {
@@ -100,6 +104,12 @@ public class PlayerService {
     public void updateUltimaAzione(Long playerId) {
         Player player = playerRepo.getReferenceById(playerId);
         player.setUltimaAzione(new Date());
+        playerRepo.save(player);
+    }
+
+    public void updateMessage(Long playerId, String message) {
+        Player player = playerRepo.getReferenceById(playerId);
+        player.setMessage(message);
         playerRepo.save(player);
     }
 }

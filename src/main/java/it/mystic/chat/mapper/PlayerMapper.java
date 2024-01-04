@@ -31,6 +31,7 @@ public class PlayerMapper {
                 playerDao.username(),
                 playerDao.password(),
                 playerDao.email(),
+                null,
                 new Date(),
                 null,
                 null,
@@ -66,6 +67,7 @@ public class PlayerMapper {
         return new PlayerResponse(
                 player.getPlayerId(),
                 player.getUsername(),
+                player.getMessage(),
                 player.getDataIscrizione(),
                 player.getUltimaAzione(),
                 player.getUltimoAccesso(),

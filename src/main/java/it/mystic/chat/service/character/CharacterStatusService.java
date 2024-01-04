@@ -11,6 +11,8 @@ import it.mystic.chat.util.CharacterStatsUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static it.mystic.chat.util.CharacterStatsUtil.resetActualStats;
+
 @Service
 public class CharacterStatusService {
 
@@ -26,7 +28,7 @@ public class CharacterStatusService {
 
     public void sleep(Long characterId) {
         Character character = characterRepo.getReferenceById(characterId);
-        CharacterStatsUtil.sleep(character.getStatus());
+        resetActualStats(character.getStatus());
         characterRepo.save(character);
     }
 

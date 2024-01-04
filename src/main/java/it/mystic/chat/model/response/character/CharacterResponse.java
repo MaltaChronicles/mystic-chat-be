@@ -11,6 +11,7 @@ public record CharacterResponse(
         StandardOfLiving standardOfLiving,
         Job job,
         Race race,
+        Divinity divinity,
         String masterNote,
         String rumors,
         CharacterDescriptionResponse description

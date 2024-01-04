@@ -70,6 +70,7 @@ public class CharacterMapper {
                 character.getStandardOfLiving(),
                 character.getJob(),
                 character.getRace(),
+                character.getDivinity(),
                 character.getMasterNote(),
                 character.getRumors(),
                 descriptionDtoToResponse(character.getDescription())

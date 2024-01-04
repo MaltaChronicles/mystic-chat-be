@@ -11,6 +11,7 @@ public record PlayerResponse(
 
         Long playerId,
         String username,
+        String message,
         Date dataIscrizione,
         Date ultimaAzione,
         Date ultimoAccesso,

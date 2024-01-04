@@ -30,6 +30,8 @@ public class Player {
     @Column
     String email;
     @Column
+    String message;
+    @Column
     Date dataIscrizione;
     @Column
     Date ultimaAzione;

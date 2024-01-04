@@ -55,6 +55,12 @@ public class PlayerController {
         return ResponseEntity.ok().build();
     }
 
+    @PatchMapping("/updateMessage/{playerId}")
+    public ResponseEntity<Void> updateMessage(@PathVariable Long playerId, @RequestBody String message) {
+        playerService.updateMessage(playerId, message);
+        return ResponseEntity.ok().build();
+    }
+
     @DeleteMapping("/deleteById/{playerId}")
     public ResponseEntity<Void> deletePlayerById(@PathVariable Long playerId) {
         playerService.deleteById(playerId);

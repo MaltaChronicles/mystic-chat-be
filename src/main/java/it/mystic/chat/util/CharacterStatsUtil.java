@@ -105,7 +105,7 @@ public class CharacterStatsUtil {
         stats.setActualPoisonAffinity(stats.getPoisonAffinity());
     }
 
-    public static void sleep(CharacterStats stats) {
+    public static void resetActualStats(CharacterStats stats) {
         stats.setActualLife(stats.getTotalLife());
         stats.setActualMana(stats.getTotalMana());
 
