@@ -14,6 +14,20 @@ public class DateUtil {
         return calendar.getTime();
     }
 
+    public static Date subtractMonth(Date data, Integer months) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(data);
+        cal.add(Calendar.MONTH, -months);
+        return cal.getTime();
+    }
+
+    public static Date subtractYear(Date data, Integer years) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(data);
+        cal.add(Calendar.YEAR, -years);
+        return cal.getTime();
+    }
+
     public static Date convertLocalDateTimeToDate(LocalDateTime localDateTime) {
         return Date.from(localDateTime.atZone(ZoneId.of("Europe/Rome")).toInstant());
     }
