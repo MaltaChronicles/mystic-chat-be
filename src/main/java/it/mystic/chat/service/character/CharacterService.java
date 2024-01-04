@@ -19,6 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 
+import static it.mystic.chat.util.CharacterStatsUtil.setRaceAffinity;
+
 @Service
 public class CharacterService {
 
@@ -39,7 +41,10 @@ public class CharacterService {
     }
 
     private void createOtherTable(Character character) {
-        character.setStatus(new CharacterStats(character));
+        CharacterStats characterStats = new CharacterStats(character);
+        setRaceAffinity(characterStats, character.getRace());
+        character.setStatus(characterStats);
+
         character.setDescription(new CharacterDescription(character));
         character.setEquipment(new CharacterEquipment(character));
         character.setGuild(new CharacterGuild(character));

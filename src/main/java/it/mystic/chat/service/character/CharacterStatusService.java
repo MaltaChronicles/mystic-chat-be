@@ -7,6 +7,7 @@ import it.mystic.chat.model.enums.Affinity;
 import it.mystic.chat.model.enums.DiceValue;
 import it.mystic.chat.model.response.character.CharacterStatsResponse;
 import it.mystic.chat.repo.character.CharacterRepo;
+import it.mystic.chat.util.CharacterStatsUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,7 @@ public class CharacterStatusService {
 
     public void sleep(Long characterId) {
         Character character = characterRepo.getReferenceById(characterId);
-        character.getStatus().sleep();
+        CharacterStatsUtil.sleep(character.getStatus());
         characterRepo.save(character);
     }
 
@@ -80,7 +81,7 @@ public class CharacterStatusService {
     public void levelUp(Long characterId) throws GenericException {
         Character character = characterRepo.getReferenceById(characterId);
         if (character.getStatus().getActualExperience() >= 10) {
-            character.getStatus().levelUp();
+            CharacterStatsUtil.levelUp(character.getStatus());
             characterRepo.save(character);
         } else
             throw new GenericException("Esperienza insufficiente!");
