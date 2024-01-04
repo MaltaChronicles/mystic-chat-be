@@ -31,7 +31,7 @@ public class AbilityService {
         return abilityResponse;
     }
 
-    private void setActionLink(Ability ability){
+    private void setActionLink(Ability ability) {
         ability.setActionLink("system/useAbility/" + ability.getAbilityId());
     }
 

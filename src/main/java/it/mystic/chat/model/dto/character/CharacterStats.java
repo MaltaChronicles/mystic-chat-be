@@ -2,7 +2,6 @@ package it.mystic.chat.model.dto.character;
 
 import it.mystic.chat.model.enums.Affinity;
 import it.mystic.chat.model.enums.DiceValue;
-import it.mystic.chat.util.CharacterStatsUtil;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

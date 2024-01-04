@@ -72,7 +72,7 @@ public class PlayerService {
         Character character1 = player.getCharacter1();
         Character character2 = player.getCharacter2();
         Character character3 = player.getCharacter3();
-        
+
         if (Objects.isNull(character1))
             player.setCharacter1(character);
         else if (Objects.isNull(character2))

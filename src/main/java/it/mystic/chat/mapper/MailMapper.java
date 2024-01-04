@@ -15,7 +15,7 @@ import java.util.Objects;
 public class MailMapper {
 
     public Mail daoToDto(Character sender, Character recipient, String body) {
-        if(Objects.isNull(sender) || Objects.isNull(recipient) || Objects.isNull(body))
+        if (Objects.isNull(sender) || Objects.isNull(recipient) || Objects.isNull(body))
             return null;
         return new Mail(
                 new MailPk(
@@ -29,7 +29,7 @@ public class MailMapper {
     }
 
     public MailResponse dtoToResponse(Mail mail) {
-        if(Objects.isNull(mail))
+        if (Objects.isNull(mail))
             return null;
         return new MailResponse(
                 new EssentialData(
@@ -47,13 +47,13 @@ public class MailMapper {
     }
 
     public List<MailResponse> mailListToResponseList(List<Mail> mailList) {
-        if(Objects.isNull(mailList))
+        if (Objects.isNull(mailList))
             return null;
         return mailList.stream().map(this::dtoToResponse).toList();
     }
 
     public List<MailResponse> mailListToResponseListAndFilterByIsRead(List<Mail> mailList, Boolean isRead) {
-        if(Objects.isNull(mailList))
+        if (Objects.isNull(mailList))
             return null;
         return mailList.stream().filter(mail -> {
             return Objects.equals(mail.getIsRead(), isRead);

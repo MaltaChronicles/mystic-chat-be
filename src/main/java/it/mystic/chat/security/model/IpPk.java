@@ -1,8 +1,6 @@
 package it.mystic.chat.security.model;
 
-import it.mystic.chat.model.dto.player.Player;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,8 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class IpPk {
-    @ManyToOne
-    @JoinColumn(name = "playerId")
-    Player playerId;
+    @Column(updatable = false)
+    String username;
+
+    @Column(updatable = false)
     Integer Ip;
 }

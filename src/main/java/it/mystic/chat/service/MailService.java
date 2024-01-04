@@ -3,10 +3,8 @@ package it.mystic.chat.service;
 import it.mystic.chat.mapper.MailMapper;
 import it.mystic.chat.model.dto.Mail;
 import it.mystic.chat.model.dto.character.Character;
-import it.mystic.chat.model.dto.character.Character;
 import it.mystic.chat.model.dto.pk.MailPk;
 import it.mystic.chat.model.response.MailResponse;
-import it.mystic.chat.model.response.location.LocationMessageResponse;
 import it.mystic.chat.repo.MailRepo;
 import it.mystic.chat.repo.character.CharacterRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +52,7 @@ public class MailService {
         Character sender = characterRepo.getReferenceById(senderId);
         Character recipient = characterRepo.getReferenceById(recipientId);
 
-        Mail mail = mailRepo.getReferenceById( new MailPk(sender, recipient, convertLocalDateTimeToDate(date)));
+        Mail mail = mailRepo.getReferenceById(new MailPk(sender, recipient, convertLocalDateTimeToDate(date)));
         mail.setIsRead(true);
 
         mailRepo.save(mail);

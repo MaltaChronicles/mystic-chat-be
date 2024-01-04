@@ -6,4 +6,5 @@ public record LocationMessageDao(
         String tag,
         String body,
         String imageLink
-) {}
+) {
+}

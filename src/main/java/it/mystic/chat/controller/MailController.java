@@ -2,7 +2,6 @@ package it.mystic.chat.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import it.mystic.chat.model.response.MailResponse;
-import it.mystic.chat.model.response.location.LocationMessageResponse;
 import it.mystic.chat.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;

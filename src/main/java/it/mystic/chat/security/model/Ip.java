@@ -1,5 +1,6 @@
 package it.mystic.chat.security.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -16,10 +17,6 @@ public class Ip {
     @EmbeddedId
     IpPk id;
 
+    @Column(nullable = false)
     Boolean isBan;
-
-    public Ip(IpPk id) {
-        this.id = id;
-        isBan = false;
-    }
 }

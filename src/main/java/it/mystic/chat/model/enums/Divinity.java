@@ -1,7 +1,7 @@
 package it.mystic.chat.model.enums;
 
 public enum Divinity {
-    
+
     Physical_God,
     Water_God,
     Earth_God,
