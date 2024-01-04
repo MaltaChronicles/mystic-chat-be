@@ -124,7 +124,8 @@ public class LocationMapper {
                 new LocationPosterPk(UUID.randomUUID().toString(), character, location),
                 locationPosterDao.title(),
                 locationPosterDao.body(),
-                new Date()
+                new Date(),
+                false
         );
     }
 
@@ -137,7 +138,8 @@ public class LocationMapper {
                 locationPoster.getId().getUuid(),
                 locationPoster.getTitle(),
                 locationPoster.getBody(),
-                locationPoster.getDate()
+                locationPoster.getDate(),
+                locationPoster.getIsPin()
         );
     }
 

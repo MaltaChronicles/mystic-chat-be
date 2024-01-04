@@ -8,6 +8,7 @@ public record LocationPosterResponse(
         String uuid,
         String title,
         String body,
-        Date date
+        Date date,
+        Boolean isPin
 ) {
 }

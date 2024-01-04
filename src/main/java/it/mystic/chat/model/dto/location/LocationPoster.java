@@ -26,4 +26,6 @@ public class LocationPoster {
     String body;
     @Column(nullable = false, updatable = false)
     Date date;
+    @Column(nullable = false)
+    Boolean isPin;
 }

@@ -41,4 +41,10 @@ public class LocationPosterController {
         locationPosterService.delete(locationId, characterId, uuid);
         return ResponseEntity.ok().build();
     }
+
+    @PatchMapping("/changeIsPin/{locationId}/{characterId}/{uuid}")
+    public ResponseEntity<Void> changeIsPin(@PathVariable Long locationId, @PathVariable Long characterId, @PathVariable UUID uuid) {
+        locationPosterService.changeIsPin(locationId, characterId, uuid);
+        return ResponseEntity.ok().build();
+    }
 }

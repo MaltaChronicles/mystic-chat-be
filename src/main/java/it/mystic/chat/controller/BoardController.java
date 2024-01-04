@@ -71,7 +71,7 @@ public class BoardController {
         return ResponseEntity.ok().build();
     }
 
-    @PatchMapping("/changeIsPin/{boardId}/{playerId}")
+    @PatchMapping("/changeIsPin/{boardId}/{playerId}/{uuid}")
     public ResponseEntity<Void> changeIsPin(@PathVariable Long boardId, @PathVariable Long playerId, @PathVariable UUID uuid) {
         boardService.changeIsPin(boardId, playerId, uuid);
         return ResponseEntity.ok().build();

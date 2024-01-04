@@ -51,4 +51,12 @@ public class LocationPosterService {
         Location location = locationRepo.getReferenceById(locationId);
         locationPosterRepo.deleteById(new LocationPosterPk(uuid.toString(), character, location));
     }
+
+    public void changeIsPin(Long locationId, Long characterId, UUID uuid) {
+        Character character = characterRepo.getReferenceById(characterId);
+        Location location = locationRepo.getReferenceById(locationId);
+        LocationPoster locationPoster = locationPosterRepo.getReferenceById(new LocationPosterPk(uuid.toString(), character, location));
+        locationPoster.setIsPin(!locationPoster.getIsPin());
+        locationPosterRepo.save(locationPoster);
+    }
 }
