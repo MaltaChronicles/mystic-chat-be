@@ -2,7 +2,6 @@ package it.mystic.chat.model.dto.character;
 
 import it.mystic.chat.model.enums.Affinity;
 import it.mystic.chat.model.enums.DiceValue;
-import it.mystic.chat.model.enums.Race;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +10,6 @@ import lombok.ToString;
 import org.apache.commons.lang3.builder.ToStringExclude;
 
 import static it.mystic.chat.util.CharacterStatsUtil.obtainDiceValue;
-import static it.mystic.chat.util.CharacterStatsUtil.setRaceAffinity;
 
 
 @Entity

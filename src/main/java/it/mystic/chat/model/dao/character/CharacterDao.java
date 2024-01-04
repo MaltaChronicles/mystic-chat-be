@@ -1,9 +1,6 @@
 package it.mystic.chat.model.dao.character;
 
-import it.mystic.chat.model.enums.Job;
-import it.mystic.chat.model.enums.Origin;
-import it.mystic.chat.model.enums.Race;
-import it.mystic.chat.model.enums.Theme;
+import it.mystic.chat.model.enums.*;
 
 public record CharacterDao(
         String name,
@@ -11,6 +8,7 @@ public record CharacterDao(
         Origin origin,
         Theme theme,
         Job job,
-        Race race
+        Race race,
+        Divinity divinity
 ) {
 }

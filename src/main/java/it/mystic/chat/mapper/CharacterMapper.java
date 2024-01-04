@@ -37,7 +37,8 @@ public class CharacterMapper {
                 characterDao.theme(),
                 StandardOfLiving.Nullo,
                 characterDao.job(),
-                characterDao.race()
+                characterDao.race(),
+                characterDao.divinity()
         );
     }
 

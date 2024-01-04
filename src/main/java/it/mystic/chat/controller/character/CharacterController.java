@@ -48,13 +48,13 @@ public class CharacterController {
     }
 
     @PatchMapping("/updateName/{characterId}/{name}")
-    public ResponseEntity<Void> updateNameById(@PathVariable Long characterId, @PathVariable @Pattern(regexp = "^[A-Za-z]+$") String name) {
+    public ResponseEntity<Void> updateNameById(@PathVariable Long characterId, @PathVariable String name) {
         characterService.updateNameById(characterId, name);
         return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/updateIdentity/{characterId}/{identity}")
-    public ResponseEntity<Void> updateIdentityById(@PathVariable Long characterId, @PathVariable @Pattern(regexp = "^[A-Za-z]+$") String identity) {
+    public ResponseEntity<Void> updateIdentityById(@PathVariable Long characterId, @PathVariable String identity) {
         characterService.updateIdentityById(characterId, identity);
         return ResponseEntity.ok().build();
     }
@@ -110,6 +110,12 @@ public class CharacterController {
     @PatchMapping("/updateDescription/{characterId}")
     public ResponseEntity<Void> updateDescription(@PathVariable Long characterId, @RequestBody CharacterDescriptionDao characterDescription) {
         characterService.updateDescriptionById(characterId, characterDescription);
+        return ResponseEntity.ok().build();
+    }
+
+    @PatchMapping("/updateDivinity/{characterId}/{identity}")
+    public ResponseEntity<Void> updateDivinityById(@PathVariable Long characterId, @PathVariable Divinity divinity) {
+        characterService.updateDivinityById(characterId, divinity);
         return ResponseEntity.ok().build();
     }
 

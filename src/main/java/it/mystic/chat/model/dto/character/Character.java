@@ -35,6 +35,8 @@ public class Character {
     Job job;
     @Column
     Race race;
+    @Column
+    Divinity divinity;
     @Column(length = 16000000)
     String masterNote;
     @Column(length = 16000000)
@@ -75,7 +77,7 @@ public class Character {
     List<Mail> mailReceived;
 
 
-    public Character(String name, String identity, Origin origin, Theme theme, StandardOfLiving standardOfLiving, Job job, Race race) {
+    public Character(String name, String identity, Origin origin, Theme theme, StandardOfLiving standardOfLiving, Job job, Race race, Divinity divinity) {
         //Se rimosso non funziona la creazione del personaggio
         this.name = name;
         this.identity = identity;
@@ -84,6 +86,7 @@ public class Character {
         this.standardOfLiving = standardOfLiving;
         this.job = job;
         this.race = race;
+        this.divinity = divinity;
     }
 
     //TODO Aggiungere Talenti

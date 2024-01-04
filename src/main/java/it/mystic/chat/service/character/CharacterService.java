@@ -133,6 +133,12 @@ public class CharacterService {
         characterRepo.save(character);
     }
 
+    public void updateDivinityById(Long characterId, Divinity divinity) {
+        Character character = characterRepo.getReferenceById(characterId);
+        character.setDivinity(divinity);
+        characterRepo.save(character);
+    }
+
     public void updateDescriptionById(Long characterId, CharacterDescriptionDao characterDescriptionDao) {
         Character character = characterRepo.getReferenceById(characterId);
         CharacterDescription characterDescription = characterMapper.descriptionDaoToDto(characterDescriptionDao, character);
@@ -159,4 +165,5 @@ public class CharacterService {
     public String getPersonalNote(Long characterId) {
         return characterRepo.getReferenceById(characterId).getPersonalNote();
     }
+
 }

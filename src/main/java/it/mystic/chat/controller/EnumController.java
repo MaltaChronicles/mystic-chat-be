@@ -125,4 +125,14 @@ public class EnumController {
     public ResponseEntity<List<BoardType>> getBoardTypes() {
         return ResponseEntity.ok(Arrays.stream(BoardType.values()).toList());
     }
+
+    @GetMapping("/getDivinities")
+    public ResponseEntity<List<Divinity>> getDivinities() {
+        return ResponseEntity.ok(Arrays.stream(Divinity.values()).toList());
+    }
+
+    @GetMapping("/getElement")
+    public ResponseEntity<List<Element>> getElement() {
+        return ResponseEntity.ok(Arrays.stream(Element.values()).toList());
+    }
 }
