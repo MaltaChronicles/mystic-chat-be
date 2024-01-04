@@ -19,9 +19,9 @@ public class CharacterInventory {
     @EmbeddedId
     CharacterInventoryPk id;
 
-    @Column
+    @Column(nullable = false)
     Boolean isEquip;
 
-    @Column
+    @Column(nullable = false)
     Integer quantity;
 }

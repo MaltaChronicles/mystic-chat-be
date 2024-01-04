@@ -19,6 +19,6 @@ public class PlayerChat {
     @EmbeddedId
     PlayerChatPk id;
 
-    @Column
+    @Column(nullable = false)
     Boolean isAdmin;
 }

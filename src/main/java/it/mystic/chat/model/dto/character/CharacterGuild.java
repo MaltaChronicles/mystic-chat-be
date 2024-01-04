@@ -18,19 +18,19 @@ import java.util.Date;
 @ToString
 public class CharacterGuild {
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "character_id")
     @Id
     Character character;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "guild_id")
     Guild guild;
 
     @Column
     GuildRank rank;
 
-    @Column
+    @Column(nullable = false)
     Date dateOfEntry;
 
     public CharacterGuild(Character character) {

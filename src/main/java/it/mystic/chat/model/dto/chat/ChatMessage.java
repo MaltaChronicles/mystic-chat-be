@@ -17,6 +17,6 @@ import lombok.NoArgsConstructor;
 public class ChatMessage {
     @EmbeddedId
     ChatMessagePk id;
-    @Column(length = 65000)
+    @Column(length = 65000, nullable = false, updatable = false)
     String body;
 }

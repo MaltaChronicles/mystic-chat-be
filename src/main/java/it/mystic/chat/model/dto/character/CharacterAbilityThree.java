@@ -19,6 +19,6 @@ public class CharacterAbilityThree {
     @EmbeddedId
     CharacterAbilityThreePk id;
 
-    @Column
+    @Column(nullable = false)
     Integer level;
 }

@@ -13,7 +13,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BoardAnswerPk implements Serializable {
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumns({
             @JoinColumn(name = "board_id", referencedColumnName = "board_id", insertable = false, updatable = false),
             @JoinColumn(name = "openBy", referencedColumnName = "openBy", insertable = false, updatable = false),
@@ -21,11 +21,11 @@ public class BoardAnswerPk implements Serializable {
     })
     BoardDiscussion discussion;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "writtenBy")
     Player writtenBy;
 
-    @Column
+    @Column(updatable = false)
     String answerUuid;
 
 

@@ -2,6 +2,7 @@ package it.mystic.chat.model.dto.character;
 
 import it.mystic.chat.model.enums.Affinity;
 import it.mystic.chat.model.enums.DiceValue;
+import it.mystic.chat.util.CharacterStatsUtil;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,110 +20,110 @@ import static it.mystic.chat.util.CharacterStatsUtil.obtainDiceValue;
 @Table
 @ToString
 public class CharacterStats {
-    @Column
+    @Column(nullable = false)
     Integer level;
-    @Column
+    @Column(nullable = false)
     Integer totalLife;
-    @Column
+    @Column(nullable = false)
     Integer actualLife;
-    @Column
+    @Column(nullable = false)
     Integer crisis;
-    @Column
+    @Column(nullable = false)
     Integer totalMana;
-    @Column
+    @Column(nullable = false)
     Integer actualMana;
-    @Column
+    @Column(nullable = false)
     Integer totalExperience;
-    @Column
+    @Column(nullable = false)
     Integer actualExperience;
-    @Column
+    @Column(nullable = false)
     Integer totalInitiative;
-    @Column
+    @Column(nullable = false)
     Integer actualInitiative;
-    @Column
+    @Column(nullable = false)
     Long coin;
 
     /* STATISTICHE */
-    @Column
+    @Column(nullable = false)
     DiceValue totalDexterity;
-    @Column
+    @Column(nullable = false)
     DiceValue actualDexterity;
-    @Column
+    @Column(nullable = false)
     DiceValue totalInsight;
-    @Column
+    @Column(nullable = false)
     DiceValue actualInsight;
-    @Column
+    @Column(nullable = false)
     DiceValue totalVigor;
-    @Column
+    @Column(nullable = false)
     DiceValue actualVigor;
-    @Column
+    @Column(nullable = false)
     DiceValue totalWill;
-    @Column
+    @Column(nullable = false)
     DiceValue actualWill;
 
     /* DIFESE */
-    @Column
+    @Column(nullable = false)
     Integer totalDefense;
-    @Column
+    @Column(nullable = false)
     Integer actualDefense;
-    @Column
+    @Column(nullable = false)
     Integer totalResistance;
-    @Column
+    @Column(nullable = false)
     Integer actualResistance;
 
     /* ABILITAZIONI */
-    @Column
+    @Column(nullable = false)
     Boolean martialArmors;
-    @Column
+    @Column(nullable = false)
     Boolean martialShields;
-    @Column
+    @Column(nullable = false)
     Boolean martialMeleeWeapons;
-    @Column
+    @Column(nullable = false)
     Boolean martialDistanceWeapons;
 
     /* RESISTENZE */
-    @Column
+    @Column(nullable = false)
     Affinity physicalAffinity;
-    @Column
+    @Column(nullable = false)
     Affinity waterAffinity;
-    @Column
+    @Column(nullable = false)
     Affinity earthAffinity;
-    @Column
+    @Column(nullable = false)
     Affinity fireAffinity;
-    @Column
+    @Column(nullable = false)
     Affinity airAffinity;
-    @Column
+    @Column(nullable = false)
     Affinity electricityAffinity;
-    @Column
+    @Column(nullable = false)
     Affinity iceAffinity;
-    @Column
+    @Column(nullable = false)
     Affinity lightAffinity;
-    @Column
+    @Column(nullable = false)
     Affinity darkAffinity;
-    @Column
+    @Column(nullable = false)
     Affinity poisonAffinity;
-    @Column
+    @Column(nullable = false)
     Affinity actualPhysicalAffinity;
-    @Column
+    @Column(nullable = false)
     Affinity actualWaterAffinity;
-    @Column
+    @Column(nullable = false)
     Affinity actualEarthAffinity;
-    @Column
+    @Column(nullable = false)
     Affinity actualFireAffinity;
-    @Column
+    @Column(nullable = false)
     Affinity actualAirAffinity;
-    @Column
+    @Column(nullable = false)
     Affinity actualElectricityAffinity;
-    @Column
+    @Column(nullable = false)
     Affinity actualIceAffinity;
-    @Column
+    @Column(nullable = false)
     Affinity actualLightAffinity;
-    @Column
+    @Column(nullable = false)
     Affinity actualDarkAffinity;
-    @Column
+    @Column(nullable = false)
     Affinity actualPoisonAffinity;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "character_id")
     @Id
     @ToStringExclude

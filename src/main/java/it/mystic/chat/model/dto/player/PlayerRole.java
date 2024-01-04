@@ -1,6 +1,7 @@
 package it.mystic.chat.model.dto.player;
 
 import it.mystic.chat.model.dto.pk.PlayerRolePk;
+import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -16,5 +17,7 @@ import lombok.NoArgsConstructor;
 public class PlayerRole {
     @EmbeddedId
     PlayerRolePk id;
+
+    @Column(nullable = false)
     Boolean isBoss;
 }

@@ -17,12 +17,13 @@ import java.util.List;
 public class Text {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
     Long textId;
-    @Column
+    @Column(nullable = false)
     TextType type;
-    @Column
+    @Column(nullable = false)
     String title;
-    @Column(length = 65000)
+    @Column(length = 65000, nullable = false)
     String body;
 
     @OneToMany(mappedBy = "text", cascade = CascadeType.ALL)

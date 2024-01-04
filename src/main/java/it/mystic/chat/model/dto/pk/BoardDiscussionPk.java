@@ -16,14 +16,14 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BoardDiscussionPk implements Serializable {
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "board_id")
     Board board;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "openBy")
     Player openBy;
 
-    @Column
+    @Column(updatable = false)
     String discussionUuid;
 }

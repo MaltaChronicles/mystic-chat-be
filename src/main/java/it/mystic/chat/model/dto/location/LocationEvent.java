@@ -18,12 +18,12 @@ public class LocationEvent {
     @EmbeddedId
     LocationEventPk id;
 
-    @Column
+    @Column(nullable = false)
     String name;
 
-    @Column
+    @Column(nullable = false)
     String description;
 
-    @Column
+    @Column(nullable = false, updatable = false)
     String createBy;
 }

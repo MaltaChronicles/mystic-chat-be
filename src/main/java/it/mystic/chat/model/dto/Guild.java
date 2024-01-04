@@ -17,12 +17,13 @@ import java.util.List;
 public class Guild {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
     Long guildId;
-    @Column
+    @Column(nullable = false)
     String name;
-    @Column
+    @Column(nullable = false)
     String imageUrl;
-    @Column
+    @Column(nullable = false)
     String description;
 
 

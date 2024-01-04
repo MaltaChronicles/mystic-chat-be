@@ -19,15 +19,15 @@ public class LocationMessage {
     @EmbeddedId
     LocationMessagePk id;
 
-    @Column
+    @Column(nullable = false, updatable = false)
     MessageType messageType;
 
-    @Column
+    @Column(nullable = false, updatable = false)
     String tag;
 
-    @Column(length = 65000)
+    @Column(length = 65000, nullable = false, updatable = false)
     String body;
 
-    @Column
+    @Column(updatable = false)
     String imageLink;
 }

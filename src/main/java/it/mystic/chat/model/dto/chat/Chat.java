@@ -16,8 +16,9 @@ import java.util.List;
 @Table
 public class Chat {
     @Id
+    @Column(updatable = false)
     String chatId;//UUID
-    @Column
+    @Column(nullable = false)
     String title;
 
     @OneToMany(mappedBy = "id.chat", cascade = CascadeType.ALL)

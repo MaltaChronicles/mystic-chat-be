@@ -17,12 +17,13 @@ import java.util.List;
 public class Medal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
     Long medalId;
 
-    @Column
+    @Column(nullable = false, updatable = false)
     String name;
 
-    @Column
+    @Column(nullable = false)
     String imageUrl;
 
     @ManyToMany(mappedBy = "medals")

@@ -2,6 +2,7 @@ package it.mystic.chat.model.dto.pk;
 
 import it.mystic.chat.model.dto.Ability;
 import it.mystic.chat.model.dto.character.Character;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
@@ -14,11 +15,11 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CharacterAbilityThreePk implements Serializable {
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "character_id")
     Character character;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ability_id")
     Ability ability;
 }

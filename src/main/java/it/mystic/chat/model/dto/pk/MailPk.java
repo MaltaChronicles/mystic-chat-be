@@ -1,6 +1,7 @@
 package it.mystic.chat.model.dto.pk;
 
 import it.mystic.chat.model.dto.character.Character;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -15,12 +16,12 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MailPk implements Serializable {
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "sender_id")
     Character sender;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "recipient_id")
     Character recipient;
-    @Column
+    @Column(updatable = false)
     Date date;
 }

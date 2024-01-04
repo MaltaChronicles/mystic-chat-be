@@ -21,30 +21,31 @@ import java.util.List;
 public class Ability {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
     Long abilityId;
-    @Column
+    @Column(nullable = false)
     String name;
-    @Column
+    @Column(nullable = false)
     String imageUrl;
-    @Column
+    @Column(nullable = false)
     Class abilityClass;
-    @Column
+    @Column(nullable = false)
     AbilityType type;
-    @Column
+    @Column(nullable = false)
     String description;
-    @Column
+    @Column(nullable = false)
     DurationType duration;
-    @Column
+    @Column(nullable = false)
     TargetType targetType;
-    @Column
+    @Column(nullable = false)
     Integer maxTargetNumber;
-    @Column
+    @Column(nullable = false)
     Integer maxLevel;
-    @Column
+    @Column(nullable = false)
     Integer manaPriceForTarget;
-    @Column
+    @Column(nullable = false)
     Integer hpPriceForTarget;
-    @Column
+    @Column(nullable = false)
     String actionLink;
 
     @OneToMany(mappedBy = "id.ability", cascade = CascadeType.ALL)

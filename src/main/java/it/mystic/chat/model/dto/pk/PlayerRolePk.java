@@ -2,6 +2,7 @@ package it.mystic.chat.model.dto.pk;
 
 import it.mystic.chat.model.dto.player.Player;
 import it.mystic.chat.model.enums.Role;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -15,9 +16,9 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PlayerRolePk implements Serializable {
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "player_id")
     Player player;
-    @Column
+    @Column(updatable = false)
     Role role;
 }

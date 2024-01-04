@@ -1,6 +1,8 @@
 package it.mystic.chat.model.dto.pk;
 
 import it.mystic.chat.model.dto.location.Location;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
@@ -14,9 +16,10 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LocationEventPk implements Serializable {
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "location_id")
     Location location;
 
+    @Column(updatable = false)
     Date data;
 }

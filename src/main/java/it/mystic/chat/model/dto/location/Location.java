@@ -17,18 +17,19 @@ import java.util.List;
 public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
     Long locationId;
 
-    @Column
+    @Column(nullable = false)
     String name;
 
-    @Column
+    @Column(nullable = false)
     String description;
 
-    @Column
+    @Column(nullable = false)
     String imageUrl;
 
-    @Column
+    @Column(nullable = false)
     String backgroundUrl;
 
     @Column
@@ -42,7 +43,7 @@ public class Location {
     @ToStringExclude
     List<LocationMessage> chat;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "manager")
     @ToStringExclude
     Player manager;

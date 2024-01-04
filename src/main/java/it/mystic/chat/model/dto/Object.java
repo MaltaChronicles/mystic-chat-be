@@ -18,22 +18,23 @@ import java.util.List;
 public class Object {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
     Long objectId;
-    @Column
+    @Column(nullable = false)
     String name;
-    @Column
+    @Column(nullable = false)
     String imageUrl;
-    @Column
+    @Column(nullable = false)
     ObjectType type;
-    @Column
+    @Column(nullable = false)
     String description;
-    @Column
+    @Column(nullable = false)
     ObjectRank rank;
-    @Column
+    @Column(nullable = false)
     Boolean isMartial;
-    @Column
+    @Column(nullable = false)
     RangeType rangeType;
-    @Column
+    @Column(nullable = false)
     RangeType price;
 
     @Column

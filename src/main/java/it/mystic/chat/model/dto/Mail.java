@@ -20,9 +20,9 @@ public class Mail {
     @EmbeddedId
     MailPk id;
 
-    @Column(length = 65000)
+    @Column(length = 65000, nullable = false, updatable = false)
     String body;
 
-    @Column
+    @Column(nullable = false)
     Boolean isRead;
 }

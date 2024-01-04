@@ -34,7 +34,7 @@ public class CharacterDescription {
     @Column
     String imageUrl;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "character_id")
     @Id
     @ToStringExclude

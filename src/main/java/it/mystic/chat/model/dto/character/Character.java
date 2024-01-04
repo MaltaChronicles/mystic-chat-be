@@ -20,22 +20,23 @@ import java.util.List;
 public class Character {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
     Long characterId;
-    @Column
+    @Column(nullable = false)
     String name;
-    @Column
+    @Column(nullable = false)
     String identity;
-    @Column
+    @Column(nullable = false)
     Origin origin;
-    @Column
+    @Column(nullable = false)
     Theme theme;
-    @Column
+    @Column(nullable = false)
     StandardOfLiving standardOfLiving;
-    @Column
+    @Column(nullable = false)
     Job job;
-    @Column
+    @Column(nullable = false)
     Race race;
-    @Column
+    @Column(nullable = false)
     Divinity divinity;
     @Column(length = 16000000)
     String masterNote;

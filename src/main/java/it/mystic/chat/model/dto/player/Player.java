@@ -22,16 +22,17 @@ public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
     Long playerId;
-    @Column
+    @Column(unique = true, nullable = false)
     String username;
-    @Column
+    @Column(nullable = false)
     String password;
-    @Column
+    @Column(unique = true, nullable = false)
     String email;
     @Column
     String message;
-    @Column
+    @Column(nullable = false)
     Date dataIscrizione;
     @Column
     Date ultimaAzione;
@@ -44,30 +45,30 @@ public class Player {
     @ToStringExclude
     List<PlayerRole> roles;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "character1")
     @ToStringExclude
     Character character1;
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "character2")
     @ToStringExclude
     Character character2;
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "character3")
     @ToStringExclude
     Character character3;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "activeCharacter")
     @ToStringExclude
     Character activeCharacter;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "location")
     @ToStringExclude
     Location location;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "player_medal",
             joinColumns = @JoinColumn(name = "player_id"),

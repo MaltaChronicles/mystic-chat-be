@@ -13,13 +13,14 @@ import lombok.NoArgsConstructor;
 public class TextParagraph {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
     Long paragraphId;
-    @Column
+    @Column(nullable = false)
     String title;
-    @Column(length = 16000000)
+    @Column(length = 16000000, nullable = false)
     String body;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "text_id")
     Text text;
 

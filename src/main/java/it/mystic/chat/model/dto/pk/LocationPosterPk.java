@@ -16,14 +16,14 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LocationPosterPk implements Serializable {
-    @Column
+    @Column(updatable = false)
     String uuid;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "author")
     Character character;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "location_id")
     Location location;
 }

@@ -20,10 +20,10 @@ public class LocationPoster {
     @EmbeddedId
     LocationPosterPk id;
 
-    @Column
+    @Column(nullable = false, updatable = false)
     String title;
-    @Column(length = 65000)
+    @Column(length = 65000, nullable = false, updatable = false)
     String body;
-    @Column
+    @Column(nullable = false, updatable = false)
     Date date;
 }
