@@ -1,7 +1,6 @@
 package it.mystic.chat.mapper;
 
 import it.mystic.chat.model.dto.Configuration;
-import jakarta.persistence.Column;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
